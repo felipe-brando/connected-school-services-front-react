@@ -1,12 +1,15 @@
-import AnnounceMini from './AnnounceMini';
+import AnnounceCard from './AnnounceCard';
+
+import './style.scss';
+
 
 const AnnouceList = () => {
     return (
         <section className="announceList">
-        <AnnounceMini />
-        <AnnounceMini />
-        <AnnounceMini />
-        <AnnounceMini />
+            <AnnounceCard />
+            <AnnounceCard />
+            <AnnounceCard />
+            <AnnounceCard />
         </section>
     );
 };
