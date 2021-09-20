@@ -5,12 +5,12 @@ import Intro from '../Intro/index.js';
 import Footer from '../Footer/Footer.js';
 import AnnouceList from '../Announce/AnnouceList.js';
 
-import './style.scss';
+import './App.scss';
 
 // == Composant
 const App= () => {
   return (
-    <div className="app">
+    <div className="App">
       <Connection />
       <Header />
       <Intro />

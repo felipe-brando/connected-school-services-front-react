@@ -1,0 +1,21 @@
+.header{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+
+    .logo {
+        height: 4rem;
+        
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+
+        &__item {
+            padding: 0 2rem;
+        }
+    }
+
+}
