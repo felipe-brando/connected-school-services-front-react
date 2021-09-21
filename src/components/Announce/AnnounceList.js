@@ -3,7 +3,7 @@ import AnnounceCard from './AnnounceCard';
 import './style.scss';
 
 
-const AnnouceList = () => {
+const AnnounceList = () => {
     return (
         <section className="announceList">
             <AnnounceCard />
@@ -14,4 +14,4 @@ const AnnouceList = () => {
     );
 };
 
-export default AnnouceList;
+export default AnnounceList;

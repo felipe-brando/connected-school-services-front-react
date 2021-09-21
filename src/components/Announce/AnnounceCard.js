@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
-const AnnouceCard = () => {
+const AnnounceCard = () => {
     return (
         <article className="announce">
 
@@ -21,4 +21,4 @@ const AnnouceCard = () => {
     );
 };
 
-export default AnnouceCard
+export default AnnounceCard
