@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
 import userReducer from './user';
-import announceReducer from './classroom';
-import classroomReducer from './announce';
+import classroomReducer from './classroom';
+import announceReducer from './announce';
 import lessonReducer from './lesson';
 
 

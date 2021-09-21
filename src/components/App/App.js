@@ -1,19 +1,20 @@
 // == Import
 import { Route, Switch } from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Connection from '../Connection/index.js';
 import Header from '../Header/index.js';
 import Intro from '../Intro/index.js';
 import Footer from '../Footer/Footer.js';
 import AnnounceList from '../Announce/AnnounceList.js';
+import AnnouncePage from '../Announce/AnnouncePage.js';
 
 
 import './App.scss';
 
 
 // == Composant
-const App= () => {
+const App = () => {
   const logged = useSelector((state) => state.user.logged);
   return (
     <div className="App">
@@ -30,17 +31,18 @@ const App= () => {
         <Route path="/actualites">
           <div>Actualités</div>
         </Route>
+        <Route path="/announce/:id" component={AnnouncePage} />
         <Route path="/contact">
           <div>Contact</div>
-        </Route> 
+        </Route>
         <Route path="/espace-perso">
-        {logged ? 
-          <div>Espace personnel</div> :
-          <div>403</div>}
-        </Route> 
-        <Route>  
+          {logged ?
+            <div>Espace personnel</div> :
+            <div>403</div>}
+        </Route>
+        <Route>
           <div>404</div>
-        </Route> 
+        </Route>
       </Switch>
       <Footer />
     </div>
