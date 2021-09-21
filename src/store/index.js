@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import reducer from 'src/reducers';
+import reducer from '../reducers/index.js';
 
 // // on importe les middlewares
 // import debugMiddleware from 'src/middlewares/debug';
