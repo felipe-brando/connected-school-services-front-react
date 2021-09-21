@@ -1,3 +1,4 @@
+import ContactPage from '../../../../../../../../../var/www/html/Apothéose/projet-connected-school-services-front/src/components/News';
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
 const AnnouncePage = () => {

@@ -1,9 +1,12 @@
 // == Import
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
 import Connection from '../Connection/index.js';
 import Header from '../Header/index.js';
+import About from '../About/index.js';
+import Contact from '../Contact/index.js';
+
 import Intro from '../Intro/index.js';
 import Footer from '../Footer/Footer.js';
 import AnnounceList from '../Announce/AnnounceList.js';
@@ -26,12 +29,15 @@ const App= () => {
         </Route>
         <Route path="/a-propos">
           <div>A propos</div>
+          <About />
         </Route>
         <Route path="/actualites">
           <div>Actualités</div>
+          <AnnounceList />
         </Route>
         <Route path="/contact">
           <div>Contact</div>
+          <Contact />
         </Route> 
         <Route path="/espace-perso">
         {logged ? 

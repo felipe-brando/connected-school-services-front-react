@@ -20,6 +20,11 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // on crée le store à qui l'on passe le reducer et les middlewares (avec le devtool)
 //const store = createStore(reducer, enhancers);
-const store = createStore(reducer);
+// const store = createStore(reducer);
+
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  );
 
 export default store;

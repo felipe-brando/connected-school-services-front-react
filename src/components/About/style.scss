@@ -1,0 +1,9 @@
+.announceList {
+   display: flex;
+}
+
+.announce{
+    &--img{
+        width: 50%;
+    }
+}
