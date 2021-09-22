@@ -9,7 +9,7 @@ const AccountMenu = () => {
         <div className="connection__icon"><User /></div>
         <div className="connection__text">Nom du user</div>
         </Link>
-        <div class="connection__dropdown">
+        <div className="connection__dropdown">
             <a href="#">Accueil espace perso</a>
             <a href="#">Paramètres du compte</a>
             <a href="#">Déconnexion</a>

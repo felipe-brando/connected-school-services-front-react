@@ -32,7 +32,7 @@ const App = () => {
         </Route>
         <Route path="/annonces" component={Announce} />
         <Route path="/contact">
-          <div>Contact</div>
+          <Contact />
         </Route>
         <Route path="/espace-perso">
           {logged ?
