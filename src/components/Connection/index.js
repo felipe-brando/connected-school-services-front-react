@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 import './style.scss';
 import LoginForm from './LoginForm';
+import AccountMenu from './AccountMenu';
 // == Composant
 const Connection = () => {
   const isOpen = useSelector((state) => state.user.loginOpen);
@@ -21,19 +22,16 @@ const Connection = () => {
   return (
     <div className="connection">
       <ul className="connection__list">
-        <li> 
-          
-          <Link onClick={handleClick} to="#" className="connection__item">
-            <div className="connection__icon"><User /></div>
-            <div className="connection__text">Connexion</div>
-          </Link>
-          {logged &&
-            <Link to="#" className="connection__item">
-            <div className="connection__icon"><User /></div>
-            <div className="connection__text">Espace perso</div>
-          </Link>
-          }
-        </li> 
+        {logged ? 
+          <AccountMenu />
+          :
+          <li> 
+            <Link onClick={handleClick} to="#" className="connection__item">
+              <div className="connection__icon"><User /></div>
+              <div className="connection__text">Connexion</div>
+            </Link>
+          </li> 
+        }
       </ul>
       <div className={isOpen ? "login" : "login login--hidden"} >
   
