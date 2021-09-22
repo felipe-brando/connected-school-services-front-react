@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
 
-=======
-import ContactPage from '../../../../../../../../../var/www/html/Apothéose/projet-connected-school-services-front/src/components/News';
->>>>>>> feature/inte
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
 const AnnouncePage = () => {
