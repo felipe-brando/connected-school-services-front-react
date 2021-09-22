@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
@@ -6,10 +7,13 @@ import schoolPicture from '../../assets/img/school-small.jpeg'
 
 const AnnouncePage = () => {
     //collect announce id in url with router hook
-    const { id } = useParams()
-    console.log(id);
+    const { id } = useParams();
 
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
+
+    useEffect(() => {
+        console.log('chargement des infos');
+    })
 
     return (
         <section className="announcePage">
@@ -23,7 +27,7 @@ const AnnouncePage = () => {
             </p>
             <h1 className="announcePage__title">{currentAnnounce.title}</h1>
             <span className="announcePage__date">{currentAnnounce.date}</span>
-            <p className="announcePage__content"> Cotnenu de l'annonce avec l'id : {id}
+            <p className="announcePage__content"> Contenu de l'annonce avec l'id : {id}
             </p>
         </section>
     );

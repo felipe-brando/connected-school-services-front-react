@@ -6,17 +6,16 @@ const AnnounceCard = ({ id, title, content, image, categories, date }) => {
     return (
         <article className="announce">
 
-            <img src={schoolPicture} className="announce--img" alt="" />
+            <img src={image[0]==='h'?image:schoolPicture} className="announce--img" alt="" />
             <p className="announce__tag">
-                {categories.map((categoryName) =>
+                {categories.map((categoryObject) =>
                     <Link
-                        key={categoryName}
-                        to={"/annonces/categories/" + categoryName}>{categoryName}.
+                        key={categoryObject.id}
+                        to={"/annonces/categories/" + categoryObject.name}>{categoryObject.name}.
                 </Link>)}
             </p>
             <h3 className="announce__title">{title}</h3>
-            <p className="announce__content">{content}</p>
-
+            {/* <p className="announce__content">{content}</p> */}
             <div className="announce__footer">
                 <span className="announce__footer__date">{date}</span>
                 <NavLink to={"/annonces/" + id} className="announce__footer__link">Voir l'annonce</NavLink>
@@ -31,7 +30,7 @@ AnnounceCard.propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+    categories: PropTypes.arrayOf(PropTypes.object).isRequired,
     date: PropTypes.string.isRequired,
 };
 
