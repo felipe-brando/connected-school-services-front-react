@@ -21,19 +21,17 @@ export const initialState = {
       case 'CHANGE_VALUE':
       return {
         ...state,
-        [action.key]: action.newValue, 
+        [action.key]: action.value, 
       };
       case 'LOGIN':
         return {
-          ...state,
-          
+          ...state,  
       };
       case 'LOGOUT':
         return {
           ...state,
           logged: false,
-          email: '',
-          password: '',
+          token: '',
       };
       case 'SAVE_USER':
         return {
@@ -42,6 +40,8 @@ export const initialState = {
           firstname: action.username,
           loginOpen: false,
           token: action.token,
+          email: '',
+          password: '',
         };
 
       case 'TOGGLE_OPEN':

@@ -1,15 +1,9 @@
 // == Import
-import { useDispatch } from 'react-redux';
 import { User } from 'react-feather';
 import { Link } from "react-router-dom";
 // == Composants
-const AccountMenu = () => {
-    const dispatch = useDispatch();
-    const handleLogout = () => {
-        dispatch({
-          type: 'LOGOUT',
-        });
-      };
+const AccountMenu = ( { handleLogout } ) => {
+
     return (
     <li className="connection__item">
         <Link to="#" className="connection__item-link">

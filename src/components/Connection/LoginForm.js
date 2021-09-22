@@ -1,38 +1,55 @@
 // == Import
-import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import Input from './Input';
 
 // == Composant
-const LoginForm = () => {
-    const dispatch = useDispatch();
+const LoginForm = ({
+  email,
+  password,
+  changeField,
+  handleLogin,
+}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch({
-          type: 'LOGIN',
-        });
+        handleLogin();
       };
 
     return (
       <form onSubmit={handleSubmit} className="connection__form">
         <Input
-          placeholder="Email"
-          aria-label="Email"
-          className="connection__input"
+          name="email"
           type="email"
-          inputKey="email"
+          placeholder="Adresse Email"
+          aria-label="Email"
+          onChange={changeField}
+          value={email}
         />
         <Input
+          name="password"
+          type="password"
           placeholder="Mot de passe"
           aria-label="Mot de passe"
-          className="connection__input"
-          type="password"
-          title="Veuillez saisir le bon mot de passe"
-          inputKey="password"
+          onChange={changeField}
+          value={password}
         />
         <button className="connection__btn" type="submit">Se connecter</button>
       </form>
     );
+  };
+
+  LoginForm.propTypes = {
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    changeField: PropTypes.func.isRequired,
+    handleLogin: PropTypes.func.isRequired,
+    handleLogout: PropTypes.func.isRequired,
+    isLogged: PropTypes.bool,
+  };
+  
+  LoginForm.defaultProps = {
+    isLogged: false,
   };
   
   export default LoginForm;
