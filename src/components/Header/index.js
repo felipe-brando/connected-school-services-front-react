@@ -1,9 +1,5 @@
 // == Import
-import PropTypes from 'prop-types';
-
-import { Link, NavLink } from "react-router-dom";
-
-import About from '../About';
+import { NavLink } from "react-router-dom";
 
 import './style.scss';
 import schoolPicture from '../../assets/img/school-small.jpeg'
@@ -14,7 +10,7 @@ const Header = () => (
     <nav className="menu">
       <NavLink to="/" className="menu__item">Accueil</NavLink>
       <NavLink to="/a-propos" className="menu__item">A propos</NavLink>
-      <NavLink to="/actualites" className="menu__item">Actualités</NavLink>
+      <NavLink to="/annonces" className="menu__item">Actualités</NavLink>
       <NavLink to="/contact" className="menu__item">Contact</NavLink>
     </nav>
   </header>

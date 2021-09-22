@@ -11,11 +11,10 @@ const AnnounceCard = ({ id, title, content, image, categories, date }) => {
                 {categories.map((categoryObject) =>
                     <Link
                         key={categoryObject.id}
-                        to={"/annonces/categories/" + categoryObject.name}>{categoryObject.name}.
+                        to={"/annonces/categories/" + categoryObject.id}>{categoryObject.name}.
                 </Link>)}
             </p>
-            <h3 className="announce__title">{title}</h3>
-            {/* <p className="announce__content">{content}</p> */}
+            <h3 className="announce__title">{title}</h3>            
             <div className="announce__footer">
                 <span className="announce__footer__date">{date}</span>
                 <NavLink to={"/annonces/" + id} className="announce__footer__link">Voir l'annonce</NavLink>

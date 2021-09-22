@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
 
@@ -11,24 +11,28 @@ const AnnouncePage = () => {
 
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
 
+    const dispatch = useDispatch();
     useEffect(() => {
-        console.log('chargement des infos');
-    })
+        dispatch({
+            type: 'GET_ANNOUNCE_BY_ID',
+            id: id,
+        });
+
+    }, []);
 
     return (
         <section className="announcePage">
-            <img src={schoolPicture} alt="" className="announce__img" />
+            <img src={currentAnnounce.image[0] === 'h' ? currentAnnounce.image : schoolPicture} alt="" className="announce__img" />
             <p className="announcePage__tag">
-                {currentAnnounce.categories.map((categoryName) =>
+                {currentAnnounce.category.map((categoryObject) =>
                     <Link
-                        key={categoryName}
-                        to={"/annonces/categories/" + categoryName}>{categoryName}.
+                        key={categoryObject.id}
+                        to={"/annonces/categories/" + categoryObject.id}>{categoryObject.name}.
                 </Link>)}
             </p>
             <h1 className="announcePage__title">{currentAnnounce.title}</h1>
+            <p className="announce__content">{currentAnnounce.content}</p>
             <span className="announcePage__date">{currentAnnounce.date}</span>
-            <p className="announcePage__content"> Contenu de l'annonce avec l'id : {id}
-            </p>
         </section>
     );
 };
