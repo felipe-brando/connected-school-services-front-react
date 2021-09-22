@@ -25,8 +25,8 @@ const Connection = () => {
         {logged ? 
           <AccountMenu />
           :
-          <li> 
-            <Link onClick={handleClick} to="#" className="connection__item">
+          <li className="connection__item"> 
+            <Link onClick={handleClick} to="#" className="connection__item-link">
               <div className="connection__icon"><User /></div>
               <div className="connection__text">Connexion</div>
             </Link>
