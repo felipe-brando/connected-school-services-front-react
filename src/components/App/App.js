@@ -6,9 +6,7 @@ import Connection from '../Connection/index.js';
 import Header from '../Header/index.js';
 import Intro from '../Intro/index.js';
 import Footer from '../Footer/Footer.js';
-import AnnounceList from '../Announce/AnnounceList.js';
-import AnnouncePage from '../Announce/AnnouncePage.js';
-
+import Announce from '../Announce/Announce.js';
 
 import './App.scss';
 
@@ -23,15 +21,12 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <Intro />
-          <AnnounceList />
+          <Announce />
         </Route>
         <Route path="/a-propos">
           <div>A propos</div>
         </Route>
-        <Route path="/actualites">
-          <div>Actualités</div>
-        </Route>
-        <Route path="/announce/:id" component={AnnouncePage} />
+        <Route path="/annonces" component={Announce} />
         <Route path="/contact">
           <div>Contact</div>
         </Route>

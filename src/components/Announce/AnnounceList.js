@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import {Switch, useParams, Route} from 'react-router-dom';
 
 import AnnounceCard from './AnnounceCard';
 
@@ -7,7 +8,7 @@ import './style.scss';
 
 const AnnounceList = () => {
     const AnnounceList = useSelector((state) => state.announce.announceList);
-
+    
     return (
         <section className="announceList">
             {AnnounceList.map ((announceObject) => (
