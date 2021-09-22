@@ -1,5 +1,5 @@
 .header{
-    background-color: #fff;
+    background-color: #20232A;
     display: flex;
     justify-content: space-between;
     padding: 0 1rem;
@@ -16,6 +16,11 @@
         &__item {
             padding: 0 2rem;
         }
+    }
+
+    .active {
+            border-bottom: 4px solid #7C9D2B;
+            color: white;
     }
 
 }

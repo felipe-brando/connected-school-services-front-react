@@ -1,24 +1,37 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import schoolPicture from '../../assets/img/school-small.jpeg'
+import PropTypes from 'prop-types'
 
-const AnnouceCard = () => {
+const AnnounceCard = ({ id, title, content, image, categories, date }) => {
     return (
         <article className="announce">
 
-            <img src={schoolPicture} className="announce--img" alt="" />
-            <p className="announce__tag">categorie(s?)</p>
-            <h3 className="announce__title">Titre de l'annonce</h3>
-            <p className="announce__content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla perferendis assumenda atque, veniam voluptatem eveniet maxime velit voluptas iure cum tempora ut odio suscipit similique explicabo corporis voluptates, aliquid eaque!
+            <img src={image[0]==='h'?image:schoolPicture} className="announce--img" alt="" />
+            <p className="announce__tag">
+                {categories.map((categoryObject) =>
+                    <Link
+                        key={categoryObject.id}
+                        to={"/annonces/categories/" + categoryObject.name}>{categoryObject.name}.
+                </Link>)}
             </p>
-
+            <h3 className="announce__title">{title}</h3>
+            {/* <p className="announce__content">{content}</p> */}
             <div className="announce__footer">
-                <span className="announce__footer__date">Date de l'annonce</span>
-                <NavLink to="#" className="announce__footer__link">Voir l'annonce</NavLink>
+                <span className="announce__footer__date">{date}</span>
+                <NavLink to={"/annonces/" + id} className="announce__footer__link">Voir l'annonce</NavLink>
             </div>
 
         </article>
     );
 };
 
-export default AnnouceCard
+AnnounceCard.propTypes = {
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+    date: PropTypes.string.isRequired,
+};
+
+export default AnnounceCard;
