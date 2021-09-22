@@ -13,10 +13,12 @@ function Field ({name, value, onChange, children})  {
 
 function Checkbox ({name, value, onChange, children}) {
     return <div className = "form-check">
-        <input type ="checkbox" checked={value} onChange = {onChange} id = {name} className = "form-control"/>
+        <input type ="checkbox" onChange = {onChange} id = {name} className = "form-control"/>
         <label htmlFor= {name} class = "form-check-label">{children}</label> 
     </div>
 }
+
+// Using class 
 
 class ContactForm extends React.Component {
 
