@@ -4,12 +4,18 @@ import './style.scss';
 
 // class Form extends React.Component {
 
-function Field ({name, value, onChange, children}){
+function Field ({name, value, onChange, children})  {
     return <div className="form-group">
        <label htmlFor={name}>{children}</label>
        <input type="text" value={value} onChange={onChange} id={name} name={name} className="form-control"/>
        </div>
+}
 
+function Checkbox ({name, value, onChange, children}) {
+    return <div className = "form-check">
+        <input type ="checkbox" checked={value} onChange = {onChange} id = {name} className = "form-control"/>
+        <label htmlFor= {name} class = "form-check-label">{children}</label> 
+    </div>
 }
 
 class ContactForm extends React.Component {
@@ -22,6 +28,7 @@ class ContactForm extends React.Component {
             newsletter:false
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
 
@@ -37,6 +44,7 @@ handleChange = (event) => {
 handleSubmit = (event) => {
     event.preventdefault()
     const data = JSON.stringify(this.state)
+    console.log(data)
     this.setState({
         nom: '',
         prenom: '',
@@ -52,6 +60,7 @@ render() {
          <Field name="nom" value={this.state.nom} onChange={this.handleChange}>Nom</Field>
          <Field name="prenom" value={this.state.prenom} onChange={this.handleChange}>Prémom</Field>
          <Field name="courriel" value={this.state.courriel} onChange={this.handleChange}>Courriel</Field>
+         <Checkbox name="newsletter" value ={this.state.newsletter} onChange = {this.handleChange}>S'abonner à la newsletter de l'établissement</Checkbox>
          <div className ="form-group">   
          <button class ="btn btn-primary">Envoyer</button>
          </div>
