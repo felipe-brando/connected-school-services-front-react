@@ -1,8 +1,15 @@
 // == Import
+import { useDispatch } from 'react-redux';
 import { User } from 'react-feather';
 import { Link } from "react-router-dom";
 // == Composants
 const AccountMenu = () => {
+    const dispatch = useDispatch();
+    const handleLogout = () => {
+        dispatch({
+          type: 'LOGOUT',
+        });
+      };
     return (
     <li className="connection__item">
         <Link to="#" className="connection__item-link">
@@ -12,7 +19,7 @@ const AccountMenu = () => {
         <div className="connection__dropdown">
             <a href="#">Accueil espace perso</a>
             <a href="#">Paramètres du compte</a>
-            <a href="#">Déconnexion</a>
+            <a href="#" onClick={handleLogout}>Déconnexion</a>
         </div>
     </li>
 

@@ -3,12 +3,14 @@ import reducer from '../reducers/index.js';
 
 // on importe les middlewares
 import announceApi from '../middlewares/announceApi';
+import connectionApi from '../middlewares/connectionApi';
 // import APIMiddleware from 'src/middlewares/api';
 // import websocketMiddleware from 'src/middlewares/websocket';
 
 // on met bout à bout tous nos middlewares
 const middlewares = applyMiddleware(
     announceApi,
+    connectionApi,
 );
 
 // on met bout à bout le redux devtools et nos middlewares
