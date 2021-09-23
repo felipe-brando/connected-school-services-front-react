@@ -8,7 +8,7 @@ import About from '../About/index.js';
 import Contact from '../Contact/index.js';
 
 
-import SidebarMenu from '../SidebarMenu/index.js';
+import Sidebar from '../Sidebar/index.js';
 
 import Intro from '../Intro/index.js';
 import Footer from '../Footer/Footer.js';
@@ -43,7 +43,7 @@ const App = () => {
             <div>403</div>}   
         </Route>
         <Route path="/monespace">
-        <SidebarMenu />
+        <Sidebar />
         </Route>
         <Route>
           <div>404</div>

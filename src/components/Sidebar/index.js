@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 import { Link } from "react-router-dom";
-import {SideBarData} from '.';'./SidebarData';
+import {SideBarData} from './SidebarData';
 import { IconContext } from 'react-icons';
 
 import * as FaIcons from "react-icons/fa";
@@ -17,7 +17,7 @@ function Sidebar() {
     const showSideBar = () => setSideBar(!sidebar);
 
     return (
-    <>    
+    <>        
         <div className="sidebar">
             <Link to="#" className='sidebar__menu-link'>
                 <FaIcons.FaBars onClick={showSideBar} />
@@ -36,7 +36,8 @@ function Sidebar() {
                         <Link to={item.path}>
                             {item.icon}
                             <span>{item.title}</span>
-                        </Link>                   
+                        </Link>   
+                        </li>                
                     );
                 })}
             </ul>
