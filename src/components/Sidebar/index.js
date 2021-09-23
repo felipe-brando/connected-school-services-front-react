@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 
 import { Link } from "react-router-dom";
+import {SideBarData} from '.';'./SidebarData';
+import { IconContext } from 'react-icons';
 
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import * as IoIcons from "react-icons/io";
 
 import './style.scss';
+
 
 function Sidebar() {
     const [sidebar, setSideBar] = useState(false);
@@ -19,13 +23,22 @@ function Sidebar() {
                 <FaIcons.FaBars onClick={showSideBar} />
             </Link>
         </div>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-            <ul className='nav-menu-items'>
+        <nav className={sidebar ? 'sidebar-menu active' : 'sidebar-menu'}>
+            <ul className='sidebar-menu-items' onClick>
                 <li className="sidebar-toggle">
                     <Link to="#" className='sidebar__menu-link'>
                         <AiIcons.AiOutlineClose />
                     </Link>
                 </li>
+                {SideBarData.map((item, index) => {
+                    return (
+                        <li key={index} className={item.cName}>
+                        <Link to={item.path}>
+                            {item.icon}
+                            <span>{item.title}</span>
+                        </Link>                   
+                    );
+                })}
             </ul>
         </nav>
     </> 
