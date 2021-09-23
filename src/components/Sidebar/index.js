@@ -17,14 +17,15 @@ function Sidebar() {
     const showSideBar = () => setSideBar(!sidebar);
 
     return (
-    <>        
+    <> 
+    <IconContext.Provider value={{color: '#fff'}}>       
         <div className="sidebar">
             <Link to="#" className='sidebar__menu-link'>
                 <FaIcons.FaBars onClick={showSideBar} />
             </Link>
         </div>
         <nav className={sidebar ? 'sidebar-menu active' : 'sidebar-menu'}>
-            <ul className='sidebar-menu-items' onClick>
+            <ul className='sidebar-menu-items' onClick={showSideBar}>
                 <li className="sidebar-toggle">
                     <Link to="#" className='sidebar__menu-link'>
                         <AiIcons.AiOutlineClose />
@@ -42,6 +43,7 @@ function Sidebar() {
                 })}
             </ul>
         </nav>
+    </IconContext.Provider>
     </> 
   );
 }
