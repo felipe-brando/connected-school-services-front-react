@@ -9,7 +9,7 @@ import './style.scss';
 const AnnounceList = ({ filter }) => {
     //collect announce id in url with router hook
     const { id } = useParams();
-    
+
     let announceList = useSelector((state) => state.announce.announceList);
     const dispatch = useDispatch();
 
@@ -17,25 +17,31 @@ const AnnounceList = ({ filter }) => {
         dispatch({
             type: 'GET_ANNOUNCE_LIST',
         });
-
     }, []);
 
     //Display 3 announces if homepage
     if (filter === "home") {
         announceList.splice(3);
-    } else if (filter === "categories") {
-        const filteredAnnounceList = announceList.filter((announceObject) => { 
-            return announceObject.category[0].id === parseInt(id);            
-
-        });
-        announceList = [...filteredAnnounceList];
     }
+
+    //display announce by category
+    else if (filter === "categories") {
+        // const filteredAnnounceList = announceList.filter((announceObject) => {
+        //     //return announceObject.category[0].id === parseInt(id);
+        //     console.log(announceObject.category[0].id)
+        //     //return announceObject.category === parseInt(id);
+
+        // });
+        // announceList = [...filteredAnnounceList];
+    }
+
     return (
         <section className="announceList">
+            <h3>{filter}</h3>
             {announceList.map((announceObject) => (
                 <AnnounceCard
                     key={announceObject.id}
-                    id={announceObject.id}
+                    id={parseInt(announceObject.id,10)}
                     title={announceObject.title}
                     content={announceObject.content}
                     image={announceObject.image}

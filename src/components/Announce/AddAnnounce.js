@@ -1,14 +1,23 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react';
 
 const AddAnnounce = () => {
     //link state
     const titleInputValue = useSelector((state) => state.announce.newAnnounceTitle);
     const contentInputValue = useSelector((state) => state.announce.newAnnounceContent);
     // const categoryInputValue = useSelector((state) => state.announce.newAnnounceCategory);
-    // const imageInputValue = useSelector((state) => state.announce.newAnnounceImage);
+    const imageInputValue = useSelector((state) => state.announce.newAnnounceImage);
+    const categoryList = useSelector((state) => state.announce.categoryList);
 
     //Link Dispatch
     const dispatch = useDispatch();
+
+
+    useEffect(()=>{
+        dispatch({
+            type: 'GET_CATEGORY_LIST',
+        });
+    },[]);
 
     //handleChange functions
     const handleTitleChange = (e) => {
@@ -51,18 +60,22 @@ const AddAnnounce = () => {
         <form onSubmit={handleSubmitForm} className="addAnnounce__form">
 
             <label htmlFor="title">Titre : </label>
-            <input onChange={handleTitleChange} value={titleInputValue} type="text" name="title" id="title" />
+            <input placeholder="titre de l'annonce" required onChange={handleTitleChange} value={titleInputValue} type="text" name="title" id="title" />
 
             <label htmlFor="content">Contenu </label>
-            <textarea onChange={handlecontentChange} value={contentInputValue} name="content" id="content" />
+            <textarea placeholder="texte de l'annonce" required onChange={handlecontentChange} value={contentInputValue} name="content" id="content" />
 
             <select onChange={handleSelectChange}>
                 <option value="">Choisir une catégorie</option>
-                <option value='test'>Category test</option>
+                {categoryList.map((categoryObject) => (
+                    <option key={categoryObject.id} value='test'>{categoryObject.name}</option>
+                )
+                )}
+
             </select>
 
             <label htmlFor="file">Choisir une image</label>
-            <input onChange={handleLoadImage} type="file" name="img" id="img" accept="image/png, image/jpeg" />
+            <input required onChange={handleLoadImage} type="file" name="img" id="img" accept="image/png, image/jpeg" />
 
             <input type="submit" />
 

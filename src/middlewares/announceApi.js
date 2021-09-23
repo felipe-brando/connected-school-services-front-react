@@ -7,12 +7,14 @@ const announceApi = (store) => (next) => (action) => {
   //config provisoire
   const url = 'http://adrien-dubois.vpnuser.lan/CSS/css-back/public/api/v1/';
 
-  // const token = "";
-  // const config = {
-  //   headers: {
-  //     Authorization: "Bearer " + token,
-  //   }
-  // }
+  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MzIzODEwOTUsImV4cCI6MTYzMjQ2NzQ5NSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGNzcy5pbyJ9.kcq0zT7iUSqAxZet3h0CcDnnfEtS9aN3uCa3RyEvvieYbSi1tjhfW2ETHE1epfVDtVnEaZce_DYt5WKD6EoKIw78ym8AxRVZPouqa7F7moMoGnLf87oZyOXZwCNxy8WKWaFBKu9M9gnatWlQpbWv6m6d5Kn3KtkzuoOunQM6btdYSFmxGcZvadZyShipowQgOHexx0CY2R3yut4RGV8B3Twg49r73v2GBSu2miFnhfc9c0oHs7NQRmh70lAem00Ke72Hn1Aw--pnqEXH1_ABbyk7Vus3Vl3fWItgTGE5xpkCYc5HchKkS0WrIlbiYg2I4KBXzWBJ_iyv27xpFgyYmA";
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token,
+    }
+  }
+
+  //---GET Requests
 
   if (action.type === 'GET_ANNOUNCE_LIST') {
     axios.get(url + "homeannounce")
@@ -26,6 +28,7 @@ const announceApi = (store) => (next) => (action) => {
         console.error('GET_ANNOUNCE_LIST error : ', error);
       });
   }
+
   if (action.type === 'GET_ANNOUNCE_BY_ID') {
     axios.get(url + "homeannounce/" + action.id)
       .then((response) => {
@@ -38,17 +41,32 @@ const announceApi = (store) => (next) => (action) => {
         console.error('SAVE_CURRENT_ANNOUNCE error : ', error);
       });
   }
+
+  if (action.type === 'GET_CATEGORY_LIST') {
+    axios.get(url + "category/", config)
+      .then((response) => {
+        store.dispatch({
+          type: 'SAVE_CATEGORY_LIST',
+          categoryList: response.data,
+        });
+      })
+      .catch((error) => {
+        console.error('GET_CATEGORY_LIST error : ', error);
+      });
+  }
+
+  //---POST Requests
   if (action.type === 'SUBMIT_ANNOUNCE') {
 
-    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MzIzMzE3OTIsImV4cCI6MTYzMjQxODE5Miwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGNzcy5pbyJ9.mGWueOz2TWkUQEnGgtB2gJcU_eus-lVpXDcuHb6E7iYo1oU3Gkdp0yv8_nIEer_uv1M0cMNySsHljxLO0oyQ3vjrSNk0_GfVLPpi_n_jnk04-rz-6_UdrqF96i_bBNwnXZv-SWhNqYXrWOKtCyY6WDIKA7lyD0o8eB2BDw19N-YlAjX7Z_NJdskpWKsxv6i794UKEN6cwbmZUg2S_CPN4uhyrN9UbE9o8Y-w5aBa76cPZ7TTft_w_BE5lp85zPffNWv3Mxy56Zs2NtpvH5A_dymDioZMwnl9OAbFfYUs59lxN0H8y01OfjbK2Qdil_O6KKvos8rcVr5NaqZQ4mvAnA";
+    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MzIzODEwOTUsImV4cCI6MTYzMjQ2NzQ5NSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGNzcy5pbyJ9.kcq0zT7iUSqAxZet3h0CcDnnfEtS9aN3uCa3RyEvvieYbSi1tjhfW2ETHE1epfVDtVnEaZce_DYt5WKD6EoKIw78ym8AxRVZPouqa7F7moMoGnLf87oZyOXZwCNxy8WKWaFBKu9M9gnatWlQpbWv6m6d5Kn3KtkzuoOunQM6btdYSFmxGcZvadZyShipowQgOHexx0CY2R3yut4RGV8B3Twg49r73v2GBSu2miFnhfc9c0oHs7NQRmh70lAem00Ke72Hn1Aw--pnqEXH1_ABbyk7Vus3Vl3fWItgTGE5xpkCYc5HchKkS0WrIlbiYg2I4KBXzWBJ_iyv27xpFgyYmA";
     
     axios({
       method: 'POST',
       url: url + "announce/",
       data: {
-        "title": "autre titre test",
-        "content": "autre contenu test",
-        "image": "http:www.lyc-galois-beaumont.ac-versailles.fr/local/cache-vignettes/L469xH660/affiche-5-6de9f.jpg?1559247611",
+        "title": state.announce.newAnnounceTitle,
+        "content": state.announce.newAnnounceContent,
+        "image": state.announce.image,
         "category": []
       },
       headers: {
@@ -56,6 +74,36 @@ const announceApi = (store) => (next) => (action) => {
       }
     })
   }
+
+  //---DELETE and MODIFY requests
+  if (action.type === 'DELETE_ANNOUNCE_BY_ID') {
+    axios.delete(url + "announce/" + action.id, config)
+      .then((response) => {
+        console.log(response);
+        store.dispatch({
+          type: 'GET_ANNOUNCE_LIST',
+          flashMessage: response.data.ok,
+        });
+      })
+      .catch((error) => {
+        console.error('DELETE_ANNOUNCE_BY_ID error : ', error);
+      });
+  }
+  // if (action.type === 'GET_ANNOUNCE_TO_MODIFY') {
+  //   axios.get(url + "announce/" + action.id, config)
+  //     .then((response) => {
+  //       store.dispatch({
+  //         type: 'SAVE_NEW_ANNOUNCE',
+  //         newAnnounce: response.data,
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.error('SAVE_CURRENT_ANNOUNCE error : ', error);
+  //     });
+  // }
+
+
+
   next(action); // dans tous les cas je laisse passer l'action
 };
 

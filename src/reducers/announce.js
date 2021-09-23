@@ -1,60 +1,30 @@
 export const initialState = {
     announceList: [{
-        id: 1,
-        title: 'Menu de la cantine',
-        content: 'Le menu de la cantine: Lundi des patates, Mardi des patates, Mercredi des patates aussi...',
+        id: '',
+        title: 'Connexion',
+        content: '',
         image: '',
-        category: [{ id: 1, name: 'Cantine' }],
-        createdAt: '12/12/12',
-        homework: ''
-    }, {
-        id: 2,
-        title: 'Bal de fin d\'année',
-        content: 'Programme : Repas, dancing et plus si affinité',
-        image: '',
-        category: [{ id: 1, name: 'Bal de promo' }],
-        createdAt: '12/12/12',
-        homework: ''
-    }, {
-        id: 3,
-        title: 'Inscriptions des nouveaux élèves',
-        content: 'Inscriptions des nouveaux élèves dès le mois de janvier 2022. Se présenter au batiment A',
-        image: '',
-        category: [{ id: 1, name: 'Global' }],
-        createdAt: '12/12/12',
-        homework: ''
-    }, {
-        id: 4,
-        title: 'Programmation fonctionnelle',
-        content: 'Exercices JS 3,4 et 5',
-        image: '',
-        category: [{ id: 1, name: 'Sixième A' }],
-        createdAt: '12/12/12',
-        homework: ''
-    }, {
-        id: 5,
-        title: 'Sortie au zoo',
-        content: 'Sortie au zoo mercredi prochain pour tous les élèves',
-        image: '',
-        category: [{ id: 1, name: 'Sortie Scolaire' }],
-        createdAt: '12/12/12',
+        category: [],
+        createdAt: '',
         homework: ''
     }],
 
     currentAnnounce: {
-        id: 5,
-        title: 'Sortie au zoo',
-        content: 'Sortie au zoo mercredi prochain pour tous les élèves',
+        id: '',
+        title: 'Connexion',
+        content: '',
         image: '',
-        category: [{ id: 1, name: 'Sortie Scolaire' }],
-        createdAt: '12/12/12',
+        category: [],
+        createdAt: '',
         homework: ''
     },
-    newAnnounceTitle: 'tittre',
-    newAnnounceContent: 'content',
+    newAnnounceTitle: '',
+    newAnnounceContent: '',
     newAnnounceimage: '',
     newAnnouncecategory: 'test',
     newAnnouncehomework: 'ok',
+
+    categoryList: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -70,6 +40,16 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 currentAnnounce: action.currentAnnounce,
             }
+        // case 'SAVE_NEW_ANNOUNCE': {
+        //     console.log(action.newAnnounce)
+        //     return {
+        //          ...state,
+        //         newAnnounceTitle: action.newAnnounce.title,
+        //         newAnnounceContent: action.newAnnounce.content,
+        //         // newAnnounceimage: action.newAnnonce.image,
+        //         // newAnnouncecategory: action.newAnnonce.category[0].name,
+        //         // newAnnouncehomework: action.newAnnonce.homework,
+        //     }}
         case 'CHANGE_INPUT_TITLE':
             return {
                 ...state,
@@ -78,7 +58,7 @@ const reducer = (state = initialState, action = {}) => {
         case 'CHANGE_INPUT_CONTENT':
             return {
                 ...state,
-                newAnnouncecontent: action.value
+                newAnnounceContent: action.value
             }
         case 'CHANGE_SELECT_OPTION':
             return {
@@ -88,7 +68,7 @@ const reducer = (state = initialState, action = {}) => {
         case 'CHANGE_INPUT_IMAGE':
             return {
                 ...state,
-                newAnnounceimage: action.value
+                newAnnounceImage: action.value
             }
         case 'CHANGE_INPUT_HOMEWORK':
             return {
@@ -101,11 +81,16 @@ const reducer = (state = initialState, action = {}) => {
                 state.newAnnounceimage,
                 state.newAnnouncecategory,
                 state.newAnnouncehomework
-                );
+            );
             return {
                 ...state,
             }
         }
+        case 'SAVE_CATEGORY_LIST':
+            return {
+                ...state,
+                categoryList: action.categoryList
+            }
 
         default:
             return state;
@@ -113,4 +98,3 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 export default reducer;
-

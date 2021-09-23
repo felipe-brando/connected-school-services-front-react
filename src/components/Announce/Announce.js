@@ -3,11 +3,13 @@ import { Switch, Route } from 'react-router-dom';
 import AnnounceList from './AnnounceList';
 import AnnouncePage from './AnnouncePage';
 import AddAnnounce from './AddAnnounce';
+import ModifyAnnounce from './ModifyAnnounce'
 
 import './style.scss';
 
 
 const Announce = () => {
+    
 
     return (
         <Switch>
@@ -15,16 +17,19 @@ const Announce = () => {
                 <AnnounceList filter="home" />
             </Route>
             <Route path="/annonces" exact>
-                <AnnounceList filter="global" />
+                <AnnounceList filter="Actualités" />
             </Route>
             <Route path="/annonces/ajout" exact>
                 <AddAnnounce />
+            </Route>
+            <Route path="/annonces/maj/:id" exact>
+                <ModifyAnnounce />
             </Route>
             <Route path="/annonces/:id" exact >
                 <AnnouncePage />
             </Route>
             <Route path="/annonces/categories" exact>
-                <AnnounceList filter="categories" />
+                <AnnounceList />
             </Route>
             <Route path="/annonces/categories/:id" exact>
                 <AnnounceList filter="categories" />
