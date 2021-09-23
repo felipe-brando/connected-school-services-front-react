@@ -19,22 +19,21 @@ const App = () => {
   const logged = useSelector((state) => state.user.logged);
   return (
     <div className="App">
-      <Connection />
       <Header />
       <Switch>
         <Route path="/" exact>
           <Intro />
           <Announce />
         </Route>
-        <Route path="/a-propos">
+        <Route path="/a-propos" exact>
           <div>A propos</div>
           <About />
         </Route>
-        <Route path="/annonces" component={Announce} />
+        <Route path="/annonces" component={Announce} exact />
         <Route path="/contact">
           <Contact />
         </Route>
-        <Route path="/espace-perso">
+        <Route path="/espace-perso" exact>
           {logged ?
             <div>Espace personnel</div> :
             <div>403</div>}
