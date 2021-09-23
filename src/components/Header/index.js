@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link, NavLink } from "react-router-dom";
 
 import About from '../About';
+import Contact from '../Contact';
 
 import './style.scss';
 import schoolPicture from '../../assets/img/school-small.jpeg'

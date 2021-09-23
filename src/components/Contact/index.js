@@ -2,12 +2,12 @@ import React from 'react';
 
 import './style.scss';
 
-// class Form extends React.Component {
+// form function reusable
 
-function Field ({name, value, onChange, children})  {
+function Field ({name, value, placeholder, onChange, children})  {
     return <div className="form-group">
        <label htmlFor={name}>{children}</label>
-       <input type="text" value={value} onChange={onChange} id={name} name={name} className="form-control"/>
+       <input type="text" value={value} placeholder = {placeholder} onChange={onChange} id={name} name={name} className="form-control"/>
        </div>
 }
 
@@ -59,10 +59,30 @@ handleSubmit = (event) => {
 render() {
     return (
       <form className="contact-form">
-         <Field name="nom" value={this.state.nom} onChange={this.handleChange}>Nom</Field>
-         <Field name="prenom" value={this.state.prenom} onChange={this.handleChange}>Prémom</Field>
-         <Field name="courriel" value={this.state.courriel} onChange={this.handleChange}>Courriel</Field>
-         <Checkbox name="newsletter" value ={this.state.newsletter} onChange = {this.handleChange}>S'abonner à la newsletter de l'établissement</Checkbox>
+         <Field 
+         name="nom"
+         placeholder ="nom"
+         value={this.state.nom} 
+         onChange={this.handleChange}>Nom</Field>
+
+         <Field 
+         name="prenom" 
+         placeholder ="prenom"
+         value={this.state.prenom} 
+         onChange={this.handleChange}>Prémom</Field>
+
+         <Field 
+         name="courriel" 
+         placeholder ="courriel"
+         value={this.state.courriel} 
+         onChange={this.handleChange}>Courriel</Field>
+
+         <Checkbox 
+         name="newsletter" 
+         value ={this.state.newsletter} 
+         onChange = {this.handleChange}>S'abonner à la newsletter de l'établissement
+         </Checkbox>
+
          <div className ="form-group">   
          <button class ="btn btn-primary">Envoyer</button>
          </div>
