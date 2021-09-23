@@ -17,7 +17,7 @@ const connectionApi = (store) => (next) => (action) => {
             //api.defaults.headers.common.Authorization = `bearer ${response.data.token}`;
             store.dispatch({
             type: 'SAVE_USER',
-            firstname: response.firstname,
+            firstname: response.data.data.Prénom,
             token: response.data.token,
             });
         })

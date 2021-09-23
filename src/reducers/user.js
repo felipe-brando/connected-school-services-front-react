@@ -37,7 +37,7 @@ export const initialState = {
         return {
           ...state,
           logged: true, 
-          firstname: action.username,
+          firstname: action.firstname,
           loginOpen: false,
           token: action.token,
           email: '',

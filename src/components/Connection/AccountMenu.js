@@ -1,15 +1,18 @@
 // == Import
+import { useSelector } from 'react-redux';
+
 import { User } from 'react-feather';
-import { Link } from "react-router-dom";
+
 // == Composants
 const AccountMenu = ( { handleLogout } ) => {
+    const firstname = useSelector((state) => state.user.firstname);
 
     return (
     <li className="connection__item">
-        <Link to="#" className="connection__item-link">
-        <div className="connection__icon"><User /></div>
-        <div className="connection__text">Nom du user</div>
-        </Link>
+        <button className="connection__button">
+        <span className="connection__icon"><User /></span>
+        <span className="connection__text">{firstname}</span>
+        </button>
         <div className="connection__dropdown">
             <a href="#">Accueil espace perso</a>
             <a href="#">Paramètres du compte</a>

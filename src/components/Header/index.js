@@ -2,13 +2,13 @@
 import { NavLink } from "react-router-dom";
 
 import './style.scss';
-import schoolPicture from '../../assets/img/school-small.jpeg';
+import logo from '../../assets/img/logo-css.png';
 import Connection from '../Connection';
 // == Composant
 const Header = () => (
   <header className="header">
     <nav className="menu">
-      <img className="menu__logo" src ={schoolPicture} alt="Logo"/>
+      <img className="menu__logo" src ={logo} alt="Logo"/>
       <ul className="menu__list">
         <li className="menu__item">
           <NavLink 

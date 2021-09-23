@@ -42,16 +42,26 @@
         display: none;
         position: absolute;
         z-index: 1;
+        right: 0;
         top: 3.5rem;
-        border: solid 0.1rem #717171;
+        border: solid 0.1em #717171;
+        width: 16rem;
+        border-radius: 1em;
+        background-color: #fff;
     }
 
     &__dropdown a {
         color: black;
-        padding: 12px 16px;
+        padding: 1rem 2rem;
         text-decoration: none;
         display: block;
-        background-color: #fff;
+    }
+
+    &__dropdown a:hover {
+        background-color: #60d399;
+        border-radius: 1em;
+        
+        
     }
 
 }
