@@ -41,7 +41,7 @@ const App = () => {
             <div>Espace personnel</div> :
             <div>403</div>}   
         </Route>
-        <Route path="/monespace">
+        <Route path="/monespace" exact>
         <Sidebar />
         </Route>
         <Route>
