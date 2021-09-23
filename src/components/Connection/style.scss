@@ -38,6 +38,16 @@
         padding: 0.5rem;
     }
 
+    &__btn {
+        background: #60d399;
+        border: 0;
+        padding: 1rem;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        border-radius: 0.5em;
+    }
+
     &__dropdown {
         display: none;
         position: absolute;
