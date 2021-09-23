@@ -4,12 +4,11 @@ import schoolPicture from '../../assets/img/school-small.jpeg'
 import PropTypes from 'prop-types'
 
 const AnnounceCard = ({ id, title, content, image, categories, date }) => {
-    const dispatch = useDispatch();    
+    const dispatch = useDispatch();
 
     const handleModifyAnnounce = (e) => {
         const annouceId = parseInt(e.target.dataset.id);
         if (e.target.classList[1] === 'modify') {
-            console.log('Vers la page de modification', annouceId);
         } else if (e.target.classList[1] === 'delete') {
             if (window.confirm('Êtes vous sur de vouloir supprimer cet annonce ?')) {
                 dispatch({

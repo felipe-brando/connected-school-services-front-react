@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
 const AnnouncePage = () => {
-        //collect announce id in url with router hook
+    //collect announce id in url with router hook
     const { id } = useParams();
 
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
@@ -14,7 +14,6 @@ const AnnouncePage = () => {
     const handleModifyAnnounce = (e) => {
         const annouceId = parseInt(e.target.dataset.id);
         if (e.target.classList[1] === 'modify') {
-            console.log('Vers la page de modification', annouceId);
         } else if (e.target.classList[1] === 'delete') {
             if (window.confirm('Êtes vous sur de vouloir supprimer cet annonce ?')) {
                 dispatch({
@@ -47,7 +46,7 @@ const AnnouncePage = () => {
             <h1 className="announcePage__title">{currentAnnounce.title}</h1>
             <p className="announce__content">{currentAnnounce.content}</p>
             <span className="announcePage__date">{currentAnnounce.date}</span>
-            <Link to={"/annonces/maj/"+currentAnnounce.id} data-id={currentAnnounce.id} className="announcePage__button--modify modify">Modifier</Link>
+            <Link to={"/annonces/maj/" + currentAnnounce.id} data-id={currentAnnounce.id} className="announcePage__button--modify modify">Modifier</Link>
             <button onClick={handleModifyAnnounce} data-id={currentAnnounce.id} className="announcePage__button--delete delete" >Supprimer</button>
         </section>
     );

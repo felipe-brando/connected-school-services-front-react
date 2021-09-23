@@ -1,7 +1,7 @@
 export const initialState = {
     announceList: [{
         id: '',
-        title: 'Connexion',
+        title: 'Problème de Connexion',
         content: '',
         image: '',
         category: [],
@@ -11,7 +11,7 @@ export const initialState = {
 
     currentAnnounce: {
         id: '',
-        title: 'Connexion',
+        title: 'Problème de Connexion',
         content: '',
         image: '',
         category: [],
@@ -20,9 +20,12 @@ export const initialState = {
     },
     newAnnounceTitle: '',
     newAnnounceContent: '',
-    newAnnounceimage: '',
-    newAnnouncecategory: 'test',
-    newAnnouncehomework: 'ok',
+    newAnnounceImage: '',
+    newAnnonceImageFile: '',
+    newAnnounceCategory: 'test',
+    newAnnounceHomework: 'ok',
+
+    newCategoryInputValue: '',
 
     categoryList: [],
 };
@@ -46,9 +49,9 @@ const reducer = (state = initialState, action = {}) => {
         //          ...state,
         //         newAnnounceTitle: action.newAnnounce.title,
         //         newAnnounceContent: action.newAnnounce.content,
-        //         // newAnnounceimage: action.newAnnonce.image,
-        //         // newAnnouncecategory: action.newAnnonce.category[0].name,
-        //         // newAnnouncehomework: action.newAnnonce.homework,
+        //         // newAnnounceImage: action.newAnnonce.image,
+        //         // newAnnounceCategory: action.newAnnonce.category[0].name,
+        //         // newAnnounceHomework: action.newAnnonce.homework,
         //     }}
         case 'CHANGE_INPUT_TITLE':
             return {
@@ -63,29 +66,36 @@ const reducer = (state = initialState, action = {}) => {
         case 'CHANGE_SELECT_OPTION':
             return {
                 ...state,
-                newAnnouncecategory: action.value,
+                newAnnounceCategory: action.value,
             }
-        case 'CHANGE_INPUT_IMAGE':
+        case 'CHANGE_INPUT_IMAGE': { 
+            console.log(action);
             return {
                 ...state,
-                newAnnounceImage: action.value
-            }
+                newAnnounceImage: action.value,
+                newAnnonceImageFile: action.fileValue,
+            }}
         case 'CHANGE_INPUT_HOMEWORK':
             return {
                 ...state,
             }
-        case 'SUBMIT_ANNOUNCE': {
-            console.log(
-                state.newAnnounceTitle,
-                state.newAnnouncecontent,
-                state.newAnnounceimage,
-                state.newAnnouncecategory,
-                state.newAnnouncehomework
-            );
+        // case 'SUBMIT_ANNOUNCE': {
+        //     console.log(
+        //         state.newAnnounceTitle,
+        //         state.newAnnouncecontent,
+        //         state.newAnnounceImage,
+        //         state.newAnnounceCategory,
+        //         state.newAnnounceHomework
+        //     );
+        //     return {
+        //         ...state,
+        //     }
+        // }
+        case 'CHANGE_INPUT_CATEGORY':
             return {
                 ...state,
+                newCategoryInputValue: action.value
             }
-        }
         case 'SAVE_CATEGORY_LIST':
             return {
                 ...state,

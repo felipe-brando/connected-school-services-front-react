@@ -6,18 +6,18 @@ const AddAnnounce = () => {
     const titleInputValue = useSelector((state) => state.announce.newAnnounceTitle);
     const contentInputValue = useSelector((state) => state.announce.newAnnounceContent);
     // const categoryInputValue = useSelector((state) => state.announce.newAnnounceCategory);
-    const imageInputValue = useSelector((state) => state.announce.newAnnounceImage);
+    //const imageInputValue = useSelector((state) => state.announce.newAnnounceImage);
     const categoryList = useSelector((state) => state.announce.categoryList);
 
     //Link Dispatch
     const dispatch = useDispatch();
 
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch({
             type: 'GET_CATEGORY_LIST',
         });
-    },[]);
+    }, []);
 
     //handleChange functions
     const handleTitleChange = (e) => {
@@ -44,6 +44,7 @@ const AddAnnounce = () => {
         dispatch({
             type: 'CHANGE_INPUT_IMAGE',
             value: e.target.value,
+            fileValue: e.target.files[0],
         })
     }
 

@@ -3,11 +3,13 @@ import axios from 'axios';
 const announceApi = (store) => (next) => (action) => {
 
   const state = store.getState(); // access to store then state
+  const token = state.user.token;
 
   //config provisoire
   const url = 'http://adrien-dubois.vpnuser.lan/CSS/css-back/public/api/v1/';
+  // const url = 'http://kevin-planchais.vpnuser.lan/Apoth%C3%A9ose/projet-connected-school-services/public/api/v1/';
 
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MzIzODEwOTUsImV4cCI6MTYzMjQ2NzQ5NSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGNzcy5pbyJ9.kcq0zT7iUSqAxZet3h0CcDnnfEtS9aN3uCa3RyEvvieYbSi1tjhfW2ETHE1epfVDtVnEaZce_DYt5WKD6EoKIw78ym8AxRVZPouqa7F7moMoGnLf87oZyOXZwCNxy8WKWaFBKu9M9gnatWlQpbWv6m6d5Kn3KtkzuoOunQM6btdYSFmxGcZvadZyShipowQgOHexx0CY2R3yut4RGV8B3Twg49r73v2GBSu2miFnhfc9c0oHs7NQRmh70lAem00Ke72Hn1Aw--pnqEXH1_ABbyk7Vus3Vl3fWItgTGE5xpkCYc5HchKkS0WrIlbiYg2I4KBXzWBJ_iyv27xpFgyYmA";
+
   const config = {
     headers: {
       Authorization: "Bearer " + token,
@@ -58,21 +60,44 @@ const announceApi = (store) => (next) => (action) => {
   //---POST Requests
   if (action.type === 'SUBMIT_ANNOUNCE') {
 
-    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MzIzODEwOTUsImV4cCI6MTYzMjQ2NzQ5NSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGNzcy5pbyJ9.kcq0zT7iUSqAxZet3h0CcDnnfEtS9aN3uCa3RyEvvieYbSi1tjhfW2ETHE1epfVDtVnEaZce_DYt5WKD6EoKIw78ym8AxRVZPouqa7F7moMoGnLf87oZyOXZwCNxy8WKWaFBKu9M9gnatWlQpbWv6m6d5Kn3KtkzuoOunQM6btdYSFmxGcZvadZyShipowQgOHexx0CY2R3yut4RGV8B3Twg49r73v2GBSu2miFnhfc9c0oHs7NQRmh70lAem00Ke72Hn1Aw--pnqEXH1_ABbyk7Vus3Vl3fWItgTGE5xpkCYc5HchKkS0WrIlbiYg2I4KBXzWBJ_iyv27xpFgyYmA";
-    
-    axios({
-      method: 'POST',
-      url: url + "announce/",
-      data: {
-        "title": state.announce.newAnnounceTitle,
-        "content": state.announce.newAnnounceContent,
-        "image": state.announce.image,
-        "category": []
-      },
-      headers: {
-        Authorization: "Bearer " + token,
-      }
-    })
+    //**-------Tests------**//
+
+    console.log(state.announce.newAnnounceTitle, "et" , state.announce.newAnnonceImageFile);
+
+    const AnnounceFormData = new FormData();
+    AnnounceFormData.append("image", state.announce.newAnnonceImageFile);
+    AnnounceFormData.append("title", state.announce.newAnnounceTitle);
+    AnnounceFormData.append("content", state.announce.newAnnounceContent);
+
+    console.log(AnnounceFormData);
+
+    // axios({
+    //   method: "POST",
+    //   url: url + "announce/",
+    //   data: AnnounceFormData,
+    //   headers: {
+    //     Authorization: "Bearer " + token,
+    //     'Content-Type': 'multipart/form-data; boundary=axiosFromCSS'
+
+    //   }
+    // })
+
+
+    //**--------------- */
+
+    //   axios({
+    //     method: 'POST',
+    //     url: url + "announce/",
+    //     data: {
+    //       "title": state.announce.newAnnounceTitle,
+    //       "content": state.announce.newAnnounceContent,
+    //       "image": state.announce.newAnnounceImage,
+    //       "category": []
+    //     },
+    //     headers: {
+    //       Authorization: "Bearer " + token,
+    //     }
+    //   }).then((response) => {console.log(response);console.log('ok');})
   }
 
   //---DELETE and MODIFY requests
