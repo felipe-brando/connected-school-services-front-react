@@ -1,29 +1,52 @@
 // == Import
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+
 // == Composant
-const Input = ({ inputKey, ...props }) => {
-    const value = useSelector((state) => state[inputKey]);
-    const dispatch = useDispatch();
-    const handleChange = (event) => {
-        dispatch({
-          type: 'CHANGE_VALUE',
-          newValue: event.target.value,
-          key: inputKey,
-        });
-      };
+const Input = ({   
+  value,
+  type,
+  name,
+  placeholder,
+  onChange,
+}) => {
+
+  const handleChange = (event) => {
+    onChange(event.target.value, name);
+  };
+
+  const inputId = `field-${name}`;
 
     return (
+      <>
+        <label htmlFor={inputId} className="connection-label">
+        {placeholder}
+      </label>
       <input
         value={value}
         onChange={handleChange}
-        {...props}
+
+        id={inputId}
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        className="connection__input"
       />
+      </>
     );
   };
 
   Input.propTypes = {
-    inputKey: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    type: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
   };
   
+
+  Input.defaultProps = {
+    value: '',
+  };
+  
+  // == Export
   export default Input;

@@ -22,14 +22,13 @@ const App = () => {
   const logged = useSelector((state) => state.user.logged);
   return (
     <div className="App">
-      <Connection />
       <Header />
       <Switch>
         <Route path="/" exact>
           <Intro />
           <Announce />
         </Route>
-        <Route path="/a-propos">
+        <Route path="/a-propos" exact>
           <div>A propos</div>
           <About />
         </Route>
@@ -37,7 +36,7 @@ const App = () => {
         <Route path="/contact">
           <Contact />
         </Route>
-        <Route path="/espace-perso">
+        <Route path="/espace-perso" exact>
           {logged ?
             <div>Espace personnel</div> :
             <div>403</div>}   

@@ -1,7 +1,7 @@
 export const initialState = {
     logged: false,
-    firstname: 'Jhon',
-    lastename: 'Toto',
+    firstname: '',
+    lastename: '',
     image: '',
     email: '',
     adress: '10 rue de truc',
@@ -21,16 +21,29 @@ export const initialState = {
       case 'CHANGE_VALUE':
       return {
         ...state,
-        [action.key]: action.newValue, 
+        [action.key]: action.value, 
       };
       case 'LOGIN':
         return {
+          ...state,  
+      };
+      case 'LOGOUT':
+        return {
           ...state,
+          logged: false,
+          token: '',
+      };
+      case 'SAVE_USER':
+        return {
+          ...state,
+          logged: true, 
+          firstname: action.firstname,
           loginOpen: false,
-          logged: true,
+          token: action.token,
           email: '',
           password: '',
-      };
+        };
+
       case 'TOGGLE_OPEN':
       return {
         ...state,
