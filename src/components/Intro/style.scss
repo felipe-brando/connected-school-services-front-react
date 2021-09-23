@@ -1,0 +1,15 @@
+.intro {
+
+    margin: 2rem 0;
+
+    &__title {
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.3em;
+        margin-bottom: 1rem;
+    }
+
+    &__image {
+        width: 100%;
+    }
+}
