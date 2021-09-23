@@ -50,10 +50,10 @@ const Connection = () => {
           <AccountMenu handleLogout={logout} />
           :
           <li className="connection__item"> 
-            <Link onClick={handleClick} to="#" className="connection__item-link">
-              <div className="connection__icon"><User /></div>
-              <div className="connection__text">Connexion</div>
-            </Link>
+            <button onClick={handleClick} to="#" className="connection__button">
+              <span className="connection__icon"><User /></span>
+              <span className="connection__text">Connexion</span>
+            </button>
           </li> 
         }
       </ul>

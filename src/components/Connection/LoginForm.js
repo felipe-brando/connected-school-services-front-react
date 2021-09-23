@@ -18,6 +18,7 @@ const LoginForm = ({
 
     return (
       <form onSubmit={handleSubmit} className="connection__form">
+      <h2 className="connection__title">Connexion</h2>
         <Input
           name="email"
           type="email"

@@ -17,6 +17,10 @@ const Input = ({
   const inputId = `field-${name}`;
 
     return (
+      <>
+        <label htmlFor={inputId} className="connection-label">
+        {placeholder}
+      </label>
       <input
         value={value}
         onChange={handleChange}
@@ -27,6 +31,7 @@ const Input = ({
         name={name}
         className="connection__input"
       />
+      </>
     );
   };
 
