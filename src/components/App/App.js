@@ -38,11 +38,8 @@ const App = () => {
         </Route>
         <Route path="/espace-perso" exact>
           {logged ?
-            <div>Espace personnel</div> :
+            <Sidebar />:       
             <div>403</div>}   
-        </Route>
-        <Route path="/monespace" exact>
-        <Sidebar />
         </Route>
         <Route>
           <div>404</div>
