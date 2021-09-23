@@ -1,5 +1,6 @@
 // == Import
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import './style.scss';
 import logo from '../../assets/img/logo-css.png';
@@ -8,7 +9,9 @@ import Connection from '../Connection';
 const Header = () => (
   <header className="header">
     <nav className="menu">
-      <img className="menu__logo" src ={logo} alt="Logo"/>
+      <Link to="/">
+        <img className="menu__logo" src ={logo} alt="Logo" />
+      </Link>
       <ul className="menu__list">
         <li className="menu__item">
           <NavLink 
