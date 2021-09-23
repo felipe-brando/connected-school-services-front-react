@@ -7,6 +7,9 @@ import Header from '../Header/index.js';
 import About from '../About/index.js';
 import Contact from '../Contact/index.js';
 
+
+import Sidebar from '../Sidebar/index.js';
+
 import Intro from '../Intro/index.js';
 import Footer from '../Footer/Footer.js';
 import Announce from '../Announce/Announce.js';
@@ -37,7 +40,10 @@ const App = () => {
         <Route path="/espace-perso">
           {logged ?
             <div>Espace personnel</div> :
-            <div>403</div>}
+            <div>403</div>}   
+        </Route>
+        <Route path="/monespace">
+        <Sidebar />
         </Route>
         <Route>
           <div>404</div>
