@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 
-
+import Sidebar from './index';
 import Schedule from '../Schedule/Index';
 import Lessons from '../Lessons/Index';
 import Homeworks from '../Homeworks/Index';
@@ -12,26 +12,24 @@ import './style.scss';
 function SidebarSwitch() {
 
     return (
-        <Switch>
-            <Route path="/espace-perso/emploidutemps" exact>
+        <>
+        <Sidebar />
+        <Switch>            
+            <Route path="/espace-perso/monemploidutemps" exact>
                 <Schedule />
             </Route>
-            <Route path="/espace-perso/lecon" exact>
+            <Route path="/espace-perso/mescours" exact>
                 <Lessons />
             </Route>
-            <Route path="/espace-perso/devoirs" exact>
+            <Route path="/espace-perso/mesdevoirs" exact>
                 <Homeworks />
             </Route>
-            <Route path="/espace-perso/notes" exact>
+            <Route path="/espace-perso/mesnotes" exact>
                 <Marks />
             </Route>
         </Switch>
+        </>
     )
 }
-
-
-
-
-
 
 export default SidebarSwitch;

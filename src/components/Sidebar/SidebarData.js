@@ -6,26 +6,26 @@ import * as IoIcons from "react-icons/io";
 
 export const SideBarData = [
     {
-        title:'Schedule',
-        path:'/monespace/emploidutemps',
+        title:'Mon emploi du temps',
+        path:'/espace-perso/monemploidutemps',
         icon:<FaIcons.FaCalendarDay/>,
         cName:'sidebar-text',
     },
     {
-        title:'Lessons',
-        path:'/monespace/mescours',
+        title:'Mes cours',
+        path:'/espace-perso/mescours',
         icon:<FaIcons.FaPenFancy/>,
         cName:'sidebar-text',
     },
     {
-        title:'News',
-        path:'/monespace/mesactualites',
+        title:'Mon agenda',
+        path:'/espace-perso/mesdevoirs',
         icon:<FaIcons.FaSpotify/>,
         cName:'sidebar-text',
     },
     {
-        title:'Marks',
-        path:'/monespace/mesnotes',
+        title:'Mes notes',
+        path:'/espace-perso/mesnotes',
         icon:<FaIcons.FaChartBar/>,
         cName:'sidebar-text',
     },
