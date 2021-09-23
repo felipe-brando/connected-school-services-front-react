@@ -1,5 +1,5 @@
 .header {
-    padding: 0 1rem;
+    padding: 0.5rem 0.5rem;
     width: 100%;
     color: #222;
     box-shadow: rgb(34, 34, 34, 20%) 0em 0.1em 2em;
@@ -15,14 +15,45 @@
         justify-content: space-between;
 
         &__logo {
-            height: 7em; 
+            width: 100%;
+            height: 6em;
         }
 
         &__list {
-            display:none;
+            text-align: center;   
+        }
+
+        &__item {
+            padding: 1rem;
+            border-bottom: solid 0.1em #7272721c;
+        }
+
+        .menuList__desktop {
+            display: none;
+        }
+
+        .menuList__burger {
+            position: fixed;
+            top: 7.2em;
+            right: 0;
+            background-color: #fede8e;
+            width: 100%;
+            height: 29vh;
+            transition: 0.7s transform cubic-bezier(0.35, 1.61, 0.86, 1.02);
+            z-index: 2;
+        
+        
+            &--hidden {
+                transform: translateX(150%);
+            }
         }
 
         @media screen and (min-width: 992px) { 
+
+            .menuList__desktop {
+                display: block;
+            }
+
             .burger-menu {
                 display: none;
             }
@@ -40,20 +71,5 @@
                 border-radius: 0.1rem;
             }
         }
-    }
-}
-
-.menuList{
-    position: fixed;
-    top: 7.2em;
-    right: 0;
-    background-color: #d9f0ff;
-    width: 100%;
-    height: 100vh;
-    transition: 0.7s transform cubic-bezier(0.35, 1.61, 0.86, 1.02);
-
-
-    &--hidden {
-        transform: translateX(150%);
     }
 }

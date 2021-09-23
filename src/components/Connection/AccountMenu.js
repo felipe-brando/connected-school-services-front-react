@@ -16,28 +16,28 @@ const AccountMenu = ( { handleLogout } ) => {
         <span className="connection__icon"><User /></span>
         <span className="connection__text">{firstname}</span>
         </button>
-        <div className="connection__dropdown">
+        <div className="dropdown">
             <Link to="#">
-                <span className="connection__icon">
+                <span className="dropdown__icon">
                     <User />
                 </span>
-                <span className="connection__text">
+                <span className="dropdown__text">
                     Accueil espace perso
                 </span>
             </Link>
             <Link to="#">
-                <span className="connection__icon">
+                <span className="dropdown__icon">
                     <Settings />
                 </span>
-                <span className="connection__text">
+                <span className="dropdown__text">
                     Paramètres
                 </span>
             </Link>
             <button className="deconnection" onClick={handleLogout}>
-                <span className="connection__icon">
+                <span className="dropdown__icon">
                     <Unlock />
                 </span>
-                <span className="connection__text">
+                <span className="dropdown__text">
                     Déconnexion
                 </span>
             </button>

@@ -2,12 +2,13 @@
 import { NavLink } from "react-router-dom";
 
 // == Composant
-const MenuList = () => {
+const MenuList = ({closeMobileMenu}) => {
 
     return (
       <ul className="menu__list">
         <li className="menu__item">
           <NavLink 
+            onClick={closeMobileMenu}
             to="/" 
             className="menu__item-link" 
             exact>
@@ -16,6 +17,7 @@ const MenuList = () => {
         </li>
         <li className="menu__item">
           <NavLink 
+            onClick={closeMobileMenu}
             to="/a-propos" 
             className="menu__item-link" 
             exact
@@ -24,7 +26,8 @@ const MenuList = () => {
           </NavLink>
         </li>
         <li className="menu__item">
-          <NavLink 
+          <NavLink
+            onClick={closeMobileMenu} 
             to="/actualites" 
             className="menu__item-link" 
             exact
@@ -33,7 +36,8 @@ const MenuList = () => {
           </NavLink>
         </li>
         <li className="menu__item">
-          <NavLink 
+          <NavLink
+            onClick={closeMobileMenu} 
             to="/contact" 
             className="menu__item-link" 
             exact

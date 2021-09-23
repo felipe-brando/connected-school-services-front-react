@@ -1,7 +1,7 @@
 // == Import
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
-import { Menu } from 'react-feather';
+import { Menu, X } from 'react-feather';
 
 
 import './style.scss';
@@ -19,6 +19,12 @@ const Header = () => {
       type: 'BURGER_TOGGLE_OPEN',
     });
   };
+
+  const closeMobileMenu = () => {
+    dispatch({
+      type: 'MOBILE_MENU_CLOSE',
+    })
+  }
   
   return (
     <header className="header">
@@ -27,14 +33,16 @@ const Header = () => {
           <img className="menu__logo" src ={logo} alt="Logo" />
         </Link>
         <button className="burger-menu" onClick={handleClick}>
-          <Menu />
+          {burgerIsOpen ? <X /> : <Menu /> }
         </button>
 
-        <div className={burgerIsOpen ? "menuList" : "menuList menuList--hidden"} >
-        <MenuList />
+        <div className={burgerIsOpen ? "menuList__burger" : "menuList__burger menuList__burger--hidden"} >
+          <MenuList closeMobileMenu={closeMobileMenu}  />
         </div>
-
-        <MenuList />
+        
+        <div className="menuList__desktop" >
+          <MenuList />
+        </div>
         <Connection />
       </nav>
     </header>
