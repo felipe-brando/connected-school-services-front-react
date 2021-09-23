@@ -10,7 +10,7 @@ export const initialState = {
     phone: '06000000',
     password: '',
     token: '',
-    roles: 'élève',
+    roles: [],
     classroom: 'Troisième A',
     discipline: 'Mathématiques',
     loginOpen: false,
@@ -40,6 +40,7 @@ export const initialState = {
           firstname: action.firstname,
           loginOpen: false,
           token: action.token,
+          roles: action.roles,
           email: '',
           password: '',
         };

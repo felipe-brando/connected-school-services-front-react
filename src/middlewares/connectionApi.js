@@ -19,6 +19,7 @@ const connectionApi = (store) => (next) => (action) => {
             type: 'SAVE_USER',
             firstname: response.data.data.firstname,
             token: response.data.token,
+            roles: response.data.data.roles,
             });
         })
         .catch((error) => {
