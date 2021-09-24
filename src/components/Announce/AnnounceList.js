@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import AnnounceCard from './AnnounceCard';
 
@@ -9,7 +9,7 @@ import './style.scss';
 const AnnounceList = ({ filter }) => {
     //collect announce id in url with router hook
     const { id } = useParams();
-
+    
     let announceList = useSelector((state) => state.announce.announceList);
     const dispatch = useDispatch();
 
@@ -37,6 +37,10 @@ const AnnounceList = ({ filter }) => {
 
     return (
         <section className="announceList">
+            <div>
+                <Link to="/annonces/ajout">Ajouter une Annonce</Link>
+                <Link to="/annonces/categories">Modifier les categories</Link>
+            </div>
             <h3>{filter}</h3>
             {announceList.map((announceObject) => (
                 <AnnounceCard

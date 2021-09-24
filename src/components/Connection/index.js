@@ -2,7 +2,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import { User } from 'react-feather';
-import { Link } from "react-router-dom";
 
 import './style.scss';
 import LoginForm from './LoginForm';
@@ -13,9 +12,7 @@ const Connection = () => {
   const password = useSelector((state) => state.user.password);
   const isOpen = useSelector((state) => state.user.loginOpen);
   const logged = useSelector((state) => state.user.logged);
-  console.log(email);
-  console.log(isOpen);
-
+  
   const dispatch = useDispatch();
 
   const changeField = (value, key) => {

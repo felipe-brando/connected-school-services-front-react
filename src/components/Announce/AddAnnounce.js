@@ -6,18 +6,18 @@ const AddAnnounce = () => {
     const titleInputValue = useSelector((state) => state.announce.newAnnounceTitle);
     const contentInputValue = useSelector((state) => state.announce.newAnnounceContent);
     // const categoryInputValue = useSelector((state) => state.announce.newAnnounceCategory);
-    const imageInputValue = useSelector((state) => state.announce.newAnnounceImage);
+    //const imageInputValue = useSelector((state) => state.announce.newAnnounceImage);
     const categoryList = useSelector((state) => state.announce.categoryList);
 
     //Link Dispatch
     const dispatch = useDispatch();
 
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch({
             type: 'GET_CATEGORY_LIST',
         });
-    },[]);
+    }, []);
 
     //handleChange functions
     const handleTitleChange = (e) => {
@@ -44,6 +44,7 @@ const AddAnnounce = () => {
         dispatch({
             type: 'CHANGE_INPUT_IMAGE',
             value: e.target.value,
+            fileValue: e.target.files[0],
         })
     }
 
@@ -57,25 +58,49 @@ const AddAnnounce = () => {
     };
 
     return (
-        <form onSubmit={handleSubmitForm} className="addAnnounce__form">
+        <form className="addAnnounce__form" onSubmit={handleSubmitForm} >
 
-            <label htmlFor="title">Titre : </label>
-            <input placeholder="titre de l'annonce" required onChange={handleTitleChange} value={titleInputValue} type="text" name="title" id="title" />
+            <label className="addAnnounce__form--label" htmlFor="title">Titre : </label>
+            <input
+                placeholder="titre de l'annonce"
+                required onChange={handleTitleChange}
+                value={titleInputValue}
+                type="text" name="title"
+                id="title"
+            />
 
-            <label htmlFor="content">Contenu </label>
-            <textarea placeholder="texte de l'annonce" required onChange={handlecontentChange} value={contentInputValue} name="content" id="content" />
+            <label className="addAnnounce__form--label" htmlFor="content">Contenu </label>
+            <textarea
+                placeholder="texte de l'annonce"
+                required onChange={handlecontentChange}
+                value={contentInputValue}
+                name="content"
+                id="content"
+            />
 
-            <select onChange={handleSelectChange}>
+            <select className="addAnnounce__form--select" onChange={handleSelectChange}>
                 <option value="">Choisir une catégorie</option>
-                {categoryList.map((categoryObject) => (
-                    <option key={categoryObject.id} value='test'>{categoryObject.name}</option>
-                )
-                )}
+                {
+                    categoryList.map((categoryObject) => (
+                        <option
+                            key={categoryObject.id}
+                            value='test'
+                        >
+                            {categoryObject.name}
+                        </option>
+                    )
+                    )}
 
             </select>
 
             <label htmlFor="file">Choisir une image</label>
-            <input required onChange={handleLoadImage} type="file" name="img" id="img" accept="image/png, image/jpeg" />
+            <input
+                required onChange={handleLoadImage}
+                type="file"
+                name="img"
+                id="img"
+                accept="image/png, image/jpeg"
+            />
 
             <input type="submit" />
 
