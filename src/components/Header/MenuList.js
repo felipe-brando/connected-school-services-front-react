@@ -29,7 +29,7 @@ const MenuList = ({closeMobileMenu}) => {
         <li className="menu__item">
           <NavLink
             onClick={closeMobileMenu} 
-            to="/actualites" 
+            to="/annonces" 
             className="menu__item-link" 
             exact
           >
