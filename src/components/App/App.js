@@ -9,6 +9,7 @@ import Contact from '../Contact/index.js';
 
 
 import Sidebar from '../Sidebar/index.js';
+import SidebarSwitch from '../Sidebar/Sidebar.js';
 
 import Intro from '../Intro/index.js';
 import Footer from '../Footer/Footer.js';
@@ -36,13 +37,10 @@ const App = () => {
         <Route path="/contact">
           <Contact />
         </Route>
-        <Route path="/espace-perso" exact>
+        <Route path="/espace-perso">
           {logged ?
-            <div>Espace personnel</div> :
+            <SidebarSwitch />:       
             <div>403</div>}   
-        </Route>
-        <Route path="/monespace">
-        <Sidebar />
         </Route>
         <Route>
           <div>404</div>
