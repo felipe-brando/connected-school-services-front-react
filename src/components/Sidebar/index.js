@@ -17,7 +17,7 @@ const Sidebar = ()  => {
                 {roleStudent &&
                 <ul className='sidebar__list'>
                     <li className="sidebar__item">
-                        <Link to="#">
+                        <Link to="/espace-perso/monemploidutemps">
                             <span className='sidebar__icon'><Calendar value={{color: '#fff'}} /></span>
                             <span className='sidebar__span'>Mon emploi du temps</span>
                         </Link>   

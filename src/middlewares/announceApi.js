@@ -6,8 +6,9 @@ const announceApi = (store) => (next) => (action) => {
   const token = state.user.token;
 
   //config provisoire
-  const url = 'http://adrien-dubois.vpnuser.lan/CSS/css-back/public/api/v1/';
+  // const url = 'http://adrien-dubois.vpnuser.lan/CSS/css-back/public/api/v1/';
   // const url = 'http://kevin-planchais.vpnuser.lan/Apoth%C3%A9ose/projet-connected-school-services/public/api/v1/';
+  const url = 'http://ec2-3-80-208-180.compute-1.amazonaws.com/projet-connected-school-services/public/api/v1/';
 
 
   const config = {
@@ -62,7 +63,7 @@ const announceApi = (store) => (next) => (action) => {
 
     //**-------Tests------**//
 
-    console.log(state.announce.newAnnounceTitle, "et" , state.announce.newAnnonceImageFile);
+    console.log(state.announce.newAnnounceTitle, "et", state.announce.newAnnonceImageFile);
 
     const AnnounceFormData = new FormData();
     AnnounceFormData.append("image", state.announce.newAnnonceImageFile);

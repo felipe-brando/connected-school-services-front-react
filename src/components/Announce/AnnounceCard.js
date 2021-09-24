@@ -22,8 +22,6 @@ const AnnounceCard = ({ id, title, content, image, categories, date }) => {
 
     return (
         <article className="announce">
-
-            <img src={image[0] === 'h' ? image : schoolPicture} className="announce--img" alt="" />
             <p className="announce__tag">
                 {categories.map((categoryObject) =>
                     <Link
@@ -31,10 +29,14 @@ const AnnounceCard = ({ id, title, content, image, categories, date }) => {
                         to={"/annonces/categories/" + categoryObject.id}>{categoryObject.name}.
                 </Link>)}
             </p>
+
+            <NavLink to={"/annonces/" + id} className="announce__image--link">
+                <img src={image[0] === 'h' ? image : schoolPicture} className="announce--img" alt="" />
+            </NavLink>
+
             <h3 className="announce__title">{title}</h3>
             <div className="announce__footer">
-                <span className="announce__footer__date">{date}</span>
-                <NavLink to={"/annonces/" + id} className="announce__footer__link">Voir l'annonce</NavLink>
+                
                 {islogged &&
                     <>
                         <Link
@@ -46,8 +48,7 @@ const AnnounceCard = ({ id, title, content, image, categories, date }) => {
                             onClick={handleModifyAnnounce}
                             data-id={id}
                             className="announceCard__button--delete delete"
-                        >
-                            Supprimer
+                        >Supprimer
                 </button>
                     </>}
 
