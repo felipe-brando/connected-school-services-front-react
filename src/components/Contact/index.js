@@ -14,7 +14,7 @@ function Field ({name, value, placeholder, onChange, children})  {
 function Checkbox ({name, value, onChange, children}) {
     return <div className = "form-check">
         <input type ="checkbox" onChange = {onChange} id = {name} className = "form-control"/>
-        <label htmlFor= {name} class = "form-check-label">{children}</label> 
+        <label htmlFor= {name} className = "form-check-label">{children}</label> 
     </div>
 }
 
@@ -84,7 +84,7 @@ render() {
          </Checkbox>
 
          <div className ="form-group">   
-         <button class ="btn btn-primary">Envoyer</button>
+         <button className ="btn btn-primary">Envoyer</button>
          </div>
          {JSON.stringify(this.state)}
       </form>
