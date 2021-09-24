@@ -1,9 +1,10 @@
 // == Import
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // == Composant
 const MenuList = ({closeMobileMenu}) => {
-
+  const logged = useSelector((state) => state.user.logged);
     return (
       <ul className="menu__list">
         <li className="menu__item">
@@ -44,6 +45,10 @@ const MenuList = ({closeMobileMenu}) => {
           >
             Contact
           </NavLink></li>
+          {logged && 
+        <li><NavLink
+            to="/espace-perso" exact> Espace Personnel                               
+          </NavLink></li>}
       </ul> 
    
     );
