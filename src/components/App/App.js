@@ -8,8 +8,7 @@ import About from '../About/index.js';
 import Contact from '../Contact/index.js';
 
 
-import Sidebar from '../Sidebar/index.js';
-import SidebarSwitch from '../Sidebar/Sidebar.js';
+import Pages from '../Pages/index.js';
 
 import Intro from '../Intro/index.js';
 import Footer from '../Footer/Footer.js';
@@ -39,7 +38,7 @@ const App = () => {
         </Route>
         <Route path="/espace-perso">
           {logged ?
-            <SidebarSwitch />:       
+            <Pages />:       
             <div>403</div>}   
         </Route>
         <Route>
