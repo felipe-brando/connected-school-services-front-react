@@ -14,88 +14,88 @@ const Sidebar = ()  => {
     return (
         <div className="sidebar">
             <nav className='sidebar__menu'>
-                {roleStudent &&
+                {roleStudent && // if I am a student
                 <ul className='sidebar__list'>
-                    <li className="sidebar__item">
-                        <NavLink to="#">
+                    <NavLink className='sidebar__link' to="/espace-perso/mon-emploi-du-temps" exact>
+                        <li className="sidebar__item">
                             <span className='sidebar__icon'><Calendar value={{color: '#fff'}} /></span>
-                            <span className='sidebar__span'>Mon emploi du temps</span>
-                        </NavLink>   
-                    </li> 
-                    <li className="sidebar__item">
-                        <NavLink to="#">
+                            <span className='sidebar__text'>Mon emploi du temps</span>
+                        </li> 
+                    </NavLink>   
+                    <NavLink className='sidebar__link' to="/espace-perso/mes-cours" exact>
+                        <li className="sidebar__item">
                             <span className='sidebar__icon'><Book /></span>
-                            <span className='sidebar__span'>Mes cours</span>
-                        </NavLink>   
-                    </li>   
-                    <li className="sidebar__item">
-                        <NavLink to="#">
+                            <span className='sidebar__text'>Mes cours</span>
+                        </li>   
+                    </NavLink>   
+                    <NavLink className='sidebar__link' to="/espace-perso/mes-devoirs" exact>
+                        <li className="sidebar__item">
                             <span className='sidebar__icon'><Server /></span>
-                            <span className='sidebar__span'>Mon agenda</span>
-                        </NavLink>   
-                    </li>   
-                    <li className="sidebar__item">
-                        <NavLink to="#">
+                            <span className='sidebar__text'>Mon agenda</span>
+                        </li>   
+                    </NavLink>   
+                    <NavLink className='sidebar__link' to="/espace-perso/mes-notes" exact>
+                        <li className="sidebar__item">
                             <span className='sidebar__icon'><Award /></span>
-                            <span className='sidebar__span'>Mes notes</span>
-                        </NavLink>   
-                    </li>                  
+                            <span className='sidebar__text'>Mes notes</span>
+                        </li>                  
+                    </NavLink>   
                 </ul>
                 }
                 {roleAdmin &&
                 <ul className='sidebar__list'>
-                    <li className="sidebar__item">
-                        <NavLink to="#">
+                    <NavLink className='sidebar__link' to="#">
+                        <li className="sidebar__item">
                             <span className='sidebar__icon'><Calendar value={{color: '#fff'}} /></span>
-                            <span className='sidebar__span'>Gestion des Classes</span>
-                        </NavLink>   
-                    </li> 
-                    <li className="sidebar__item">
-                        <NavLink to="#">
+                            <span className='sidebar__text'>Gestion des Classes</span>
+                        </li> 
+                    </NavLink>   
+                    <NavLink className='sidebar__link' to="#">
+                        <li className="sidebar__item">
                             <span className='sidebar__icon'><Server /></span>
-                            <span className='sidebar__span'>Gestion des Annonces publiques</span>
-                        </NavLink>   
-                    </li>   
-                    <li className="sidebar__item">
-                        <NavLink to="#">
-                            <span className='sidebar__icon'><Book /></span>
-                            <span className='sidebar__span'>Gestion des Matières</span>
-                        </NavLink>   
-                    </li>   
-                    <li className="sidebar__item">
-                        <NavLink to="#">
-                            <span className='sidebar__icon'><Users /></span>
-                            <span className='sidebar__span'>Gestion des profils</span>
-                        </NavLink>   
-                    </li>                  
+                            <span className='sidebar__text'>Gestion des Annonces publiques</span>
+                        </li>   
+                    </NavLink>   
+                    <NavLink className='sidebar__link' to="#">
+                <li className="sidebar__item">
+                    <span className='sidebar__icon'><Book /></span>
+                    <span className='sidebar__text'>Gestion des Matières</span>
+                </li>   
+                    </NavLink>   
+                    <NavLink className='sidebar__link' to="#">
+                <li className="sidebar__item">
+                    <span className='sidebar__icon'><Users /></span>
+                    <span className='sidebar__text'>Gestion des profils</span>
+                </li>                  
+                    </NavLink>   
                 </ul>
                 }
                 {roleTeacher &&
                 <ul className='sidebar__list'>
-                    <li className="sidebar__item">
-                        <NavLink to="#">
+                    <NavLink className='sidebar__link' to="#">
+                        <li className="sidebar__item">
                             <span className='sidebar__icon'><Calendar value={{color: '#fff'}} /></span>
-                            <span className='sidebar__span'>Emploi du Temps</span>
-                        </NavLink>   
-                    </li> 
-                    <li className="sidebar__item">
-                        <NavLink to="#">
+                            <span className='sidebar__text'>Emploi du Temps</span>
+                        </li> 
+                    </NavLink>   
+                    <NavLink className='sidebar__link' to="#">
+                        <li className="sidebar__item">
                             <span className='sidebar__icon'><Server /></span>
-                            <span className='sidebar__span'>Cours/Ressources</span>
-                        </NavLink>   
-                    </li>   
-                    <li className="sidebar__item">
-                        <NavLink to="#">
+                            <span className='sidebar__text'>Cours/Ressources</span>
+                        </li>   
+                    </NavLink>   
+                    <NavLink className='sidebar__link' to="#">
+                        <li className="sidebar__item">
                             <span className='sidebar__icon'><Book /></span>
-                            <span className='sidebar__span'>Devoirs / Annonces</span>
-                        </NavLink>   
-                    </li>   
-                    <li className="sidebar__item">
-                        <NavLink to="#">
+                            <span className='sidebar__text'>Devoirs / Annonces</span>
+                        </li>   
+                    </NavLink>   
+                    <NavLink className='sidebar__link' to="#">
+                        <li className="sidebar__item">
                             <span className='sidebar__icon'><Users /></span>
-                            <span className='sidebar__span'>Mes classes</span>
-                        </NavLink>   
-                    </li>                  
+                            <span className='sidebar__text'>Mes classes</span>
+                        </li>                  
+                    </NavLink>   
                 </ul>
                 }
             </nav>

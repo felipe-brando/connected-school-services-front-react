@@ -3,7 +3,7 @@ import axios from 'axios';
 const connectionApi = (store) => (next) => (action) => {
     //You can create a new instance of axios with a custom config
     const api = axios.create({
-        baseURL: 'http://adrien-dubois.vpnuser.lan/CSS/css-back/public/api',
+        baseURL: 'http://ec2-3-80-208-180.compute-1.amazonaws.com/projet-connected-school-services/public/api',
     });
 
     if (action.type === 'LOGIN') {
