@@ -1,32 +1,20 @@
 .sidebar {
-    background-color: #F08080;
-    height: 80px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
 
-
+    &__list{
+        width: 100%;
+    }
+    
     &__menu-link{
         margin-left: 2rem;
         font-size: 2rem;
         background: none;
     }
 
-    &-menu{
+    &__menu{
         background-color:#F08080;
         width: 250px;
         height: 100vh;
-        display: flex;
         justify-content: center;
-        position: fixed;
-        top: 0;
-        left: -100%;
-        transition: 850ms;
-    }
-
-    &-menu.active{
-        left: 0;
-        transition: 350ms;
     }
 
     &-text{
@@ -54,9 +42,6 @@
         background-color: indigo;
     }
 
-    &-menu-items{
-        width: 100%;
-    }
 
     &-toggle {
         background-color: #F08080;

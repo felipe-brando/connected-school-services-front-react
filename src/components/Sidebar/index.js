@@ -1,50 +1,77 @@
-import React, {useState} from 'react';
+import { useSelector } from 'react-redux';
 
 import { Link } from "react-router-dom";
 import {SideBarData} from './SidebarData';
-import { IconContext } from 'react-icons';
 
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
+import { Calendar } from 'react-feather';
 
 import './style.scss';
 
 
-function Sidebar() {
-    const [sidebar, setSideBar] = useState(false);
-
-    const showSideBar = () => setSideBar(!sidebar);
-
+const Sidebar = ()  => {
+    const roleStudent = useSelector((state) => state.user.roles['ROLE_USER']);
+    const roleTeacher = useSelector((state) => state.user.roles['ROLE_TEACHER']);
     return (
-    <> 
-    <IconContext.Provider value={{color: '#fff'}}>       
         <div className="sidebar">
-            <Link to="#" className='sidebar__menu-link'>
-                <FaIcons.FaBars onClick={showSideBar} />
-            </Link>
-        </div>
-        <nav className={sidebar ? 'sidebar-menu active' : 'sidebar-menu'}>
-            <ul className='sidebar-menu-items' onClick={showSideBar}>
-                <li className="sidebar-toggle">
-                    <Link to="#" className='sidebar__menu-link'>
-                        <AiIcons.AiOutlineClose />
-                    </Link>
-                </li>
-                {SideBarData.map((item, index) => {
-                    return (
-                        <li key={index} className={item.cName}>
-                        <Link to={item.path}>
-                            {item.icon}
-                            <span className='sidebar-span'>{item.title}</span>
+            <nav className='sidebar__menu'>
+                {roleStudent &&
+                <ul className='sidebar__list'>
+                    <li className="sidebar__item">
+                        <Link to="#">
+                            <span className='sidebar__span'>Mon emploi du temps</span>
+                            <span className='sidebar__icon'><Calendar value={{color: '#fff'}} /></span>
                         </Link>   
-                        </li>                
-                    );
-                })}
-            </ul>
-        </nav>
-    </IconContext.Provider>
-    </> 
+                    </li> 
+                    <li className="sidebar__item">
+                        <Link to="#">
+                            <span className='sidebar__span'>Mes cours</span>
+                            <span className='sidebar__icon'><Calendar /></span>
+                        </Link>   
+                    </li>   
+                    <li className="sidebar__item">
+                        <Link to="#">
+                            <span className='sidebar__span'>Mon agenda</span>
+                            <span className='sidebar__icon'><Calendar /></span>
+                        </Link>   
+                    </li>   
+                    <li className="sidebar__item">
+                        <Link to="#">
+                            <span className='sidebar__span'>Mes notes</span>
+                            <span className='sidebar__icon'><Calendar /></span>
+                        </Link>   
+                    </li>                  
+                </ul>
+                }
+                {roleTeacher &&
+                <ul className='sidebar__list'>
+                    <li className="sidebar__item">
+                        <Link to="#">
+                            <span className='sidebar__span'>Coucou</span>
+                            <span className='sidebar__icon'><Calendar value={{color: '#fff'}} /></span>
+                        </Link>   
+                    </li> 
+                    <li className="sidebar__item">
+                        <Link to="#">
+                            <span className='sidebar__span'>Coucou</span>
+                            <span className='sidebar__icon'><Calendar /></span>
+                        </Link>   
+                    </li>   
+                    <li className="sidebar__item">
+                        <Link to="#">
+                            <span className='sidebar__span'>coucou</span>
+                            <span className='sidebar__icon'><Calendar /></span>
+                        </Link>   
+                    </li>   
+                    <li className="sidebar__item">
+                        <Link to="#">
+                            <span className='sidebar__span'>Mes notes</span>
+                            <span className='sidebar__icon'><Calendar /></span>
+                        </Link>   
+                    </li>                  
+                </ul>
+                }
+            </nav>
+        </div>
   );
 }
 
