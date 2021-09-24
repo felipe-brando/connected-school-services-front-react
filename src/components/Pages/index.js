@@ -8,8 +8,6 @@ import Homeworks from '../Homeworks/Index';
 import Marks from '../Marks/Index';
 
 
-import './style.scss';
-
 const Pages = () => {
 
     return (
