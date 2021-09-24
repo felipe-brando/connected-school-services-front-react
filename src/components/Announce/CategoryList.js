@@ -32,7 +32,7 @@ const CategoryList = () => {
     return (<>
         {
             islogged ?
-                <section>
+                <section className="categoryList">
                     <ul>
                         {categoryList.map((category) => {
                             return (

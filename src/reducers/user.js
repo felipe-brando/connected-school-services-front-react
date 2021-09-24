@@ -11,7 +11,8 @@ export const initialState = {
     password: '',
     token: '',
     roles: [],
-    classroom: 'Troisième A',
+    classroomId: '',
+    classroom: '',
     discipline: 'Mathématiques',
     loginOpen: false,
     burgerOpen: false,
@@ -44,6 +45,8 @@ export const initialState = {
           roles: action.roles,
           email: '',
           password: '',
+          classroomId: action.classroomId,
+          classroom: action.classroomName,
         };
 
       case 'TOGGLE_OPEN':
