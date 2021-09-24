@@ -1,6 +1,7 @@
+
 import { Switch, Route } from 'react-router-dom';
 
-import Sidebar from './index';
+import Sidebar from '../Sidebar/index';
 import Schedule from '../Schedule/Index';
 import Lessons from '../Lessons/Index';
 import Homeworks from '../Homeworks/Index';
@@ -9,7 +10,7 @@ import Marks from '../Marks/Index';
 
 import './style.scss';
 
-function SidebarSwitch() {
+const Pages = () => {
 
     return (
         <>
@@ -32,4 +33,4 @@ function SidebarSwitch() {
     )
 }
 
-export default SidebarSwitch;
+export default Pages;
