@@ -1,9 +1,10 @@
-import { NavLink, Link, Redirect } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { NavLink, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import schoolPicture from '../../assets/img/school-small.jpeg'
 import PropTypes from 'prop-types'
 
 const AnnounceCard = ({ id, title, content, image, categories, date }) => {
+    const islogged = useSelector((state) => state.user.logged);
     const dispatch = useDispatch();
 
     const handleModifyAnnounce = (e) => {
@@ -34,8 +35,22 @@ const AnnounceCard = ({ id, title, content, image, categories, date }) => {
             <div className="announce__footer">
                 <span className="announce__footer__date">{date}</span>
                 <NavLink to={"/annonces/" + id} className="announce__footer__link">Voir l'annonce</NavLink>
-                <Link to={"/annonces/maj/" + id} data-id={id} className="announceCard__button--modify modify">Modifier</Link>
-                <button onClick={handleModifyAnnounce} data-id={id} className="announceCard__button--delete delete">Supprimer</button>
+                {islogged &&
+                    <>
+                        <Link
+                            to={"/annonces/maj/" + id}
+                            data-id={id} className="announceCard__button--modify modify"
+                        >Modifier
+                </Link>
+                        <button
+                            onClick={handleModifyAnnounce}
+                            data-id={id}
+                            className="announceCard__button--delete delete"
+                        >
+                            Supprimer
+                </button>
+                    </>}
+
             </div>
 
         </article>

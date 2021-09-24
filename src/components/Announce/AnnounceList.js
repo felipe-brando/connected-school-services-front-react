@@ -9,7 +9,7 @@ import './style.scss';
 const AnnounceList = ({ filter }) => {
     //collect announce id in url with router hook
     const { id } = useParams();
-
+    
     let announceList = useSelector((state) => state.announce.announceList);
     const dispatch = useDispatch();
 

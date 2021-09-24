@@ -9,6 +9,7 @@ const AnnouncePage = () => {
     //collect announce id in url with router hook
     const { id } = useParams();
 
+    const islogged = useSelector((state) => state.user.logged);
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
 
     const handleModifyAnnounce = (e) => {
@@ -35,7 +36,11 @@ const AnnouncePage = () => {
 
     return (
         <section className="announcePage">
-            <img src={currentAnnounce.image[0] === 'h' ? currentAnnounce.image : schoolPicture} alt="" className="announce__img" />
+            <img
+                src={currentAnnounce.image[0] === 'h' ? currentAnnounce.image : schoolPicture}
+                alt=""
+                className="announce__img"
+            />
             <p className="announcePage__tag">
                 {currentAnnounce.category.map((categoryObject) =>
                     <Link
@@ -46,8 +51,21 @@ const AnnouncePage = () => {
             <h1 className="announcePage__title">{currentAnnounce.title}</h1>
             <p className="announce__content">{currentAnnounce.content}</p>
             <span className="announcePage__date">{currentAnnounce.date}</span>
-            <Link to={"/annonces/maj/" + currentAnnounce.id} data-id={currentAnnounce.id} className="announcePage__button--modify modify">Modifier</Link>
-            <button onClick={handleModifyAnnounce} data-id={currentAnnounce.id} className="announcePage__button--delete delete" >Supprimer</button>
+            {islogged && <>
+                <Link
+                    to={"/annonces/maj/" + currentAnnounce.id}
+                    data-id={currentAnnounce.id}
+                    className="announcePage__button--modify modify"
+                >Modifier
+                    </Link>
+                <button
+                    onClick={handleModifyAnnounce}
+                    data-id={currentAnnounce.id}
+                    className="announcePage__button--delete delete"
+                >Supprimer
+             </button>
+            </>}
+
         </section>
     );
 };
