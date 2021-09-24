@@ -10,11 +10,6 @@ const announceApi = (store) => (next) => (action) => {
   // const url = 'http://kevin-planchais.vpnuser.lan/Apoth%C3%A9ose/projet-connected-school-services/public/api/v1/';
 
 
-<<<<<<< HEAD
-
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MzIzODEwOTUsImV4cCI6MTYzMjQ2NzQ5NSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFkbWluQGNzcy5pbyJ9.kcq0zT7iUSqAxZet3h0CcDnnfEtS9aN3uCa3RyEvvieYbSi1tjhfW2ETHE1epfVDtVnEaZce_DYt5WKD6EoKIw78ym8AxRVZPouqa7F7moMoGnLf87oZyOXZwCNxy8WKWaFBKu9M9gnatWlQpbWv6m6d5Kn3KtkzuoOunQM6btdYSFmxGcZvadZyShipowQgOHexx0CY2R3yut4RGV8B3Twg49r73v2GBSu2miFnhfc9c0oHs7NQRmh70lAem00Ke72Hn1Aw--pnqEXH1_ABbyk7Vus3Vl3fWItgTGE5xpkCYc5HchKkS0WrIlbiYg2I4KBXzWBJ_iyv27xpFgyYmA";
-=======
->>>>>>> feature/announces2
   const config = {
     headers: {
       Authorization: "Bearer " + token,
