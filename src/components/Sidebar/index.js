@@ -13,7 +13,7 @@ import './style.scss';
 
 function Sidebar() {
     const [sidebar, setSideBar] = useState(false);
-
+    
     const showSideBar = () => setSideBar(!sidebar);
 
     return (
