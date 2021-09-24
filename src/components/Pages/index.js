@@ -1,6 +1,7 @@
 
 import { Switch, Route } from 'react-router-dom';
 
+import MobileBar from '../MobileBar/index';
 import Sidebar from '../Sidebar/index';
 import Schedule from '../Schedule/Index';
 import Lessons from '../Lessons/Index';
@@ -28,6 +29,7 @@ const Pages = () => {
                     <Marks />
                 </Route>
             </Switch>
+            <MobileBar />
         </main>
     )
 }
