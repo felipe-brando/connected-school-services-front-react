@@ -5,7 +5,7 @@ import image from '../../assets/img/school.jpg';
 const Intro = () => (
   <section className="intro">
     <h2 className="intro__title">Nom de l'établissement</h2>
-    <img className="intro__image" src={image} alt="Nom de l'établissement"/>
+    <div className="intro__image" />
   </section>
 );
 
