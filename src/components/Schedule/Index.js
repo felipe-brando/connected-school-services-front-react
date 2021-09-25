@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 import ScheduleTable from './ScheduleTable';
+import DaySchedule from './DaySchedule';
 
 function Schedule() {
     const currentSchedule = useSelector((state => state.schedule.schedule));
@@ -24,26 +25,17 @@ function Schedule() {
                 userRole[0] === "ROLE_ADMIN" ?
                     <h1> ADMIN </h1> :
                     <section className="schedule">
-                        
+
                         <ScheduleTable
                             tableDataTab={currentSchedule}
                             userClassroomId={userClassroomId}
                             userClassroomName={userClassroomName}
                         />
-                        {/* {
-                            currentSchedule.map((scheduleEntry) => {
-                                if (scheduleEntry.classroom.id === userClassroomId) {
-                                    return (
-                                        <li>
-                                            <p>{scheduleEntry.day.name}</p>
-                                            <p>{scheduleEntry.begin} / {scheduleEntry.finish}</p>
-                                            <p>{scheduleEntry.discipline.name}</p>
-                                        </li>)
-                                }
-                                return true;
-                            })} */}
                     </section>
             }
+            {/* Composant planning du jour placé ici provisoirement (pour recevoir les données) sera dépacé dans l'accueil de l'espace perso, css à faire */}
+            <h3>emploi du temps du jour - emplacement provisoire</h3>
+            <DaySchedule tableDataTab={currentSchedule} userClassroomId={userClassroomId}/>
         </div>
     );
 }
