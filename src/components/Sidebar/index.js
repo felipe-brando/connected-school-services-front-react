@@ -16,13 +16,8 @@ const Sidebar = ()  => {
             <nav className='sidebar__menu'>
                 {roleStudent && // if I am a student
                 <ul className='sidebar__list'>
-<<<<<<< HEAD
-                    <li className="sidebar__item">
-                        <Link to="/espace-perso/monemploidutemps">
-=======
                     <NavLink className='sidebar__link' to="/espace-perso/mon-emploi-du-temps" exact>
                         <li className="sidebar__item">
->>>>>>> feature/sidebar4
                             <span className='sidebar__icon'><Calendar value={{color: '#fff'}} /></span>
                             <span className='sidebar__text'>Mon emploi du temps</span>
                         </li> 
