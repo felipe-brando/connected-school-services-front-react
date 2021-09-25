@@ -1,58 +1,40 @@
 .sidebar {
+    display: none;
+}
+ @media screen and (min-width: 992px) { 
+    .sidebar {
+        display: block;
+        background-color:#60d399;
+        width: 18em;
+        margin-top: auto
 
-    &__list{
-        width: 100%;
-    }
-    
-    &__menu-link{
-        margin-left: 2rem;
-        font-size: 2rem;
-        background: none;
-    }
+        &__menu {
+            margin: 2rem 0rem;
+        }
 
-    &__menu{
-        background-color:#F08080;
-        width: 250px;
-        height: 100vh;
-        justify-content: center;
-    }
+        &__link {
+            color: #f7f1e9;
+            margin-bottom: 2rem;       
+            font-weight: 600;
+        }
 
-    &-text{
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        padding: 8px 0px 8px 16px;
-        list-style: none;
-        height: 60px;
-    }
+        &__link :hover {
+            color: #000;
+            background-color:rgb(52, 183, 117)
+        }
 
-    &-text a {
-        text-decoration: none;
-        color: white;
-        font-size: 20px;
-        width: 95%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        padding: 0 16px;
-        border-radius: 4px;
-    }
+        .active {
+            color: #000;
+        } 
 
-    &-text a:hover {
-        background-color: indigo;
-    }
+        &__item {
+            padding: 2rem;
+            border-bottom: 0.1em solid  #f7f1e9;
 
+        }
 
-    &-toggle {
-        background-color: #F08080;
-        width: 100px;
-        height: 80px;
-        display: flex;
-        justify-content: start;
-        align-items: center;
-    }
-
-    &-span {
-        margin-left: 16px;
+        &__text {
+            margin-left: 1rem;
+        }
     }
 }
