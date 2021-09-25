@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+
+import ScheduleTable from './ScheduleTable';
+
 function Schedule() {
     const currentSchedule = useSelector((state => state.schedule.schedule));
     const userClassroomId = useSelector((state) => state.user.classroomId);
     const userClassroomName = useSelector((state) => state.user.classroom);
     const userRole = useSelector((state) => state.user.roles);
     const dispatch = useDispatch();
-
-    console.log(currentSchedule);
-    console.log(userRole);
 
     useEffect(() => {
         dispatch({
@@ -24,8 +24,13 @@ function Schedule() {
                 userRole[0] === "ROLE_ADMIN" ?
                     <h1> ADMIN </h1> :
                     <section className="schedule">
-                        <h1>Emploi du temps : {userClassroomName}</h1>
-                        {
+                        
+                        <ScheduleTable
+                            tableDataTab={currentSchedule}
+                            userClassroomId={userClassroomId}
+                            userClassroomName={userClassroomName}
+                        />
+                        {/* {
                             currentSchedule.map((scheduleEntry) => {
                                 if (scheduleEntry.classroom.id === userClassroomId) {
                                     return (
@@ -36,7 +41,7 @@ function Schedule() {
                                         </li>)
                                 }
                                 return true;
-                            })}
+                            })} */}
                     </section>
             }
         </div>
