@@ -1,4 +1,4 @@
-export const initialState = {
+const initialState = {
     announceList: [{
         id: '',
         title: 'Problème de Connexion',

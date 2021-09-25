@@ -10,29 +10,32 @@ const AnnounceList = ({ filter }) => {
     //collect announce id in url with router hook
     const { id } = useParams();
 
+    // let variable to splice array to obtain 3 announces at home page
     let announceList = useSelector((state) => state.announce.announceList);
+    const logged = useSelector((state) => state.user.logged);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch({
             type: 'GET_ANNOUNCE_LIST',
+            filter: filter,
+            categoryId: id,
         });
-    }, []);
+    }, [id]);
 
     //Display 3 announces if homepage
     if (filter === "home") {
         announceList.splice(3);
     }
-
-    //display announce by category
-    else if (filter === "categories") {
-        // const filteredAnnounceList = announceList.filter((announceObject) => {
-        //     //return announceObject.category[0].id === parseInt(id);
-        //     console.log(announceObject.category[0].id)
-        //     //return announceObject.category === parseInt(id);
-
-        // });
-        // announceList = [...filteredAnnounceList];
+    //if filter by category but not connected
+    if(filter==='categories' && !logged){
+        return (
+            <section>
+            <h3>Vous devez être connecté pour accéder aux annonces par catégories.</h3>
+            <Link to="/annonces">Retour aux annonces de l'établissement</Link>
+            </section>
+        )
     }
 
     return (

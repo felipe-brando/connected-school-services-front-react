@@ -20,16 +20,29 @@ const announceApi = (store) => (next) => (action) => {
   //---GET Requests
 
   if (action.type === 'GET_ANNOUNCE_LIST') {
-    axios.get(url + "homeannounce")
-      .then((response) => {
-        store.dispatch({
-          type: 'SAVE_ANNOUNCE_LIST',
-          announceList: response.data,
+    if (action.filter === 'categories') {
+      axios.get(url + "announce/sortedby/" + action.categoryId, config)
+        .then((response) => {
+          store.dispatch({
+            type: 'SAVE_ANNOUNCE_LIST',
+            announceList: response.data,
+          });
+        })
+        .catch((error) => {
+          console.error('GET_ANNOUNCE_LIST error : ', error);
         });
-      })
-      .catch((error) => {
-        console.error('GET_ANNOUNCE_LIST error : ', error);
-      });
+    } else {
+      axios.get(url + "homeannounce")
+        .then((response) => {
+          store.dispatch({
+            type: 'SAVE_ANNOUNCE_LIST',
+            announceList: response.data,
+          });
+        })
+        .catch((error) => {
+          console.error('GET_ANNOUNCE_LIST error : ', error);
+        });
+    }
   }
 
   if (action.type === 'GET_ANNOUNCE_BY_ID') {

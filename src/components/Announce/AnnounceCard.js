@@ -22,7 +22,7 @@ const AnnounceCard = ({ id, title, content, image, categories, date }) => {
 
     return (
         <article className="announce">
-            <p className="announce__tag">
+            <p className="announce__tag atag">
                 {categories.map((categoryObject) =>
                     <Link
                         key={categoryObject.id}

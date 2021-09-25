@@ -36,18 +36,19 @@ const AnnouncePage = () => {
 
     return (
         <section className="announcePage">
-            <img
-                src={currentAnnounce.image[0] === 'h' ? currentAnnounce.image : schoolPicture}
-                alt=""
-                className="announce__img"
-            />
-            <p className="announcePage__tag">
+            <p className="announcePage__tag atag">
                 {currentAnnounce.category.map((categoryObject) =>
                     <Link
                         key={categoryObject.id}
                         to={"/annonces/categories/" + categoryObject.id}>{categoryObject.name}.
                 </Link>)}
             </p>
+            <img
+                src={currentAnnounce.image[0] === 'h' ? currentAnnounce.image : schoolPicture}
+                alt=""
+                className="announcePage__img"
+            />
+            
             <h1 className="announcePage__title">{currentAnnounce.title}</h1>
             <p className="announce__content">{currentAnnounce.content}</p>
             <span className="announcePage__date">{currentAnnounce.date}</span>

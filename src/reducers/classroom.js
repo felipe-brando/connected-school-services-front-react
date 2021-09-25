@@ -1,4 +1,4 @@
-export const initialState = {
+const initialState = {
     userList: [],
     grade: 'Sixième',
     letter: 'A',
