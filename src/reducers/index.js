@@ -5,6 +5,7 @@ import classroomReducer from './classroom';
 import announceReducer from './announce';
 import lessonReducer from './lesson';
 import scheduleReducer from './schedule'
+import textEditorReducer from './textEditor'
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   announce: announceReducer,
   lesson: lessonReducer,
   schedule: scheduleReducer,
+  textEditor: textEditorReducer
 });
 
 export default rootReducer;
