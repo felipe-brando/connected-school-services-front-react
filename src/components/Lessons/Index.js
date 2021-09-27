@@ -9,6 +9,8 @@ const Lessons = () => {
     const dispatch = useDispatch();
     const disciplines = useSelector((state) => state.lesson.disciplinesList);
     const resources = useSelector((state) => state.lesson.resourcesList);
+    const currentDiscipline = useSelector((state) => state.lesson.currentDiscipline);
+    
 
     useEffect(() => {
         dispatch({
@@ -22,15 +24,21 @@ const Lessons = () => {
         });
     }, []);
 
+    const handleSelectChange = (e) => {
+        dispatch({
+            type: 'CHANGE_SELECT_DISCIPLINE',
+            value: e.target.value,
+        });
+    }
+
     return (
         <div className="lessons">
             <h1 className="lessons__title">Mes ressources</h1>
-            <Form disciplines={disciplines} />
+            <Form disciplines={disciplines} handleChangeDiscipline={handleSelectChange} />
             <section className="resources">
             <h2 className="resources__title">Liste des ressources</h2>
-            {resources.map((resource) => (
-                <ResourcesList key={resource.id} {...resource} />
-
+            {resources.filter((resource) => resource.discipline.name === currentDiscipline).map((filtredResource) => (
+                <ResourcesList key={filtredResource.id} {...filtredResource} />
             ))}
             </section>
         </div>

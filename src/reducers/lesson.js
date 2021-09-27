@@ -3,6 +3,8 @@ const initialState = {
     disciplinesList: [],
     resourcesList:[],
 
+    currentDiscipline: "Français",
+
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -16,6 +18,12 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 resourcesList: action.resource,
+            }
+        case 'CHANGE_SELECT_DISCIPLINE':
+            return {
+                ...state,
+                currentDiscipline: action.value,
+
             }
         default:
             return state;

@@ -6,10 +6,10 @@ import DisciplinesList from './DisciplinesList';
 import './style.scss';
 
 // == Composant
-const Form = ({disciplines}) => {
+const Form = ({disciplines, handleChangeDiscipline }) => {
     return (
         <form>
-            <select name="lessons" id="lessons">
+            <select onChange={handleChangeDiscipline}>
                 {disciplines.map((discipline) => (
                     <DisciplinesList key={discipline.id} {...discipline} />
                 ))}
@@ -21,6 +21,7 @@ const Form = ({disciplines}) => {
 
 Form.propTypes = {
     disciplines: PropTypes.array.isRequired,
+    handleChangeDiscipline: PropTypes.func.isRequired,
 };
 
 
