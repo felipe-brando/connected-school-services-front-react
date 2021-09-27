@@ -7,6 +7,7 @@ import Schedule from '../Schedule/Index';
 import Lessons from '../Lessons/Index';
 import Homeworks from '../Homeworks/Index';
 import Marks from '../Marks/Index';
+import DaySchedule from '../Schedule/DaySchedule';
 
 import './style.scss';
 
@@ -15,7 +16,10 @@ const Pages = () => {
     return (
         <main className="main-content">
             <Sidebar />
-            <Switch>            
+            <Switch>
+                <Route path="/espace-perso/" exact>
+                    <DaySchedule />
+                </Route>
                 <Route path="/espace-perso/mon-emploi-du-temps" exact>
                     <Schedule />
                 </Route>

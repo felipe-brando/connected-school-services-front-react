@@ -33,9 +33,7 @@ function Schedule() {
                         />
                     </section>
             }
-            {/* Composant planning du jour placé ici provisoirement (pour recevoir les données) sera dépacé dans l'accueil de l'espace perso, css à faire */}
-            <h3>emploi du temps du jour - emplacement provisoire</h3>
-            <DaySchedule tableDataTab={currentSchedule} userClassroomId={userClassroomId}/>
+
         </div>
     );
 }

@@ -10,7 +10,7 @@ const AnnounceList = ({ filter }) => {
     //collect announce id in url with router hook
     const { id } = useParams();
 
-    // let variable to splice array to obtain 3 announces at home page
+    // let variable to splice array to limit to 3 announces displayed at home page
     let announceList = useSelector((state) => state.announce.announceList);
     const logged = useSelector((state) => state.user.logged);
 
@@ -24,16 +24,25 @@ const AnnounceList = ({ filter }) => {
         });
     }, [id]);
 
-    //Display 3 announces if homepage
+    // Separate announces and homeworks
+    const filteredAnnounceList = announceList.filter((announceObject) => {
+        if (announceObject.category[0]) {
+            return announceObject.category[0].id !== 7;
+        }
+        return true;
+    });
+
+
+    // Display 3 announces if homepage
     if (filter === "home") {
-        announceList.splice(3);
+        filteredAnnounceList.splice(3);
     }
     //if filter by category but not connected
-    if(filter==='categories' && !logged){
+    if (filter === 'categories' && !logged) {
         return (
             <section>
-            <h3>Vous devez être connecté pour accéder aux annonces par catégories.</h3>
-            <Link to="/annonces">Retour aux annonces de l'établissement</Link>
+                <h3>Vous devez être connecté pour accéder aux annonces par catégories.</h3>
+                <Link to="/annonces">Retour aux annonces de l'établissement</Link>
             </section>
         )
     }
@@ -47,7 +56,7 @@ const AnnounceList = ({ filter }) => {
             </div>
             <section className="announceList">
 
-                {announceList.map((announceObject) => (
+                {filteredAnnounceList.map((announceObject) => (
                     <AnnounceCard
                         key={announceObject.id}
                         id={parseInt(announceObject.id, 10)}

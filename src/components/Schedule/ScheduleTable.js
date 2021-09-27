@@ -1,4 +1,5 @@
 const ScheduleTable = ({ tableDataTab, userClassroomId, userClassroomName }) => {
+   
     //let variable to set the timeslot discipline
     let currentDiscipline = "";
     //variable to map result 

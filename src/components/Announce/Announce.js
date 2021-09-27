@@ -35,7 +35,7 @@ const Announce = () => {
             <Route path="/annonces/:id" exact >
                 <AnnouncePage />
             </Route>
-            <Route><div>404 des annonces si adresse ne correcpond à rien</div></Route>
+            <Route><div>404 - Annonces - Cette adresse ne correcpond à rien</div></Route>
         </Switch>
 
     );

@@ -58,6 +58,20 @@ const announceApi = (store) => (next) => (action) => {
       });
   }
 
+  if (action.type === 'GET_ANNOUNCE_LIST_BY_CLASS_ID') {
+    axios.get(url + "announce/sortedbyclassroom/" + action.id, config)
+      .then((response) => {
+        store.dispatch({
+          type: 'SAVE_CLASSROOM_ANNOUNCE_LIST',
+          announceList: response.data,
+        });
+      })
+      .catch((error) => {
+        console.error('GET_ANNOUNCE_LIST_BY_CLASS_ID error : ', error);
+      });
+  }
+
+
   if (action.type === 'GET_CATEGORY_LIST') {
     axios.get(url + "category/", config)
       .then((response) => {
