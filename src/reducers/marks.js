@@ -7,7 +7,7 @@ const reducer = (state = initialState, action = {}) => {
         case 'SAVE_CURRENT_MARKS':
             return {
                 ...state,
-                schedule: action.currentMarks,
+                marks: action.currentMarks,
             }
         default:
             return state;
