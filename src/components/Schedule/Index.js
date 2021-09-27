@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+
+import ScheduleTable from './ScheduleTable';
+import DaySchedule from './DaySchedule';
+
 function Schedule() {
     const currentSchedule = useSelector((state => state.schedule.schedule));
     const userClassroomId = useSelector((state) => state.user.classroomId);
     const userClassroomName = useSelector((state) => state.user.classroom);
     const userRole = useSelector((state) => state.user.roles);
     const dispatch = useDispatch();
-
-    console.log(currentSchedule);
-    console.log(userRole);
 
     useEffect(() => {
         dispatch({
@@ -24,21 +25,17 @@ function Schedule() {
                 userRole[0] === "ROLE_ADMIN" ?
                     <h1> ADMIN </h1> :
                     <section className="schedule">
-                        <h1>Emploi du temps : {userClassroomName}</h1>
-                        {
-                            currentSchedule.map((scheduleEntry) => {
-                                if (scheduleEntry.classroom.id === userClassroomId) {
-                                    return (
-                                        <li>
-                                            <p>{scheduleEntry.day.name}</p>
-                                            <p>{scheduleEntry.begin} / {scheduleEntry.finish}</p>
-                                            <p>{scheduleEntry.discipline.name}</p>
-                                        </li>)
-                                }
-                                return true;
-                            })}
+
+                        <ScheduleTable
+                            tableDataTab={currentSchedule}
+                            userClassroomId={userClassroomId}
+                            userClassroomName={userClassroomName}
+                        />
                     </section>
             }
+            {/* Composant planning du jour placé ici provisoirement (pour recevoir les données) sera dépacé dans l'accueil de l'espace perso, css à faire */}
+            <h3>emploi du temps du jour - emplacement provisoire</h3>
+            <DaySchedule tableDataTab={currentSchedule} userClassroomId={userClassroomId}/>
         </div>
     );
 }
