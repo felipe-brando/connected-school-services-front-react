@@ -7,12 +7,14 @@ import { loadState, saveState, removeState } from './localStorage.js';
 import announceApi from '../middlewares/announceApi';
 import connectionApi from '../middlewares/connectionApi';
 import scheduleApi from '../middlewares/scheduleApi';
+import disciplineApi from '../middlewares/disciplineApi';
 
 // we call each middleware
 const middlewares = applyMiddleware(
     announceApi,
     connectionApi,
     scheduleApi,
+    disciplineApi,
 );
 
 // on met bout à bout le redux devtools et nos middlewares

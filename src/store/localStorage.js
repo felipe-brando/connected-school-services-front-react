@@ -26,7 +26,6 @@ export const loadState = () => {
   export const saveState = (state) => {
     try {
       const serializedState = JSON.stringify(state);
-      console.log(serializedState);
       localStorage.setItem('state', serializedState);
     } catch (err) {
       // Ignore write errors.
@@ -40,7 +39,6 @@ export const loadState = () => {
   export const removeState = (state) => {
     try {
       const serializedState = JSON.stringify(state);
-      console.log(serializedState);
       localStorage.removeItem('state', serializedState);
     } catch (err) {
       // Ignore write errors.

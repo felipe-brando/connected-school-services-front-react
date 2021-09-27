@@ -1,9 +1,25 @@
-import React from "react";
+// == Import
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react';
+import Form from './Form';
 
-function Lessons() {
+const Lessons = () => {
+    const dispatch = useDispatch();
+    const disciplines = useSelector((state) => state.lesson.disciplinesList);
+
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_DISCIPLINES',
+        });
+    }, []);
     return (
-        <div className="Lessons">
-            <h1>Vos leçons</h1>
+        <div className="lessons">
+            <h1>Mes ressources</h1>
+            <Form disciplines={disciplines} />
+            <ul>Liste des ressources
+                <li>Ressource 1</li>
+                <li>Ressource 2</li>
+            </ul>
         </div>
     );
 }
