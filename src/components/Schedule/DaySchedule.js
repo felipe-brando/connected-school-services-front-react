@@ -11,7 +11,7 @@ const DaySchedule = ({ tableDataTab, userClassroomId }) => {
     const scheduleTimeSlot = ['08h00', '09h00', '10h00', '11h00', '12h00', '13h00', '14h00', '15h00', '16h00'];
     const dayNumber = [toDayNumber];
 
-    if (toDayNumber !== 0 || toDayNumber !== 6) {
+    if (toDayNumber === 0 || toDayNumber === 6) {
         return (<h1>C'est le week-end, on travaille un peu et on se repose beaucoup 😎.</h1>)
     } else {
         return (
