@@ -1,13 +1,16 @@
 const initialState = {
-    marks: [],
-};
+    userList: [],
+    discipline: [],
+    grade: [],
+  };
+  
 
 const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
         case 'SAVE_CURRENT_MARKS':
             return {
                 ...state,
-                marks: action.currentMarks,
+                grade: action.currentMarks,
             }
         default:
             return state;
