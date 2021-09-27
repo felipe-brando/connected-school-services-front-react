@@ -6,7 +6,7 @@ const ScheduleTable = ({ tableDataTab, userClassroomId, userClassroomName }) => 
     const dayNumber = [1, 2, 3, 4, 5];
     //filter schedule of the classroom from all the schedule data
     const classroomSchedule = tableDataTab.filter((timeSlot) => { return timeSlot.classroom.id === userClassroomId });
-
+    
     return (
         <table>
             <thead>
