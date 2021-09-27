@@ -1,6 +1,7 @@
 const initialState = {
 
     disciplinesList: [],
+    resourcesList:[],
 
 };
 
@@ -10,6 +11,11 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 disciplinesList: action.discipline,
+            }
+        case 'SAVE_RESOURCE':
+            return {
+                ...state,
+                resourcesList: action.resource,
             }
         default:
             return state;
