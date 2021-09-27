@@ -20,7 +20,7 @@ const announceApi = (store) => (next) => (action) => {
   //---GET Requests
 
   if (action.type === 'GET_ANNOUNCE_LIST') {
-    if (action.filter === 'categories') {      
+    if (action.filter === 'categories') {
       axios.get(url + "announce/sortedby/" + action.categoryId, config)
         .then((response) => {
           store.dispatch({
@@ -59,7 +59,6 @@ const announceApi = (store) => (next) => (action) => {
   }
 
   if (action.type === 'GET_ANNOUNCE_LIST_BY_CLASS_ID') {
-    console.log(action);
     axios.get(url + "announce/sortedbyclassroom/" + action.id, config)
       .then((response) => {
         store.dispatch({

@@ -8,14 +8,12 @@ function Homeworks() {
 
     //Collect class announces 
     useEffect(() => {
-        console.log("UZEFFF HW");
         dispatch({
             type: 'GET_ANNOUNCE_LIST_BY_CLASS_ID',
             id: userClassroomId,
         })
     }, [])
 
-    console.log(announceListByClassId);
 
     return (
         <div className="homeworks">
@@ -24,8 +22,8 @@ function Homeworks() {
                 <article key={announceObject.id} className="homework__article">
                     <h3 className="homework__article__title">{announceObject.title}</h3>
                     <p className="homework__article__expiration">A faire pour le
-                     <span className="homework__article__date"> {announceObject.expireAt?announceObject.expireAt:"prochain cours"}</span>
-                     </p>
+                     <span className="homework__article__date"> {announceObject.expireAt ? announceObject.expireAt : "prochain cours"}</span>
+                    </p>
                     <p className="homework__article__content">{announceObject.homework}</p>
                 </article>
             )

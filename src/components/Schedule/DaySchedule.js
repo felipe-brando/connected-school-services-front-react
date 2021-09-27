@@ -1,8 +1,25 @@
-const DaySchedule = ({ tableDataTab, userClassroomId }) => {
+import {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+const DaySchedule = () => {
+     
+    //Get data by its own to be independant from global schedule
+    const currentSchedule = useSelector((state) => state.schedule.schedule);
+    const userClassroomId = useSelector((state) => state.user.classroomId);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({
+            type: 'GET_CURRENT_SCHEDULE',
+        });
+    }, [])
+
+
     //let variable to set the timeslot discipline
     let currentDiscipline = "";
     //filter schedule of the classroom from all the schedule data
-    const classroomSchedule = tableDataTab.filter((timeSlot) => { return timeSlot.classroom.id === userClassroomId });
+    const classroomSchedule = currentSchedule.filter((timeSlot) => { return timeSlot.classroom.id === userClassroomId });
     //get today day
     const date = new Date();
     const toDayNumber = date.getDay();
