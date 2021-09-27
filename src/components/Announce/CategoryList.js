@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const CategoryList = () => {
     const islogged = useSelector((state) => state.user.logged);
-    const userRole = useSelector((state) => state.user.roles);
+    //const userRole = useSelector((state) => state.user.roles);
     const categoryList = useSelector((state) => state.announce.categoryList);
     const newCategoryInputValue = useSelector((state) => state.announce.newCategoryInputValue);
 

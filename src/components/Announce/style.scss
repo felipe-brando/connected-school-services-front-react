@@ -7,17 +7,17 @@
 
 .announce {
    width: 30%;
-   
+
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items:center;
+   align-items: center;
 
    &__title {
       font-weight: bold;
    }
 
-   &__image--link{
+   &__image--link {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -70,9 +70,9 @@
    text-decoration: none;
    transition: color 0.2s;
    -webkit-transition: color 0.2s;
- }
- 
- .atag::before {
+}
+
+.atag::before {
    background: #fff;
    border-radius: 10px;
    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
@@ -82,9 +82,9 @@
    position: absolute;
    width: 6px;
    top: 10px;
- }
- 
- .atag::after {
+}
+
+.atag::after {
    background: #fff;
    border-bottom: 13px solid transparent;
    border-left: 10px solid #eee;
@@ -93,20 +93,20 @@
    position: absolute;
    right: 0;
    top: 0;
- }
- 
- .atag:hover {
+}
+
+.atag:hover {
    background-color: crimson;
    color: white;
- }
- 
- .atag:hover::after {
-    border-left-color: crimson; 
- }
+}
+
+.atag:hover::after {
+   border-left-color: crimson;
+}
 
 //  AnnouncePage
 
-.announcePage{
+.announcePage {
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -115,11 +115,28 @@
    width: 80%;
    margin: auto;
 
-   &__img{
+   &__img {
       width: 30%;
    }
-   &__title{
+
+   &__title {
       font-weight: bold;
+   }
+
+}
+
+.addAnnounce__form {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+
+   .ql-container {
+      margin-bottom: 10px;
+   }
+
+   &--select {
+      margin-top: 50px;
    }
 
 }

@@ -1,10 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 
+import TextEditor from '../TextEditor/TextEditor';
+
 const AddAnnounce = () => {
     //link state
     const titleInputValue = useSelector((state) => state.announce.newAnnounceTitle);
-    const contentInputValue = useSelector((state) => state.announce.newAnnounceContent);
+
     // const categoryInputValue = useSelector((state) => state.announce.newAnnounceCategory);
     //const imageInputValue = useSelector((state) => state.announce.newAnnounceImage);
     const categoryList = useSelector((state) => state.announce.categoryList);
@@ -27,17 +29,10 @@ const AddAnnounce = () => {
         })
     };
 
-    const handlecontentChange = (e) => {
-        dispatch({
-            type: 'CHANGE_INPUT_CONTENT',
-            value: e.target.value,
-        })
-    };
-
     const handleSelectChange = (e) => {
         dispatch({
-            type: 'CHANGE_SELECT_OPTION',
-            value: e.target.selectedOptions[0].label,
+            type: 'CHANGE_SELECT_ANNOUNCE',
+            value: e.target.selectedOptions[0].dataset.id,
         })
     };
     const handleLoadImage = (e) => {
@@ -69,23 +64,15 @@ const AddAnnounce = () => {
                 id="title"
             />
 
+
             <label className="addAnnounce__form--label" htmlFor="content">Contenu </label>
-            <textarea
-                placeholder="texte de l'annonce"
-                required onChange={handlecontentChange}
-                value={contentInputValue}
-                name="content"
-                id="content"
-            />
+            <TextEditor />
 
             <select className="addAnnounce__form--select" onChange={handleSelectChange}>
                 <option value="">Choisir une catégorie</option>
                 {
                     categoryList.map((categoryObject) => (
-                        <option
-                            key={categoryObject.id}
-                            value='test'
-                        >
+                        <option key={categoryObject.id} data-id={categoryObject.id}>
                             {categoryObject.name}
                         </option>
                     )

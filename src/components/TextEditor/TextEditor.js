@@ -12,7 +12,7 @@ const TextEditor = () => {
 
 
     const handleChange = (e) => {
-        console.dir(e)
+        //console.dir(e)
         dispatch({
             type: 'SET_TEXT_EDITOR_CONTENT',
             editorContent: e,

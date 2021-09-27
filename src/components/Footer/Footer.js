@@ -1,7 +1,5 @@
 import { NavLink } from "react-router-dom";
 
-import Contact from '../Contact';
-
 import './style.scss';
 
 const Footer = () => {
