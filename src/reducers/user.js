@@ -14,6 +14,7 @@ export const initialState = {
     classroomId: '',
     classroom: '',
     userId: '', 
+    classroomGrade: '',
     discipline: 'Mathématiques',
     loginOpen: false,
     burgerOpen: false,
@@ -48,9 +49,9 @@ export const initialState = {
           password: '',
           classroomId: action.classroomId,
           classroom: action.classroomName,
-          userId: action.userId
-        };      
-
+          userId: action.userId,             
+          classroomGrade: action.classroomGrade,
+        }; 
       case 'TOGGLE_OPEN':
       return {
         ...state,
