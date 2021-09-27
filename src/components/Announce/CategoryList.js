@@ -7,7 +7,7 @@ const CategoryList = () => {
     const categoryList = useSelector((state) => state.announce.categoryList);
     const newCategoryInputValue = useSelector((state) => state.announce.newCategoryInputValue);
 
-    console.log(userRole);
+    //console.log(userRole);
 
     const handleChangeCategoryInput = (e) => {
         dispatch({

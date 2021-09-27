@@ -20,7 +20,7 @@ const announceApi = (store) => (next) => (action) => {
   //---GET Requests
 
   if (action.type === 'GET_ANNOUNCE_LIST') {
-    if (action.filter === 'categories') {
+    if (action.filter === 'categories') {      
       axios.get(url + "announce/sortedby/" + action.categoryId, config)
         .then((response) => {
           store.dispatch({
@@ -57,6 +57,21 @@ const announceApi = (store) => (next) => (action) => {
         console.error('SAVE_CURRENT_ANNOUNCE error : ', error);
       });
   }
+
+  if (action.type === 'GET_ANNOUNCE_LIST_BY_CLASS_ID') {
+    console.log(action);
+    axios.get(url + "announce/sortedbyclassroom/" + action.id, config)
+      .then((response) => {
+        store.dispatch({
+          type: 'SAVE_CLASSROOM_ANNOUNCE_LIST',
+          announceList: response.data,
+        });
+      })
+      .catch((error) => {
+        console.error('GET_ANNOUNCE_LIST_BY_CLASS_ID error : ', error);
+      });
+  }
+
 
   if (action.type === 'GET_CATEGORY_LIST') {
     axios.get(url + "category/", config)

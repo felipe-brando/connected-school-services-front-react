@@ -10,7 +10,7 @@ const AnnounceList = ({ filter }) => {
     //collect announce id in url with router hook
     const { id } = useParams();
 
-    // let variable to splice array to obtain 3 announces at home page
+    // let variable to splice array to limit to 3 announces displayed at home page
     let announceList = useSelector((state) => state.announce.announceList);
     const logged = useSelector((state) => state.user.logged);
 
@@ -24,17 +24,16 @@ const AnnounceList = ({ filter }) => {
         });
     }, [id]);
 
-    console.log(announceList);
+    // Separate announces and homeworks
     const filteredAnnounceList = announceList.filter((announceObject) => {
-
         if (announceObject.category[0]) {
             return announceObject.category[0].id !== 7;
         }
         return true;
-    })
-    console.log(filteredAnnounceList);
+    });
 
-    //Display 3 announces if homepage
+
+    // Display 3 announces if homepage
     if (filter === "home") {
         filteredAnnounceList.splice(3);
     }
