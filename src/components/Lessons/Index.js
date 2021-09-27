@@ -10,6 +10,8 @@ const Lessons = () => {
     const disciplines = useSelector((state) => state.lesson.disciplinesList);
     const resources = useSelector((state) => state.lesson.resourcesList);
     const currentDiscipline = useSelector((state) => state.lesson.currentDiscipline);
+    const classroom = useSelector((state) => state.user.classroomGrade);
+    console.log(classroom);
     
 
     useEffect(() => {
@@ -37,7 +39,7 @@ const Lessons = () => {
             <Form disciplines={disciplines} handleChangeDiscipline={handleSelectChange} />
             <section className="resources">
             <h2 className="resources__title">Liste des ressources</h2>
-            {resources.filter((resource) => resource.discipline.name === currentDiscipline).map((filtredResource) => (
+            {resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource) => (
                 <ResourcesList key={filtredResource.id} {...filtredResource} />
             ))}
             </section>
