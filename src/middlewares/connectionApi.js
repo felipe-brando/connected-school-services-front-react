@@ -24,7 +24,7 @@ const connectionApi = (store) => (next) => (action) => {
                     roles: response.data.data.roles,
                     classroomId: classroomId,
                     classroomName: classroomName,
-                    userId: response.data.id,
+                    userId: response.data.data.id,
                 });
             })
             .catch((error) => {

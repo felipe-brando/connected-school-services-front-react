@@ -11,7 +11,7 @@ import './style.scss';
 function Marks() {
 
     const currentMarks = useSelector((state) => state.marks.grade);
-    const userId = useSelector((state) => state.user.user.id);
+    const userId = useSelector((state) => state.user.userId);
 
     const userRole = useSelector((state) => state.user.roles);
     const dispatch = useDispatch();

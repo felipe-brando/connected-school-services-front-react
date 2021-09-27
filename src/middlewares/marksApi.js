@@ -18,7 +18,7 @@ const marksApi = (store) => (next) => (action) => {
   
   if (action.type === 'GET_CURRENT_MARKS') { 
     axios.get(url + "note/sortedbystudents/" + action.id, config)
-    .then((response) => {
+    .then((response) => {      
       store.dispatch({
         type: 'SAVE_CURRENT_MARKS',
         currentMarks: response.data,

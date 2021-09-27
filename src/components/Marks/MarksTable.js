@@ -18,7 +18,7 @@ const MarksTable = ({ marksDataArray }) => {
                 <tr>
                     <td>Mathématiques</td>
                     {marksDataArray.map((markObject) => {
-                        if(markObject.discipline.name==="Mathématiques"){
+                        if(markObject.discipline.name === "Mathématiques"){
                            return ( <td>{markObject.grade}</td>)
                         } return true;
                     })}

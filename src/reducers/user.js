@@ -36,7 +36,7 @@ export const initialState = {
           logged: false,
           token: '',
       };
-      case 'SAVE_USER':
+      case 'SAVE_USER':        
         return {
           ...state,
           logged: true, 
@@ -49,7 +49,7 @@ export const initialState = {
           classroomId: action.classroomId,
           classroom: action.classroomName,
           userId: action.userId
-        };
+        };      
 
       case 'TOGGLE_OPEN':
       return {
