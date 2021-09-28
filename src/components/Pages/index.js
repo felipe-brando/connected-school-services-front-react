@@ -14,9 +14,9 @@ import './style.scss';
 const Pages = () => {
 
     return (
-        <main className="main-content">
+        <div className="pages">
             <Sidebar />
-            <div className="content-page">
+            <div className="pages__content">
                 <Switch>
                     <Route path="/espace-perso/" exact>
                         <DaySchedule />
@@ -36,7 +36,7 @@ const Pages = () => {
                 </Switch>
             </div>
             <MobileBar />
-        </main>
+        </div>
     )
 }
 

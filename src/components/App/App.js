@@ -34,6 +34,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
+      <main className="main-content">
       <Switch>
         <Route path="/" exact>
           <Intro />
@@ -56,6 +57,7 @@ const App = () => {
           <div>404</div>
         </Route>
       </Switch>
+      </main>
       <Footer />
     </div>
   );

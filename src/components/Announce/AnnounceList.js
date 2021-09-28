@@ -54,6 +54,7 @@ const AnnounceList = ({ filter }) => {
                 <Link to="/annonces/categories">Modifier les categories</Link>
                 <h3>{filter}</h3>
             </div>
+            <div>
             <section className="announceList">
 
                 {filteredAnnounceList.map((announceObject) => (
@@ -68,6 +69,7 @@ const AnnounceList = ({ filter }) => {
                     />)
                 )}
             </section>
+            </div>
         </>
     );
 };
