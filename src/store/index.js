@@ -9,6 +9,7 @@ import connectionApi from '../middlewares/connectionApi';
 import scheduleApi from '../middlewares/scheduleApi';
 import disciplineApi from '../middlewares/disciplineApi';
 import lessonApi from '../middlewares/lessonApi';
+import marksApi from '../middlewares/marksApi.js';
 
 // we call each middleware
 const middlewares = applyMiddleware(
@@ -17,6 +18,7 @@ const middlewares = applyMiddleware(
     scheduleApi,
     disciplineApi,
     lessonApi,
+    marksApi,
 );
 
 // on met bout à bout le redux devtools et nos middlewares
