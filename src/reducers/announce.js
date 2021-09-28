@@ -79,18 +79,6 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
             }
-        // case 'SUBMIT_ANNOUNCE': {
-        //     console.log(
-        //         state.newAnnounceTitle,
-        //         state.newAnnouncecontent,
-        //         state.newAnnounceImage,
-        //         state.newAnnounceCategory,
-        //         state.newAnnounceHomework
-        //     );
-        //     return {
-        //         ...state,
-        //     }
-        // }
         case 'CHANGE_INPUT_CATEGORY':
             return {
                 ...state,
@@ -101,6 +89,21 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 categoryList: action.categoryList
             }
+            
+            //MODIFY ANNOUNCE ELEMENTS
+            case 'MODIFY_CURRENT_ANNOUNCE_TITLE':
+            return {
+                ...state,
+                currentAnnounce: {...state.currentAnnounce, title: action.value }
+                } 
+            
+            case 'MODIFY_CURRENT_ANNOUNCE_SELECT': {
+                console.log(action)
+            return {
+                ...state,
+                currentAnnounce: {...state.currentAnnounce, category: [action.value], }
+            }}
+
 
         default:
             return state;

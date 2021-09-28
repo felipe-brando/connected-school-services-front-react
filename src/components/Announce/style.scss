@@ -134,8 +134,14 @@
    .ql-container {
       margin-bottom: 10px;
    }
+   & img{
+      width: 20%;
+   }
 
    &--select {
+      margin-top: 50px;
+   }
+   &--submit{
       margin-top: 50px;
    }
 

@@ -53,6 +53,11 @@ const announceApi = (store) => (next) => (action) => {
           type: 'SAVE_CURRENT_ANNOUNCE',
           currentAnnounce: response.data,
         });
+
+        store.dispatch({
+          type: 'GET_TEXT_EDITOR_VALUE_TO_MODIFY',
+          editorValue: response.data.content,
+        })
       })
       .catch((error) => {
         console.error('SAVE_CURRENT_ANNOUNCE error : ', error);
@@ -120,20 +125,26 @@ const announceApi = (store) => (next) => (action) => {
         console.error('DELETE_ANNOUNCE_BY_ID error : ', error);
       });
   }
-  // if (action.type === 'GET_ANNOUNCE_TO_MODIFY') {
-  //   axios.get(url + "announce/" + action.id, config)
-  //     .then((response) => {
-  //       store.dispatch({
-  //         type: 'SAVE_NEW_ANNOUNCE',
-  //         newAnnounce: response.data,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.error('SAVE_CURRENT_ANNOUNCE error : ', error);
-  //     });
-  // }
 
-
+  if (action.type === 'SUBMIT_MODIFIED_ANNOUNCE') {
+    console.log('envoi annonce pour modification');
+    axios({
+      method: 'PATCH',
+      url: url + "announce/" + action.id,
+      data: {
+        "title": state.announce.currentAnnounce.title,
+        "content": state.textEditor.editorContent,
+        // "images": {
+        //   "name": state.announce.newAnnounceImageName,
+        //   "value": state.announce.newAnnonceImageBase64,
+        // },
+        "category": [state.announce.currentAnnounce.category[0].id]
+      },
+      headers: {
+        Authorization: "Bearer " + token,
+      }
+    }).then((response) => { console.log(response); console.log('ok'); })
+  }
 
   next(action); // dans tous les cas je laisse passer l'action
 };

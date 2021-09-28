@@ -22,8 +22,7 @@ const CategoryList = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        console.log('USEFF categLis');
+    useEffect(() => {        
         dispatch({
             type: 'GET_CATEGORY_LIST'
         })

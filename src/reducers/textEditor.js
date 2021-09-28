@@ -1,5 +1,5 @@
 const initialState = {
-    editorContent:"",
+    editorContent: "",
     editorModifyBaseValue: "",
 };
 
@@ -10,6 +10,11 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 editorContent: action.editorContent,
+            }
+        case 'GET_TEXT_EDITOR_VALUE_TO_MODIFY':
+            return {
+                ...state,
+                editorModifyBaseValue: action.editorValue,
             }
 
         default:

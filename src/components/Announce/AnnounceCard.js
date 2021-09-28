@@ -1,7 +1,7 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types'
-import {imgUrl } from '../../selectors/baseUrl';
+import { imgUrl } from '../../selectors/baseUrl';
 
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
@@ -39,17 +39,16 @@ const AnnounceCard = ({ id, title, content, image, categories, date }) => {
 
             <h3 className="announce__title">{title}</h3>
             <div className="announce__footer">
-                
+
                 {islogged &&
                     <>
                         <Link
                             to={"/annonces/maj/" + id}
-                            data-id={id} className="announceCard__button--modify modify"
+                            className="announceCard__button--modify modify"
                         >Modifier
                 </Link>
                         <button
                             onClick={handleModifyAnnounce}
-                            data-id={id}
                             className="announceCard__button--delete delete"
                         >Supprimer
                 </button>
