@@ -56,12 +56,20 @@ export const initialState = {
       return {
         ...state,
         loginOpen: !state.loginOpen,
+        burgerOpen: false,
       };
+
+      case 'CLOSE_LOGIN_WINDOW':
+        return {
+          ...state,
+          loginOpen: false,
+        };
 
       case 'BURGER_TOGGLE_OPEN':
         return {
           ...state,
           burgerOpen: !state.burgerOpen,
+          loginOpen: false,
         };
 
       case 'MOBILE_MENU_CLOSE':

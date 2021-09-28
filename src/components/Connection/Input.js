@@ -18,7 +18,7 @@ const Input = ({
 
     return (
       <>
-        <label htmlFor={inputId} className="connection-label">
+        <label htmlFor={inputId} className="connection__label">
         {placeholder}
       </label>
       <input
