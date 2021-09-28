@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 import TextEditor from '../TextEditor/TextEditor';
 
@@ -7,6 +8,7 @@ const AddAnnounce = () => {
     //link state
     const titleInputValue = useSelector((state) => state.announce.newAnnounceTitle);
     const categoryList = useSelector((state) => state.announce.categoryList);
+    const [imgUrl, setImgUrl] = useState("");
 
     //Link Dispatch
     const dispatch = useDispatch();
@@ -33,6 +35,7 @@ const AddAnnounce = () => {
         })
     };
     const handleLoadImage = (e) => {
+        console.dir(e.target);
 
         const files = e.target.files;
         const imgName = files[0].name
@@ -40,9 +43,10 @@ const AddAnnounce = () => {
         reader.readAsDataURL(files[0]);
 
         reader.onload = (e) => {
+            //tests
+            setImgUrl(e.target.result);
 
             //console.log('event', e.target.result.replace("data:", "").replace(/^.+,/, ""))
-
             dispatch({
                 type: 'CHANGE_INPUT_IMAGE',
                 value: e.target.value,
@@ -98,6 +102,7 @@ const AddAnnounce = () => {
                 id="img"
                 accept="image/png, image/jpeg"
             />
+            {imgUrl&&<img src={imgUrl} alt="preview" />}
 
             <input type="submit" />
 

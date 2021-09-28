@@ -46,7 +46,6 @@ const reducer = (state = initialState, action = {}) => {
                 currentAnnounce: action.currentAnnounce,
             }
         case 'SAVE_CLASSROOM_ANNOUNCE_LIST': {
-            console.log(action.newAnnounce)
             return {
                 ...state,
                 classroomAnnounces: action.announceList
@@ -68,7 +67,6 @@ const reducer = (state = initialState, action = {}) => {
                 newAnnounceCategoryId: action.value,
             }
         case 'CHANGE_INPUT_IMAGE': {
-            console.log(action);
             return {
                 ...state,
                 newAnnounceImageName: action.imgName,
@@ -89,20 +87,20 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 categoryList: action.categoryList
             }
-            
-            //MODIFY ANNOUNCE ELEMENTS
-            case 'MODIFY_CURRENT_ANNOUNCE_TITLE':
+
+        //MODIFY ANNOUNCE ELEMENTS
+        case 'MODIFY_CURRENT_ANNOUNCE_TITLE':
             return {
                 ...state,
-                currentAnnounce: {...state.currentAnnounce, title: action.value }
-                } 
-            
-            case 'MODIFY_CURRENT_ANNOUNCE_SELECT': {
-                console.log(action)
+                currentAnnounce: { ...state.currentAnnounce, title: action.value }
+            }
+
+        case 'MODIFY_CURRENT_ANNOUNCE_SELECT': {
             return {
                 ...state,
-                currentAnnounce: {...state.currentAnnounce, category: [action.value], }
-            }}
+                currentAnnounce: { ...state.currentAnnounce, category: [action.value], }
+            }
+        }
 
 
         default:

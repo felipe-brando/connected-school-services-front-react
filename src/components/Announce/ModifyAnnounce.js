@@ -20,12 +20,12 @@ const ModifyAnnouce = () => {
             type: 'GET_CATEGORY_LIST',
         });
     }, []);
-    
+
     //Selecting current category after downloading categories list
     useEffect(() => {
         const formSelectOptions = document.querySelector('.addAnnounce__form--select').children;
         const formSelectOptionsArray = [...formSelectOptions];
-        formSelectOptionsArray.map((option) => {            
+        formSelectOptionsArray.map((option) => {
             //set all options to false
             if (option.selected === true) { option.selected = false; }
             //select current announce category if exist
@@ -57,7 +57,7 @@ const ModifyAnnouce = () => {
     const handleSelectChange = (e) => {
         dispatch({
             type: 'MODIFY_CURRENT_ANNOUNCE_SELECT',
-            value: {id: e.target.selectedOptions[0].dataset.id,}
+            value: { id: e.target.selectedOptions[0].dataset.id, }
         })
     };
     const handleLoadImage = (e) => {
@@ -80,7 +80,6 @@ const ModifyAnnouce = () => {
 
     //submit Form Function
     const handleSubmitForm = (e) => {
-        console.log(e);
         e.preventDefault();
         dispatch({
             type: 'SUBMIT_MODIFIED_ANNOUNCE',

@@ -115,7 +115,6 @@ const announceApi = (store) => (next) => (action) => {
   if (action.type === 'DELETE_ANNOUNCE_BY_ID') {
     axios.delete(url + "announce/" + action.id, config)
       .then((response) => {
-        console.log(response);
         store.dispatch({
           type: 'GET_ANNOUNCE_LIST',
           flashMessage: response.data.ok,

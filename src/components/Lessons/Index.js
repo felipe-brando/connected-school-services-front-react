@@ -11,7 +11,7 @@ const Lessons = () => {
     const resources = useSelector((state) => state.lesson.resourcesList);
     const currentDiscipline = useSelector((state) => state.lesson.currentDiscipline);
     const classroom = useSelector((state) => state.user.classroomGrade);
-    console.log(classroom);
+    //console.log(classroom);
     
 
     useEffect(() => {
