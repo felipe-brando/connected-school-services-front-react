@@ -53,7 +53,7 @@ const Connection = () => {
           <AccountMenu handleLogout={logout} handleBtnAccountClick={closeBurgerIcon} />
           :
           <li className="connection__item"> 
-            <button onClick={handleClick} to="#" className="connection__button">
+            <button onClick={handleClick} className="connection__button">
               <span className="connection__icon"><User /></span>
               <span className="connection__text">Connexion</span>
             </button>

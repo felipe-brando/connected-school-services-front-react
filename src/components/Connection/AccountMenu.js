@@ -36,6 +36,7 @@ const AccountMenu = ( { handleLogout, handleBtnAccountClick } ) => {
                     Paramètres
                 </span>
             </Link>
+            <Link to="/">
             <button className="deconnection" onClick={handleLogout}>
                 <span className="dropdown__icon">
                     <Unlock />
@@ -44,6 +45,7 @@ const AccountMenu = ( { handleLogout, handleBtnAccountClick } ) => {
                     Déconnexion
                 </span>
             </button>
+            </Link>
         </div>
     </li>
     )
