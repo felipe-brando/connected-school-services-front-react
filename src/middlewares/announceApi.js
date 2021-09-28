@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { apiUrl } from '../selectors/baseUrl';
 
 const announceApi = (store) => (next) => (action) => {
 
@@ -8,10 +9,10 @@ const announceApi = (store) => (next) => (action) => {
   //config provisoire
   // const url = 'http://adrien-dubois.vpnuser.lan/CSS/css-back/public/api/v1/';
   // const url = 'http://kevin-planchais.vpnuser.lan/Apoth%C3%A9ose/projet-connected-school-services/public/api/v1/';
-  const url = 'http://ec2-3-80-208-180.compute-1.amazonaws.com/projet-connected-school-services/public/api/v1/';
+  const url = apiUrl;
 
 
-  const config = {    
+  const config = {
     headers: {
       Authorization: "Bearer " + token,
     }
@@ -87,47 +88,22 @@ const announceApi = (store) => (next) => (action) => {
 
   //---POST Requests
   if (action.type === 'SUBMIT_ANNOUNCE') {
-
-    //**-------Tests------**//
-
-    console.log(state.announce.newAnnounceTitle,
-       "et", state.announce.newAnnonceImageFile,
-       "et", state.announce.newAnnounceCategoryId,
-       "et", state.textEditor.editorContent );
-
-    const AnnounceFormData = new FormData();
-    AnnounceFormData.append("image", state.announce.newAnnonceImageFile);
-    AnnounceFormData.append("title", state.announce.newAnnounceTitle);
-    AnnounceFormData.append("content", state.announce.newAnnounceContent);
-    AnnounceFormData.append("category", state.announce.newAnnounceCategoryId)   
-
-    // axios({
-    //   method: "POST",
-    //   url: url + "announce/",
-    //   data: AnnounceFormData,
-    //   headers: {
-    //     Authorization: "Bearer " + token,
-    //     'Content-Type': 'multipart/form-data; boundary=axiosFromCSS'
-
-    //   }
-    // })
-
-
-    //**--------------- */
-
-    //   axios({
-    //     method: 'POST',
-    //     url: url + "announce/",
-    //     data: {
-    //       "title": state.announce.newAnnounceTitle,
-    //       "content": state.announce.newAnnounceContent,
-    //       "image": state.announce.newAnnounceImage,
-    //       "category": []
-    //     },
-    //     headers: {
-    //       Authorization: "Bearer " + token,
-    //     }
-    //   }).then((response) => {console.log(response);console.log('ok');})
+    axios({
+      method: 'POST',
+      url: url + "announce/",
+      data: {
+        "title": state.announce.newAnnounceTitle,
+        "content": state.textEditor.editorContent,
+        "images": {
+          "name": state.announce.newAnnounceImageName,
+          "value": state.announce.newAnnonceImageBase64,
+        },
+        "category": [state.announce.newAnnounceCategoryId]
+      },
+      headers: {
+        Authorization: "Bearer " + token,
+      }
+    }).then((response) => { console.log(response); console.log('ok'); })
   }
 
   //---DELETE and MODIFY requests

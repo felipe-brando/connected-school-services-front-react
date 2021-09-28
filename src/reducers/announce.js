@@ -20,11 +20,10 @@ const initialState = {
     },
     newAnnounceTitle: '',
     newAnnounceContent: '',
-    newAnnounceImage: '',
-    newAnnonceImageFile: '',
     newAnnounceCategoryId: 0,
     newAnnounceHomework: 'ok',
-
+    newAnnounceImageName: '',
+    newAnnonceImageBase64: '',
     newCategoryInputValue: '',
 
     categoryList: [],
@@ -49,9 +48,10 @@ const reducer = (state = initialState, action = {}) => {
         case 'SAVE_CLASSROOM_ANNOUNCE_LIST': {
             console.log(action.newAnnounce)
             return {
-                 ...state,
-                 classroomAnnounces: action.announceList
-            }}
+                ...state,
+                classroomAnnounces: action.announceList
+            }
+        }
         case 'CHANGE_INPUT_TITLE':
             return {
                 ...state,
@@ -67,13 +67,14 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 newAnnounceCategoryId: action.value,
             }
-        case 'CHANGE_INPUT_IMAGE': { 
-            //console.log(action);
+        case 'CHANGE_INPUT_IMAGE': {
+            console.log(action);
             return {
                 ...state,
-                newAnnounceImage: action.value,
-                newAnnonceImageFile: action.fileValue,
-            }}
+                newAnnounceImageName: action.imgName,
+                newAnnonceImageBase64: action.fileValue,
+            }
+        }
         case 'CHANGE_INPUT_HOMEWORK':
             return {
                 ...state,

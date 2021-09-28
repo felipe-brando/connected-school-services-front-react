@@ -1,7 +1,10 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import schoolPicture from '../../assets/img/school-small.jpeg'
 import PropTypes from 'prop-types'
+import {imgUrl } from '../../selectors/baseUrl';
+
+import schoolPicture from '../../assets/img/school-small.jpeg'
+
 
 const AnnounceCard = ({ id, title, content, image, categories, date }) => {
     const islogged = useSelector((state) => state.user.logged);
@@ -31,7 +34,7 @@ const AnnounceCard = ({ id, title, content, image, categories, date }) => {
             </p>
 
             <NavLink to={"/annonces/" + id} className="announce__image--link">
-                <img src={image[0] === 'h' ? image : schoolPicture} className="announce--img" alt="" />
+                <img src={image[0] === '' ? schoolPicture : imgUrl + image} className="announce--img" alt="" />
             </NavLink>
 
             <h3 className="announce__title">{title}</h3>

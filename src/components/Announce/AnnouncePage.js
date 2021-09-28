@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-
+import { imgUrl } from '../../selectors/baseUrl'
 
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
@@ -26,6 +26,7 @@ const AnnouncePage = () => {
     }
 
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch({
             type: 'GET_ANNOUNCE_BY_ID',
@@ -33,6 +34,12 @@ const AnnouncePage = () => {
         });
 
     }, []);
+
+    useEffect(() => {
+        //could use dompurify to filter content to securise innerHTML
+        const announceContent = document.querySelector('.announce__content');
+        announceContent.innerHTML = currentAnnounce.content;
+    }, [currentAnnounce])
 
     return (
         <section className="announcePage">
@@ -44,13 +51,12 @@ const AnnouncePage = () => {
                 </Link>)}
             </p>
             <img
-                src={currentAnnounce.image[0] === 'h' ? currentAnnounce.image : schoolPicture}
+                src={currentAnnounce.image[0] === '' ? schoolPicture : imgUrl + currentAnnounce.image}
                 alt=""
                 className="announcePage__img"
             />
-            
             <h1 className="announcePage__title">{currentAnnounce.title}</h1>
-            <p className="announce__content">{currentAnnounce.content}</p>
+            <p className="announce__content" >{currentAnnounce.content} </p>
             <span className="announcePage__date">{currentAnnounce.date}</span>
             {islogged && <>
                 <Link

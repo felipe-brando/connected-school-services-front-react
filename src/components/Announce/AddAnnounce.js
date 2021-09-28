@@ -1,18 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 
-<<<<<<< HEAD
 import TextEditor from '../TextEditor/TextEditor';
-=======
-import { convertImgtoBase64 } from '../../selectors/imgToStringBase64';
->>>>>>> feature/imgtoB64
 
 const AddAnnounce = () => {
     //link state
     const titleInputValue = useSelector((state) => state.announce.newAnnounceTitle);
-
-    // const categoryInputValue = useSelector((state) => state.announce.newAnnounceCategory);
-    //const imageInputValue = useSelector((state) => state.announce.newAnnounceImage);
     const categoryList = useSelector((state) => state.announce.categoryList);
 
     //Link Dispatch
@@ -41,13 +34,23 @@ const AddAnnounce = () => {
     };
     const handleLoadImage = (e) => {
 
-        convertImgtoBase64(e.target.files[0]);
+        const files = e.target.files;
+        const imgName = files[0].name
+        const reader = new FileReader();
+        reader.readAsDataURL(files[0]);
 
-        // dispatch({
-        //     type: 'CHANGE_INPUT_IMAGE',
-        //     value: e.target.value,
-        //     fileValue: e.target.files[0],
-        // })
+        reader.onload = (e) => {
+
+            //console.log('event', e.target.result.replace("data:", "").replace(/^.+,/, ""))
+
+            dispatch({
+                type: 'CHANGE_INPUT_IMAGE',
+                value: e.target.value,
+                fileValue: e.target.result,
+                imgName: imgName
+            })
+        }
+
     }
 
     //submit Form Function
@@ -75,11 +78,11 @@ const AddAnnounce = () => {
             <label className="addAnnounce__form--label" htmlFor="content">Contenu </label>
             <TextEditor />
 
-            <select className="addAnnounce__form--select" onChange={handleSelectChange}>
+            <select required className="addAnnounce__form--select" onChange={handleSelectChange}>
                 <option value="">Choisir une catégorie</option>
                 {
                     categoryList.map((categoryObject) => (
-                        <option key={categoryObject.id} data-id={categoryObject.id}>
+                        <option value={categoryObject.id} key={categoryObject.id} data-id={categoryObject.id}>
                             {categoryObject.name}
                         </option>
                     )
