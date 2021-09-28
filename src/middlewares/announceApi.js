@@ -11,7 +11,7 @@ const announceApi = (store) => (next) => (action) => {
   const url = 'http://ec2-3-80-208-180.compute-1.amazonaws.com/projet-connected-school-services/public/api/v1/';
 
 
-  const config = {
+  const config = {    
     headers: {
       Authorization: "Bearer " + token,
     }

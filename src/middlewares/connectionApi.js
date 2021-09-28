@@ -16,8 +16,8 @@ const connectionApi = (store) => (next) => (action) => {
                 //conditionnal variable when ROLE_ADMIN classroom is null 
                 const classroomId = response.data.data.classroom ? response.data.data.classroom.id : [];
                 const classroomName = response.data.data.classroom ? response.data.data.classroom.grade+"ème "+response.data.data.classroom.letter.toUpperCase() : "";
-                const classroomGrade = response.data.data.classroom.grade+"ème";
-
+                const classroomGrade = response.data.data.classroom ? response.data.data.classroom.grade+"ème" : "0";
+                
                 //api.defaults.headers.common.Authorization = `bearer ${response.data.token}`;
                 store.dispatch({
                     type: 'SAVE_USER',

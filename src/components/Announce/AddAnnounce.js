@@ -1,7 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 
+<<<<<<< HEAD
 import TextEditor from '../TextEditor/TextEditor';
+=======
+import { convertImgtoBase64 } from '../../selectors/imgToStringBase64';
+>>>>>>> feature/imgtoB64
 
 const AddAnnounce = () => {
     //link state
@@ -36,11 +40,14 @@ const AddAnnounce = () => {
         })
     };
     const handleLoadImage = (e) => {
-        dispatch({
-            type: 'CHANGE_INPUT_IMAGE',
-            value: e.target.value,
-            fileValue: e.target.files[0],
-        })
+
+        convertImgtoBase64(e.target.files[0]);
+
+        // dispatch({
+        //     type: 'CHANGE_INPUT_IMAGE',
+        //     value: e.target.value,
+        //     fileValue: e.target.files[0],
+        // })
     }
 
     //submit Form Function
