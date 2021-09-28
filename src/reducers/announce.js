@@ -102,6 +102,14 @@ const reducer = (state = initialState, action = {}) => {
             }
         }
 
+        case 'MODIFY_CURRENT_IMAGE': {
+            console.log('ok');
+            return {
+                ...state,
+                currentAnnounce: { ...state.currentAnnounce, image: action.fileValue, }
+            }
+        }
+
 
         default:
             return state;

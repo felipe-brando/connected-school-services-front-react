@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom'
 import TextEditor from '../TextEditor/TextEditor';
@@ -10,6 +10,9 @@ const ModifyAnnouce = () => {
     const categoryList = useSelector((state) => state.announce.categoryList);
     const { id } = useParams();
     const dispatch = useDispatch();
+
+    const [currentImage, ModifyCurrentImage] = useState("");
+    console.log(currentImage);
 
     useEffect(() => {
         dispatch({
@@ -60,7 +63,7 @@ const ModifyAnnouce = () => {
             value: { id: e.target.selectedOptions[0].dataset.id, }
         })
     };
-    const handleLoadImage = (e) => {
+    const handleChangeImage = (e) => {
 
         const files = e.target.files;
         const imgName = files[0].name
@@ -68,9 +71,10 @@ const ModifyAnnouce = () => {
         reader.readAsDataURL(files[0]);
 
         reader.onload = (e) => {
-            //console.log('event', e.target.result.replace("data:", "").replace(/^.+,/, ""))
+            ModifyCurrentImage(e.target.result);
+
             dispatch({
-                type: 'CHANGE_INPUT_IMAGE',
+                type: 'MODIFY_CURRENT_IMAGE',
                 value: e.target.value,
                 fileValue: e.target.result,
                 imgName: imgName
@@ -105,9 +109,15 @@ const ModifyAnnouce = () => {
                 )
                 )}
             </select>
-            {/* <label htmlFor="file">Choisir une image</label>
-            <input required type="file" name="img" id="img" accept="image/png, image/jpeg" /> */}
-            <img src={imgUrl + currentAnnounce.image} alt="annonce" />
+            <label htmlFor="file">Modifier l'image</label>
+            <input onChange={handleChangeImage} required type="file" name="img" id="img" accept="image/png, image/jpeg" />
+
+            {/* switch between local and server image preview when modifying source.
+             All server's files-img-name begin with number. if it's a letter it displays local image(without baseUrl)*/}
+            {currentAnnounce.image[0] !== "d" && <img src={imgUrl + currentAnnounce.image} alt="annonce" />}
+            {currentImage && <img src={currentAnnounce.image} alt="annonce" />}
+
+
             <input className="addAnnounce__form--submit" type="submit" />
 
         </form>

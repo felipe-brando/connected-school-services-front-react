@@ -8,6 +8,7 @@ const AddAnnounce = () => {
     //link state
     const titleInputValue = useSelector((state) => state.announce.newAnnounceTitle);
     const categoryList = useSelector((state) => state.announce.categoryList);
+    //local state only to display selected image preview
     const [imgUrl, setImgUrl] = useState("");
 
     //Link Dispatch

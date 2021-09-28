@@ -13,6 +13,9 @@ const AnnounceList = ({ filter }) => {
     // let variable to splice array to limit to 3 announces displayed at home page
     let announceList = useSelector((state) => state.announce.announceList);
     const logged = useSelector((state) => state.user.logged);
+    const userRole = useSelector((state) => state.user.roles);
+    console.log(userRole);
+
 
     const dispatch = useDispatch();
 
@@ -37,7 +40,7 @@ const AnnounceList = ({ filter }) => {
     if (filter === "home") {
         filteredAnnounceList.splice(3);
     }
-    //if filter by category but not connected
+    //if try to filter announces by category but user is not connected
     if (filter === 'categories' && !logged) {
         return (
             <section>
@@ -48,12 +51,14 @@ const AnnounceList = ({ filter }) => {
     }
 
     return (
-        <>
+        <>  {
+            userRole[0] === "ROLE_ADMIN" &&
             <div>
                 <Link to="/annonces/ajout">Ajouter une Annonce</Link>
                 <Link to="/annonces/categories">Modifier les categories</Link>
                 <h3>{filter}</h3>
             </div>
+        }
             <section className="announceList">
 
                 {filteredAnnounceList.map((announceObject) => (
@@ -65,6 +70,7 @@ const AnnounceList = ({ filter }) => {
                         image={announceObject.image}
                         categories={announceObject.category}
                         date={announceObject.createdAt}
+                        userRole={userRole}
                     />)
                 )}
             </section>

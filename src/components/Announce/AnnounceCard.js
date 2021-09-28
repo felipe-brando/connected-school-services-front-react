@@ -6,9 +6,11 @@ import { imgUrl } from '../../selectors/baseUrl';
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
 
-const AnnounceCard = ({ id, title, content, image, categories, date }) => {
+const AnnounceCard = ({ id, title, content, image, categories, date, userRole }) => {
     const islogged = useSelector((state) => state.user.logged);
     const dispatch = useDispatch();
+
+
 
     const handleModifyAnnounce = (e) => {
         const annouceId = parseInt(e.target.dataset.id);
@@ -40,7 +42,7 @@ const AnnounceCard = ({ id, title, content, image, categories, date }) => {
             <h3 className="announce__title">{title}</h3>
             <div className="announce__footer">
 
-                {islogged &&
+                {userRole[0] === "ROLE_ADMIN" &&
                     <>
                         <Link
                             to={"/annonces/maj/" + id}

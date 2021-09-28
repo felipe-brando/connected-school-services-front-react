@@ -133,10 +133,10 @@ const announceApi = (store) => (next) => (action) => {
       data: {
         "title": state.announce.currentAnnounce.title,
         "content": state.textEditor.editorContent,
-        // "images": {
-        //   "name": state.announce.newAnnounceImageName,
-        //   "value": state.announce.newAnnonceImageBase64,
-        // },
+        "images": {
+          "name": "",
+          "value": state.announce.currentAnnounce.image,
+         },
         "category": [state.announce.currentAnnounce.category[0].id]
       },
       headers: {
