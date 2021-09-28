@@ -1,6 +1,5 @@
 // == Import
 import './style.scss';
-import image from '../../assets/img/school.jpg';
 // == Composant
 const Intro = () => (
   <section className="intro">

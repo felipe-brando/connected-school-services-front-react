@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-
 import ScheduleTable from './ScheduleTable';
-import DaySchedule from './DaySchedule';
 
 function Schedule() {
     const currentSchedule = useSelector((state => state.schedule.schedule));

@@ -2,7 +2,6 @@
 import { Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import Connection from '../Connection/index.js';
 import Header from '../Header/index.js';
 import About from '../About/index.js';
 import Contact from '../Contact/index.js';

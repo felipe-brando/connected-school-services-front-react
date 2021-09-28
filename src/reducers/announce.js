@@ -22,14 +22,14 @@ const initialState = {
     newAnnounceContent: '',
     newAnnounceImage: '',
     newAnnonceImageFile: '',
-    newAnnounceCategory: 'test',
+    newAnnounceCategoryId: 0,
     newAnnounceHomework: 'ok',
 
     newCategoryInputValue: '',
 
     categoryList: [],
 
-    // Homewords initial state
+    // Homeworks initial state
     classroomAnnounces: [],
 };
 
@@ -62,10 +62,10 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 newAnnounceContent: action.value
             }
-        case 'CHANGE_SELECT_OPTION':
+        case 'CHANGE_SELECT_ANNOUNCE':
             return {
                 ...state,
-                newAnnounceCategory: action.value,
+                newAnnounceCategoryId: action.value,
             }
         case 'CHANGE_INPUT_IMAGE': { 
             //console.log(action);

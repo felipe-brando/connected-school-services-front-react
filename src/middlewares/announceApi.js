@@ -90,14 +90,16 @@ const announceApi = (store) => (next) => (action) => {
 
     //**-------Tests------**//
 
-    console.log(state.announce.newAnnounceTitle, "et", state.announce.newAnnonceImageFile);
+    console.log(state.announce.newAnnounceTitle,
+       "et", state.announce.newAnnonceImageFile,
+       "et", state.announce.newAnnounceCategoryId,
+       "et", state.textEditor.editorContent );
 
     const AnnounceFormData = new FormData();
     AnnounceFormData.append("image", state.announce.newAnnonceImageFile);
     AnnounceFormData.append("title", state.announce.newAnnounceTitle);
     AnnounceFormData.append("content", state.announce.newAnnounceContent);
-
-    console.log(AnnounceFormData);
+    AnnounceFormData.append("category", state.announce.newAnnounceCategoryId)   
 
     // axios({
     //   method: "POST",
