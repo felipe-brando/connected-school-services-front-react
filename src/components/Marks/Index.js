@@ -40,6 +40,4 @@ function Marks() {
     );
 }
 
-
-
 export default Marks;
