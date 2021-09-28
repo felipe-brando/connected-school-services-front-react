@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 
+import { convertImgtoBase64 } from '../../selectors/imgToStringBase64';
+
 const AddAnnounce = () => {
     //link state
     const titleInputValue = useSelector((state) => state.announce.newAnnounceTitle);
@@ -41,11 +43,14 @@ const AddAnnounce = () => {
         })
     };
     const handleLoadImage = (e) => {
-        dispatch({
-            type: 'CHANGE_INPUT_IMAGE',
-            value: e.target.value,
-            fileValue: e.target.files[0],
-        })
+
+        convertImgtoBase64(e.target.files[0]);
+
+        // dispatch({
+        //     type: 'CHANGE_INPUT_IMAGE',
+        //     value: e.target.value,
+        //     fileValue: e.target.files[0],
+        // })
     }
 
     //submit Form Function
