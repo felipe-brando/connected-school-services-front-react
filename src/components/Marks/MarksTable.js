@@ -10,12 +10,8 @@ const MarksTable = ({ marksDataArray }) => {
         <table className = "table__content">
             <thead>
                 <tr>
-<<<<<<< HEAD
-                    <th colSpan="2">Note par matière</th>
-=======
                     <th>Matières</th>
                     <th>Notes</th>
->>>>>>> feature/marks2
                 </tr>
             </thead>
             <tbody>
