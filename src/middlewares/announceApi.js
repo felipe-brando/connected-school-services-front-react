@@ -110,7 +110,8 @@ const announceApi = (store) => (next) => (action) => {
       }
     }).then((response) => {
       //TODO - flash message if response is ok, delete input value (and go back to previous page ?)
-      console.log(response); console.log('ok');
+      console.log(response);
+      console.log('flash message envoi annonce');
     })
   }
 
@@ -129,7 +130,6 @@ const announceApi = (store) => (next) => (action) => {
   }
 
   if (action.type === 'SUBMIT_MODIFIED_ANNOUNCE') {
-    console.log('envoi annonce pour modification');
     axios({
       method: 'PATCH',
       url: url + "announce/" + action.id,
@@ -145,7 +145,10 @@ const announceApi = (store) => (next) => (action) => {
       headers: {
         Authorization: "Bearer " + token,
       }
-    }).then((response) => { console.log(response); console.log('ok'); })
+    }).then((response) => {
+      console.log(response);
+      console.log('envoi annonce pour modification');
+    })
   }
 
   next(action); // dans tous les cas je laisse passer l'action

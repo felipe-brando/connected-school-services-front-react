@@ -14,9 +14,7 @@ const AnnounceList = ({ filter }) => {
     let announceList = useSelector((state) => state.announce.announceList);
     const logged = useSelector((state) => state.user.logged);
     const userRole = useSelector((state) => state.user.roles);
-    console.log(userRole);
-
-
+    
     const dispatch = useDispatch();
 
     useEffect(() => {

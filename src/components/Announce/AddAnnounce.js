@@ -34,8 +34,9 @@ const AddAnnounce = () => {
             value: e.target.selectedOptions[0].dataset.id,
         })
     };
+
     const handleLoadImage = (e) => {
-        console.dir(e.target);
+       // console.dir(e.target);
 
         const files = e.target.files;
         const imgName = files[0].name

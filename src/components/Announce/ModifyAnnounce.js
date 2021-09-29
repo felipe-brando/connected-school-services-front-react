@@ -12,8 +12,7 @@ const ModifyAnnouce = () => {
     const dispatch = useDispatch();
 
     const [currentImage, ModifyCurrentImage] = useState("");
-    console.log(currentImage);
-
+    
     useEffect(() => {
         dispatch({
             type: 'GET_ANNOUNCE_BY_ID',
