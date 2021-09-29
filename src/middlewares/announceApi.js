@@ -108,7 +108,10 @@ const announceApi = (store) => (next) => (action) => {
       headers: {
         Authorization: "Bearer " + token,
       }
-    }).then((response) => { console.log(response); console.log('ok'); })
+    }).then((response) => {
+      //TODO - flash message if response is ok, delete input value (and go back to previous page ?)
+      console.log(response); console.log('ok');
+    })
   }
 
   //---DELETE and MODIFY requests
@@ -136,7 +139,7 @@ const announceApi = (store) => (next) => (action) => {
         "images": {
           "name": "",
           "value": state.announce.currentAnnounce.image,
-         },
+        },
         "category": [state.announce.currentAnnounce.category[0].id]
       },
       headers: {

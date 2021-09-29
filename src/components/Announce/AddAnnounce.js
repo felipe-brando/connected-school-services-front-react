@@ -14,8 +14,7 @@ const AddAnnounce = () => {
     //Link Dispatch
     const dispatch = useDispatch();
 
-
-    useEffect(() => {
+    useEffect(() => {        
         dispatch({
             type: 'GET_CATEGORY_LIST',
         });
@@ -103,7 +102,7 @@ const AddAnnounce = () => {
                 id="img"
                 accept="image/png, image/jpeg"
             />
-            {imgUrl&&<img src={imgUrl} alt="preview" />}
+            {imgUrl && <img src={imgUrl} alt="preview" />}
 
             <input type="submit" />
 

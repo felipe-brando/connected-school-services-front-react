@@ -35,7 +35,7 @@ const DaySchedule = () => {
             <table>
                 <thead>
                     <tr>
-                        <th colspan="6">Emploi du temps du jour</th>
+                        <th colSpan="6">Emploi du temps du jour</th>
                     </tr>
                 </thead>
                 <tbody>
