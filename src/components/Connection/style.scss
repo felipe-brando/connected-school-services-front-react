@@ -115,6 +115,7 @@
     width: 19em;
     transition: 0.4s transform cubic-bezier(.25,.52,.72,.8);
     box-shadow: 0 2em 2em rgb(34, 34, 34, 20%);
+    z-index: 1000;
     
 
     @media screen and (min-width: 992px) { 

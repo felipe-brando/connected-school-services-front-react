@@ -16,9 +16,15 @@ const MobileBar = ()  => {
             <nav className='mobileBar__menu'>
                 {roleStudent && // if I am a student
                 <ul className='mobileBar__list'>
+                    <NavLink className='mobileBar__link' to="/espace-perso" exact>
+                        <li className="mobileBar__item">
+                            <span className='mobileBar__icon'><Calendar /></span>
+                            <span className='mobileBar__text'>Espace <br/>perso</span>
+                        </li> 
+                    </NavLink> 
                     <NavLink className='mobileBar__link' to="/espace-perso/mon-emploi-du-temps" exact>
                         <li className="mobileBar__item">
-                            <span className='mobileBar__icon'><Calendar value={{color: '#fff'}} /></span>
+                            <span className='mobileBar__icon'><Calendar /></span>
                             <span className='mobileBar__text'>Emploi <br/> du temps</span>
                         </li> 
                     </NavLink>   

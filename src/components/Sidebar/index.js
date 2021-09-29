@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
 
 
-import { Calendar, Users, Book, Server, Award } from 'react-feather';
+import { Calendar, Users, Book, Server, Award, User } from 'react-feather';
 
 import './style.scss';
 
@@ -16,9 +16,15 @@ const Sidebar = ()  => {
             <nav className='sidebar__menu'>
                 {roleStudent && // if I am a student
                 <ul className='sidebar__list'>
+                    <NavLink className='sidebar__link' to="/espace-perso" exact>
+                        <li className="sidebar__item">
+                            <span className='sidebar__icon'><User /></span>
+                            <span className='sidebar__text'>Espace perso</span>
+                        </li> 
+                    </NavLink>   
                     <NavLink className='sidebar__link' to="/espace-perso/mon-emploi-du-temps" exact>
                         <li className="sidebar__item">
-                            <span className='sidebar__icon'><Calendar value={{color: '#fff'}} /></span>
+                            <span className='sidebar__icon'><Calendar /></span>
                             <span className='sidebar__text'>Mon emploi du temps</span>
                         </li> 
                     </NavLink>   
