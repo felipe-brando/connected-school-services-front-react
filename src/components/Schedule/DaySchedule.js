@@ -1,6 +1,8 @@
 import {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import './style.scss';
+
 const DaySchedule = () => {
      
     //Get data by its own to be independant from global schedule
@@ -32,27 +34,24 @@ const DaySchedule = () => {
         return (<h1>C'est le week-end, on travaille un peu et on se repose beaucoup 😎.</h1>)
     } else {
         return (
-            <table>
+            <table className = "table-schedule">
                 <thead>
-                    <tr>
-                        <th colSpan="6">Emploi du temps du jour</th>
+                    <tr className = "table-schedule__title">
+                        <th colSpan="2">Emploi du temps du jour</th>
+                    </tr>
+                    <tr className = "table-schedule__subtitle">
+                        <th rowSpan="1">Horaires</th>
+                        <th className = "schedule__subtitle--day" rowSpan="2">{dayName[toDayNumber]}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Horaires</td>
-                        <td>{dayName[toDayNumber]}</td>
-
-                    </tr>
                     {
                         scheduleTimeSlot.map((timeslot) => {
                             return (
-                                <>
                                     <tr>
                                         <td>{timeslot}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>|</td>
+
+                                        <td>
                                         {dayNumber.map((dayInt) => {
                                             let mapResult = false;
 
@@ -65,8 +64,8 @@ const DaySchedule = () => {
                                             })
                                             if (mapResult) { return (<td>{currentDiscipline}</td>) } else { return (<td> - </td>) }
                                         })}
+                                        </td>
                                     </tr>
-                                </>
                             )
                         })}
 

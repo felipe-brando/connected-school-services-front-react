@@ -31,18 +31,18 @@
 //     background-color: #eee;
 // }
 
-@media only screen and (max-width: 992px) {
+//@media only screen and (max-width: 992px) {
 
-    table, thead, tbody, tr, th, td {
-        display: block;
-    }
+    //table, thead, tbody, tr, th, td {
+    //   display: block;
+    //}
 
-    td {
-        padding-left: 150px;
-        position: relative;
-        margin-top: -1px;
-        background-color: #fff;
-    }
+    //td {
+    //   padding-left: 150px;
+    //   position: relative;
+    //    margin-top: -1px;
+    //    background-color: #fff;
+    //}
 
     // td::nth-child(odd) {
     //     background-color: #eee;
@@ -60,11 +60,11 @@
     //     font-weight: bold;
     // }
 
-    tr {
-        margin-bottom: 1rem;
-    }
+    //tr {
+     //   margin-bottom: 1rem;
+    //}
 
-    th + td::before {
-        display: none;
-    }
-}
+    //th + td::before {
+    //    display: none;
+    //}
+//}

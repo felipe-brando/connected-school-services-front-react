@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ScheduleTable from './ScheduleTable';
 
+import './style.scss';
+
 function Schedule() {
     const currentSchedule = useSelector((state => state.schedule.schedule));
     const userClassroomId = useSelector((state) => state.user.classroomId);

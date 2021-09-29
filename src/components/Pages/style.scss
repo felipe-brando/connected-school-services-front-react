@@ -1,20 +1,22 @@
 .pages {
-    display: flex;
-    height: 100vh;   
+    display: flex; 
     flex-wrap: wrap;
-
-    &__content {  
-         width:100%
-    }
+ 
 
     @media screen and (min-width: 992px) { 
-        .pages {
-            display: flex;
-            height: 100vh;   
-        }
-    
-        &__content{
-            width:80%
-        }
+        flex-wrap: nowrap;
     }
+
+    &__content {  
+         width:100%;
+         margin: 2rem;
+
+         @media screen and (min-width: 992px) { 
+            width:80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+         }
+    }
+
 }

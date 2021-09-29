@@ -9,7 +9,7 @@ const ScheduleTable = ({ tableDataTab, userClassroomId, userClassroomName }) => 
     const classroomSchedule = tableDataTab.filter((timeSlot) => { return timeSlot.classroom.id === userClassroomId });
     
     return (
-        <table>
+        <table className="global-schedule">
             <thead>
                 <tr>
                     <th colspan="6">Emploi du temps : {userClassroomName}</th>
