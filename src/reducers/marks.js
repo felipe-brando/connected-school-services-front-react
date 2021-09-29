@@ -11,6 +11,7 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 grade: action.currentMarks,
+                discipline: action.currentMeasures,
             }
         default:
             return state;

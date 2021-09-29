@@ -10,6 +10,7 @@ import './style.scss';
 
 function Marks() {
 
+    const disciplineList = useSelector ((state) => state.lesson.disciplinesList);
     const currentMarks = useSelector((state) => state.marks.grade);
     const userId = useSelector((state) => state.user.userId);
 
@@ -21,6 +22,9 @@ function Marks() {
             type: 'GET_CURRENT_MARKS',
             id : userId,
         });
+        dispatch({
+            type: 'FETCH_DISCIPLINES'
+        });
     }, [])
 
     return (
@@ -31,6 +35,7 @@ function Marks() {
                     <h1> ÉLÈVE </h1> :
                     <section className="marks__section">
                         <MarksTable
+                        measureDataArray={disciplineList}
                         marksDataArray={currentMarks}                  
                         // disciplineDataArray={currentdiscipline}                  
                         />                      

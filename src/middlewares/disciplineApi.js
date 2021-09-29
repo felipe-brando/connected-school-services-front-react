@@ -17,7 +17,7 @@ const disciplineApi = (store) => (next) => (action) => {
       }
     }
   
-  if (action.type === 'FETCH_DISCIPLINES') { 
+  if (action.type === 'FETCH_DISCIPLINES') {     
     axios.get(url + "discipline", config)
     .then((response) => {
       store.dispatch({
