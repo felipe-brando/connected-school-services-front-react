@@ -1,3 +1,5 @@
+import './style.scss';
+
 const MarksTable = ({ marksDataArray }) => {
     // //let variable to set the student current Marks by discipline
     // let currentMarks = "";
@@ -5,44 +7,81 @@ const MarksTable = ({ marksDataArray }) => {
     // const userMarks = marksDataArray.filter((marksSlot) => { return marksSlot.user.grade === userGrade});
     
     return (
-        <table>
+        <table className = "table__content">
             <thead>
                 <tr>
+<<<<<<< HEAD
                     <th colSpan="2">Note par matière</th>
+=======
+                    <th>Matières</th>
+                    <th>Notes</th>
+>>>>>>> feature/marks2
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Matières</td>
-                </tr>
-                <tr>
-                    <td>Mathématiques</td>
+                    <td className ="table__content--measure">Mathématiques</td>
                     {marksDataArray.map((markObject) => {
                         if(markObject.discipline.name === "Mathématiques"){
-                           return ( <td>{markObject.grade}</td>)
+                           return ( <td  className ="table__content--marks">{markObject.grade}</td>)
                         } return true;
                     })}
                 </tr>
                 <tr>
-                    <td>Français</td>
+                    <td  className ="table__content--measure">Français</td>
+                    {marksDataArray.map((markObject) => {
+                        if(markObject.discipline.name === "Français"){
+                           return ( <td className ="table__content--marks">{markObject.grade}</td>)
+                        } return true;
+                    })}
                 </tr>
                 <tr>
-                    <td>Histoire/Géographie</td>
+                    <td className ="table__content--measure">Histoire/Géographie</td>
+                    {marksDataArray.map((markObject) => {
+                        if(markObject.discipline.name === "Histoire-Géo"){
+                           return ( <td className ="table__content--marks">{markObject.grade}</td>)
+                        } return true;
+                    })}
                 </tr>
                 <tr>
-                    <td>SVT</td>
+                    <td className ="table__content--measure">SVT</td>
+                    {marksDataArray.map((markObject) => {
+                        if(markObject.discipline.name === "SVT"){
+                           return ( <td className ="table__content--marks">{markObject.grade}</td>)
+                        } return true;
+                    })}
                 </tr>
                 <tr>
-                    <td>Sciences Physiques</td>
+                    <td className ="table__content--measure">Sciences Physiques</td>
+                    {marksDataArray.map((markObject) => {
+                        if(markObject.discipline.name === "Mathématiques"){
+                           return ( <td className ="table__content--marks">{markObject.grade}</td>)
+                        } return true;
+                    })}
                 </tr>
                 <tr>
-                    <td>LV1</td>
+                    <td className ="table__content--measure">LV1</td>
+                    {marksDataArray.map((markObject) => {
+                        if(markObject.discipline.name === "Langue Vivante 1"){
+                           return ( <td className ="table__content--marks">{markObject.grade}</td>)
+                        } return true;
+                    })}
                 </tr>
                 <tr>
-                    <td>LV2</td>
+                    <td className ="table__content--measure">Technologie</td>
+                    {marksDataArray.map((markObject) => {
+                        if(markObject.discipline.name === "Technologie"){
+                           return ( <td className ="table__content--marks">{markObject.grade}</td>)
+                        } return true;
+                    })}
                 </tr>
                 <tr>
-                    <td>EPS</td>
+                    <td className ="table__content--measure">EPS</td>
+                    {marksDataArray.map((markObject) => {
+                        if(markObject.discipline.name === "EPS"){
+                           return ( <td className ="table__content--marks">{markObject.grade}</td>)
+                        } return true;
+                    })}
                 </tr>
                
             </tbody>
