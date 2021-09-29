@@ -78,7 +78,6 @@ const AddAnnounce = () => {
                 id="title"
             />
 
-
             <label className="addAnnounce__form--label" htmlFor="content">Contenu </label>
             <TextEditor />
 
