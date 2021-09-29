@@ -51,7 +51,9 @@ const AnnounceList = ({ filter }) => {
     }
 
     return (
-        <>  {
+        <>  
+        {filter === "Actualités" && <h1 className="announces-page__title">Les Actualités</h1> }
+        {
             userRole[0] === "ROLE_ADMIN" &&
             <div>
                 <Link to="/annonces/ajout">Ajouter une Annonce</Link>
