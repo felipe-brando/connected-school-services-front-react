@@ -1,21 +1,23 @@
-.footer{
+.footer {
+    margin-top: auto;
     text-align: center;
+    background-color: #fff;
+    padding: 0.5rem;
+    box-shadow: 0.2em 0.2em 1em 0.2em rgb(34, 34, 34, 20%);
+    height: 2.5em;
+   
 
-    width: 300px;
-
-    position: fixed;
-    left: calc(50% - 150px);
-    bottom: 0;
-
-    background-color: #FFF;
-
-    &__link{
+    &__link {
         text-decoration: none;
-        color: #000;
+        color: #717171;
         padding: 5px 10px 10px 5px;
         margin: 0 10px 0 10px;
-        &:hover{
-            font-weight: bold;
+        &:hover {
+            color: #000;
         }
+
+    }
+    .active {
+        font-weight: 500;
     }
 }

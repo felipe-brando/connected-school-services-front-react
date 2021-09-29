@@ -5,8 +5,8 @@ import './style.scss';
 const Footer = () => {
     return (
         <footer className="footer">
-            <NavLink to="/contact" className="footer__link">Contact</NavLink>
-            <NavLink to="#" className="footer__link">Mentions Légales</NavLink>
+            <NavLink to="/contact" className="footer__link" exact>Contact</NavLink>
+            <NavLink to="/mentions-legales" className="footer__link" exact>Mentions Légales</NavLink>     
         </footer>
     )
 }
