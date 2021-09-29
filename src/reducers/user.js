@@ -13,7 +13,6 @@ export const initialState = {
     roles: [],
     classroomId: '',
     classroom: '',
-    teacherClassList: [],
     userId: '', 
     classroomGrade: '',
     discipline: 'Mathématiques',
