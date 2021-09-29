@@ -59,7 +59,7 @@ const AnnounceList = ({ filter }) => {
                 <h3>{filter}</h3>
             </div>
         }
-            <section className="announceList">
+            <section className={filter === "home" ? "announceList--home" : "announceList"}>
 
                 {filteredAnnounceList.map((announceObject) => (
                     <AnnounceCard

@@ -5,6 +5,10 @@
     position: fixed;
     bottom: 0;
 
+    @media screen and (min-width: 992px) { 
+            display: none;
+    }
+
     &__menu {
         margin: 2rem 0rem;
     }
@@ -39,12 +43,6 @@
 
     &__text {
         margin-left: 1rem;
-    }
-
-}
-@media screen and (min-width: 992px) { 
-    .mobileBar {
-        display: none;
     }
 
 }

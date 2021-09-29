@@ -1,6 +1,7 @@
 // == Import
-import { Route, Switch } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { Route, Switch, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Header from '../Header/index.js';
 import About from '../About/index.js';
@@ -19,9 +20,21 @@ import './App.scss';
 // == Composant
 const App = () => {
   const logged = useSelector((state) => state.user.logged);
+
+  const dispatch = useDispatch();
+
+  const { pathname } = useLocation();
+  useEffect(() => {
+    dispatch({
+      type: 'CLOSE_LOGIN_WINDOW',
+    });
+    window.scroll(0, 0);
+  }, [pathname]);
+
   return (
     <div className="App">
       <Header />
+      <main className="main-content">
       <Switch>
         <Route path="/" exact>
           <Intro />
@@ -44,6 +57,7 @@ const App = () => {
           <div>404</div>
         </Route>
       </Switch>
+      </main>
       <Footer />
     </div>
   );

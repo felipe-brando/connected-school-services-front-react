@@ -3,7 +3,7 @@ import './style.scss';
 // == Composant
 const Intro = () => (
   <section className="intro">
-    <h2 className="intro__title">Nom de l'établissement</h2>
+    <h1 className="intro__title">Nom de l'établissement</h1>
     <div className="intro__image" />
   </section>
 );

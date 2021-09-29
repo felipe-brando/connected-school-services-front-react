@@ -1,17 +1,44 @@
-.announceList {
+.announceList--home {
    display: flex;
-   justify-content: space-around;
-   align-items: flex-start;
-   flex-wrap: wrap;
+   flex-direction: column;
+   margin: 2rem;
+
+   @media screen and (min-width: 992px) { 
+      display: flex;
+      flex-direction: row;
+      margin: 3rem 12rem;
+      justify-content: space-evenly
+   }
 }
 
-.announce {
-   width: 30%;
+.announceList {
 
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   flex-wrap: nowrap;
+
+   @media screen and (min-width: 992px) { 
+      width: 100%;
+      flex-wrap: wrap;
+      flex-direction: row;
+   }
+}
+
+.announce {
+   display: flex;
+   flex-direction: column;
    align-items: center;
+   background-color: #fff;
+   border-radius: 1em;
+   margin-bottom: 1rem;
+   border: 0.2em solid #ebf2f7;
+   padding: 1rem;
+
+   @media screen and (min-width: 992px) { 
+      display: flex;
+      margin-right: 2rem;
+      width: 30em;
+   }
 
    &__title {
       font-weight: bold;
@@ -21,11 +48,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-bottom: 10px;
+      padding-bottom: 1rem;
+      width: 100%;
    }
 
    &--img {
-      height: 50%;
       border-radius: 5px;
 
       &:hover {
@@ -58,20 +85,28 @@
 }
 
 .atag {
-   background: #eee;
-   border-radius: 3px 0 0 3px;
-   color: #999;
+   border: 0.1em solid #60d399;
+   border-radius: 0.5em;
+   color: #60d399;
+   font-weight: 600;
    display: inline-block;
-   height: 26px;
-   line-height: 26px;
+   height: 30px;
+   line-height: 30px;
    padding: 0 20px 0 23px;
-   position: relative;
+   //position: relative;
    margin: 0 10px 10px 0;
    text-decoration: none;
    transition: color 0.2s;
    -webkit-transition: color 0.2s;
+   text-transform: uppercase;
+   font-size: 0.6em;
 }
 
+.atag:hover {
+   background-color: #60d399;
+   color: white;
+}
+/*
 .atag::before {
    background: #fff;
    border-radius: 10px;
@@ -95,14 +130,10 @@
    top: 0;
 }
 
-.atag:hover {
-   background-color: crimson;
-   color: white;
-}
 
 .atag:hover::after {
    border-left-color: crimson;
-}
+*/
 
 //  AnnouncePage
 

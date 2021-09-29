@@ -35,7 +35,7 @@ const LoginForm = ({
           onChange={changeField}
           value={password}
         />
-        <button className="connection__btn" type="submit">Se connecter</button>
+          <button className="connection__btn" type="submit">Se connecter</button>
       </form>
     );
   };

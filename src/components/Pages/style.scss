@@ -1,19 +1,19 @@
-.main-content {
+.pages {
     display: flex;
     height: 100vh;   
     flex-wrap: wrap;
 
-    .content-page {  
+    &__content {  
          width:100%
     }
 
     @media screen and (min-width: 992px) { 
-        .main-content {
+        .pages {
             display: flex;
             height: 100vh;   
         }
     
-        .content-page {
+        &__content{
             width:80%
         }
     }

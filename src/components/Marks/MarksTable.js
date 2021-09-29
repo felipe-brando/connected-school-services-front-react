@@ -8,7 +8,7 @@ const MarksTable = ({ marksDataArray }) => {
         <table>
             <thead>
                 <tr>
-                    <th colspan="2">Note par matière</th>
+                    <th colSpan="2">Note par matière</th>
                 </tr>
             </thead>
             <tbody>
