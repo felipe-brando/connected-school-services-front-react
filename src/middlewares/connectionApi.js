@@ -13,11 +13,17 @@ const connectionApi = (store) => (next) => (action) => {
             password: state.user.password,
         })
             .then((response) => {
-                //conditionnal variable when ROLE_ADMIN classroom is null 
-                const classroomId = response.data.data.classroom ? response.data.data.classroom.id : [];
-                const classroomName = response.data.data.classroom ? response.data.data.classroom.grade+"ème "+response.data.data.classroom.letter.toUpperCase() : "";
-                const classroomGrade = response.data.data.classroom ? response.data.data.classroom.grade+"ème" : "0";
-                
+                let classroomId = "";
+                let classroomName = "";
+                let classroomGrade = "";
+
+                if (response.data.data.roles[0] !== "ROLE_TEACHER") {
+                    //conditionnal variable when ROLE_ADMIN classroom is null 
+                    classroomId = response.data.data.classroom ? response.data.data.classroom.id : [];
+                    classroomName = response.data.data.classroom ? response.data.data.classroom.grade + "ème " + response.data.data.classroom.letter.toUpperCase() : "";
+                    classroomGrade = response.data.data.classroom ? response.data.data.classroom.grade + "ème" : "0";
+                }
+
                 //api.defaults.headers.common.Authorization = `bearer ${response.data.token}`;
                 store.dispatch({
                     type: 'SAVE_USER',

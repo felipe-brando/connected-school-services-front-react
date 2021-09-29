@@ -109,9 +109,16 @@ const announceApi = (store) => (next) => (action) => {
         Authorization: "Bearer " + token,
       }
     }).then((response) => {
+
+      store.dispatch({
+        type: 'ADD_ANNOUNCE_RESET_INITIAL_STATE',
+      })
       //TODO - flash message if response is ok, delete input value (and go back to previous page ?)
       console.log(response);
       console.log('flash message envoi annonce');
+
+      //if announce is submit
+
     })
   }
 
@@ -122,6 +129,10 @@ const announceApi = (store) => (next) => (action) => {
         store.dispatch({
           type: 'GET_ANNOUNCE_LIST',
           flashMessage: response.data.ok,
+        });
+        store.dispatch({
+          type: 'MODIFY_FLASH_MESSAGE',
+          value: "L'annonce a bien été supprimée"
         });
       })
       .catch((error) => {
@@ -146,8 +157,10 @@ const announceApi = (store) => (next) => (action) => {
         Authorization: "Bearer " + token,
       }
     }).then((response) => {
-      console.log(response);
-      console.log('envoi annonce pour modification');
+      store.dispatch({
+        type: 'MODIFY_FLASH_MESSAGE',
+        value: "L'annonce a bien été modifiée",
+      })
     })
   }
 

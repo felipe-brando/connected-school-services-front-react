@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom'
+
 import TextEditor from '../TextEditor/TextEditor';
 import { imgUrl } from '../../selectors/baseUrl';
+import FlashMessage from '../FlashMessage/FlashMessage';
 
 
 const ModifyAnnouce = () => {
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
     const categoryList = useSelector((state) => state.announce.categoryList);
+    const flashMessageContent= useSelector((state) => state.announce.flashMessageContent);
     const { id } = useParams();
     const dispatch = useDispatch();
 
     const [currentImage, ModifyCurrentImage] = useState("");
-    
+
     useEffect(() => {
         dispatch({
             type: 'GET_ANNOUNCE_BY_ID',
@@ -92,34 +95,37 @@ const ModifyAnnouce = () => {
 
 
     return (
+        <section>
+            {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
 
-        <form onSubmit={handleSubmitForm} className="addAnnounce__form">
+            <form onSubmit={handleSubmitForm} className="addAnnounce__form">
 
-            <label htmlFor="title">Titre : </label>
-            <input onChange={handleTitleChange} placeholder="titre de l'annonce" required value={currentAnnounce.title} type="text" name="title" id="title" />
+                <label htmlFor="title">Titre : </label>
+                <input onChange={handleTitleChange} placeholder="titre de l'annonce" required value={currentAnnounce.title} type="text" name="title" id="title" />
 
-            <label htmlFor="content">Contenu </label>
-            <TextEditor />
+                <label htmlFor="content">Contenu </label>
+                <TextEditor />
 
-            <select onChange={handleSelectChange} required className="addAnnounce__form--select">
-                <option value="">Choisir une catégorie</option>
-                {categoryList.map((categoryObject) => (
-                    <option key={categoryObject.id} value={categoryObject.name} data-id={categoryObject.id}>{categoryObject.name}</option>
-                )
-                )}
-            </select>
-            <label htmlFor="file">Modifier l'image</label>
-            <input onChange={handleChangeImage} required type="file" name="img" id="img" accept="image/png, image/jpeg" />
+                <select onChange={handleSelectChange} required className="addAnnounce__form--select">
+                    <option value="">Choisir une catégorie</option>
+                    {categoryList.map((categoryObject) => (
+                        <option key={categoryObject.id} value={categoryObject.name} data-id={categoryObject.id}>{categoryObject.name}</option>
+                    )
+                    )}
+                </select>
+                <label htmlFor="file">Modifier l'image</label>
+                <input onChange={handleChangeImage} required type="file" name="img" id="img" accept="image/png, image/jpeg" />
 
-            {/* switch between local and server image preview when modifying source.
+                {/* switch between local and server image preview when modifying source.
              All server's files-img-name begin with number. if it's a letter it displays local image(without baseUrl)*/}
-            {currentAnnounce.image[0] !== "d" && <img src={imgUrl + currentAnnounce.image} alt="annonce" />}
-            {currentImage && <img src={currentAnnounce.image} alt="annonce" />}
+                {currentAnnounce.image[0] !== "d" && <img src={imgUrl + currentAnnounce.image} alt="annonce" />}
+                {currentImage && <img src={currentAnnounce.image} alt="annonce" />}
 
 
-            <input className="addAnnounce__form--submit" type="submit" />
+                <input className="addAnnounce__form--submit" type="submit" />
 
-        </form>
+            </form>
+        </section>
     )
 }
 

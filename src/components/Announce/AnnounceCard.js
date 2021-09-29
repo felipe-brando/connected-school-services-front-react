@@ -7,8 +7,7 @@ import schoolPicture from '../../assets/img/school-small.jpeg'
 
 
 const AnnounceCard = ({ id, title, content, image, categories, date, userRole }) => {
-    const islogged = useSelector((state) => state.user.logged);
-    const dispatch = useDispatch();
+     const dispatch = useDispatch();
 
 
 

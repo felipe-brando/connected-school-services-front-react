@@ -1,6 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import FlashMessage from '../FlashMessage/FlashMessage';
+
+
 
 import AnnounceCard from './AnnounceCard';
 
@@ -14,7 +17,8 @@ const AnnounceList = ({ filter }) => {
     let announceList = useSelector((state) => state.announce.announceList);
     const logged = useSelector((state) => state.user.logged);
     const userRole = useSelector((state) => state.user.roles);
-    
+    const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -58,6 +62,7 @@ const AnnounceList = ({ filter }) => {
             </div>
         }
             <section className={filter === "home" ? "announceList--home" : "announceList"}>
+                {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
 
                 {filteredAnnounceList.map((announceObject) => (
                     <AnnounceCard
@@ -72,6 +77,8 @@ const AnnounceList = ({ filter }) => {
                     />)
                 )}
             </section>
+
+
         </>
     );
 };
