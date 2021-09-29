@@ -1,4 +1,4 @@
-.announceList {
+.announceList--home {
    display: flex;
    flex-direction: column;
    margin: 2rem;
@@ -6,7 +6,22 @@
    @media screen and (min-width: 992px) { 
       display: flex;
       flex-direction: row;
-      margin: 3em;
+      margin: 3rem 12rem;
+      justify-content: space-evenly
+   }
+}
+
+.announceList {
+
+   display: flex;
+   flex-direction: column;
+   flex-wrap: nowrap;
+
+   @media screen and (min-width: 992px) { 
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex-direction: row;
    }
 }
 
@@ -14,14 +29,14 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   border: black solid 0.1em;
+   background-color: #fff;
    border-radius: 1em;
    margin-bottom: 1rem;
 
    @media screen and (min-width: 992px) { 
       display: flex;
-      width: 100%;
       margin-right: 2rem;
+      width: 30em;
    }
 
    &__title {
@@ -69,20 +84,27 @@
 }
 
 .atag {
-   background: #eee;
-   border-radius: 3px 0 0 3px;
-   color: #999;
+   border: 0.1em solid #60d399;
+   border-radius: 0.5em;
+   color: #60d399;
+   font-weight: 600;
    display: inline-block;
-   height: 26px;
-   line-height: 26px;
+   height: 30px;
+   line-height: 30px;
    padding: 0 20px 0 23px;
-   position: relative;
+   //position: relative;
    margin: 0 10px 10px 0;
    text-decoration: none;
    transition: color 0.2s;
    -webkit-transition: color 0.2s;
+   text-transform: uppercase;
 }
 
+.atag:hover {
+   background-color: #60d399;
+   color: white;
+}
+/*
 .atag::before {
    background: #fff;
    border-radius: 10px;
@@ -106,14 +128,10 @@
    top: 0;
 }
 
-.atag:hover {
-   background-color: crimson;
-   color: white;
-}
 
 .atag:hover::after {
    border-left-color: crimson;
-}
+*/
 
 //  AnnouncePage
 

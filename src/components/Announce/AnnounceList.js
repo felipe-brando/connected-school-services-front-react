@@ -54,8 +54,7 @@ const AnnounceList = ({ filter }) => {
                 <Link to="/annonces/categories">Modifier les categories</Link>
                 <h3>{filter}</h3>
             </div>
-            <div>
-            <section className="announceList">
+            <section className={filter === "home" ? "announceList--home" : "announceList" }>
 
                 {filteredAnnounceList.map((announceObject) => (
                     <AnnounceCard
@@ -69,7 +68,6 @@ const AnnounceList = ({ filter }) => {
                     />)
                 )}
             </section>
-            </div>
         </>
     );
 };
