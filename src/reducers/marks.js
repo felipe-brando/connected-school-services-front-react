@@ -2,6 +2,7 @@ const initialState = {
     userList: [],
     discipline: [],
     grade: [],
+    average:[],
   };
   
 
@@ -12,6 +13,7 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 grade: action.currentMarks,
                 discipline: action.currentMeasures,
+                average: action.currentAverages,
             }
         default:
             return state;

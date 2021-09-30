@@ -15,6 +15,7 @@ function Marks() {
     const userId = useSelector((state) => state.user.userId);
 
     const userRole = useSelector((state) => state.user.roles);
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -36,7 +37,8 @@ function Marks() {
                     <section className="marks__section">
                         <MarksTable
                         measureDataArray={disciplineList}
-                        marksDataArray={currentMarks}                  
+                        marksDataArray={currentMarks}
+                                          
                         // disciplineDataArray={currentdiscipline}                  
                         />                      
                     </section>

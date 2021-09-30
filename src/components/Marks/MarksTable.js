@@ -2,10 +2,19 @@ import './style.scss';
 
 const MarksTable = ({ measureDataArray, marksDataArray }) => {
     
-     let currentAverage = "";
-  
+        // const currentAverage = (total, currentValue) =>  total + currentValue;
+        // const sum = arr.reduce(currentAverage)
 
-    console.log(measureDataArray);
+        // return sum / arr.length
+
+
+        // const currentAverage = sum markObject.grade / markObject.grade.length
+
+        const gradeData= [];
+
+       
+    
+    // marksDataArray => marksDataArray.reduce((a, b) => a + b, 0) / marksDataArray.grade.length;
     
     return (
         <table className = "table__content">
@@ -19,6 +28,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
             <tbody>
                 
                 {measureDataArray.map((measureObject) => {
+                    const gradeData= [];
                    if (measureObject.name !== "Pause Déjeuner")                    
                      {
                         return (<tr>
@@ -26,12 +36,13 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                 
                         {marksDataArray.map((markObject) => {
                             if(markObject.discipline.name === measureObject.name){
+                                gradeData.push(parseInt(markObject.grade,10));
                             return ( <td  className ="table__content--marks">{markObject.grade}</td>)
                             } return true;
                         })  
                         }
-                        <td className = "table__content--average"> </td> 
-                        </tr>);}                    
+                        <td className = "table__content--average">{parseInt(gradeData.reduce((a,b) => a+b, 0))}/{gradeData.length}</td> 
+                        </tr>);}                            
                 })                
                 }
               
