@@ -13,9 +13,6 @@ const Classroom = () => {
     const teacherId = useSelector((state) => state.user.userId);
     const teacherDiscipline = useSelector((state) => state.user.discipline);
 
-    console.log(teacherClassList);
-    console.log('0', teacherClassList[0]);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -35,7 +32,7 @@ const Classroom = () => {
                             <NavLink
                                 activeClassName="teacherClassroom_link--selected"
                                 to={"/espace-perso/mes-classes/" + classroom.id}
-                            >{classroom.grade}ème {classroom.letter.toUpperCase}
+                            >{classroom.grade}ème {classroom.letter.toUpperCase()}
                             </NavLink>
                         </li>
                     )
@@ -43,10 +40,7 @@ const Classroom = () => {
             </ul>
             <Switch>
                 <Route path="/espace-perso/mes-classes/:id" exact>
-                <ClassroomStudents />
-                </Route>
-                <Route>
-                <h1>Aucun contenu à afficher, <Link to="/espace-perso">retour à l'accueil</Link></h1>
+                    <ClassroomStudents />
                 </Route>
             </Switch>
         </section>

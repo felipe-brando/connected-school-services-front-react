@@ -29,13 +29,11 @@ const classroomApi = (store) => (next) => (action) => {
     }
 
     if (action.type === 'GET_STUDENTS_LIST_BY_CLASS_ID') {
-        console.log('zction', action);
-        axios.get(url + "classroom/" + action.id, config)
+        axios.get(url + "classroom/sortedbyuser/" + action.id, config)
             .then((response) => {
-                console.log(response.data)
                 store.dispatch({
                     type: 'SAVE_STUDENTS_LIST',
-                    studentList: response.data,
+                    studentList: response.data[0].users,
                 });
             })
             .catch((error) => {

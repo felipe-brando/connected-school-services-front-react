@@ -13,10 +13,6 @@ const AddHomeworks = () => {
 
     const dispatch = useDispatch();
 
-    console.log(teacherClassList);
-
-
-
     useEffect(() => {
         dispatch(({
             type: "GET_TEACHER_CLASSROOMS_LIST",
@@ -87,7 +83,7 @@ const AddHomeworks = () => {
                 >
                     <option value="">Selectionner une classe</option>
                     {
-                        teacherClassList.map((classRoomObject) => (
+                        teacherClassList[0].map((classRoomObject) => (
                             <option value={classRoomObject.id} key={classRoomObject.id}>
                                 {classRoomObject.grade + "ème " + classRoomObject.letter.toUpperCase()}
                             </option>

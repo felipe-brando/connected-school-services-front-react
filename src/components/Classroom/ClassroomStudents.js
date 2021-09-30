@@ -8,8 +8,6 @@ const ClassroomStudent = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    console.log(studentList);
-
     useEffect(() => {
         console.log('UZEFF');
         dispatch({
@@ -19,12 +17,12 @@ const ClassroomStudent = () => {
     },[id]);
 
     return (
-        <ul>En attente API user par classe
-            {/* {studentList.map((student) => {
+        <ul>
+            {studentList.map((student) => {
                 return (
-                    <li hey={student.id}>{student.firstname} {student.lastname} </li>
+                    <li key={student.id}> {student.lastname} </li>
                 )
-            })} */}
+            })}
         </ul>
     );
 }
