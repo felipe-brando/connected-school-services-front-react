@@ -12,18 +12,15 @@ const ScheduleTable = ({ tableDataTab, userClassroomId, userClassroomName }) => 
         <table className="global-schedule">
             <thead>
                 <tr>
-                    <th colspan="6">Emploi du temps : {userClassroomName}</th>
+                    <th>Horaires</th>
+                    <th>Lundi</th>
+                    <th>Mardi</th>
+                    <th>Mercredi</th>
+                    <th>Jeudi</th>
+                    <th>Vendredi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Horaires</td>
-                    <td>Lundi</td>
-                    <td>Mardi</td>
-                    <td>Mercredi</td>
-                    <td>Jeudi</td>
-                    <td>Vendredi</td>
-                </tr>
                 {
                     scheduleTimeSlot.map((timeslot) => {
                         return (

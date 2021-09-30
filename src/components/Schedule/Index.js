@@ -19,12 +19,13 @@ function Schedule() {
     }, [])
 
     return (
-        <div className="Schedule">
+        <div className="schedule">
+            <h1 className="schedule__title">Emploi du temps :<br/>{userClassroomName}</h1>
             {currentSchedule === [] ?
                 <h1>Problème de connexion</h1> :
                 userRole[0] === "ROLE_ADMIN" ?
                     <h1> ADMIN </h1> :
-                    <section className="schedule">
+                    <section className="schedule__overflow">
 
                         <ScheduleTable
                             tableDataTab={currentSchedule}

@@ -52,9 +52,12 @@
     }
   }
 
+  .schedule__overflow {
+    overflow-x:auto;
+  }
   .global-schedule {
     border-collapse: collapse;
-    margin: 2rem 0;
+    margin: 0 0 5rem 1rem;
     font-size: 0.9em;
     border-radius: 1em 1em 0 0;
     overflow: hidden;
@@ -70,7 +73,7 @@
         background-color: #0A86D3;
         color: #fff;
         padding: 1em;
-    }
+    }    
 
     &__subtitle th {
         padding: 1em;
