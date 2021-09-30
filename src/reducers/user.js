@@ -36,6 +36,7 @@ export const initialState = {
           ...state,
           logged: false,
           token: '',
+          roles: [],
       };
       case 'SAVE_USER':        
         return {
