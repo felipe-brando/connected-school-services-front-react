@@ -51,7 +51,6 @@ const DaySchedule = () => {
                                     <tr>
                                         <td>{timeslot}</td>
 
-                                        <td>
                                         {dayNumber.map((dayInt) => {
                                             let mapResult = false;
 
@@ -64,7 +63,7 @@ const DaySchedule = () => {
                                             })
                                             if (mapResult) { return (<td>{currentDiscipline}</td>) } else { return (<td> - </td>) }
                                         })}
-                                        </td>
+                                       
                                     </tr>
                             )
                         })}

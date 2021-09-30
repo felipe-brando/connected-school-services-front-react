@@ -11,6 +11,7 @@ const Lessons = () => {
     const resources = useSelector((state) => state.lesson.resourcesList);
     const currentDiscipline = useSelector((state) => state.lesson.currentDiscipline);
     const classroom = useSelector((state) => state.user.classroomGrade);
+    const accordionIsOpen = useSelector((state) => state.lesson.accordionOpen);
     //console.log(classroom);
     
 
@@ -33,6 +34,12 @@ const Lessons = () => {
         });
     }
 
+    const handleTitleClick = () => {
+        dispatch({
+            type: 'ACCORDION_OPEN',
+        });
+    }
+
     return (
         <div className="lessons">
             <h1 className="lessons__title">Mes ressources</h1>
@@ -40,7 +47,7 @@ const Lessons = () => {
             <section className="resources">
             <h2 className="resources__title">Liste des ressources</h2>
             {resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource) => (
-                <ResourcesList key={filtredResource.id} {...filtredResource} />
+                <ResourcesList accordionIsOpen={accordionIsOpen} handleTitleClick={handleTitleClick} key={filtredResource.id} {...filtredResource} />
             ))}
             </section>
         </div>

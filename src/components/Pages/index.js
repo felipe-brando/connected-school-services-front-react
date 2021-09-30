@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import MobileBar from '../MobileBar/index';
 import Sidebar from '../Sidebar/index';
 import Schedule from '../Schedule/Index';
-import Lessons from '../Lessons/Index';
+import Lessons from '../Lessons/index';
 import Homeworks from '../Homeworks/Index';
 import Marks from '../Marks/Index';
 import DaySchedule from '../Schedule/DaySchedule';

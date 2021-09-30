@@ -1,0 +1,47 @@
+.lessons {
+
+    &__form-label{
+        display: flex;
+        flex-direction: column;
+        margin: 2rem 0;
+        font-weight: 500;
+        color: #717171;
+    }
+
+    &__form-select {
+        padding: 0.5rem;
+        width: 17em;
+        font-family: 'Montserrat';
+        border-radius: 0.5em;
+        background: none;
+        margin-top: 1rem;
+    }
+
+}
+
+.resources {
+    &__title {
+        cursor: pointer;
+    }
+
+    &__arrow {
+        float: right;
+    }
+
+    &__content {
+        overflow:hidden;
+        transition: max-height 0.3s ease;
+
+        p {
+            padding: 1rem;
+        }
+    }
+
+    &__title + &__content {
+        max-height: 0;
+    }
+
+    .open + &__content {
+        max-height: 100%;
+    }
+}
