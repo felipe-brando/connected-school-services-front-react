@@ -20,7 +20,8 @@ function Schedule() {
 
     return (
         <div className="schedule">
-            <h1 className="schedule__title">Emploi du temps :<br/>{userClassroomName}</h1>
+            <h1 className="schedule__title">Emploi du temps</h1>
+            <h2 className="schedule__classroom">{userClassroomName}</h2>
             {currentSchedule === [] ?
                 <h1>Problème de connexion</h1> :
                 userRole[0] === "ROLE_ADMIN" ?
@@ -30,7 +31,6 @@ function Schedule() {
                         <ScheduleTable
                             tableDataTab={currentSchedule}
                             userClassroomId={userClassroomId}
-                            userClassroomName={userClassroomName}
                         />
                     </section>
             }

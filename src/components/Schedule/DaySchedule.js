@@ -41,7 +41,7 @@ const DaySchedule = () => {
                     </tr>
                     <tr className = "table-schedule__subtitle">
                         <th rowSpan="1">Horaires</th>
-                        <th className = "schedule__subtitle--day" rowSpan="2">{dayName[toDayNumber]}</th>
+                        <th className = "table-schedule__subtitle--day" rowSpan="2">{dayName[toDayNumber]}</th>
                     </tr>
                 </thead>
                 <tbody>
