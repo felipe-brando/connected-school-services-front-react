@@ -90,7 +90,7 @@ const Sidebar = ()  => {
                             <span className='sidebar__text'>Cours/Ressources</span>
                         </li>   
                     </NavLink>   
-                    <NavLink className='sidebar__link' to="#">
+                    <NavLink className='sidebar__link' to="/espace-perso/mes-devoirs">
                         <li className="sidebar__item">
                             <span className='sidebar__icon'><Book /></span>
                             <span className='sidebar__text'>Devoirs / Annonces</span>

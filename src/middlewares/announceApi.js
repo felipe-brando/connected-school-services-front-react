@@ -109,8 +109,16 @@ const announceApi = (store) => (next) => (action) => {
         Authorization: "Bearer " + token,
       }
     }).then((response) => {
+
+      store.dispatch({
+        type: 'ADD_ANNOUNCE_RESET_INITIAL_STATE',
+      })
       //TODO - flash message if response is ok, delete input value (and go back to previous page ?)
-      console.log(response); console.log('ok');
+      console.log(response);
+      console.log('flash message envoi annonce');
+
+      //if announce is submit
+
     })
   }
 
@@ -122,6 +130,10 @@ const announceApi = (store) => (next) => (action) => {
           type: 'GET_ANNOUNCE_LIST',
           flashMessage: response.data.ok,
         });
+        store.dispatch({
+          type: 'MODIFY_FLASH_MESSAGE',
+          value: "L'annonce a bien été supprimée"
+        });
       })
       .catch((error) => {
         console.error('DELETE_ANNOUNCE_BY_ID error : ', error);
@@ -129,7 +141,6 @@ const announceApi = (store) => (next) => (action) => {
   }
 
   if (action.type === 'SUBMIT_MODIFIED_ANNOUNCE') {
-    console.log('envoi annonce pour modification');
     axios({
       method: 'PATCH',
       url: url + "announce/" + action.id,
@@ -145,7 +156,12 @@ const announceApi = (store) => (next) => (action) => {
       headers: {
         Authorization: "Bearer " + token,
       }
-    }).then((response) => { console.log(response); console.log('ok'); })
+    }).then((response) => {
+      store.dispatch({
+        type: 'MODIFY_FLASH_MESSAGE',
+        value: "L'annonce a bien été modifiée",
+      })
+    })
   }
 
   next(action); // dans tous les cas je laisse passer l'action

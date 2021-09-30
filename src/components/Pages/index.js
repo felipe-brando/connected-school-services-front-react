@@ -27,7 +27,7 @@ const Pages = () => {
                     <Route path="/espace-perso/mes-cours" exact>
                         <Lessons />
                     </Route>
-                    <Route path="/espace-perso/mes-devoirs" exact>
+                    <Route path="/espace-perso/mes-devoirs">
                         <Homeworks />
                     </Route>
                     <Route path="/espace-perso/mes-notes" exact>

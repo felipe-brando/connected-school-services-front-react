@@ -7,9 +7,9 @@ import schoolPicture from '../../assets/img/school-small.jpeg'
 
 const AnnouncePage = () => {
     //collect announce id in url with router hook
-    const { id } = useParams();
+    const { id } = useParams();   
 
-    const islogged = useSelector((state) => state.user.logged);
+    const userRole = useSelector((state) => state.user.roles);
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
 
     const handleModifyAnnounce = (e) => {
@@ -58,7 +58,8 @@ const AnnouncePage = () => {
             <h1 className="announcePage__title">{currentAnnounce.title}</h1>
             <p className="announce__content" >{currentAnnounce.content} </p>
             <span className="announcePage__date">{currentAnnounce.date}</span>
-            {islogged && <>
+
+            {userRole[0]==='ROLE_ADMIN' && <>
                 <Link
                     to={"/annonces/maj/" + currentAnnounce.id}
                     data-id={currentAnnounce.id}

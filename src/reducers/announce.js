@@ -30,6 +30,8 @@ const initialState = {
 
     // Homeworks initial state
     classroomAnnounces: [],
+
+    flashMessageContent: "",
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -109,6 +111,35 @@ const reducer = (state = initialState, action = {}) => {
                 currentAnnounce: { ...state.currentAnnounce, image: action.fileValue, }
             }
         }
+
+        case 'ADD_ANNOUNCE_RESET_INITIAL_STATE': {
+            return {
+                ...state,
+                newAnnounceTitle: "",
+                newAnnounceContent: "",
+                newAnnounceCategoryId: 0,
+                newAnnounceImageName: '',
+                newAnnonceImageBase64: '',
+
+                flashMessageContent: "L'annonce a bien été envoyée",
+            }
+        }
+
+        case 'RESET_FLASH_MESSAGES': {
+            return {
+                ...state,
+                flashMessageContent: "",
+            }
+        }
+
+        case 'MODIFY_FLASH_MESSAGE': {
+            return {
+                ...state,
+                flashMessageContent: action.value,
+            }
+        }
+        
+        
 
 
         default:

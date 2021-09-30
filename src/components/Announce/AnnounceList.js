@@ -1,6 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import FlashMessage from '../FlashMessage/FlashMessage';
+
+
 
 import AnnounceCard from './AnnounceCard';
 
@@ -10,12 +13,10 @@ const AnnounceList = ({ filter }) => {
     //collect announce id in url with router hook
     const { id } = useParams();
 
-    // let variable to splice array to limit to 3 announces displayed at home page
-    let announceList = useSelector((state) => state.announce.announceList);
+    const announceList = useSelector((state) => state.announce.announceList);
     const logged = useSelector((state) => state.user.logged);
     const userRole = useSelector((state) => state.user.roles);
-    console.log(userRole);
-
+    const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
 
     const dispatch = useDispatch();
 
@@ -62,6 +63,7 @@ const AnnounceList = ({ filter }) => {
             </div>
         }
             <section className={filter === "home" ? "announceList--home" : "announceList"}>
+                {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
 
                 {filteredAnnounceList.map((announceObject) => (
                     <AnnounceCard
@@ -76,6 +78,8 @@ const AnnounceList = ({ filter }) => {
                     />)
                 )}
             </section>
+
+
         </>
     );
 };
