@@ -13,8 +13,7 @@ const AnnounceList = ({ filter }) => {
     //collect announce id in url with router hook
     const { id } = useParams();
 
-    // let variable to splice array to limit to 3 announces displayed at home page
-    let announceList = useSelector((state) => state.announce.announceList);
+    const announceList = useSelector((state) => state.announce.announceList);
     const logged = useSelector((state) => state.user.logged);
     const userRole = useSelector((state) => state.user.roles);
     const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
