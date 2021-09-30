@@ -1,10 +1,9 @@
 import './style.scss';
 
 const MarksTable = ({ measureDataArray, marksDataArray }) => {
-    // //let variable to set the student current Marks by discipline
+    
      let currentAverage = "";
-    // //variable to map result 
-    // const userMarks = marksDataArray.filter((marksSlot) => { return marksSlot.user.grade === userGrade});
+  
 
     console.log(measureDataArray);
     
@@ -30,7 +29,8 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                             return ( <td  className ="table__content--marks">{markObject.grade}</td>)
                             } return true;
                         })  
-                        } 
+                        }
+                        <td className = "table__content--average"> </td> 
                         </tr>);}                    
                 })                
                 }
