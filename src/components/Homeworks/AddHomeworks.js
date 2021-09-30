@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import TextEditor from '../TextEditor/TextEditor';
 
+import './style.scss';
+
 const AddHomeworks = () => {
 
     const teacherClassList = useSelector((state) => state.classroom.teacherClassroomList);
-    const userRole = useSelector((state) => state.user.roles);
     const teacherId = useSelector((state) => state.user.userId);
     const teacherDiscipline = useSelector((state) => state.user.discipline);
 
@@ -23,19 +24,66 @@ const AddHomeworks = () => {
         }));
     }, []);
 
+    //-----handle functions-----//
+    function handleChangeSelectClass(e) {
+        dispatch({
+            type: 'CHANGE_ADD_HOMEWORKS_SELECT_CLASSROOM',
+            id: e.target.selectedOptions[0].value,
+        })
+    }
+    function handleChangeSelectCategory(e) {
+        dispatch({
+            type: 'CHANGE_ADD_HOMEWORKS_SELECT_CATEGORY',
+            value: e.target.selectedOptions[0].value,
+        })
+    }
+    function handleChangeSelectDate(e) {
+        dispatch({
+            type: 'CHANGE_ADD_HOMEWORKS_SELECT_DATE',
+            value: e.target.value
+        })
+    }
+    function handleSubmitHomeworks(e) {
+        e.preventDefault();
+        dispatch({
+            type: 'SEND_HOMEWORKS',
+        })
 
+    }
 
     return (
         <>
             <nav className="AddHomeworks__nav">
                 <h1>{teacherDiscipline}</h1>
-                <NavLink to="/espace-perso/mes-devoirs" className="teacherHomeWorks--menuLink">Liste des annonces / devoirs </NavLink>
+                <NavLink
+                    activeClassName="teacherHomeworks_link--selected"
+                    to="/espace-perso/mes-devoirs/ajout"
+                >Ajout
+                </NavLink>
+                <NavLink
+                    activeClassName="teacherHomeworks_link--selected"
+                    to="/espace-perso/mes-devoirs"
+                    exact
+                    className="teacherHomeWorks--menuLink"
+                >                    Liste
+                </NavLink>
             </nav>
-            <form className="addHomeworks__form"  >
+            <form className="addHomeworks__form" onSubmit={handleSubmitHomeworks} >
+
+                <select
+                    className="addHomeworks__form select--category"
+                    required
+                    onChange={handleChangeSelectCategory}
+                >
+                    <option value={teacherDiscipline + " - Devoirs"}>Devoirs</option>
+                    <option value={teacherDiscipline + " - Annonces"}>Annonces</option>
+                </select>
+
 
                 <select
                     required
-                    className="addAnnounce__form--select"
+                    className="addHomework__form select--class"
+                    onChange={handleChangeSelectClass}
                 >
                     <option value="">Selectionner une classe</option>
                     {
@@ -46,11 +94,22 @@ const AddHomeworks = () => {
                         ))}
                 </select>
 
-                <label className="addAnnounce__form--label" htmlFor="content">Contenu </label>
+                <input
+                    className="addHomework__form select--date"
+                    type="date"
+                    onChange={handleChangeSelectDate}
+                />
+
+
+
+                <label className="addHomework__form--label" htmlFor="content">Contenu </label>
                 <TextEditor />
                 {/* modifier les options du text editor enlever image etc */}
 
-                <input type="submit" />
+                <input
+                    className="addHomework__form--submit"
+                    type="submit"
+                />
 
             </form>
         </>

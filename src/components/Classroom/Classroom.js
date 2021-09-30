@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch, Link } from "react-router-dom";
 
 import ClassroomStudents from "./ClassroomStudents";
 
@@ -14,6 +14,7 @@ const Classroom = () => {
     const teacherDiscipline = useSelector((state) => state.user.discipline);
 
     console.log(teacherClassList);
+    console.log('0', teacherClassList[0]);
 
     const dispatch = useDispatch();
 
@@ -28,7 +29,7 @@ const Classroom = () => {
         <section className="teacherClassroom">
             <h1>Mes Classes - cours de {teacherDiscipline}</h1>
             <ul>
-                {teacherClassList.map((classroom) => {
+                {teacherClassList[0].map((classroom) => {
                     return (
                         <li>
                             <NavLink
@@ -41,8 +42,11 @@ const Classroom = () => {
                 })}
             </ul>
             <Switch>
-                <Route path="/espace-perso/mes-classes/:id">
+                <Route path="/espace-perso/mes-classes/:id" exact>
                 <ClassroomStudents />
+                </Route>
+                <Route>
+                <h1>Aucun contenu à afficher, <Link to="/espace-perso">retour à l'accueil</Link></h1>
                 </Route>
             </Switch>
         </section>

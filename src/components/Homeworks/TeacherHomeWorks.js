@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Switch, Route, Link } from "react-router-dom";
+import HomeworksList from './HomeworkList';
+
+import './style.scss';
 
 
 const TeacherHomeWorks = () => {
@@ -10,11 +13,8 @@ const TeacherHomeWorks = () => {
     const teacherId = useSelector((state) => state.user.userId);
     const teacherDiscipline = useSelector((state) => state.user.discipline);
 
+
     const dispatch = useDispatch();
-
-    console.log(teacherDiscipline);
-
-
 
     useEffect(() => {
         dispatch(({
@@ -23,15 +23,25 @@ const TeacherHomeWorks = () => {
         }));
     }, []);
 
-    return (
-        <main className="teacherHomeWorks">
-        <h1 className="teacherHomeWorks__title">
-            {teacherDiscipline}            
-        </h1>
-        <NavLink to="/espace-perso/mes-devoirs/ajout" className="teacherHomeWorks--menuLink">Ajouter un devoir / une annonce</NavLink>  
-
-        <p>Recevoir les annonces et filtrer par classe categorie devoir et matière (dans title ?)</p>      
-        </main>
+    return (        
+        <section className="teacherHomeworks">
+            <h1>Mes Devoirs - cours de {teacherDiscipline}</h1>
+            <NavLink activeClassName="teacherHomeworks_link--selected" to="/espace-perso/mes-devoirs/ajout">Ajout</NavLink> 
+            <NavLink activeClassName="teacherHomeworks_link--selected" to="/espace-perso/mes-devoirs/">Liste</NavLink>           
+            <ul>
+                {teacherClassList.map((classroom) => {
+                    return (
+                        <li>
+                            <NavLink
+                                activeClassName="teacherHomeworks_link--selected"
+                                to={"/espace-perso/mes-devoirs/liste/" + classroom.id}
+                            >{classroom.grade}ème {classroom.letter.toUpperCase()}
+                            </NavLink>
+                        </li>
+                    )
+                })}
+            </ul>
+        </section>
     )
 }
 

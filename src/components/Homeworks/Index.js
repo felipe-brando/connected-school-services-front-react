@@ -1,8 +1,9 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import AddHomeworks from "./AddHomeworks";
 import StudentHomeworks from './StudentHomeworks';
 import TeacherHomeWorks from './TeacherHomeWorks';
+import HomeworksList from './HomeworkList';
 
 function Homeworks() {
 
@@ -16,16 +17,20 @@ function Homeworks() {
                         <StudentHomeworks />
                     </Route>
                 </>
-
             }
-
             {userRole[0] === 'ROLE_TEACHER' &&
                 <>
                     <Route path="/espace-perso/mes-devoirs" exact>
                         <TeacherHomeWorks />
                     </Route>
+
                     <Route path="/espace-perso/mes-devoirs/ajout" exact>
                         <AddHomeworks />
+                    </Route>
+
+                    <Route path="/espace-perso/mes-devoirs/liste/:id" exact>
+                        <TeacherHomeWorks />
+                        <HomeworksList />
                     </Route>
                 </>
             }
