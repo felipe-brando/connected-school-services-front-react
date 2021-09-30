@@ -3,6 +3,7 @@ const initialState = {
   grade: 'Sixième',
   letter: 'A',
   teacherClassroomList: [],
+  currentStudentList: []
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -14,6 +15,11 @@ const reducer = (state = initialState, action = {}) => {
         teacherClassroomList: action.classroomList,
       }
 
+      case 'SAVE_STUDENTS_LIST' :
+        return {
+          ...state,
+          currentStudentList: action.studentList
+        }
 
     default:
       return state;

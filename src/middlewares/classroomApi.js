@@ -27,6 +27,23 @@ const classroomApi = (store) => (next) => (action) => {
             });
 
     }
+
+    if (action.type === 'GET_STUDENTS_LIST_BY_CLASS_ID') {
+        console.log('zction', action);
+        axios.get(url + "classroom/"+action.id, config)
+            .then((response) => {
+                console.log(response.data)
+                store.dispatch({
+                    type: 'SAVE_STUDENTS_LIST',
+                    studentList: response.data,
+                });
+            })
+            .catch((error) => {
+                console.error('GET_STUDENTS_LIST_BY_CLASS_ID error : ', error);
+            });
+
+    }
+    
     next(action); // dans tous les cas je laisse passer l'action
 };
 

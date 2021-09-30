@@ -96,7 +96,7 @@ const Sidebar = ()  => {
                             <span className='sidebar__text'>Devoirs / Annonces</span>
                         </li>   
                     </NavLink>   
-                    <NavLink className='sidebar__link' to="#">
+                    <NavLink className='sidebar__link' to="/espace-perso/mes-classes">
                         <li className="sidebar__item">
                             <span className='sidebar__icon'><Users /></span>
                             <span className='sidebar__text'>Mes classes</span>
