@@ -15,7 +15,7 @@ export const initialState = {
     classroom: '',
     userId: '', 
     classroomGrade: '',
-    discipline: 'Mathématiques',
+    discipline: '',
     loginOpen: false,
     burgerOpen: false,
   };

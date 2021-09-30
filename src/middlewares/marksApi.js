@@ -6,9 +6,6 @@ const marksApi = (store) => (next) => (action) => {
     const state = store.getState(); // access to store then state
     const token = state.user.token;
   
-    //config provisoire
-    // const url = 'http://adrien-dubois.vpnuser.lan/CSS/css-back/public/api/v1/';
-    // const url = 'http://kevin-planchais.vpnuser.lan/Apoth%C3%A9ose/projet-connected-school-services/public/api/v1/';
     const url = apiUrl;
     
     const config = {
@@ -23,6 +20,7 @@ const marksApi = (store) => (next) => (action) => {
       store.dispatch({
         type: 'SAVE_CURRENT_MARKS',
         currentMarks: response.data,
+        currentDisciplines:response.data,
       });
     })
     .catch((error) => {

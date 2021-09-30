@@ -9,11 +9,13 @@ const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
-        case 'SAVE_DISCIPLINE':
+        
+        case 'SAVE_DISCIPLINE':{
+            console.log('Reducer:', action);
             return {
                 ...state,
                 disciplinesList: action.discipline,
-            }
+            }}
         case 'SAVE_RESOURCE':
             return {
                 ...state,
