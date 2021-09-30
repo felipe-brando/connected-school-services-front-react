@@ -10,7 +10,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
 
         // const currentAverage = sum markObject.grade / markObject.grade.length
 
-        const gradeData= [];
+        const generalAverage= [];
 
        
     
@@ -29,6 +29,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                 
                 {measureDataArray.map((measureObject) => {
                     const gradeData= [];
+                    
                    if (measureObject.name !== "Pause Déjeuner")                    
                      {
                         return (<tr>
@@ -37,12 +38,20 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                         {marksDataArray.map((markObject) => {
                             if(markObject.discipline.name === measureObject.name){
                                 gradeData.push(parseInt(markObject.grade,10));
+                                generalAverage.push()
                             return ( <td  className ="table__content--marks">{markObject.grade}</td>)
+                            
                             } return true;
                         })  
                         }
-                        <td className = "table__content--average">{parseInt(gradeData.reduce((a,b) => a+b, 0))}/{gradeData.length}</td> 
-                        </tr>);}                            
+                        <td className = "table__content--average">{parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}</td> 
+                        </tr>);}   
+                    
+                       return  ( <tr className ="table__content--generalaverage">{parseInt(generalAverage.reduce((a,b) => a+b, 0))/generalAverage.length}
+                       
+                       </tr>       
+
+                       )                  
                 })                
                 }
               
