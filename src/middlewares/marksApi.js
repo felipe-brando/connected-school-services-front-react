@@ -21,6 +21,7 @@ const marksApi = (store) => (next) => (action) => {
         type: 'SAVE_CURRENT_MARKS',
         currentMarks: response.data,
         currentDisciplines:response.data,
+        currentAverages: response.data,
       });
     })
     .catch((error) => {
