@@ -1,4 +1,4 @@
-const ScheduleTable = ({ tableDataTab, userClassroomId, userClassroomName }) => {
+const ScheduleTable = ({ tableDataTab, userClassroomId }) => {
    
     //let variable to set the timeslot discipline
     let currentDiscipline = "";
@@ -11,8 +11,7 @@ const ScheduleTable = ({ tableDataTab, userClassroomId, userClassroomName }) => 
     return (
         <table className="global-schedule">
             <thead>
-                <tr>
-                    <th>Horaires</th>
+                <tr className="global-schedule__title">
                     <th>Lundi</th>
                     <th>Mardi</th>
                     <th>Mercredi</th>
@@ -24,26 +23,23 @@ const ScheduleTable = ({ tableDataTab, userClassroomId, userClassroomName }) => 
                 {
                     scheduleTimeSlot.map((timeslot) => {
                         return (
-                            <>
-                                <tr>
-                                    <td>{timeslot}</td>
-                                </tr>
-                                <tr>
-                                    <td>|</td>
-                                    {dayNumber.map((dayInt) => {
-                                        let mapResult = false;
+                            <tr>
+                                {dayNumber.map((dayInt) => {
+                                    let mapResult = false;
 
-                                        classroomSchedule.map((timeslotData) => {
-                                            if (timeslotData.day.id === dayInt && timeslotData.begin === timeslot) {
-                                                currentDiscipline = timeslotData.discipline.name
-                                                mapResult = true;
-                                            }
-                                            return false;
-                                        })
-                                        if (mapResult) { return (<td>{currentDiscipline}</td>) } else { return (<td> - </td>) }
-                                    })}
-                                </tr>
-                            </>
+                                    classroomSchedule.map((timeslotData) => {
+                                        if (timeslotData.day.id === dayInt && timeslotData.begin === timeslot) {
+                                            currentDiscipline = timeslotData.discipline.name
+                                            mapResult = true;
+                                        }
+                                        return false;
+                                    })
+                                    if (mapResult) { return (
+                                        <>
+                                            <td> {timeslot} <br/> {currentDiscipline}</td>
+                                        </>) } else { return (<td>{timeslot} <br/> - </td>) }
+                                })}
+                            </tr>
                         )
                     })}
 

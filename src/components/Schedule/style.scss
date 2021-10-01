@@ -1,6 +1,5 @@
 .table-schedule {
     border-collapse: collapse;
-    margin: 2rem 0;
     font-size: 0.9em;
     border-radius: 1em 1em 0 0;
     overflow: hidden;
@@ -9,11 +8,12 @@
     text-align: center;
 
     @media screen and (min-width: 992px) {
-        width: 50%;
+      width: 35%;
+      align-self: center;
     }
 
     &__title th {
-        background-color: #0A86D3;
+        background-color: #54ACE5;
         color: #fff;
         padding: 1em;
     }
@@ -24,10 +24,11 @@
     }
 
     &__subtitle--day {
-        color: #BD1E08;
-        border: 0.3em solid #e7e7e7;
+        color: #54ACE5;
+        border-left: 0.1em solid #e7e7e7;
         box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
         font-size: 1.2em;
+        font-weight: 800;
     }
 
     & thead tr {
@@ -48,37 +49,37 @@
     }
     
     & tbody tr:last-of-type {
-      border-bottom: 0.5em solid #0A86D3;
+      border-bottom: 0.5em solid #54ACE5;
     }
   }
 
-  .schedule__overflow {
+.schedule {
+
+  &__classroom {
+    color: #54ACE5;
+  }
+  &__overflow {
     overflow-x:auto;
   }
   .global-schedule {
     border-collapse: collapse;
-    margin: 0 0 5rem 1rem;
     font-size: 0.9em;
     border-radius: 1em 1em 0 0;
     overflow: hidden;
     box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
-    width: 100%;
     text-align: center;
+    width: 80%;
+    margin: 2rem 0 4rem 1rem;
 
     @media screen and (min-width: 992px) {
-        width: 50%;
+      margin-bottom: 0;
     }
 
     &__title th {
-        background-color: #0A86D3;
+        background-color: #54ACE5;
         color: #fff;
         padding: 1em;
     }    
-
-    &__subtitle th {
-        padding: 1em;
-        border-bottom: 0.1em solid #e7e7e7;
-    }
 
     & thead tr {
         font-weight: 700;
@@ -98,14 +99,11 @@
     }
     
     & tbody tr:last-of-type {
-      border-bottom: 2px solid #009879;
+      border-bottom: 0.5em solid #54ACE5;
     }
-    
-    & tbody tr.active-row {
-      font-weight: bold;
-      color: #009879;
-    }
+
   }
+}
   
   
   

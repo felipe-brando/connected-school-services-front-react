@@ -1,0 +1,56 @@
+.lessons {
+
+    &__form-label{
+        display: flex;
+        flex-direction: column;
+        margin: 2rem 0;
+        font-weight: 500;
+        color: #717171;
+    }
+
+    &__form-select {
+        padding: 0.5rem;
+        width: 17em;
+        font-family: 'Montserrat';
+        border-radius: 0.5em;
+        background: none;
+        margin-top: 1rem;
+    }
+
+}
+
+.resources__title {
+    margin-bottom: 2rem;
+}
+
+.resource {
+   
+      
+      &__title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        cursor: pointer;
+        background-color: #54ACE5;
+      }
+      
+      &__title:hover {
+        background-color: #48a6e4;
+      }
+      
+      &__title,
+      &__content {
+        padding: 1rem;
+      }
+      
+      &__content {
+        background-color: #e5e5e5;
+        height: 100%;
+        width: 100%;
+      }
+
+      &__overflow {
+        overflow-y: auto; 
+      }
+       
+}

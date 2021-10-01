@@ -6,6 +6,12 @@
   
   .main-content {
     position: relative;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 992px) {
+      flex-wrap: wrap;
+  } 
 
   }
 }

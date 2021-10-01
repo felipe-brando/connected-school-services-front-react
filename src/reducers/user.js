@@ -1,7 +1,7 @@
 export const initialState = {
     logged: false,
     firstname: '',
-    lastename: '',
+    lastname: '',
     image: '',
     email: '',
     adress: '10 rue de truc',

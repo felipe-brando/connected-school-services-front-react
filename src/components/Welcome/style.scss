@@ -1,0 +1,28 @@
+.welcome {
+    
+    margin: 3rem;
+    font-weight: 800;
+    margin: 2rem auto 3rem auto;
+
+    &__name {
+        font-size: 3.5rem;
+
+        @media screen and (min-width: 992px) {
+            font-size: 4rem;
+        }
+    }
+
+    &__classroom {
+        font-size: 1.5rem;
+        color: #52A9E1;
+
+        @media screen and (min-width: 992px) {
+            font-size: 2rem;
+        }
+    }
+
+    &__image svg {
+        width: 5rem;
+        height: 5rem;
+    }
+}

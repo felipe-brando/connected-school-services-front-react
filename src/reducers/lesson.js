@@ -5,6 +5,9 @@ const initialState = {
 
     currentDiscipline: "Français",
 
+    selected: null,
+
+
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -25,6 +28,17 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 currentDiscipline: action.value,
+            }
+        case 'ACCORDION_OPEN':
+            return {
+                ...state,
+                selected: action.index,
+
+            }
+        case 'ACCORDION_CLOSE':
+            return {
+                ...state,
+                selected: null,
 
             }
         default:

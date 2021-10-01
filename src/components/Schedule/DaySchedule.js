@@ -41,7 +41,7 @@ const DaySchedule = () => {
                     </tr>
                     <tr className = "table-schedule__subtitle">
                         <th rowSpan="1">Horaires</th>
-                        <th className = "schedule__subtitle--day" rowSpan="2">{dayName[toDayNumber]}</th>
+                        <th className = "table-schedule__subtitle--day" rowSpan="2">{dayName[toDayNumber]}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,7 +51,6 @@ const DaySchedule = () => {
                                     <tr>
                                         <td>{timeslot}</td>
 
-                                        <td>
                                         {dayNumber.map((dayInt) => {
                                             let mapResult = false;
 
@@ -64,7 +63,7 @@ const DaySchedule = () => {
                                             })
                                             if (mapResult) { return (<td>{currentDiscipline}</td>) } else { return (<td> - </td>) }
                                         })}
-                                        </td>
+                                       
                                     </tr>
                             )
                         })}

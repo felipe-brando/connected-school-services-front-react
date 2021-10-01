@@ -1,20 +1,18 @@
 .pages {
     display: flex; 
-    flex-wrap: wrap;
+    flex-direction: column;
  
-
     @media screen and (min-width: 992px) { 
-        flex-wrap: nowrap;
+        flex-direction: row;
     }
 
     &__content {  
-         width:100%;
+        margin: 2rem 1rem;
 
          @media screen and (min-width: 992px) { 
             width:80%;
             display: flex;
             flex-direction: column;
-            align-items: center;
             margin:2rem
          }
     }
