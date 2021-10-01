@@ -6,6 +6,7 @@ import { PlusCircle } from 'react-feather';
 
 import Form from './Form';
 import ResourcesList from './ResourcesList';
+import AddResources from "./AddResources";
 
 const Lessons = () => {
     const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Lessons = () => {
     const currentDiscipline = useSelector((state) => state.lesson.currentDiscipline);
     const classroom = useSelector((state) => state.user.classroomGrade);
     const isSelected = useSelector((state) => state.lesson.selected);
+    const isTextEditorOpen = useSelector((state) => state.lesson.textEditorOpen);
     const roleTeacher = useSelector((state) => state.user.roles.includes('ROLE_TEACHER'));
     //console.log(classroom);
     
@@ -48,6 +50,12 @@ const Lessons = () => {
                 })
             }
     }
+
+    const handleResourceAdd = () => {
+        dispatch ({
+            type: 'OPEN_RESOURCES_TEXT_EDITOR'
+        })
+    }
     
     return (
         <div className="lessons">
@@ -55,7 +63,8 @@ const Lessons = () => {
             <Form disciplines={disciplines} handleChangeDiscipline={handleSelectChange} />
             <section className="resources">
             <h2 className="resources__title">Liste des ressources</h2>
-            {roleTeacher && <button><PlusCircle /></button>}
+            {roleTeacher && <button type="submit" onClick={handleResourceAdd}><PlusCircle /></button>}
+            {isTextEditorOpen && <AddResources />}
             {resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
                 <ResourcesList roleTeacher={roleTeacher} isSelected={isSelected} index={i} handleTitleClick={toggle} key={filtredResource.id} {...filtredResource} />
             ))}

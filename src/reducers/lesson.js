@@ -7,6 +7,8 @@ const initialState = {
 
     selected: null,
 
+    textEditorOpen: false,
+
 
 };
 
@@ -40,6 +42,11 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 selected: null,
 
+            }
+        case 'OPEN_RESOURCES_TEXT_EDITOR':
+            return {
+                ...state,
+                textEditorOpen: !state.textEditorOpen,
             }
         default:
             return state;
