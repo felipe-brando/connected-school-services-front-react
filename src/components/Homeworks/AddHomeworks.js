@@ -34,6 +34,12 @@ const AddHomeworks = () => {
         })
     }
     function handleChangeSelectDate(e) {
+        const today = Date.now();
+        if (e.target.valueAsNumber < today) {
+            console.log('La date ne peut pas être antérieure à la date du jour');
+            e.target.valueAsNumber=today;
+        }
+
         dispatch({
             type: 'CHANGE_ADD_HOMEWORKS_SELECT_DATE',
             value: e.target.value
