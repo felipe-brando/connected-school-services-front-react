@@ -53,6 +53,7 @@ const AddAnnounce = () => {
         reader.readAsDataURL(files[0]);
 
         reader.onload = (e) => {
+            console.log(e.target.result);
             setImgUrl(e.target.result);
             //console.log('event', e.target.result.replace("data:", "").replace(/^.+,/, ""))
             // dispatch({
@@ -66,15 +67,15 @@ const AddAnnounce = () => {
 
     //submit Form Function
     const handleSubmitForm = (e) => {
-        // e.preventDefault();
-        // dispatch({
-        //     type: 'SUBMIT_ANNOUNCE',
-        //     imgName: imgName,
-        //     imgB64: imgUrl,
-        //     title: inputTitleValue,
-        //     content: inputContentValue,
-        //     categoryId: selectOptionValue,
-        // });
+        e.preventDefault();
+        dispatch({
+            type: 'SUBMIT_ANNOUNCE',
+            imgName: imgName,
+            imgB64: imgUrl,
+            title: inputTitleValue,
+            content: inputContentValue,
+            categoryId: selectOptionValue,
+        });
         // Reset form inputs
         setImgUrl("");
         setImgName("");
@@ -82,7 +83,7 @@ const AddAnnounce = () => {
         setInputContentValue("");
         setSelectOptionsValue("");
         const quill = document.querySelector('.ql-editor');
-        quill.innerHTML="";
+        quill.innerHTML = "";
     };
 
     return (

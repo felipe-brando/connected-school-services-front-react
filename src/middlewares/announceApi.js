@@ -109,15 +109,16 @@ const announceApi = (store) => (next) => (action) => {
         Authorization: "Bearer " + token,
       }
     }).then((response) => {
-
       store.dispatch({
-        type: 'ADD_ANNOUNCE_RESET_INITIAL_STATE',
+        type: 'MODIFY_FLASH_MESSAGE',
+        value: "L'annonce a bien été envoyée",
       })
-      //TODO - flash message if response is ok, delete input value (and go back to previous page ?)
-      console.log('flash message envoi annonce');
-
-      //if announce is submit
-
+    }).catch((error) => {
+      console.error('SUBMIT_ANNOUNCE error : ', error);
+      store.dispatch({
+        type: 'MODIFY_FLASH_MESSAGE',
+        value: "Erreur réseau, le message n'a pas été transmis",
+      })
     })
   }
 
