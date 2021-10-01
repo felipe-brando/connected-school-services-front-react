@@ -58,7 +58,7 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 newAnnounceTitle: action.value,
             }
-        case 'CHANGE_INPUT_CONTENT':
+        case 'CHANGE_ADD_ANNOUNCE_CONTENT':
             return {
                 ...state,
                 newAnnounceContent: action.value
@@ -105,7 +105,6 @@ const reducer = (state = initialState, action = {}) => {
         }
 
         case 'MODIFY_CURRENT_IMAGE': {
-            console.log('ok');
             return {
                 ...state,
                 currentAnnounce: { ...state.currentAnnounce, image: action.fileValue, }
@@ -138,8 +137,8 @@ const reducer = (state = initialState, action = {}) => {
                 flashMessageContent: action.value,
             }
         }
-        
-        
+
+
 
 
         default:

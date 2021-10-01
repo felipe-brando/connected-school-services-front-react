@@ -9,7 +9,6 @@ const ClassroomStudent = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log('UZEFF');
         dispatch({
             type: 'GET_STUDENTS_LIST_BY_CLASS_ID',
             id: id,

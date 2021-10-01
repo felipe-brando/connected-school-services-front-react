@@ -1,5 +1,5 @@
 import ReactQuill from 'react-quill';
-import toolbarOptions from "./toolbarOptions";
+//import toolbarOptions from "./toolbarOptions";
 import { useDispatch, useSelector } from 'react-redux'
 
 import "react-quill/dist/quill.snow.css";
@@ -7,6 +7,7 @@ import "react-quill/dist/quill.bubble.css";
 import './style.scss'
 
 const TextEditor = () => {
+
     const editorModifyBaseValue = useSelector((state) => state.textEditor.editorModifyBaseValue);
     const dispatch = useDispatch();
 
@@ -22,7 +23,7 @@ const TextEditor = () => {
 
     return (
 
-        <ReactQuill theme="snow" value={editorModifyBaseValue} modules={{ toolbar: toolbarOptions }} onChange={handleChange} />
+        <ReactQuill theme="snow" value={editorModifyBaseValue} modules={{ toolbar: {} }} onChange={handleChange} />
     )
 
 }

@@ -97,13 +97,13 @@ const announceApi = (store) => (next) => (action) => {
       method: 'POST',
       url: url + "announce/",
       data: {
-        "title": state.announce.newAnnounceTitle,
-        "content": state.textEditor.editorContent,
+        "title": action.title,
+        "content": action.content,
         "images": {
-          "name": state.announce.newAnnounceImageName,
-          "value": state.announce.newAnnonceImageBase64,
+          "name": action.imgName,
+          "value": action.imgB64,
         },
-        "category": [state.announce.newAnnounceCategoryId]
+        "category": [action.categoryId]
       },
       headers: {
         Authorization: "Bearer " + token,
@@ -114,7 +114,6 @@ const announceApi = (store) => (next) => (action) => {
         type: 'ADD_ANNOUNCE_RESET_INITIAL_STATE',
       })
       //TODO - flash message if response is ok, delete input value (and go back to previous page ?)
-      console.log(response);
       console.log('flash message envoi annonce');
 
       //if announce is submit
