@@ -16,13 +16,14 @@ const connectionApi = (store) => (next) => (action) => {
                 let classroomId = "";
                 let classroomName = "";
                 let classroomGrade = "";
+                let discipline = "";
 
                 if (response.data.data.roles[0] !== "ROLE_TEACHER") {
-                    //conditionnal variable when ROLE_ADMIN classroom is null 
+                    //conditionnal variable when ROLE_ADMIN classroom is null
                     classroomId = response.data.data.classroom ? response.data.data.classroom.id : [];
                     classroomName = response.data.data.classroom ? response.data.data.classroom.grade + "ème " + response.data.data.classroom.letter.toUpperCase() : "";
                     classroomGrade = response.data.data.classroom ? response.data.data.classroom.grade + "ème" : "0";
-                }
+                } else { discipline = response.data.data.discipline; }
 
                 //api.defaults.headers.common.Authorization = `bearer ${response.data.token}`;
                 store.dispatch({
@@ -34,6 +35,7 @@ const connectionApi = (store) => (next) => (action) => {
                     classroomName: classroomName,
                     userId: response.data.data.id,
                     classroomGrade: classroomGrade,
+                    discipline: discipline,
                 });
             })
             .catch((error) => {

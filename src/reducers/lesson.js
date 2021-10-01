@@ -1,14 +1,27 @@
 const initialState = {
 
     disciplinesList: [],
-    resourcesList:[],
+    resourcesList:[{
+        id: '',
+        title: '',
+        content: '',
+        createdAt: '',
+        discipline: [{
+            id: '',
+            name: '',
+        }],
+    }],
 
     currentDiscipline: "Français",
 
     selected: null,
 
     textEditorOpen: false,
+    newResourceTitle: '',
+    newResourceContent: '',
+    newDisciplineId: '',
 
+    flashMessageContent: "",
 
 };
 
@@ -48,6 +61,21 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 textEditorOpen: !state.textEditorOpen,
             }
+
+        case 'CHANGE_INPUT_RESOURCE__TITLE':
+            return {
+                ...state,
+                newResourceTitle: action.value,
+            }
+
+        case 'ADD_RESOURCE_RESET_INITIAL_STATE': {
+            return {
+                ...state,
+                newResourceTitle: "",
+                newResourceContent: "",
+                flashMessageContent: "L'annonce a bien été envoyée",
+            }
+        }
         default:
             return state;
     }

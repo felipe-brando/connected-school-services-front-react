@@ -30,6 +30,33 @@ const lessonApi = (store) => (next) => (action) => {
     });
     
   }
+
+  //---POST Requests
+  if (action.type === 'SUBMIT_NEW_RESOURCE') {
+    axios({
+      method: 'POST',
+      url: url + "lesson/",
+      data: {
+        "title": state.lesson.newResourceTitle,
+        "content": state.textEditor.editorContent,
+        "discipline": [action.disciplineId],
+      },
+      headers: {
+        Authorization: "Bearer " + token,
+      }
+    }).then((response) => {
+
+      store.dispatch({
+        type: 'ADD_RESOURCE_RESET_INITIAL_STATE',
+      })
+      //TODO - flash message if response is ok, delete input value (and go back to previous page ?)
+      console.log(response);
+      console.log('flash message envoi annonce');
+
+      //if announce is submit
+
+    })
+  }
   next(action); 
 };
 

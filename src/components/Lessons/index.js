@@ -17,9 +17,12 @@ const Lessons = () => {
     const isSelected = useSelector((state) => state.lesson.selected);
     const isTextEditorOpen = useSelector((state) => state.lesson.textEditorOpen);
     const roleTeacher = useSelector((state) => state.user.roles.includes('ROLE_TEACHER'));
-    //console.log(classroom);
+    const teacherDiscipline = useSelector((state) => state.user.discipline);
     
-
+    const filtredResources = resources.filter((resource) => resource.discipline.name === teacherDiscipline);
+    //const disciplineId = filtredResources[0].discipline;
+    console.log(disciplines);
+   
     useEffect(() => {
         dispatch({
             type: 'FETCH_DISCIPLINES',
@@ -60,14 +63,18 @@ const Lessons = () => {
     return (
         <div className="lessons">
             <h1 className="lessons__title">Mes ressources</h1>
-            <Form disciplines={disciplines} handleChangeDiscipline={handleSelectChange} />
+            {roleTeacher ? <p>Votre matière : {teacherDiscipline}</p> :  <Form disciplines={disciplines} handleChangeDiscipline={handleSelectChange} />}
             <section className="resources">
             <h2 className="resources__title">Liste des ressources</h2>
             {roleTeacher && <button type="submit" onClick={handleResourceAdd}><PlusCircle /></button>}
-            {isTextEditorOpen && <AddResources />}
-            {resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
+            {isTextEditorOpen && <AddResources  />}
+            {roleTeacher ? resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
                 <ResourcesList roleTeacher={roleTeacher} isSelected={isSelected} index={i} handleTitleClick={toggle} key={filtredResource.id} {...filtredResource} />
-            ))}
+            )) 
+            : 
+            resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
+                <ResourcesList roleTeacher={roleTeacher} isSelected={isSelected} index={i} handleTitleClick={toggle} key={filtredResource.id} {...filtredResource} />
+            )) }
             </section>
         </div>
     );

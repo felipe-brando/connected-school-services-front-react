@@ -52,6 +52,7 @@ export const initialState = {
           classroom: action.classroomName,
           userId: action.userId,             
           classroomGrade: action.classroomGrade,
+          discipline: action.discipline,
         }; 
       case 'TOGGLE_OPEN':
       return {
