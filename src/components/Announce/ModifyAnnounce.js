@@ -114,7 +114,7 @@ const ModifyAnnouce = () => {
                     )}
                 </select>
                 <label htmlFor="file">Modifier l'image</label>
-                <input onChange={handleChangeImage} required type="file" name="img" id="img" accept="image/png, image/jpeg" />
+                <input onChange={handleChangeImage} type="file" name="img" id="img" accept="image/png, image/jpeg" />
 
                 {/* switch between local and server image preview when modifying source.
              All server's files-img-name begin with number. if it's a letter it displays local image(without baseUrl)*/}
