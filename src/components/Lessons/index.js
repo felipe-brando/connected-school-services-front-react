@@ -11,7 +11,7 @@ const Lessons = () => {
     const resources = useSelector((state) => state.lesson.resourcesList);
     const currentDiscipline = useSelector((state) => state.lesson.currentDiscipline);
     const classroom = useSelector((state) => state.user.classroomGrade);
-    const accordionIsOpen = useSelector((state) => state.lesson.accordionOpen);
+    const isSelected = useSelector((state) => state.lesson.selected);
     //console.log(classroom);
     
 
@@ -34,11 +34,19 @@ const Lessons = () => {
         });
     }
 
-    const handleTitleClick = () => {
-        dispatch({
-            type: 'ACCORDION_OPEN',
-        });
+    const toggle = (e) => {
+            dispatch ({
+                type: 'ACCORDION_OPEN',
+                index: parseInt(e.currentTarget.id),
+            })
+            if (isSelected ===  parseInt(e.currentTarget.id)){
+                dispatch ({
+                    type: 'ACCORDION_CLOSE',
+                })
+            }
     }
+    
+
 
     return (
         <div className="lessons">
@@ -46,8 +54,8 @@ const Lessons = () => {
             <Form disciplines={disciplines} handleChangeDiscipline={handleSelectChange} />
             <section className="resources">
             <h2 className="resources__title">Liste des ressources</h2>
-            {resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource) => (
-                <ResourcesList accordionIsOpen={accordionIsOpen} handleTitleClick={handleTitleClick} key={filtredResource.id} {...filtredResource} />
+            {resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
+                <ResourcesList isSelected={isSelected} index={i} handleTitleClick={toggle} key={filtredResource.id} {...filtredResource} />
             ))}
             </section>
         </div>

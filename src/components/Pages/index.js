@@ -1,4 +1,3 @@
-
 import { Switch, Route } from 'react-router-dom';
 
 import MobileBar from '../MobileBar/index';
@@ -8,6 +7,7 @@ import Lessons from '../Lessons/index';
 import Homeworks from '../Homeworks/Index';
 import Marks from '../Marks/Index';
 import DaySchedule from '../Schedule/DaySchedule';
+import Welcome from '../Welcome/index';
 
 import './style.scss';
 
@@ -19,6 +19,7 @@ const Pages = () => {
             <div className="pages__content">
                 <Switch>
                     <Route path="/espace-perso/" exact>
+                        <Welcome />
                         <DaySchedule />
                     </Route>
                     <Route path="/espace-perso/mon-emploi-du-temps" exact>
