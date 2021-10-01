@@ -1,4 +1,5 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Prompt } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import AnnounceList from './AnnounceList';
 import AnnouncePage from './AnnouncePage';
@@ -9,7 +10,10 @@ import CategoryList from './CategoryList';
 import './style.scss';
 
 
+
 const Announce = () => {
+
+    const userRole = useSelector((state) => state.user.roles);
 
 
     return (
@@ -26,9 +30,11 @@ const Announce = () => {
             <Route path="/annonces" exact>
                 <AnnounceList filter="Actualités" />
             </Route>
-            <Route path="/annonces/ajout" exact>
-                <AddAnnounce />
-            </Route>
+            {userRole[0] === "ROLE_ADMIN" &&
+                <Route path="/annonces/ajout" exact>
+                    <AddAnnounce />
+                </Route>
+            }
             <Route path="/annonces/maj/:id" exact>
                 <ModifyAnnounce />
             </Route>

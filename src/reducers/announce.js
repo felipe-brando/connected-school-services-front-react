@@ -1,7 +1,7 @@
 const initialState = {
     announceList: [{
         id: '',
-        title: 'Problème de Connexion',
+        title: 'Problème de Connexion ou Utilisateur non autorisé',
         content: '',
         image: '',
         category: [],
@@ -11,7 +11,7 @@ const initialState = {
 
     currentAnnounce: {
         id: '',
-        title: 'Problème de Connexion',
+        title: 'Problème de Connexion ou Utilisateur non autorisé',
         content: '',
         image: '',
         category: [],

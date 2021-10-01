@@ -47,7 +47,7 @@ const MenuList = ({closeMobileMenu}) => {
           </NavLink></li>
           {logged && 
         <li className="menu__item"><NavLink
-            to="/espace-perso" exact> Espace Personnel                               
+            to="/espace-perso" > Espace Personnel                               
           </NavLink></li>}
       </ul> 
    

@@ -78,25 +78,25 @@ const MobileBar = ()  => {
                 }
                 {roleTeacher &&
                 <ul className='mobileBar__list'>
-                    <NavLink className='mobileBar__link' to="#">
+                    <NavLink className='mobileBar__link' to="/espace-perso/notes">
                         <li className="mobileBar__item">
-                            <span className='mobileBar__icon'><Calendar value={{color: '#fff'}} /></span>
-                            <span className='mobileBar__text'>Emploi du Temps</span>
+                        <span className='sidebar__icon'><Award /></span>
+                            <span className='mobileBar__text'>Notes</span>
                         </li> 
                     </NavLink>   
-                    <NavLink className='mobileBar__link' to="#">
+                    <NavLink className='mobileBar__link' to="/espace-perso/mes-cours"  exact>
                         <li className="mobileBar__item">
                             <span className='mobileBar__icon'><Server /></span>
                             <span className='mobileBar__text'>Cours/Ressources</span>
                         </li>   
                     </NavLink>   
-                    <NavLink className='mobileBar__link' to="#">
+                    <NavLink className='mobileBar__link' to="/espace-perso/">
                         <li className="mobileBar__item">
                             <span className='mobileBar__icon'><Book /></span>
                             <span className='mobileBar__text'>Devoirs / Annonces</span>
                         </li>   
                     </NavLink>   
-                    <NavLink className='mobileBar__link' to="#">
+                    <NavLink className='mobileBar__link' to="/espace-perso/mes-classes" exact>
                         <li className="mobileBar__item">
                             <span className='mobileBar__icon'><Users /></span>
                             <span className='mobileBar__text'>Mes classes</span>

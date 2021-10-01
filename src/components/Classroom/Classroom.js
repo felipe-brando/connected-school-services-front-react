@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Route, Switch, Link } from "react-router-dom";
+
+import ClassroomStudents from "./ClassroomStudents";
 
 import './style.scss';
 
-
-const TeacherHomeWorks = () => {
+const Classroom = () => {
 
     const teacherClassList = useSelector((state) => state.classroom.teacherClassroomList);
     const teacherId = useSelector((state) => state.user.userId);
     const teacherDiscipline = useSelector((state) => state.user.discipline);
-
 
     const dispatch = useDispatch();
 
@@ -22,27 +22,29 @@ const TeacherHomeWorks = () => {
     }, []);
 
     return (
-        <section className="teacherHomeworks">
+        <section className="teacherClassroom">
             <h1>{teacherDiscipline}</h1>
-            <h2>Mes devoirs</h2>
-            <NavLink activeClassName="teacherHomeworks_link--selected" to="/espace-perso/mes-devoirs/ajout">Ajout</NavLink>
-            <NavLink activeClassName="teacherHomeworks_link--selected" to="/espace-perso/mes-devoirs/">Liste</NavLink>
+            <h2>Mes Classes</h2>
             <ul>
                 {teacherClassList[0].map((classroom) => {
                     return (
                         <li>
                             <NavLink
-                                activeClassName="teacherHomeworks_link--selected"
-                                to={"/espace-perso/mes-devoirs/liste/" + classroom.id}
+                                activeClassName="teacherClassroom_link--selected"
+                                to={"/espace-perso/mes-classes/" + classroom.id}
                             >{classroom.grade}ème {classroom.letter.toUpperCase()}
                             </NavLink>
                         </li>
                     )
                 })}
             </ul>
+            <Switch>
+                <Route path="/espace-perso/mes-classes/:id" exact>
+                    <ClassroomStudents />
+                </Route>
+            </Switch>
         </section>
     )
 }
 
-export default TeacherHomeWorks;
-
+export default Classroom;

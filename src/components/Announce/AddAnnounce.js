@@ -6,10 +6,10 @@ import FlashMessage from '../FlashMessage/FlashMessage';
 import TextEditor from '../TextEditor/TextEditor';
 
 const AddAnnounce = () => {
-    //link state
+    //link state    
     const titleInputValue = useSelector((state) => state.announce.newAnnounceTitle);
     const categoryList = useSelector((state) => state.announce.categoryList);
-    const flashMessageContent= useSelector((state) => state.announce.flashMessageContent);
+    const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
     //local state only to display selected image preview
     const [imgUrl, setImgUrl] = useState("");
 
@@ -79,50 +79,50 @@ const AddAnnounce = () => {
     };
 
     return (
-    <section>
-        {flashMessageContent&&<FlashMessage incomingMessage={flashMessageContent} />}
-        
-        <form className="addAnnounce__form" onSubmit={handleSubmitForm} >
+        <section>
+            {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
 
-            <label className="addAnnounce__form--label" htmlFor="title">Titre : </label>
-            <input
-                placeholder="titre de l'annonce"
-                required onChange={handleTitleChange}
-                value={titleInputValue}
-                type="text" name="title"
-                id="title"
-            />
+            <form className="addAnnounce__form" onSubmit={handleSubmitForm} >
 
-            <label className="addAnnounce__form--label" htmlFor="content">Contenu </label>
-            <TextEditor />
+                <label className="addAnnounce__form--label" htmlFor="title">Titre : </label>
+                <input
+                    placeholder="titre de l'annonce"
+                    required onChange={handleTitleChange}
+                    value={titleInputValue}
+                    type="text" name="title"
+                    id="title"
+                />
 
-            <select required className="addAnnounce__form--select" onChange={handleSelectChange}>
-                <option value="">Choisir une catégorie</option>
-                {
-                    categoryList.map((categoryObject) => (
-                        <option value={categoryObject.id} key={categoryObject.id} data-id={categoryObject.id}>
-                            {categoryObject.name}
-                        </option>
-                    )
-                    )}
+                <label className="addAnnounce__form--label" htmlFor="content">Contenu </label>
+                <TextEditor />
 
-            </select>
+                <select required className="addAnnounce__form--select" onChange={handleSelectChange}>
+                    <option value="">Choisir une catégorie</option>
+                    {
+                        categoryList.map((categoryObject) => (
+                            <option value={categoryObject.id} key={categoryObject.id} data-id={categoryObject.id}>
+                                {categoryObject.name}
+                            </option>
+                        )
+                        )}
 
-            <label htmlFor="file">Choisir une image</label>
-            <input
-                className="addAnnounce__form--input__file"
-                required onChange={handleLoadImage}
-                type="file"
-                name="img"
-                id="img"
-                accept="image/png, image/jpeg"
-            />
-            {imgUrl && <img src={imgUrl} alt="preview" />}
+                </select>
 
-            <input type="submit" />
+                <label htmlFor="file">Choisir une image</label>
+                <input
+                    className="addAnnounce__form--input__file"
+                    required onChange={handleLoadImage}
+                    type="file"
+                    name="img"
+                    id="img"
+                    accept="image/png, image/jpeg"
+                />
+                {imgUrl && <img src={imgUrl} alt="preview" />}
 
-        </form>
-    </section>
+                <input type="submit" />
+
+            </form>
+        </section>
     );
 
 };

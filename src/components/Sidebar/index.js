@@ -78,25 +78,25 @@ const Sidebar = ()  => {
                 }
                 {roleTeacher &&
                 <ul className='sidebar__list'>
-                    <NavLink className='sidebar__link' to="#">
+                    <NavLink className='sidebar__link' to="/espace-perso/notes"  exact>
                         <li className="sidebar__item">
-                            <span className='sidebar__icon'><Calendar value={{color: '#fff'}} /></span>
-                            <span className='sidebar__text'>Emploi du Temps</span>
+                        <span className='sidebar__icon'><Award /></span>
+                            <span className='sidebar__text'>Notes</span>
                         </li> 
                     </NavLink>   
-                    <NavLink className='sidebar__link' to="#">
+                    <NavLink className='sidebar__link' to="/espace-perso/mes-cours"  exact>
                         <li className="sidebar__item">
                             <span className='sidebar__icon'><Server /></span>
                             <span className='sidebar__text'>Cours/Ressources</span>
                         </li>   
                     </NavLink>   
-                    <NavLink className='sidebar__link' to="/espace-perso/mes-devoirs">
+                    <NavLink className='sidebar__link' to="/espace-perso/mes-devoirs" exact>
                         <li className="sidebar__item">
                             <span className='sidebar__icon'><Book /></span>
                             <span className='sidebar__text'>Devoirs / Annonces</span>
                         </li>   
                     </NavLink>   
-                    <NavLink className='sidebar__link' to="#">
+                    <NavLink className='sidebar__link' to="/espace-perso/mes-classes" exact>
                         <li className="sidebar__item">
                             <span className='sidebar__icon'><Users /></span>
                             <span className='sidebar__text'>Mes classes</span>

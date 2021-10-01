@@ -8,6 +8,7 @@ import Homeworks from '../Homeworks/Index';
 import Marks from '../Marks/Index';
 import DaySchedule from '../Schedule/DaySchedule';
 import Welcome from '../Welcome/index';
+import Classroom from '../Classroom/Classroom';
 
 import './style.scss';
 
@@ -30,6 +31,9 @@ const Pages = () => {
                     </Route>
                     <Route path="/espace-perso/mes-devoirs">
                         <Homeworks />
+                    </Route>
+                    <Route path="/espace-perso/mes-classes">
+                        <Classroom />
                     </Route>
                     <Route path="/espace-perso/mes-notes" exact>
                         <Marks />
