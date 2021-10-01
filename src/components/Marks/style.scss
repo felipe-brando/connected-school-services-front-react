@@ -1,70 +1,43 @@
 
-.table {
-    box-sizing: border-box;
-    
-
-    &__content {
-        width: 30%;
-        border-collapse: collapse;
-        min-width: 400px;
-        margin: 5em 15em;
-        font-weight: 600;
+.table__content {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    border-radius: 1em 1em 0 0;
+    overflow: hidden; 
+    box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+    width: 90%;
+    font-weight: 600;
+    position: relative;
+  
+    &--column th {
+    border-bottom: 3px solid red;
+    padding: 0.8rem;
     }
 
-    &__content--measure {
+    &--measure {
         padding: 10px;
         text-align: left;
         border: solid 1px lightgrey;
-        font-weight: 600;
+        // font-weight: 600;
     }
 
-
-    &__content--marks {
+    &--marks {
     background-color: rgb(52, 183, 117);
     text-align: center;
-    color: #f7f1e9;;
-    font-weight: 600;
+    color: #f7f1e9;
+    border: solid 1px lightgrey;
+    // font-weight: 600;
+    }
+
+    &--average {
+    text-align: center;
+    border: solid 1px lightgrey;
+    background-color: #54ACE5;
+    }
+
+    &--generalaverage {
+    text-align: right;
+    border: solid 1px lightgrey;
+    background-color: #54ACE5;
     }
 }
-
-// tr::nth-child(odd) {
-//     background-color: #eee;
-// }
-
-//@media only screen and (max-width: 992px) {
-
-    //table, thead, tbody, tr, th, td {
-    //   display: block;
-    //}
-
-    //td {
-    //   padding-left: 150px;
-    //   position: relative;
-    //    margin-top: -1px;
-    //    background-color: #fff;
-    //}
-
-    // td::nth-child(odd) {
-    //     background-color: #eee;
-
-    // // td::before {
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    //     width: 8.125rem;
-    //     bottom: 0;
-    //     background-color: #000;
-    //     color: #fff;
-    //     display: flex;
-    //     align-items: center;
-    //     font-weight: bold;
-    // }
-
-    //tr {
-     //   margin-bottom: 1rem;
-    //}
-
-    //th + td::before {
-    //    display: none;
-    //}
-//}

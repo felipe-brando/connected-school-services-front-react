@@ -13,7 +13,7 @@ const AnnouncePage = () => {
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
 
     const handleModifyAnnounce = (e) => {
-        const annouceId = parseInt(e.target.dataset.id);
+        const annouceId = parseInt(e.target.dalPictureet.id);
         if (e.target.classList[1] === 'modify') {
         } else if (e.target.classList[1] === 'delete') {
             if (window.confirm('Êtes vous sur de vouloir supprimer cet annonce ?')) {

@@ -37,10 +37,8 @@ function Marks() {
                     <section className="marks__section">
                         <MarksTable
                         measureDataArray={disciplineList}
-                        marksDataArray={currentMarks}
-                                          
-                        // disciplineDataArray={currentdiscipline}                  
-                        />                      
+                        marksDataArray={currentMarks}                                                                
+                        />                     
                     </section>
             }
         </div>
