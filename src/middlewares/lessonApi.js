@@ -39,7 +39,9 @@ const lessonApi = (store) => (next) => (action) => {
       data: {
         "title": state.lesson.newResourceTitle,
         "content": state.textEditor.editorContent,
-        "discipline": [action.disciplineId],
+        "discipline": { 
+          id:action.disciplineId, 
+        },
       },
       headers: {
         Authorization: "Bearer " + token,

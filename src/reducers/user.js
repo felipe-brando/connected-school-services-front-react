@@ -16,8 +16,10 @@ export const initialState = {
     userId: '', 
     classroomGrade: '',
     discipline: '',
+    disciplineId: '',
     loginOpen: false,
     burgerOpen: false,
+
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -53,6 +55,7 @@ export const initialState = {
           userId: action.userId,             
           classroomGrade: action.classroomGrade,
           discipline: action.discipline,
+          disciplineId : action.disciplineId,
         }; 
       case 'TOGGLE_OPEN':
       return {

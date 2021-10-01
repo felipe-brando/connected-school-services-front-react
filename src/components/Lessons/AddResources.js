@@ -4,7 +4,7 @@ import FlashMessage from '../FlashMessage/FlashMessage';
 
 import TextEditor from '../TextEditor/TextEditor';
 
-const AddResources = ({ disciplineId }) => {
+const AddResources = ({ teacherDisciplineId }) => {
     //link state    
     const titleInputValue = useSelector((state) => state.lesson.newResourceTitle);
     const flashMessageContent = useSelector((state) => state.lesson.flashMessageContent);
@@ -33,7 +33,7 @@ const AddResources = ({ disciplineId }) => {
         e.preventDefault();
         dispatch({
             type: 'SUBMIT_NEW_RESOURCE',
-            disciplineId: disciplineId,
+            disciplineId: teacherDisciplineId,
         })
 
     };

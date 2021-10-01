@@ -18,10 +18,11 @@ const Lessons = () => {
     const isTextEditorOpen = useSelector((state) => state.lesson.textEditorOpen);
     const roleTeacher = useSelector((state) => state.user.roles.includes('ROLE_TEACHER'));
     const teacherDiscipline = useSelector((state) => state.user.discipline);
+    const teacherDisciplineId = useSelector((state) => state.user.disciplineId);
     
     const filtredResources = resources.filter((resource) => resource.discipline.name === teacherDiscipline);
     //const disciplineId = filtredResources[0].discipline;
-    console.log(disciplines);
+    console.log(teacherDisciplineId);
    
     useEffect(() => {
         dispatch({
@@ -67,7 +68,7 @@ const Lessons = () => {
             <section className="resources">
             <h2 className="resources__title">Liste des ressources</h2>
             {roleTeacher && <button type="submit" onClick={handleResourceAdd}><PlusCircle /></button>}
-            {isTextEditorOpen && <AddResources  />}
+            {isTextEditorOpen && <AddResources teacherDisciplineId={teacherDisciplineId} />}
             {roleTeacher ? resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
                 <ResourcesList roleTeacher={roleTeacher} isSelected={isSelected} index={i} handleTitleClick={toggle} key={filtredResource.id} {...filtredResource} />
             )) 
