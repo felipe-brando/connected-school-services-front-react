@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types'
 import { imgUrl } from '../../selectors/baseUrl';
 
+import { Edit , Trash } from 'react-feather';
+
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
 
 const AnnounceCard = ({ id, title, content, image, categories, date, userRole }) => {
-     const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
 
 
@@ -43,20 +45,25 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
 
                 {userRole[0] === "ROLE_ADMIN" &&
                     <>
-                        <Link
-                            to={"/annonces/maj/" + id}
+                        <Link to={"/annonces/maj/" + id}
                             className="announceCard__button--modify modify"
-                        >Modifier
-                </Link>
-                        <button
+                        >
+                            <button className="announce__icon">
+                                <span className='announce__icon--edit'> <Edit /> </span>
+                            </button>
+                        </Link>
+                        <button className="announce__icon">
+                                <span className='announce__icon--delete'> <Trash /> </span>
+                            </button>
+                        
+                        {/* <button
                             onClick={handleModifyAnnounce}
                             className="announceCard__button--delete delete"
                         >Supprimer
-                </button>
+                </button> */}
                     </>}
 
-            </div>
-
+            </div>            
         </article>
     );
 };

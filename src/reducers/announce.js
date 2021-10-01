@@ -58,7 +58,7 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 newAnnounceTitle: action.value,
             }
-        case 'CHANGE_INPUT_CONTENT':
+        case 'CHANGE_ADD_ANNOUNCE_CONTENT':
             return {
                 ...state,
                 newAnnounceContent: action.value
@@ -105,26 +105,12 @@ const reducer = (state = initialState, action = {}) => {
         }
 
         case 'MODIFY_CURRENT_IMAGE': {
-            console.log('ok');
             return {
                 ...state,
                 currentAnnounce: { ...state.currentAnnounce, image: action.fileValue, }
             }
         }
-
-        case 'ADD_ANNOUNCE_RESET_INITIAL_STATE': {
-            return {
-                ...state,
-                newAnnounceTitle: "",
-                newAnnounceContent: "",
-                newAnnounceCategoryId: 0,
-                newAnnounceImageName: '',
-                newAnnonceImageBase64: '',
-
-                flashMessageContent: "L'annonce a bien été envoyée",
-            }
-        }
-
+        
         case 'RESET_FLASH_MESSAGES': {
             return {
                 ...state,
@@ -138,8 +124,8 @@ const reducer = (state = initialState, action = {}) => {
                 flashMessageContent: action.value,
             }
         }
-        
-        
+
+
 
 
         default:

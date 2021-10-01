@@ -6,6 +6,13 @@ function StudentHomeworks() {
     const announceListByClassId = useSelector((state) => state.announce.classroomAnnounces);
     const dispatch = useDispatch();
 
+    //function to convert database-numbers-date in french-words
+    function dateConverter(currentDate) {
+        const date = new Date(currentDate);
+        const options = { weekday: "long", year: "numeric", month: "long", day: "2-digit" };
+        return date.toLocaleDateString("fr-FR", options);
+    }
+
     //Collect class announces 
     useEffect(() => {
         dispatch({
@@ -21,8 +28,9 @@ function StudentHomeworks() {
             {announceListByClassId.map((announceObject) => (
                 <article key={announceObject.id} className="homework__article">
                     <h3 className="homework__article__title">{announceObject.title}</h3>
-                    <p className="homework__article__expiration">A faire pour le
-                     <span className="homework__article__date"> {announceObject.expireAt ? announceObject.expireAt : "prochain cours"}</span>
+                    <p className="homework__article__expiration">Pour le <span className="homework__article__date">
+                        {announceObject.expireAt ? dateConverter(announceObject.expireAt) : "prochain cours"}
+                    </span>
                     </p>
                     <p className="homework__article__content">{announceObject.homework}</p>
                 </article>

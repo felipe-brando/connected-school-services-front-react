@@ -97,28 +97,28 @@ const announceApi = (store) => (next) => (action) => {
       method: 'POST',
       url: url + "announce/",
       data: {
-        "title": state.announce.newAnnounceTitle,
-        "content": state.textEditor.editorContent,
+        "title": action.title,
+        "content": action.content,
         "images": {
-          "name": state.announce.newAnnounceImageName,
-          "value": state.announce.newAnnonceImageBase64,
+          "name": action.imgName,
+          "value": action.imgB64,
         },
-        "category": [state.announce.newAnnounceCategoryId]
+        "category": [action.categoryId]
       },
       headers: {
         Authorization: "Bearer " + token,
       }
     }).then((response) => {
-
       store.dispatch({
-        type: 'ADD_ANNOUNCE_RESET_INITIAL_STATE',
+        type: 'MODIFY_FLASH_MESSAGE',
+        value: "L'annonce a bien été envoyée",
       })
-      //TODO - flash message if response is ok, delete input value (and go back to previous page ?)
-      console.log(response);
-      console.log('flash message envoi annonce');
-
-      //if announce is submit
-
+    }).catch((error) => {
+      console.error('SUBMIT_ANNOUNCE error : ', error);
+      store.dispatch({
+        type: 'MODIFY_FLASH_MESSAGE',
+        value: "Erreur réseau, le message n'a pas été transmis",
+      })
     })
   }
 

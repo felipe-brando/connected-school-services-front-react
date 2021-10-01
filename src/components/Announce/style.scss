@@ -3,7 +3,7 @@
    flex-direction: column;
    margin: 2rem;
 
-   @media screen and (min-width: 992px) { 
+   @media screen and (min-width: 992px) {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
@@ -21,7 +21,7 @@
    flex-wrap: nowrap;
    margin: 2rem;
 
-   @media screen and (min-width: 992px) { 
+   @media screen and (min-width: 992px) {
       flex-wrap: wrap;
       flex-direction: row;
       justify-content: space-around;
@@ -29,6 +29,8 @@
 }
 
 .announce {
+   position: relative;
+
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -38,7 +40,7 @@
    padding: 1rem;
    box-shadow: 0.2em 0.2em 1em 0.2em rgb(34, 34, 34, 20%);
 
-   @media screen and (min-width: 992px) { 
+   @media screen and (min-width: 992px) {
       display: flex;
       margin-right: 2rem;
       width: 20em;
@@ -61,7 +63,7 @@
    &--img {
       border-radius: 1em;
       width: 70%;
-      
+
       &:hover {
          transition: 0.7s;
          transform: scale(1.05) translateY(-3px);
@@ -116,6 +118,7 @@
    background-color: #60d399;
    color: white;
 }
+
 /*
 .atag::before {
    background: #fff;
@@ -175,15 +178,30 @@
    .ql-container {
       margin-bottom: 10px;
    }
-   & img{
+
+   & img {
       width: 20%;
    }
 
    &--select {
       margin-top: 50px;
    }
-   &--submit{
+
+   &--submit {
       margin-top: 50px;
    }
 
+}
+
+.announce__icon {
+   margin: 10px;
+   padding: 3px;
+   border-radius: 40%;
+   transition: 0.4s;
+
+   &:hover {
+      transform: scale(1.1) translateY(-3px);
+      transition: 0.4s;
+      box-shadow: rgb(38, 57, 77) 0px 10px 15px -5px;;
+   }
 }

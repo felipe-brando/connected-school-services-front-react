@@ -58,8 +58,6 @@ const classroomApi = (store) => (next) => (action) => {
             }
 
         }).then((response) => {
-            console.log(response);
-
             // store.dispatch({
             //     type: 'ADD_ANNOUNCE_RESET_INITIAL_STATE',
             // })
