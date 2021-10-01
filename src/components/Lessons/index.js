@@ -2,6 +2,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 
+import { PlusCircle } from 'react-feather';
+
 import Form from './Form';
 import ResourcesList from './ResourcesList';
 
@@ -12,6 +14,7 @@ const Lessons = () => {
     const currentDiscipline = useSelector((state) => state.lesson.currentDiscipline);
     const classroom = useSelector((state) => state.user.classroomGrade);
     const isSelected = useSelector((state) => state.lesson.selected);
+    const roleTeacher = useSelector((state) => state.user.roles.includes('ROLE_TEACHER'));
     //console.log(classroom);
     
 
@@ -46,16 +49,15 @@ const Lessons = () => {
             }
     }
     
-
-
     return (
         <div className="lessons">
             <h1 className="lessons__title">Mes ressources</h1>
             <Form disciplines={disciplines} handleChangeDiscipline={handleSelectChange} />
             <section className="resources">
             <h2 className="resources__title">Liste des ressources</h2>
+            {roleTeacher && <button><PlusCircle /></button>}
             {resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
-                <ResourcesList isSelected={isSelected} index={i} handleTitleClick={toggle} key={filtredResource.id} {...filtredResource} />
+                <ResourcesList roleTeacher={roleTeacher} isSelected={isSelected} index={i} handleTitleClick={toggle} key={filtredResource.id} {...filtredResource} />
             ))}
             </section>
         </div>
