@@ -16,6 +16,8 @@ const disciplineApi = (store) => (next) => (action) => {
         Authorization: "Bearer " + token,
       }
     }
+    
+  //---GET Requests
   
   if (action.type === 'FETCH_DISCIPLINES') {     
     axios.get(url + "discipline", config)

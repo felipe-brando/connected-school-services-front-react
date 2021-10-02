@@ -16,7 +16,9 @@ const lessonApi = (store) => (next) => (action) => {
         Authorization: "Bearer " + token,
       }
     }
-  
+
+   //---GET Requests
+
   if (action.type === 'FETCH_RESOURCES') { 
     axios.get(url + "lesson", config)
     .then((response) => {
@@ -37,8 +39,8 @@ const lessonApi = (store) => (next) => (action) => {
       method: 'POST',
       url: url + "lesson/",
       data: {
-        "title": state.lesson.newResourceTitle,
-        "content": state.textEditor.editorContent,
+        "title": action.title,
+        "content": action.content,
         "discipline": { 
           id:action.disciplineId, 
         },

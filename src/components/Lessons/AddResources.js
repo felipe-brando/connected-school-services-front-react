@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import FlashMessage from '../FlashMessage/FlashMessage';
 
 import TextEditor from '../TextEditor/TextEditor';
@@ -8,11 +8,10 @@ const AddResources = ({ teacherDisciplineId }) => {
     //link state    
     const titleInputValue = useSelector((state) => state.lesson.newResourceTitle);
     const flashMessageContent = useSelector((state) => state.lesson.flashMessageContent);
-  
-
-
+    const newResourceTitle = useSelector((state) => state.lesson.newResourceTitle);
     //Link Dispatch
     const dispatch = useDispatch();
+    const [inputContentValue, setInputContentValue] = useState('');
 
     //reset to "" input file value at each send
    // useEffect(() => {
@@ -23,16 +22,22 @@ const AddResources = ({ teacherDisciplineId }) => {
     //handleChange functions
     const handleTitleChange = (e) => {
         dispatch({
-            type: 'CHANGE_INPUT_RESOURCE__TITLE',
+            type: 'CHANGE_INPUT_RESOURCE_TITLE',
             value: e.target.value,
         })
     };
+
+    const handleResourceContentChange = (e) => {
+        setInputContentValue(e);
+    }
 
     //submit Form Function
     const handleSubmitForm = (e) => {
         e.preventDefault();
         dispatch({
             type: 'SUBMIT_NEW_RESOURCE',
+            title: newResourceTitle,
+            content: inputContentValue,
             disciplineId: teacherDisciplineId,
         })
 
@@ -54,7 +59,7 @@ const AddResources = ({ teacherDisciplineId }) => {
                 />
 
                 <label className="addResource__form--label" htmlFor="content">Contenu : </label>
-                <TextEditor />
+                <TextEditor onChange={handleResourceContentChange} />
 
                 <button type="submit" onClick={handleSubmitForm}>Envoyer</button>
             </form>

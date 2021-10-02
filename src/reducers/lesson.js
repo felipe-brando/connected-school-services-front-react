@@ -1,18 +1,23 @@
 const initialState = {
-
     disciplinesList: [],
-    resourcesList:[{
+
+    currentDiscipline: "Français",
+    
+    resourcesList: [{
         id: '',
         title: '',
         content: '',
         createdAt: '',
-        discipline: [{
-            id: '',
-            name: '',
-        }],
+        discipline: [],
     }],
 
-    currentDiscipline: "Français",
+    currentResource:  [{
+        id: '',
+        title: '',
+        content: '',
+        createdAt: '',
+        discipline: [],
+    }],
 
     selected: null,
 
@@ -28,11 +33,11 @@ const initialState = {
 const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
         
-        case 'SAVE_DISCIPLINE':{
+        case 'SAVE_DISCIPLINE':
             return {
                 ...state,
                 disciplinesList: action.discipline,
-            }}
+            }
         case 'SAVE_RESOURCE':
             return {
                 ...state,
@@ -61,10 +66,16 @@ const reducer = (state = initialState, action = {}) => {
                 textEditorOpen: !state.textEditorOpen,
             }
 
-        case 'CHANGE_INPUT_RESOURCE__TITLE':
+        case 'CHANGE_INPUT_RESOURCE_TITLE':
             return {
                 ...state,
                 newResourceTitle: action.value,
+            }
+
+        case 'CHANGE_INPUT_RESOURCE_CONTENT':
+            return {
+                ...state,
+                newResourceContent: action.value,
             }
 
         case 'ADD_RESOURCE_RESET_INITIAL_STATE': {

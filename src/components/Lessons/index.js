@@ -20,9 +20,6 @@ const Lessons = () => {
     const teacherDiscipline = useSelector((state) => state.user.discipline);
     const teacherDisciplineId = useSelector((state) => state.user.disciplineId);
     
-    const filtredResources = resources.filter((resource) => resource.discipline.name === teacherDiscipline);
-    //const disciplineId = filtredResources[0].discipline;
-    console.log(teacherDisciplineId);
    
     useEffect(() => {
         dispatch({
