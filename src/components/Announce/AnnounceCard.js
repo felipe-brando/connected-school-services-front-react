@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types'
 import { imgUrl } from '../../selectors/baseUrl';
 
-import { Edit , Trash } from 'react-feather';
+import { Edit, Trash } from 'react-feather';
 
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
@@ -37,7 +37,7 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
             </p>
 
             <NavLink to={"/annonces/" + id} className="announce__image--link">
-                <img src={image[0] === '' ? schoolPicture : imgUrl + image} className="announce--img" alt="" />
+                <img src={!image ? schoolPicture : imgUrl + image} className="announce--img" alt="" />
             </NavLink>
 
             <h3 className="announce__title">{title}</h3>
@@ -46,16 +46,16 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
                 {userRole[0] === "ROLE_ADMIN" &&
                     <>
                         <Link to={"/annonces/maj/" + id}
-                            className="announceCard__button--modify modify"
-                        >
+                            className="announceCard__button--modify modify" >
                             <button className="announce__icon">
                                 <span className='announce__icon--edit'> <Edit /> </span>
                             </button>
                         </Link>
-                        <button className="announce__icon">
-                                <span className='announce__icon--delete'> <Trash /> </span>
-                            </button>
                         
+                        <button className="announce__icon">
+                            <span className='announce__icon--delete'> <Trash /> </span>
+                        </button>
+
                         {/* <button
                             onClick={handleModifyAnnounce}
                             className="announceCard__button--delete delete"
@@ -63,7 +63,7 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
                 </button> */}
                     </>}
 
-            </div>            
+            </div>
         </article>
     );
 };

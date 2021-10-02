@@ -7,7 +7,7 @@ import schoolPicture from '../../assets/img/school-small.jpeg'
 
 const AnnouncePage = () => {
     //collect announce id in url with router hook
-    const { id } = useParams();   
+    const { id } = useParams();
 
     const userRole = useSelector((state) => state.user.roles);
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
@@ -32,7 +32,6 @@ const AnnouncePage = () => {
             type: 'GET_ANNOUNCE_BY_ID',
             id: id,
         });
-
     }, []);
 
     useEffect(() => {
@@ -51,7 +50,10 @@ const AnnouncePage = () => {
                 </Link>)}
             </p>
             <img
-                src={currentAnnounce.image[0] === '' ? schoolPicture : imgUrl + currentAnnounce.image}
+                src={
+                    currentAnnounce.image &&
+                        currentAnnounce.image[0] === '' ? schoolPicture : imgUrl + currentAnnounce.image
+                }
                 alt=""
                 className="announcePage__img"
             />
@@ -59,7 +61,7 @@ const AnnouncePage = () => {
             <p className="announce__content" >{currentAnnounce.content} </p>
             <span className="announcePage__date">{currentAnnounce.date}</span>
 
-            {userRole[0]==='ROLE_ADMIN' && <>
+            {userRole[0] === 'ROLE_ADMIN' && <>
                 <Link
                     to={"/annonces/maj/" + currentAnnounce.id}
                     data-id={currentAnnounce.id}

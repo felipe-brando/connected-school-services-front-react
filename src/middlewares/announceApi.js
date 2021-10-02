@@ -141,10 +141,11 @@ const announceApi = (store) => (next) => (action) => {
   }
 
   if (action.type === 'SUBMIT_MODIFIED_ANNOUNCE') {
-    axios({
-      method: 'PATCH',
-      url: url + "announce/" + action.id,
-      data: {
+
+    //check if image change and adapt data
+    let sendData = ""
+    if (state.announce.currentAnnounce.image[0] === 'd') {
+      sendData = {
         "title": state.announce.currentAnnounce.title,
         "content": state.textEditor.editorContent,
         "images": {
@@ -152,7 +153,19 @@ const announceApi = (store) => (next) => (action) => {
           "value": state.announce.currentAnnounce.image,
         },
         "category": [state.announce.currentAnnounce.category[0].id]
-      },
+      }
+    } else {
+      sendData = {
+        "title": state.announce.currentAnnounce.title,
+        "content": state.textEditor.editorContent,
+        "category": [state.announce.currentAnnounce.category[0].id]
+      }
+    }
+
+    axios({
+      method: 'PATCH',
+      url: url + "announce/" + action.id,
+      data: sendData,
       headers: {
         Authorization: "Bearer " + token,
       }
@@ -160,6 +173,11 @@ const announceApi = (store) => (next) => (action) => {
       store.dispatch({
         type: 'MODIFY_FLASH_MESSAGE',
         value: "L'annonce a bien été modifiée",
+      });
+      //refresh state with change
+      store.dispatch({
+        type: 'GET_ANNOUNCE_BY_ID',
+        id: action.id,
       })
     })
   }

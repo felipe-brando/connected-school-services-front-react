@@ -200,8 +200,8 @@
    transition: 0.4s;
 
    &:hover {
-      transform: scale(1.1) translateY(-3px);
+      transform: scale(1.1) translateY(-1px);
       transition: 0.4s;
-      box-shadow: rgb(38, 57, 77) 0px 10px 15px -5px;;
+      box-shadow: rgb(38, 57, 77) 0px 10px 10px -5px;;
    }
 }
