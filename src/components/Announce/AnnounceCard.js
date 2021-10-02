@@ -13,18 +13,15 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
 
 
 
-    const handleModifyAnnounce = (e) => {
-        const annouceId = parseInt(e.target.dataset.id);
-        if (e.target.classList[1] === 'modify') {
-        } else if (e.target.classList[1] === 'delete') {
-            if (window.confirm('Êtes vous sur de vouloir supprimer cet annonce ?')) {
-                dispatch({
-                    type: 'DELETE_ANNOUNCE_BY_ID',
-                    id: annouceId,
-                })
-            }
+    const handleClickDeleteAnnounce = (e) => {
+        if (window.confirm('Êtes vous sur de vouloir supprimer cet annonce ?')) {
+            dispatch({
+                type: 'DELETE_ANNOUNCE_BY_ID',
+                id: id,
+            })
         }
     }
+
 
     return (
         <article className="announce">
@@ -51,13 +48,13 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
                                 <span className='announce__icon--edit'> <Edit /> </span>
                             </button>
                         </Link>
-                        
-                        <button className="announce__icon">
+
+                        <button onClick={handleClickDeleteAnnounce} className="announce__icon">
                             <span className='announce__icon--delete'> <Trash /> </span>
                         </button>
 
                         {/* <button
-                            onClick={handleModifyAnnounce}
+                            onClick={handleClickDeleteAnnounce}
                             className="announceCard__button--delete delete"
                         >Supprimer
                 </button> */}
