@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 
 import { Trash, Edit } from 'react-feather';
-
+//TODO INSTALL DOMP PURIFY
 // == Composant
 const ResourcesList = ({ 
     title, 
@@ -26,7 +26,7 @@ const ResourcesList = ({
             }
             </div>
             <div className="resource__overflow">
-             {isSelected === index && <div className="resource__content">{content}</div> }
+             {isSelected === index && <div className="resource__content" dangerouslySetInnerHTML={{__html: content}} />}
             </div>
             
             

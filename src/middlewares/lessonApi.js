@@ -34,32 +34,20 @@ const lessonApi = (store) => (next) => (action) => {
   }
 
   //---POST Requests
-  if (action.type === 'SUBMIT_NEW_RESOURCE') {
-    axios({
-      method: 'POST',
-      url: url + "lesson/",
-      data: {
-        "title": action.title,
-        "content": action.content,
-        "discipline": { 
-          id:action.disciplineId, 
-        },
-      },
-      headers: {
-        Authorization: "Bearer " + token,
-      }
-    }).then((response) => {
+  if (action.type === 'SEND_NEW_RESOURCE') {
+    const state = store.getState();
+    axios.post(url + 'lesson/', {
+      title: state.lesson.newResourceTitle,
+      content: state.textEditor.editorContent,
+      discipline: action.disciplineId
 
-      store.dispatch({
-        type: 'ADD_RESOURCE_RESET_INITIAL_STATE',
-      })
-      //TODO - flash message if response is ok, delete input value (and go back to previous page ?)
+    }, config)
+    .then(function (response) {
       console.log(response);
-      console.log('flash message envoi annonce');
-
-      //if announce is submit
-
     })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
   next(action); 
 };

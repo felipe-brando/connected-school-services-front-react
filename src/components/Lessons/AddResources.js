@@ -6,12 +6,11 @@ import TextEditor from '../TextEditor/TextEditor';
 
 const AddResources = ({ teacherDisciplineId }) => {
     //link state    
-    const titleInputValue = useSelector((state) => state.lesson.newResourceTitle);
-    const flashMessageContent = useSelector((state) => state.lesson.flashMessageContent);
-    const newResourceTitle = useSelector((state) => state.lesson.newResourceTitle);
+    const newTitle = useSelector((state) => state.lesson.newResourceTitle);
+    const newContent = useSelector((state) => state.lesson.newResourceContent);
+
     //Link Dispatch
     const dispatch = useDispatch();
-    const [inputContentValue, setInputContentValue] = useState('');
 
     //reset to "" input file value at each send
    // useEffect(() => {
@@ -23,45 +22,51 @@ const AddResources = ({ teacherDisciplineId }) => {
     const handleTitleChange = (e) => {
         dispatch({
             type: 'CHANGE_INPUT_RESOURCE_TITLE',
-            value: e.target.value,
+            newTitle: e.target.value,
         })
     };
 
-    const handleResourceContentChange = (e) => {
-        setInputContentValue(e);
-    }
+    const handleContentChange = (e) => {
+        dispatch({
+            type: 'CHANGE_INPUT_RESOURCE_CONTENT',
+            newContent: e,
+        })
+    };
 
+    const sendNewResource = () => {
+        dispatch({
+            type: 'SEND_NEW_RESOURCE',
+            disciplineId: teacherDisciplineId,
+ 
+        })
+    }
+    
     //submit Form Function
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        dispatch({
-            type: 'SUBMIT_NEW_RESOURCE',
-            title: newResourceTitle,
-            content: inputContentValue,
-            disciplineId: teacherDisciplineId,
-        })
+        sendNewResource();
 
     };
 
     return (
         <section>
-            {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
+            <form onSubmit={handleSubmitForm} className="addResource-form" >
 
-            <form className="addResource__form" onSubmit={handleSubmitForm} >
-
-                <label className="addResource__form--label" htmlFor="title">Titre : </label>
+                <label className="addResource-form__label" htmlFor="title">Titre : </label>
                 <input
+                    onChange={handleTitleChange}
+                    className="addResource-form__input"
+                    type="text" 
+                    value={newTitle}
                     placeholder="Titre de la ressource"
-                    required onChange={handleTitleChange}
-                    value={titleInputValue}
-                    type="text" name="title"
                     id="title"
                 />
 
                 <label className="addResource__form--label" htmlFor="content">Contenu : </label>
-                <TextEditor onChange={handleResourceContentChange} />
+                <TextEditor theme="snow" value={newContent} onChange={handleContentChange} />
 
-                <button type="submit" onClick={handleSubmitForm}>Envoyer</button>
+                
+                <button type="submit">Envoyer</button>
             </form>
         </section>
     );
