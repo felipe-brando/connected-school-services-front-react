@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types'
 import { imgUrl } from '../../selectors/baseUrl';
 
@@ -49,12 +49,12 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
                     <>
                         <Link to={"/annonces/maj/" + id}
                             className="announceCard__button--modify modify" >
-                            <button className="announce__icon">
+                            <button className="announce__icon edit">
                                 <span className='announce__icon--edit'> <Edit /> </span>
                             </button>
                         </Link>
 
-                        <button onClick={handleClickDeleteAnnounce} className="announce__icon">
+                        <button onClick={handleClickDeleteAnnounce} className="announce__icon delete">
                             <span className='announce__icon--delete'> <Trash /> </span>
                         </button>
                     </>}

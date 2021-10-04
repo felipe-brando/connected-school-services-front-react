@@ -18,7 +18,7 @@ const AnnounceList = ({ filter }) => {
     const userRole = useSelector((state) => state.user.roles);
     const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
     //loading state
-    const isLoading = useSelector((state) => state.user.isLoading);
+    const isLoading = useSelector((state) => state.announce.isLoading);
     const isError = useSelector((state) => state.user.isError);
 
     const dispatch = useDispatch();

@@ -39,6 +39,8 @@ const initialState = {
 
     announceIdToDelete: "",
 
+    isLoading: false,
+
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -141,12 +143,22 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 isModalOpen: !state.isModalOpen,
             }
-            case 'MODIFY_ANNOUNCE_ID_TO_DELETE': 
+        case 'MODIFY_ANNOUNCE_ID_TO_DELETE':
             return {
                 ...state,
                 announceIdToDelete: action.id,
-
             }
+
+        case 'LOADING_ON':
+            return {
+                ...state,
+                isLoading: true,
+            };
+        case 'LOADING_OFF':
+            return {
+                ...state,
+                isLoading: false,
+            };
         default:
             return state;
     };

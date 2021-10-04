@@ -33,7 +33,7 @@ const announceApi = (store) => (next) => (action) => {
             type: 'SAVE_ANNOUNCE_LIST',
             announceList: response.data,
           });
-          
+
           //turn off spinner
           store.dispatch({
             type: 'LOADING_OFF',
@@ -51,6 +51,12 @@ const announceApi = (store) => (next) => (action) => {
           });
         });
     } else {
+
+      //turn on spinner
+      store.dispatch({
+        type: 'LOADING_ON',
+      });
+
       axios.get(url + "homeannounce")
         .then((response) => {
 
@@ -78,6 +84,10 @@ const announceApi = (store) => (next) => (action) => {
   }
 
   if (action.type === 'GET_ANNOUNCE_BY_ID') {
+    store.dispatch({
+      type: 'LOADING_ON',
+    })
+
     axios.get(url + "homeannounce/" + action.id)
       .then((response) => {
         store.dispatch({
@@ -89,9 +99,23 @@ const announceApi = (store) => (next) => (action) => {
           type: 'GET_TEXT_EDITOR_VALUE_TO_MODIFY',
           editorValue: response.data.content,
         })
+
+        //turn off spinner
+        store.dispatch({
+          type: 'LOADING_OFF',
+        });
+
+
       })
       .catch((error) => {
         console.error('SAVE_CURRENT_ANNOUNCE error : ', error);
+
+        //turn off spinner
+        store.dispatch({
+          type: 'LOADING_OFF',
+        });
+
+
       });
   }
 

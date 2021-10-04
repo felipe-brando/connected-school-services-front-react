@@ -19,7 +19,6 @@ export const initialState = {
   disciplineId: '',
   loginOpen: false,
   burgerOpen: false,
-  isLoading: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -81,17 +80,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         burgerOpen: false,
-      };
-
-    case 'LOADING_ON':
-      return {
-        ...state,
-        isLoading: true,
-      };
-    case 'LOADING_OFF':
-      return {
-        ...state,
-        isLoading: false,
       };
     default:
       return state;

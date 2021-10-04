@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { imgUrl } from '../../selectors/baseUrl'
 import TextEditor from 'react-quill';
+import Spinner from '../Spinner/Spinner'
 
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
@@ -12,6 +13,7 @@ const AnnouncePage = () => {
 
     const userRole = useSelector((state) => state.user.roles);
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
+    const isLoading = useSelector((state) => state.announce.isLoading);
 
     const handleModifyAnnounce = (e) => {
         const annouceId = parseInt(e.target.dalPictureet.id);
@@ -41,58 +43,63 @@ const AnnouncePage = () => {
     //     announceContent.innerHTML = currentAnnounce.content;
     // }, [currentAnnounce])
 
-    return (
-        <section className="announcePage">
-            <p className="announcePage__tag atag">
-                {currentAnnounce.category.map((categoryObject) =>
-                    <Link
-                        key={categoryObject.id}
-                        to={"/annonces/categories/" + categoryObject.id}>{categoryObject.name}.
-                </Link>)}
-            </p>
-            <img
-                src={
-                    currentAnnounce.image &&
-                        currentAnnounce.image[0] === '' ? schoolPicture : imgUrl + currentAnnounce.image
-                }
-                alt=""
-                className="announcePage__img"
-            />
-            <h1 className="announcePage__title">{currentAnnounce.title}</h1>
+    if (isLoading) {
+        return (
+            <section className="announcePage">
+                <Spinner />
+            </section>
+        )
+    } else {
 
-            
-            {/*
+        return (
+            <section className="announcePage">
+                <p className="announcePage__tag atag">
+                    {currentAnnounce.category.map((categoryObject) =>
+                        <Link
+                            key={categoryObject.id}
+                            to={"/annonces/categories/" + categoryObject.id}>{categoryObject.name}.
+                </Link>)}
+                </p>
+                <img
+                    src={
+                        currentAnnounce.image &&
+                            currentAnnounce.image[0] === '' ? schoolPicture : imgUrl + currentAnnounce.image
+                    }
+                    alt=""
+                    className="announcePage__img"
+                />
+                <h1 className="announcePage__title">{currentAnnounce.title}</h1>
+                {/*
             TextContent is now displayed with TextEditor
              <p className="announce__content" >{currentAnnounce.content} </p>
              */}
 
-            <TextEditor
-                value={currentAnnounce.content}
-                readOnly={true}
-                theme={"bubble"}
-            />
+                <TextEditor
+                    value={currentAnnounce.content}
+                    readOnly={true}
+                    theme={"bubble"}
+                />
 
+                <span className="announcePage__date">{currentAnnounce.date}</span>
 
-
-            <span className="announcePage__date">{currentAnnounce.date}</span>
-
-            {userRole[0] === 'ROLE_ADMIN' && <>
-                <Link
-                    to={"/annonces/maj/" + currentAnnounce.id}
-                    data-id={currentAnnounce.id}
-                    className="announcePage__button--modify modify"
-                >Modifier
+                {userRole[0] === 'ROLE_ADMIN' && <>
+                    <Link
+                        to={"/annonces/maj/" + currentAnnounce.id}
+                        data-id={currentAnnounce.id}
+                        className="announcePage__button--modify modify"
+                    >Modifier
                     </Link>
-                <button
-                    onClick={handleModifyAnnounce}
-                    data-id={currentAnnounce.id}
-                    className="announcePage__button--delete delete"
-                >Supprimer
+                    <button
+                        onClick={handleModifyAnnounce}
+                        data-id={currentAnnounce.id}
+                        className="announcePage__button--delete delete"
+                    >Supprimer
              </button>
-            </>}
+                </>}
 
-        </section>
-    );
+            </section>
+        );
+    }
 };
 
 export default AnnouncePage;
