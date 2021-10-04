@@ -12,6 +12,7 @@ const Classroom = () => {
     const teacherId = useSelector((state) => state.user.userId);
     const teacherDiscipline = useSelector((state) => state.user.discipline);
     const userRole = useSelector((state) => state.user.roles);
+    console.log(userRole);
 
     const dispatch = useDispatch();
 
@@ -25,7 +26,7 @@ const Classroom = () => {
     return (
         <section className="teacherClassroom">
             {
-                userRole[0] === "USER_TEACHER" ? (
+                userRole[0] === "ROLE_TEACHER" ? (
                     <>
                         <h1>{teacherDiscipline}</h1>
                         <h2>Mes Classes</h2>

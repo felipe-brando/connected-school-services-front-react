@@ -30,7 +30,7 @@ const TeacherHomeWorks = () => {
             <ul>
                 {teacherClassList[0].map((classroom) => {
                     return (
-                        <li>
+                        <li key={classroom.id}>
                             <NavLink
                                 activeClassName="teacherHomeworks_link--selected"
                                 to={"/espace-perso/mes-devoirs/liste/" + classroom.id}

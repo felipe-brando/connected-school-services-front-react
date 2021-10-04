@@ -6,7 +6,7 @@ const initialState = {
   currentStudentList: [],
 
   addHomeworksSelectedClassroomId: [],
-  addHomeworksSelectedCategoryValue: '', //class announces or homeworks
+  addHomeworksSelectedCategoryValue: 'Devoirs', //class announces or homeworks
   addHomeworksSelectedDate: '',
   addHomeworksContentValue: '',
 

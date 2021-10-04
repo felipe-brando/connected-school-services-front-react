@@ -21,6 +21,11 @@ const announceApi = (store) => (next) => (action) => {
   //---GET Requests
 
   if (action.type === 'GET_ANNOUNCE_LIST') {
+    //turn on spinner
+    store.dispatch({
+      type: 'LOADING_ON',
+    });
+
     if (action.filter === 'categories') {
       axios.get(url + "announce/sortedby/" + action.categoryId, config)
         .then((response) => {
@@ -28,6 +33,12 @@ const announceApi = (store) => (next) => (action) => {
             type: 'SAVE_ANNOUNCE_LIST',
             announceList: response.data,
           });
+          
+          //turn off spinner
+          store.dispatch({
+            type: 'LOADING_OFF',
+          });
+
         })
         .catch((error) => {
           console.error('GET_ANNOUNCE_LIST error : ', error);
@@ -35,6 +46,12 @@ const announceApi = (store) => (next) => (action) => {
     } else {
       axios.get(url + "homeannounce")
         .then((response) => {
+
+          //turn off spinner
+          store.dispatch({
+            type: 'LOADING_OFF',
+          });
+
           store.dispatch({
             type: 'SAVE_ANNOUNCE_LIST',
             announceList: response.data,

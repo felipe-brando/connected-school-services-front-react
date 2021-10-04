@@ -43,20 +43,11 @@ const classroomApi = (store) => (next) => (action) => {
     }
 
     if (action.type === 'SEND_HOMEWORKS') {
-        const datazzz =  {
-            "title": state.user.discipline,
-            "homework": state.textEditor.editorContent,
-            "category": [7],
-            "expireAt": state.classroom.addHomeworksSelectedDate,
-            "classrooms": state.classroom.addHomeworksSelectedClassroom,
-        }
-console.log(datazzz);
-
         axios({
             method: 'POST',
             url: url + "announce/",
             data: {
-                "title": state.user.discipline,
+                "title": state.classroom.addHomeworksSelectedCategoryValue + " - " + state.user.discipline,
                 "homework": state.textEditor.editorContent,
                 "category": [7],
                 "expireAt": state.classroom.addHomeworksSelectedDate,
