@@ -39,7 +39,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                             <td className = "table__content--average">{parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}</td> 
                         </tr>);}   
                     
-                       return  ( <tr className ="table__content--generalaverage">{Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100}                      
+                       return  ( <tr className ="table__content--average--generalaverage">Votre moyenne générale : {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100}                      
                        </tr>       
                        )                  
                 })                
