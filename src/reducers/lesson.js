@@ -77,17 +77,17 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 newResourceContent: action.newContent,
             };
-
+            
         case 'ADD_RESOURCE': 
-            return {
-                ...state,
-                newResourceTitle: "",
-                newResourceContent: "",
-                resourcesList: [{
-                    title: action.title,
-                    content: action.content,
-                }]
-            };
+        return {
+            ...state,
+            newResourceTitle: "",
+            textEditorOpen: false,
+            resourcesList: [
+                ...state.resourcesList,
+                action.newResource,
+            ]
+        };
         default:
             return state;
     }

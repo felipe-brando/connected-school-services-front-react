@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 
 import { Trash, Edit } from 'react-feather';
-//TODO INSTALL DOMP PURIFY
+//TODO INSTALL DOM PURIFY
 // == Composant
 const ResourcesList = ({ 
     title, 

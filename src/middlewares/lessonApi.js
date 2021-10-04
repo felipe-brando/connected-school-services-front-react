@@ -43,7 +43,13 @@ const lessonApi = (store) => (next) => (action) => {
 
     }, config)
     .then(function (response) {
-      console.log(response);
+
+      store.dispatch({
+      
+        type: 'ADD_RESOURCE',
+        newResource: response.data,
+      
+      });
     })
     .catch(function (error) {
       console.log(error);
