@@ -19,6 +19,7 @@ const Lessons = () => {
     const roleTeacher = useSelector((state) => state.user.roles.includes('ROLE_TEACHER'));
     const teacherDiscipline = useSelector((state) => state.user.discipline);
     const teacherDisciplineId = useSelector((state) => state.user.disciplineId);
+    const isEditResourceOpen = useSelector((state) => state.lesson.editResourceOpen);
 
     const filtred = resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom));
     const map = filtred.map(filtredResource => filtredResource.content); 
@@ -42,25 +43,31 @@ const Lessons = () => {
             type: 'CHANGE_SELECT_DISCIPLINE',
             value: e.target.value,
         });
-    }
+    };
 
     const toggle = (e) => {
             dispatch ({
                 type: 'ACCORDION_OPEN',
                 index: parseInt(e.currentTarget.id),
-            })
+            });
             if (isSelected ===  parseInt(e.currentTarget.id)){
                 dispatch ({
                     type: 'ACCORDION_CLOSE',
-                })
+                });
             }
-    }
+    };
 
     const handleResourceAdd = () => {
         dispatch ({
             type: 'OPEN_RESOURCES_TEXT_EDITOR'
-        })
-    }
+        });
+    };
+
+    const handleEditResources= () => {
+        dispatch ({
+            type: 'OPEN_EDIT_RESOURCE'
+        });
+    };
     
     return (
         <div className="lessons">
@@ -68,10 +75,10 @@ const Lessons = () => {
             {roleTeacher ? <p>Votre matière : {teacherDiscipline}</p> :  <Form disciplines={disciplines} handleChangeDiscipline={handleSelectChange} />}
             <section className="resources">
             <h2 className="resources__title">Liste des ressources</h2>
-            {roleTeacher && <button type="submit" onClick={handleResourceAdd}><PlusCircle /></button>}
+            {roleTeacher && <button type="button" onClick={handleResourceAdd}><PlusCircle /></button>}
             {isTextEditorOpen && <AddResources teacherDisciplineId={teacherDisciplineId} />}
             {roleTeacher ? resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
-                <ResourcesList roleTeacher={roleTeacher} isSelected={isSelected} index={i} handleTitleClick={toggle} key={filtredResource.id} {...filtredResource} />
+                <ResourcesList roleTeacher={roleTeacher} isSelected={isSelected} index={i} handleTitleClick={toggle} handleEditResources={handleEditResources} isEditResourceOpen={isEditResourceOpen} key={filtredResource.id} {...filtredResource} />
             )) 
             : 
             resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (

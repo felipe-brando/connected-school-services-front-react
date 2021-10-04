@@ -22,6 +22,8 @@ const initialState = {
     selected: null,
 
     textEditorOpen: false,
+
+    editResourceOpen: false,
     newResourceTitle: '',
     newResourceContent: '',
     newDisciplineId: '',
@@ -64,7 +66,7 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 textEditorOpen: !state.textEditorOpen,
-            };
+            }; 
 
         case 'CHANGE_INPUT_RESOURCE_TITLE':
             return {
@@ -88,6 +90,13 @@ const reducer = (state = initialState, action = {}) => {
                 action.newResource,
             ]
         };
+
+        case 'OPEN_EDIT_RESOURCE': 
+        return {
+            ...state,
+            editResourceOpen: !state.editResourceOpen,
+        };
+        
         default:
             return state;
     }

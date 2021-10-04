@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 
 import { Trash, Edit } from 'react-feather';
+import EditResources from './EditResources';
 //TODO INSTALL DOM PURIFY
 // == Composant
 const ResourcesList = ({ 
@@ -10,7 +11,10 @@ const ResourcesList = ({
     handleTitleClick, 
     isSelected, 
     index,
-    roleTeacher, }) => {
+    roleTeacher,
+    isEditResourceOpen,
+    handleEditResources
+}) => {
     return (
         <div className="resource__item">
             <div className="resource__header">
@@ -20,13 +24,22 @@ const ResourcesList = ({
             </div>
             {roleTeacher &&
                 <>
-                    <button><Edit /></button>
-                    <button><Trash /></button>
+                    <button type="button" onClick={handleEditResources}><Edit /></button>
+                    <button type="button"><Trash /></button>
                 </>
             }
             </div>
             <div className="resource__overflow">
-             {isSelected === index && <div className="resource__content" dangerouslySetInnerHTML={{__html: content}} />}
+             {isSelected === index && 
+                <>
+                {!isEditResourceOpen &&
+                <div className="resource__content" dangerouslySetInnerHTML={{__html: content}} />
+                }
+                {isEditResourceOpen &&
+                <EditResources />
+                }
+                </>
+             }
             </div>
             
             
@@ -40,7 +53,7 @@ ResourcesList.propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired, 
     handleTitleClick: PropTypes.func.isRequired,
-    isSelected: PropTypes.number.isRequired,
+    isSelected: PropTypes.number,
 }
 
 // == Export
