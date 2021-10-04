@@ -155,7 +155,7 @@ const announceApi = (store) => (next) => (action) => {
 
   //---DELETE and MODIFY requests
   if (action.type === 'DELETE_ANNOUNCE_BY_ID') {
-    axios.delete(url + "announce/" + action.id, config)
+    axios.delete(url + "announce/" + state.announce.announceIdToDelete, config)
       .then((response) => {
         store.dispatch({
           type: 'GET_ANNOUNCE_LIST',

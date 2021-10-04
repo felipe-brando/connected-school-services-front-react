@@ -12,12 +12,20 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
     const dispatch = useDispatch();
 
     const handleClickDeleteAnnounce = (e) => {
-        if (window.confirm('Êtes vous sur de vouloir supprimer cet annonce ?')) {
-            dispatch({
-                type: 'DELETE_ANNOUNCE_BY_ID',
-                id: id,
-            })
-        }
+        dispatch({
+            type: "TOGGLE_MODAL",           
+        })
+        dispatch({
+            type: "MODIFY_ANNOUNCE_ID_TO_DELETE",
+            id: id,           
+        })
+        //--- confirm now with popup modal ---
+        // if (window.confirm('Êtes vous sur de vouloir supprimer cet annonce ?')) {
+        //     dispatch({
+        //         type: 'DELETE_ANNOUNCE_BY_ID',
+        //         id: id,
+        //     })
+        // }
     }
 
     return (

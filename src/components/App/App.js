@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Header from '../Header/index.js';
 import About from '../About/index.js';
 import Contact from '../Contact/index.js';
+import Modal from '../Modal/Modal';
 
 
 import Pages from '../Pages/index.js';
@@ -33,6 +34,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Modal />
       <Header />
       <main className="main-content">
       <Switch>

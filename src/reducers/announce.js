@@ -35,6 +35,10 @@ const initialState = {
 
     isError: false,
 
+    isModalOpen: false,
+
+    announceIdToDelete: "",
+
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -131,6 +135,17 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 isError: true
+            }
+        case 'TOGGLE_MODAL':
+            return {
+                ...state,
+                isModalOpen: !state.isModalOpen,
+            }
+            case 'MODIFY_ANNOUNCE_ID_TO_DELETE': 
+            return {
+                ...state,
+                announceIdToDelete: action.id,
+
             }
         default:
             return state;
