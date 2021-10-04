@@ -1,11 +1,29 @@
 import React from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 
 import './style.scss';
 
 const MarksTable = ({ measureDataArray, marksDataArray }) => {
 
     const generalAverage= [];
- 
+    const resources = useSelector((state) => state.lesson.resourcesList);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+     
+        dispatch({
+            type: 'FETCH_DISCIPLINES'
+        });
+    }, [])
+    
+
+    const onMouseOver = () => {
+        ;
+    }
+
     return (
         <table className = "table__content">
             <thead>
@@ -36,11 +54,11 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                         }
                        
                         
-                            <td className ="table__content--marks" onMouseOver = ""> <button className = "btn__showresources">{(gradeData.join(" | "))}</button> </td>
+                            <td className ="table__content--marks"><button className ="btn__showresources" onMouseOver ={resources} label ="affiche ce que je veux" aria-label ="matière à afficher">{(gradeData.join(" | "))}</button> </td>
                             
                             
-                            <td className = "table__content--average">{parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}</td> 
-                            <button>moyenne</button> 
+                            <td className = "table__content--average"><button>{parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}</button>moyenne</td> 
+                             
                         
 
                         </tr>);}  
