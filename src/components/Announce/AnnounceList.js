@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import FlashMessage from '../FlashMessage/FlashMessage';
+import Spinner from '../Spinner/Spinner';
 
 
 
@@ -17,7 +18,9 @@ const AnnounceList = ({ filter }) => {
     const logged = useSelector((state) => state.user.logged);
     const userRole = useSelector((state) => state.user.roles);
     const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
-
+    //loading state
+    const isLoading = useSelector((state)=>state.user.isLoading);
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -63,7 +66,10 @@ const AnnounceList = ({ filter }) => {
             </div>
         }
             <section className={filter === "home" ? "announceList--home" : "announceList"}>
+                
                 {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
+
+                {isLoading && <Spinner />}
 
                 {filteredAnnounceList.map((announceObject) => (
                     <AnnounceCard

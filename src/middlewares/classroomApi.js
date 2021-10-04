@@ -47,11 +47,11 @@ const classroomApi = (store) => (next) => (action) => {
             method: 'POST',
             url: url + "announce/",
             data: {
-                "title": state.classroom.addHomeworksSelectedCategoryValue,
+                "title": state.classroom.addHomeworksSelectedCategoryValue + " - " + state.user.discipline,
                 "homework": state.textEditor.editorContent,
                 "category": [7],
                 "expireAt": state.classroom.addHomeworksSelectedDate,
-                "classrooms": state.classroom.addHomeworksSelectedClassroomId
+                "classrooms": state.classroom.addHomeworksSelectedClassroom,
             },
             headers: {
                 Authorization: "Bearer " + token,

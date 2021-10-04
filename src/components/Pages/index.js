@@ -1,4 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import MobileBar from '../MobileBar/index';
 import Sidebar from '../Sidebar/index';
@@ -12,7 +13,10 @@ import Classroom from '../Classroom/Classroom';
 
 import './style.scss';
 
+
 const Pages = () => {
+
+    const userRole = useSelector((state) => state.user.roles)
 
     return (
         <div className="pages">
@@ -21,7 +25,7 @@ const Pages = () => {
                 <Switch>
                     <Route path="/espace-perso/" exact>
                         <Welcome />
-                        <DaySchedule />
+                        {userRole[0] === "ROLE_USER" && <DaySchedule />}
                     </Route>
                     <Route path="/espace-perso/mon-emploi-du-temps" exact>
                         <Schedule />

@@ -17,7 +17,7 @@ const FlashMessage = ({ incomingMessage }) => {
                 type: 'RESET_FLASH_MESSAGES',
             })
 
-        }, 4500);
+        }, 3500);
         return () => clearTimeout(timer);
     })
 

@@ -19,26 +19,28 @@ export const initialState = {
     disciplineId: '',
     loginOpen: false,
     burgerOpen: false,
+    isLoading: false,
+  isError: false,
 
   };
   
-  const reducer = (state = initialState, action = {}) => {
-    switch (action.type) {
-      case 'CHANGE_VALUE':
+const reducer = (state = initialState, action = {}) => {
+  switch (action.type) {
+    case 'CHANGE_VALUE':
       return {
         ...state,
-        [action.key]: action.value, 
+        [action.key]: action.value,
       };
-      case 'LOGIN':
-        return {
-          ...state,  
+    case 'LOGIN':
+      return {
+        ...state,
       };
-      case 'LOGOUT':
-        return {
-          ...state,
-          logged: false,
-          token: '',
-          roles: [],
+    case 'LOGOUT':
+      return {
+        ...state,
+        logged: false,
+        token: '',
+        roles: [],
       };
       case 'SAVE_USER':        
         return {
@@ -64,29 +66,40 @@ export const initialState = {
         burgerOpen: false,
       };
 
-      case 'CLOSE_LOGIN_WINDOW':
-        return {
-          ...state,
-          loginOpen: false,
-        };
+    case 'CLOSE_LOGIN_WINDOW':
+      return {
+        ...state,
+        loginOpen: false,
+      };
 
-      case 'BURGER_TOGGLE_OPEN':
-        return {
-          ...state,
-          burgerOpen: !state.burgerOpen,
-          loginOpen: false,
-        };
+    case 'BURGER_TOGGLE_OPEN':
+      return {
+        ...state,
+        burgerOpen: !state.burgerOpen,
+        loginOpen: false,
+      };
 
-      case 'MOBILE_MENU_CLOSE':
-        return {
-          ...state,
-          burgerOpen: false,
-        };
+    case 'MOBILE_MENU_CLOSE':
+      return {
+        ...state,
+        burgerOpen: false,
+      };
 
-      default:
-        return state;
-    }
-  };
-  
-  export default reducer;
+    case 'LOADING_ON':
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case 'LOADING_OFF':
+      return {
+        ...state,
+        isLoading: false,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default reducer;
 

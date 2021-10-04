@@ -10,7 +10,7 @@ import FlashMessage from '../FlashMessage/FlashMessage';
 const ModifyAnnouce = () => {
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
     const categoryList = useSelector((state) => state.announce.categoryList);
-    const flashMessageContent= useSelector((state) => state.announce.flashMessageContent);
+    const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
     const { id } = useParams();
     const dispatch = useDispatch();
 
@@ -28,6 +28,7 @@ const ModifyAnnouce = () => {
 
     //Selecting current category after downloading categories list
     useEffect(() => {
+
         const formSelectOptions = document.querySelector('.addAnnounce__form--select').children;
         const formSelectOptionsArray = [...formSelectOptions];
         formSelectOptionsArray.map((option) => {
@@ -114,12 +115,16 @@ const ModifyAnnouce = () => {
                     )}
                 </select>
                 <label htmlFor="file">Modifier l'image</label>
-                <input onChange={handleChangeImage} type="file" name="img" id="img" accept="image/png, image/jpeg" />
+                <input fileValue={currentAnnounce.image} onChange={handleChangeImage} type="file" name="img" id="img" accept="image/png, image/jpeg" />
 
                 {/* switch between local and server image preview when modifying source.
              All server's files-img-name begin with number. if it's a letter it displays local image(without baseUrl)*/}
-                {currentAnnounce.image[0] !== "d" && <img src={imgUrl + currentAnnounce.image} alt="annonce" />}
-                {currentImage && <img src={currentAnnounce.image} alt="annonce" />}
+                {
+                    currentAnnounce.image &&
+                    currentAnnounce.image[0] !== "d" &&
+                    <img src={imgUrl + currentAnnounce.image} alt="annonce" />
+                }
+                {currentImage && currentAnnounce.image[0] === "d" && <img src={currentAnnounce.image} alt="annonce" />}
 
 
                 <input className="addAnnounce__form--submit" type="submit" />

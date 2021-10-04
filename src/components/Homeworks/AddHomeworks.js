@@ -77,8 +77,8 @@ const AddHomeworks = () => {
                     required
                     onChange={handleChangeSelectCategory}
                 >
-                    <option value={teacherDiscipline + " - Devoirs"}>Devoirs</option>
-                    <option value={teacherDiscipline + " - Annonces"}>Annonces</option>
+                    <option value={"Devoirs"}>Devoirs</option>
+                    <option value={"Annonces"}>Annonces</option>
                 </select>
 
 

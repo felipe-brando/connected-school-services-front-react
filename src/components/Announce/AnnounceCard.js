@@ -3,28 +3,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types'
 import { imgUrl } from '../../selectors/baseUrl';
 
-import { Edit , Trash } from 'react-feather';
+import { Edit, Trash } from 'react-feather';
 
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
 
 const AnnounceCard = ({ id, title, content, image, categories, date, userRole }) => {
     const dispatch = useDispatch();
+    const isError = useSelector((state)=> state.user.isError);
 
 
 
-    const handleModifyAnnounce = (e) => {
-        const annouceId = parseInt(e.target.dataset.id);
-        if (e.target.classList[1] === 'modify') {
-        } else if (e.target.classList[1] === 'delete') {
-            if (window.confirm('Êtes vous sur de vouloir supprimer cet annonce ?')) {
-                dispatch({
-                    type: 'DELETE_ANNOUNCE_BY_ID',
-                    id: annouceId,
-                })
-            }
+    const handleClickDeleteAnnounce = (e) => {
+        if (window.confirm('Êtes vous sur de vouloir supprimer cet annonce ?')) {
+            dispatch({
+                type: 'DELETE_ANNOUNCE_BY_ID',
+                id: id,
+            })
         }
     }
+
 
     return (
         <article className="announce">
@@ -37,7 +35,7 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
             </p>
 
             <NavLink to={"/annonces/" + id} className="announce__image--link">
-                <img src={image[0] === '' ? schoolPicture : imgUrl + image} className="announce--img" alt="" />
+                <img src={!image ? schoolPicture : imgUrl + image} className="announce--img" alt="" />
             </NavLink>
 
             <h3 className="announce__title">{title}</h3>
@@ -46,24 +44,24 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
                 {userRole[0] === "ROLE_ADMIN" &&
                     <>
                         <Link to={"/annonces/maj/" + id}
-                            className="announceCard__button--modify modify"
-                        >
+                            className="announceCard__button--modify modify" >
                             <button className="announce__icon">
                                 <span className='announce__icon--edit'> <Edit /> </span>
                             </button>
                         </Link>
-                        <button className="announce__icon">
-                                <span className='announce__icon--delete'> <Trash /> </span>
-                            </button>
-                        
+
+                        <button onClick={handleClickDeleteAnnounce} className="announce__icon">
+                            <span className='announce__icon--delete'> <Trash /> </span>
+                        </button>
+
                         {/* <button
-                            onClick={handleModifyAnnounce}
+                            onClick={handleClickDeleteAnnounce}
                             className="announceCard__button--delete delete"
                         >Supprimer
                 </button> */}
                     </>}
 
-            </div>            
+            </div>
         </article>
     );
 };
