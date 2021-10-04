@@ -25,20 +25,6 @@ const AnnouncePage = () => {
             id: id,
         })
     }
-
-    const handleModifyAnnounce = (e) => {
-        const annouceId = parseInt(e.target.dalPictureet.id);
-        if (e.target.classList[1] === 'modify') {
-        } else if (e.target.classList[1] === 'delete') {
-            if (window.confirm('Êtes vous sur de vouloir supprimer cet annonce ?')) {
-                dispatch({
-                    type: 'DELETE_ANNOUNCE_BY_ID',
-                    id: annouceId,
-                })
-            }
-        }
-    }
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -47,13 +33,7 @@ const AnnouncePage = () => {
             id: id,
         });
     }, []);
-
-    // useEffect(() => {
-    //     //could use dompurify to filter content to securise innerHTML
-    //     const announceContent = document.querySelector('.announce__content');
-    //     announceContent.innerHTML = currentAnnounce.content;
-    // }, [currentAnnounce])
-
+    
     if (isLoading) {
         return (
             <section className="announcePage">

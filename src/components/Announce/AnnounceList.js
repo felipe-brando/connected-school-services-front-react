@@ -57,14 +57,7 @@ const AnnounceList = ({ filter }) => {
         return (
             <>
                 {filter === "Actualités" && <h1 className="announces-page__title">Les Actualités</h1>}
-                {
-                    userRole[0] === "ROLE_ADMIN" &&
-                    <div>
-                        <Link to="/annonces/ajout">Ajouter une Annonce</Link>
-                        <Link to="/annonces/categories">Modifier les categories</Link>
-                        <h3>{filter}</h3>
-                    </div>
-                }
+               
                 <section className={filter === "home" ? "announceList--home" : "announceList"}>
 
                     {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
