@@ -22,7 +22,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                    const gradeData = [];
                   
                    if (measureObject.name !== "Pause Déjeuner")                    
-                     {
+                     { 
                         return (<tr>              
                             <td className ="table__content--measure">{measureObject.name}</td>
                             {marksDataArray.map((markObject) => {
@@ -34,10 +34,16 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                               } return true;
                             })  
                         }
-                            <td className ="table__content--marks">{(gradeData.join(" | "))}</td>
+                       
+                        
+                            <td className ="table__content--marks" onMouseOver = ""> <button className = "btn__showresources">{(gradeData.join(" | "))}</button> </td>
+                            
                             
                             <td className = "table__content--average">{parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}</td> 
-                        </tr>);}   
+                            <button>moyenne</button> 
+                        
+
+                        </tr>);}  
                     
                        return  ( <tr className ="table__content--average--generalaverage">Votre moyenne générale : {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100}                      
                        </tr>       

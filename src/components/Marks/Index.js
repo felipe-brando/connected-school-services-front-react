@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import MarksTable from "./MarksTable";
 
+// import ResourcesList from "../ResourcesList";
+
 import './style.scss';
 
 function Marks() {

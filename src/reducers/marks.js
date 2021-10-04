@@ -3,6 +3,7 @@ const initialState = {
     discipline: [],
     grade: [],
     average:[],
+    content: '',
   };
   
 
@@ -15,6 +16,11 @@ const reducer = (state = initialState, action = {}) => {
                 discipline: action.currentMeasures,
                 average: action.currentAverages,
             }
+            case 'SAVE_RESOURCE':
+            return {
+                ...state,
+                resourcesList: action.resource,
+            };
         default:
             return state;
     }
