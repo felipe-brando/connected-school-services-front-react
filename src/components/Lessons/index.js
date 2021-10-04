@@ -20,21 +20,23 @@ const Lessons = () => {
     const teacherDiscipline = useSelector((state) => state.user.discipline);
     const teacherDisciplineId = useSelector((state) => state.user.disciplineId);
     const isEditResourceOpen = useSelector((state) => state.lesson.editResourceOpen);
+    const currentResources = useSelector((state) => state.lesson.currentResource);
 
-    const filtred = resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom));
-    const map = filtred.map(filtredResource => filtredResource.content); 
+    const resourcesFiltred = resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom));
 
-
+    const test = resources.map((resource) => resource.title);
+    console.log(test);
+  
     useEffect(() => {
         dispatch({
             type: 'FETCH_DISCIPLINES',
+            
         });
     }, []);
 
     useEffect(() => {
         dispatch({
-            type: 'FETCH_RESOURCES',
-            
+            type: 'FETCH_RESOURCES',      
         });
     }, []);
 
@@ -49,6 +51,7 @@ const Lessons = () => {
             dispatch ({
                 type: 'ACCORDION_OPEN',
                 index: parseInt(e.currentTarget.id),
+                currentResource: resourcesFiltred[e.currentTarget.id]
             });
             if (isSelected ===  parseInt(e.currentTarget.id)){
                 dispatch ({
@@ -68,21 +71,49 @@ const Lessons = () => {
             type: 'OPEN_EDIT_RESOURCE'
         });
     };
+
     
     return (
         <div className="lessons">
             <h1 className="lessons__title">Mes ressources</h1>
-            {roleTeacher ? <p>Votre matière : {teacherDiscipline}</p> :  <Form disciplines={disciplines} handleChangeDiscipline={handleSelectChange} />}
+            {roleTeacher ? 
+            <p>Votre matière : {teacherDiscipline}</p> 
+            :  
+            <Form 
+                disciplines={disciplines}
+                handleChangeDiscipline={handleSelectChange}
+            />}
             <section className="resources">
             <h2 className="resources__title">Liste des ressources</h2>
+
             {roleTeacher && <button type="button" onClick={handleResourceAdd}><PlusCircle /></button>}
-            {isTextEditorOpen && <AddResources teacherDisciplineId={teacherDisciplineId} />}
+            {isTextEditorOpen && 
+            <AddResources teacherDisciplineId={teacherDisciplineId} />}
+
             {roleTeacher ? resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
-                <ResourcesList roleTeacher={roleTeacher} isSelected={isSelected} index={i} handleTitleClick={toggle} handleEditResources={handleEditResources} isEditResourceOpen={isEditResourceOpen} key={filtredResource.id} {...filtredResource} />
+            <ResourcesList 
+                roleTeacher={roleTeacher} 
+                isSelected={isSelected} 
+                index={i} 
+                handleTitleClick={toggle} 
+                handleEditResources={handleEditResources} 
+                isEditResourceOpen={isEditResourceOpen} 
+                key={filtredResource.id} 
+                title={filtredResource.title}
+                {...filtredResource} 
+            />
             )) 
             : 
             resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
-                <ResourcesList roleTeacher={roleTeacher} isSelected={isSelected} index={i} handleTitleClick={toggle} key={filtredResource.id} {...filtredResource} />
+            <ResourcesList 
+                roleTeacher={roleTeacher} 
+                isSelected={isSelected} 
+                index={i} 
+                handleTitleClick={toggle} 
+                key={filtredResource.id} 
+                {...filtredResource} 
+
+            />
             )) }
             </section>
         </div>

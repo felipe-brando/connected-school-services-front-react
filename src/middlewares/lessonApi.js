@@ -26,6 +26,7 @@ const lessonApi = (store) => (next) => (action) => {
         type: 'SAVE_RESOURCE',
         resource: response.data,
       });
+
     })
     .catch((error) => {
       console.error('FETCH_RESOURCES error : ', error);

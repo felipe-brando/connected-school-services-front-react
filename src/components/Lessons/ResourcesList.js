@@ -6,6 +6,7 @@ import EditResources from './EditResources';
 //TODO INSTALL DOM PURIFY
 // == Composant
 const ResourcesList = ({ 
+    id,
     title, 
     content, 
     handleTitleClick, 
@@ -36,7 +37,11 @@ const ResourcesList = ({
                 <div className="resource__content" dangerouslySetInnerHTML={{__html: content}} />
                 }
                 {isEditResourceOpen &&
-                <EditResources />
+                <EditResources 
+                    currentTitle={title} 
+                    currentContent={content} 
+                    currentId={id}
+                />
                 }
                 </>
              }
