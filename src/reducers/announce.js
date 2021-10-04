@@ -1,7 +1,7 @@
 const initialState = {
     announceList: [{
         id: '',
-        title: 'Problème de Connexion ou Utilisateur non autorisé',
+        title: '',
         content: '',
         image: '',
         category: [],
@@ -11,7 +11,7 @@ const initialState = {
 
     currentAnnounce: {
         id: '',
-        title: 'Problème de Connexion ou Utilisateur non autorisé',
+        title: '',
         content: '',
         image: '',
         category: [],
@@ -32,6 +32,9 @@ const initialState = {
     classroomAnnounces: [],
 
     flashMessageContent: "",
+
+    isError: false,
+
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -110,7 +113,7 @@ const reducer = (state = initialState, action = {}) => {
                 currentAnnounce: { ...state.currentAnnounce, image: action.fileValue, }
             }
         }
-        
+
         case 'RESET_FLASH_MESSAGES': {
             return {
                 ...state,
@@ -124,10 +127,11 @@ const reducer = (state = initialState, action = {}) => {
                 flashMessageContent: action.value,
             }
         }
-
-
-
-
+        case 'LOADING_ERROR':
+            return {
+                ...state,
+                isError: true
+            }
         default:
             return state;
     };

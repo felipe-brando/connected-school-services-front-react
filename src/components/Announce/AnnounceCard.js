@@ -5,14 +5,11 @@ import { imgUrl } from '../../selectors/baseUrl';
 
 import { Edit, Trash } from 'react-feather';
 
-import schoolPicture from '../../assets/img/school-small.jpeg'
+import schoolPicture from '../../assets/img/school-small.jpeg';
 
 
 const AnnounceCard = ({ id, title, content, image, categories, date, userRole }) => {
     const dispatch = useDispatch();
-    const isError = useSelector((state)=> state.user.isError);
-
-
 
     const handleClickDeleteAnnounce = (e) => {
         if (window.confirm('Êtes vous sur de vouloir supprimer cet annonce ?')) {
@@ -22,7 +19,6 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
             })
         }
     }
-
 
     return (
         <article className="announce">
@@ -53,14 +49,7 @@ const AnnounceCard = ({ id, title, content, image, categories, date, userRole })
                         <button onClick={handleClickDeleteAnnounce} className="announce__icon">
                             <span className='announce__icon--delete'> <Trash /> </span>
                         </button>
-
-                        {/* <button
-                            onClick={handleClickDeleteAnnounce}
-                            className="announceCard__button--delete delete"
-                        >Supprimer
-                </button> */}
                     </>}
-
             </div>
         </article>
     );

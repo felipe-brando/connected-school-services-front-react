@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { imgUrl } from '../../selectors/baseUrl'
+import TextEditor from 'react-quill';
 
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
@@ -34,11 +35,11 @@ const AnnouncePage = () => {
         });
     }, []);
 
-    useEffect(() => {
-        //could use dompurify to filter content to securise innerHTML
-        const announceContent = document.querySelector('.announce__content');
-        announceContent.innerHTML = currentAnnounce.content;
-    }, [currentAnnounce])
+    // useEffect(() => {
+    //     //could use dompurify to filter content to securise innerHTML
+    //     const announceContent = document.querySelector('.announce__content');
+    //     announceContent.innerHTML = currentAnnounce.content;
+    // }, [currentAnnounce])
 
     return (
         <section className="announcePage">
@@ -58,7 +59,21 @@ const AnnouncePage = () => {
                 className="announcePage__img"
             />
             <h1 className="announcePage__title">{currentAnnounce.title}</h1>
-            <p className="announce__content" >{currentAnnounce.content} </p>
+
+            
+            {/*
+            TextContent is now displayed with TextEditor
+             <p className="announce__content" >{currentAnnounce.content} </p>
+             */}
+
+            <TextEditor
+                value={currentAnnounce.content}
+                readOnly={true}
+                theme={"bubble"}
+            />
+
+
+
             <span className="announcePage__date">{currentAnnounce.date}</span>
 
             {userRole[0] === 'ROLE_ADMIN' && <>

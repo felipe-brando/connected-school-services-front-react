@@ -1,11 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, NavLink } from 'react-router-dom';
 import FlashMessage from '../FlashMessage/FlashMessage';
 import Spinner from '../Spinner/Spinner';
 
-
-
+import schoolPicture from '../../assets/img/school-small.jpeg';
 import AnnounceCard from './AnnounceCard';
 
 import './style.scss';
@@ -19,8 +18,9 @@ const AnnounceList = ({ filter }) => {
     const userRole = useSelector((state) => state.user.roles);
     const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
     //loading state
-    const isLoading = useSelector((state)=>state.user.isLoading);
-    
+    const isLoading = useSelector((state) => state.user.isLoading);
+    const isError = useSelector((state) => state.user.isError);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -53,41 +53,57 @@ const AnnounceList = ({ filter }) => {
             </section>
         )
     }
+    if (!isError) {
+        return (
+            <>
+                {filter === "Actualités" && <h1 className="announces-page__title">Les Actualités</h1>}
+                {
+                    userRole[0] === "ROLE_ADMIN" &&
+                    <div>
+                        <Link to="/annonces/ajout">Ajouter une Annonce</Link>
+                        <Link to="/annonces/categories">Modifier les categories</Link>
+                        <h3>{filter}</h3>
+                    </div>
+                }
+                <section className={filter === "home" ? "announceList--home" : "announceList"}>
 
-    return (
-        <>  
-        {filter === "Actualités" && <h1 className="announces-page__title">Les Actualités</h1> }
-        {
-            userRole[0] === "ROLE_ADMIN" &&
-            <div>
-                <Link to="/annonces/ajout">Ajouter une Annonce</Link>
-                <Link to="/annonces/categories">Modifier les categories</Link>
-                <h3>{filter}</h3>
-            </div>
-        }
-            <section className={filter === "home" ? "announceList--home" : "announceList"}>
-                
-                {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
+                    {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
 
-                {isLoading && <Spinner />}
+                    {/* Displays spinner loader when fetching database */}
+                    {isLoading && <Spinner />}
 
-                {filteredAnnounceList.map((announceObject) => (
-                    <AnnounceCard
-                        key={announceObject.id}
-                        id={parseInt(announceObject.id, 10)}
-                        title={announceObject.title}
-                        content={announceObject.content}
-                        image={announceObject.image}
-                        categories={announceObject.category}
-                        date={announceObject.createdAt}
-                        userRole={userRole}
-                    />)
-                )}
-            </section>
+                    {/* Avoid displaying empty card during loadin */}
+                    {!isLoading &&
+                        filteredAnnounceList.map((announceObject) => (
+                            <AnnounceCard
+                                key={announceObject.id}
+                                id={parseInt(announceObject.id, 10)}
+                                title={announceObject.title}
+                                content={announceObject.content}
+                                image={announceObject.image}
+                                categories={announceObject.category}
+                                date={announceObject.createdAt}
+                                userRole={userRole}
+                            />)
+                        )}
+                </section>
 
 
-        </>
-    );
+            </>
+        );
+    }
+    // if database not responding : error message
+    else {
+        return (
+            <article className="announce">
+                <p>Il semble y avoir une erreur au chargement. Merci de réessayer dans quelques instants.</p>
+                <img src={schoolPicture} className="announce--img" alt="" />
+                <NavLink to="/annonces/" className="announce__image--link">
+                    Retour aux annonces
+            </NavLink>
+            </article>
+        )
+    }
 };
 
 export default AnnounceList;

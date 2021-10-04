@@ -42,6 +42,13 @@ const announceApi = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.error('GET_ANNOUNCE_LIST error : ', error);
+          //turn off spinner
+          store.dispatch({
+            type: 'LOADING_OFF',
+          });
+          store.dispatch({
+            type: 'LOADING_ERROR',
+          });
         });
     } else {
       axios.get(url + "homeannounce")
@@ -59,6 +66,13 @@ const announceApi = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.error('GET_ANNOUNCE_LIST error : ', error);
+          //turn off spinner
+          store.dispatch({
+            type: 'LOADING_OFF',
+          });
+          store.dispatch({
+            type: 'LOADING_ERROR',
+          });
         });
     }
   }

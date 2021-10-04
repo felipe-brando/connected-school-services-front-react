@@ -24,7 +24,7 @@ const TeacherHomeWorks = () => {
     return (
         <section className="teacherHomeworks">
             <h1>{teacherDiscipline}</h1>
-            <h2>Mes devoirs</h2>
+            <h2>Devoirs & Annonces de Classes</h2>
             <NavLink activeClassName="teacherHomeworks_link--selected" to="/espace-perso/mes-devoirs/ajout">Ajout</NavLink>
             <NavLink activeClassName="teacherHomeworks_link--selected" to="/espace-perso/mes-devoirs/">Liste</NavLink>
             <ul>

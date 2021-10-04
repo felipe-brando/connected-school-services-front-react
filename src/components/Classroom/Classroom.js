@@ -29,7 +29,7 @@ const Classroom = () => {
                 userRole[0] === "ROLE_TEACHER" ? (
                     <>
                         <h1>{teacherDiscipline}</h1>
-                        <h2>Mes Classes</h2>
+                        <h2>Mes Classes - Listes des élèves</h2>
                         <ul>
                             {teacherClassList[0].map((classroom) => {
                                 return (

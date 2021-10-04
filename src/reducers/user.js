@@ -1,29 +1,27 @@
 export const initialState = {
-    logged: false,
-    firstname: '',
-    lastname: '',
-    image: '',
-    email: '',
-    adress: '10 rue de truc',
-    zip_code: '75000',
-    city: 'Paris',
-    phone: '06000000',
-    password: '',
-    token: '',
-    roles: [],
-    classroomId: '',
-    classroom: '',
-    userId: '', 
-    classroomGrade: '',
-    discipline: '',
-    disciplineId: '',
-    loginOpen: false,
-    burgerOpen: false,
-    isLoading: false,
-  isError: false,
+  logged: false,
+  firstname: '',
+  lastname: '',
+  image: '',
+  email: '',
+  adress: '10 rue de truc',
+  zip_code: '75000',
+  city: 'Paris',
+  phone: '06000000',
+  password: '',
+  token: '',
+  roles: [],
+  classroomId: '',
+  classroom: '',
+  userId: '',
+  classroomGrade: '',
+  discipline: '',
+  disciplineId: '',
+  loginOpen: false,
+  burgerOpen: false,
+  isLoading: false,
+};
 
-  };
-  
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case 'CHANGE_VALUE':
@@ -42,24 +40,24 @@ const reducer = (state = initialState, action = {}) => {
         token: '',
         roles: [],
       };
-      case 'SAVE_USER':        
-        return {
-          ...state,
-          logged: true, 
-          firstname: action.firstname,
-          loginOpen: false,
-          token: action.token,
-          roles: action.roles,
-          email: '',
-          password: '',
-          classroomId: action.classroomId,
-          classroom: action.classroomName,
-          userId: action.userId,             
-          classroomGrade: action.classroomGrade,
-          discipline: action.discipline,
-          disciplineId : action.disciplineId,
-        }; 
-      case 'TOGGLE_OPEN':
+    case 'SAVE_USER':
+      return {
+        ...state,
+        logged: true,
+        firstname: action.firstname,
+        loginOpen: false,
+        token: action.token,
+        roles: action.roles,
+        email: '',
+        password: '',
+        classroomId: action.classroomId,
+        classroom: action.classroomName,
+        userId: action.userId,
+        classroomGrade: action.classroomGrade,
+        discipline: action.discipline,
+        disciplineId: action.disciplineId,
+      };
+    case 'TOGGLE_OPEN':
       return {
         ...state,
         loginOpen: !state.loginOpen,
@@ -95,7 +93,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isLoading: false,
       };
-
     default:
       return state;
   }

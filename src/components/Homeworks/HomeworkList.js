@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import TextEditor from 'react-quill';
 
 const HomeworksList = () => {
     const { id } = useParams();
@@ -10,9 +11,9 @@ const HomeworksList = () => {
     const dispatch = useDispatch();
 
     //function to convert database-numbers-date in french-words
-    function dateConverter (currentDate) {
+    function dateConverter(currentDate) {
         const date = new Date(currentDate);
-        const options = {weekday: "long", year: "numeric", month: "long", day: "2-digit"};
+        const options = { weekday: "long", year: "numeric", month: "long", day: "2-digit" };
         return date.toLocaleDateString("fr-FR", options);
     }
 
@@ -38,7 +39,16 @@ const HomeworksList = () => {
                                     {announceObject.expireAt ? dateConverter(announceObject.expireAt) : "prochain cours"}
                                 </span>
                             </p>
-                            <p className="homework__article__content">{announceObject.homework}</p>
+
+                            {/* <p className="homework__article__content">{announceObject.homework}</p> */}
+
+                            <TextEditor
+                                value={announceObject.homework}
+                                readOnly={true}
+                                theme={"bubble"}
+                            />
+
+
                         </li>
                     )
                 }

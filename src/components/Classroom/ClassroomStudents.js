@@ -19,7 +19,7 @@ const ClassroomStudent = () => {
         <ul>
             {studentList.map((student) => {
                 return (
-                    <li key={student.id}> {student.lastname} </li>
+                <li key={student.id}> {student.lastname} {student.firstname}</li>
                 )
             })}
         </ul>
