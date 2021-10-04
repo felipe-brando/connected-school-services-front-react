@@ -24,8 +24,8 @@ const Lessons = () => {
 
     const resourcesFiltred = resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom));
 
-    const test = resources.map((resource) => resource.title);
-    console.log(test);
+    //const test = resources.map((resource) => resource.title);
+  
   
     useEffect(() => {
         dispatch({

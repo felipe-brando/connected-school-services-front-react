@@ -56,6 +56,27 @@ const lessonApi = (store) => (next) => (action) => {
       console.log(error);
     });
   }
+
+  if (action.type === 'SUBMIT_EDITED_RESOURCE') {
+    const state = store.getState();
+    axios.patch(url + 'lesson/' + action.id, {
+      id: action.id,
+      title: state.lesson.currentResource.title,
+      content: action.content
+    }, config)
+    .then(function (response) {
+      //refresh state with change
+      store.dispatch({
+        type: 'FETCH_RESOURCES',
+        id: action.id,
+      })
+      console.log(response);
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
   next(action); 
 };
 

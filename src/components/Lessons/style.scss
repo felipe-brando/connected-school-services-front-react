@@ -45,6 +45,18 @@
       &__content {
         padding: 1rem;
       }
+
+      &__content strong {
+        font-weight: bold;
+      }
+
+      &__content em {
+        font-style: italic;
+      }
+
+      &__content ul {
+        list-style: inside;
+      }
       
       &__content {
         background-color: #e5e5e5;

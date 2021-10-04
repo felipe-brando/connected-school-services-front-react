@@ -4,10 +4,11 @@ import FlashMessage from '../FlashMessage/FlashMessage';
 
 import TextEditor from 'react-quill';
 
-const EditResources = ({currentTitle, currentContent, currentId}) => {
+const EditResources = ({ currentContent, currentId}) => {
     const currentResource = useSelector((state) => state.lesson.currentResource);
 
-    
+    const [inputContentValue, setInputContentValue] = useState(currentContent);
+
 
     const dispatch = useDispatch();
     const handleTitleChange = (e) => {
@@ -16,10 +17,24 @@ const EditResources = ({currentTitle, currentContent, currentId}) => {
             newTitle: e.target.value,
         })
     };
+
+    const handleContentChange = (e) => {
+        setInputContentValue(e);
+    };
+
+    const handleSubmitForm = (e) => {
+        e.preventDefault();
+        dispatch({
+            type: 'SUBMIT_EDITED_RESOURCE',
+            id: currentId,
+            content: inputContentValue,
+        })
+        setInputContentValue(currentContent);
+    };
    
     return (
         <section>
-            <form  data-id={currentId} className="addResource-form" >
+            <form onSubmit={handleSubmitForm} data-id={currentId} className="addResource-form" >
 
                 <label className="addResource-form__label" htmlFor="title">Titre : </label>
                 <input
@@ -33,7 +48,7 @@ const EditResources = ({currentTitle, currentContent, currentId}) => {
                 />
 
                 <label className="addResource__form--label" htmlFor="content">Contenu : </label>
-                <TextEditor value={currentContent} />
+                <TextEditor value={inputContentValue} onChange={handleContentChange}  />
                 
                 <button type="submit">Envoyer</button>
             </form>
