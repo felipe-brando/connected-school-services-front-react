@@ -10,6 +10,7 @@ import schoolPicture from '../../assets/img/school-small.jpeg'
 
 const AnnounceCard = ({ id, title, content, image, categories, date, userRole }) => {
     const dispatch = useDispatch();
+    const isError = useSelector((state)=> state.user.isError);
 
 
 
