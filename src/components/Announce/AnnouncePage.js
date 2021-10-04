@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { imgUrl } from '../../selectors/baseUrl'
 import TextEditor from 'react-quill';
 import Spinner from '../Spinner/Spinner'
+import { Edit, Trash } from 'react-feather';
 
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
@@ -14,6 +15,16 @@ const AnnouncePage = () => {
     const userRole = useSelector((state) => state.user.roles);
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
     const isLoading = useSelector((state) => state.announce.isLoading);
+
+    const handleClickDeleteAnnounce = (e) => {
+        dispatch({
+            type: "TOGGLE_MODAL",
+        })
+        dispatch({
+            type: "MODIFY_ANNOUNCE_ID_TO_DELETE",
+            id: id,
+        })
+    }
 
     const handleModifyAnnounce = (e) => {
         const annouceId = parseInt(e.target.dalPictureet.id);
@@ -82,21 +93,18 @@ const AnnouncePage = () => {
 
                 <span className="announcePage__date">{currentAnnounce.date}</span>
 
-                {userRole[0] === 'ROLE_ADMIN' && <>
-                    <Link
-                        to={"/annonces/maj/" + currentAnnounce.id}
-                        data-id={currentAnnounce.id}
-                        className="announcePage__button--modify modify"
-                    >Modifier
-                    </Link>
-                    <button
-                        onClick={handleModifyAnnounce}
-                        data-id={currentAnnounce.id}
-                        className="announcePage__button--delete delete"
-                    >Supprimer
-             </button>
-                </>}
+                {userRole[0] === "ROLE_ADMIN" &&
+                    <div className="announcePage_icon__container">
+                        <Link to={"/annonces/maj/" + id}>
+                            <button className="announcePage__icon edit">
+                            <Edit /> <span className='announcePage__icon--edit'> Editer  </span>
+                            </button>
+                        </Link>
 
+                        <button onClick={handleClickDeleteAnnounce} className="announcePage__icon delete">
+                            <span className='announcePage__icon--delete'>  Supprimer </span><Trash />
+                        </button>
+                    </div>}
             </section>
         );
     }
