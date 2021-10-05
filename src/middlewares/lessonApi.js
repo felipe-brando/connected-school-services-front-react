@@ -88,15 +88,16 @@ const lessonApi = (store) => (next) => (action) => {
         id: action.id,
       });
 
-      store.dispatch({
-        type: 'EDIT_RESOURCES_FLASH_MESSAGE',
-        value: "Erreur, la ressource n'a pas été ajoutée. Veuillez réesayer."
-      })
+
       console.log(response);
 
     })
     .catch(function (error) {
       console.log(error);
+      store.dispatch({
+        type: 'EDIT_RESOURCES_FLASH_MESSAGE',
+        value: "Erreur, la ressource n'a pas été modifiée. Veuillez réesayer."
+      })
     });
   }
    //---DELETErequest

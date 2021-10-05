@@ -8,6 +8,7 @@ import Form from './Form';
 import ResourcesList from './ResourcesList';
 import AddResources from "./AddResources";
 import FlashMessage from '../FlashMessage/FlashMessage';
+import Modal from '../Modal/Modal';
 
 const Lessons = () => {
     const dispatch = useDispatch();
@@ -74,13 +75,24 @@ const Lessons = () => {
         });
     };
 
-    const handleDeleteResource= (e) => {
+/*const handleDeleteResource= (e) => {
 
         dispatch ({
             type: 'DELETE_RESOURCE',
             id: currentResource.id,
         })
-    }
+     }*/
+
+     const handleDeleteResource= (e) => {
+
+        dispatch ({
+            type: 'OPEN_DELETE_MODAL',
+        })
+
+        dispatch({
+            type: "TOGGLE_MODAL",
+        })
+     }
 
     
     return (

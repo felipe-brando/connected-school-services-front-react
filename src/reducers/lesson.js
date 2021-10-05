@@ -30,6 +30,8 @@ const initialState = {
 
     flashMessageContent: "",
 
+    modalOpen: false,
+
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -49,6 +51,7 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 resourcesList: action.resource,
+                modalOpen: false,
             };
 
         case 'SAVE_CURRENT_RESOURCE':
@@ -100,7 +103,7 @@ const reducer = (state = initialState, action = {}) => {
                 flashMessageContent: action.value,
             
             };
-            
+
         case 'RESET_FLASH_MESSAGES': {
             return {
                 ...state,
@@ -132,6 +135,13 @@ const reducer = (state = initialState, action = {}) => {
                     title: action.newTitle,
                 }  
             };
+
+        case 'OPEN_DELETE_MODAL': 
+        return {
+            ...state,
+            modalOpen: true, 
+        };
+        
         
         default:
             return state;
