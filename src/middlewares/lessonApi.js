@@ -46,14 +46,22 @@ const lessonApi = (store) => (next) => (action) => {
     .then(function (response) {
 
       store.dispatch({
-      
         type: 'ADD_RESOURCE',
-        newResource: response.data,
-      
+        newResource: response.data
       });
+
+      store.dispatch({
+        type: 'EDIT_RESOURCES_FLASH_MESSAGE',
+        value: "La nouvelle ressource a été ajoutée",
+      });
+      
     })
     .catch(function (error) {
       console.log(error);
+      store.dispatch({
+        type: 'EDIT_RESOURCES_FLASH_MESSAGE',
+        value: "Erreur, la ressource n'a pas été ajoutée. Veuillez réesayer"
+      })
     });
   }
 
@@ -67,8 +75,22 @@ const lessonApi = (store) => (next) => (action) => {
     .then(function (response) {
       //refresh state with change
       store.dispatch({
+        type: 'ACCORDION_CLOSE',
+      });
+
+      store.dispatch({
+        type: 'EDIT_RESOURCES_FLASH_MESSAGE',
+        value: "La ressource a été modifiée.",
+      });
+
+      store.dispatch({
         type: 'FETCH_RESOURCES',
         id: action.id,
+      });
+
+      store.dispatch({
+        type: 'EDIT_RESOURCES_FLASH_MESSAGE',
+        value: "Erreur, la ressource n'a pas été ajoutée. Veuillez réesayer."
       })
       console.log(response);
 

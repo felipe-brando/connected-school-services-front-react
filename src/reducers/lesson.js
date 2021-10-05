@@ -93,31 +93,45 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 newResourceContent: action.newContent,
             };
+        
+        case 'EDIT_RESOURCES_FLASH_MESSAGE': 
+            return {
+                ...state,
+                flashMessageContent: action.value,
+            
+            };
+            
+        case 'RESET_FLASH_MESSAGES': {
+            return {
+                ...state,
+                flashMessageContent: "",
+            }
+        }
             
         case 'ADD_RESOURCE': 
-        return {
-            ...state,
-            newResourceTitle: "",
-            textEditorOpen: false,
-            resourcesList: [
-                ...state.resourcesList,
-                action.newResource,
-            ]
-        };
+            return {
+                ...state,
+                newResourceTitle: "",
+                textEditorOpen: false,
+                resourcesList: [
+                    ...state.resourcesList,
+                    action.newResource,
+                ]
+            };
 
         case 'OPEN_EDIT_RESOURCE': 
-        return {
-            ...state,
-            editResourceOpen: !state.editResourceOpen,
-        };
+            return {
+                ...state,
+                editResourceOpen: !state.editResourceOpen,
+            };
 
         case 'MODIFY_CURRENT_RESOURCE_TITLE': 
-        return {
-            ...state,
-            currentResource: {
-                title: action.newTitle,
-            }  
-        };
+            return {
+                ...state,
+                currentResource: {
+                    title: action.newTitle,
+                }  
+            };
         
         default:
             return state;

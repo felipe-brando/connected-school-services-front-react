@@ -32,8 +32,8 @@ const ResourcesList = ({
                 <>
                 {roleTeacher &&
                 <div className="resource__buttons">
-                    <button type="button" onClick={handleEditResources}><Edit /></button>
-                    <button type="button" onClick={handleDeleteResource}><Trash /></button>
+                    <button className="resource__editBtn" type="button" onClick={handleEditResources}><Edit /></button>
+                    <button className="resource__deleteBtn" type="button" onClick={handleDeleteResource}><Trash /></button>
                 </div>
             }
                 {!isEditResourceOpen &&

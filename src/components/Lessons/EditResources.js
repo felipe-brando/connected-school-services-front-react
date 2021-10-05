@@ -47,10 +47,10 @@ const EditResources = ({ currentContent, currentId}) => {
                    
                 />
 
-                <label className="addResource__form--label" htmlFor="content">Contenu : </label>
+                <label className="addResource-form__label" htmlFor="content">Contenu : </label>
                 <TextEditor value={inputContentValue} onChange={handleContentChange}  />
                 
-                <button type="submit">Envoyer</button>
+                <button className="addResource-form__addBtn" type="submit">Publier</button>
             </form>
         </section>
     );

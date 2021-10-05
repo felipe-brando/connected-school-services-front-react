@@ -7,6 +7,7 @@ import { PlusCircle } from 'react-feather';
 import Form from './Form';
 import ResourcesList from './ResourcesList';
 import AddResources from "./AddResources";
+import FlashMessage from '../FlashMessage/FlashMessage';
 
 const Lessons = () => {
     const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Lessons = () => {
     const teacherDisciplineId = useSelector((state) => state.user.disciplineId);
     const isEditResourceOpen = useSelector((state) => state.lesson.editResourceOpen);
     const currentResource = useSelector((state) => state.lesson.currentResource);
+    const flashMessage = useSelector((state) => state.lesson.flashMessageContent);
 
     const resourcesFiltred = resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom));
 
@@ -92,38 +94,44 @@ const Lessons = () => {
                 handleChangeDiscipline={handleSelectChange}
             />}
             <section className="resources">
-            <h2 className="resources__title">Liste des ressources</h2>
+                <h2 className="resources__title">Liste des ressources</h2>
+                {flashMessage && <FlashMessage incomingMessage={flashMessage} />}
+                
 
-            {roleTeacher && <button type="button" onClick={handleResourceAdd}><PlusCircle /></button>}
-            {isTextEditorOpen && 
-            <AddResources teacherDisciplineId={teacherDisciplineId} />}
+                {roleTeacher && 
+                <button className="resources__addBtn" type="button" onClick={handleResourceAdd}>
+                    Ajouter une nouvelle Ressource <PlusCircle />
+                </button>
+                }
+                {isTextEditorOpen && 
+                <AddResources teacherDisciplineId={teacherDisciplineId} />}
 
-            {roleTeacher ? resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
-            <ResourcesList 
-                roleTeacher={roleTeacher} 
-                isSelected={isSelected} 
-                index={i} 
-                handleTitleClick={toggle} 
-                handleEditResources={handleEditResources} 
-                handleDeleteResource={handleDeleteResource}
-                isEditResourceOpen={isEditResourceOpen} 
-                key={filtredResource.id} 
-                title={filtredResource.title}
-                {...filtredResource} 
-            />
-            )) 
-            : 
-            resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
-            <ResourcesList 
-                roleTeacher={roleTeacher} 
-                isSelected={isSelected} 
-                index={i} 
-                handleTitleClick={toggle} 
-                key={filtredResource.id} 
-                {...filtredResource} 
+                {roleTeacher ? resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
+                <ResourcesList 
+                    roleTeacher={roleTeacher} 
+                    isSelected={isSelected} 
+                    index={i} 
+                    handleTitleClick={toggle} 
+                    handleEditResources={handleEditResources} 
+                    handleDeleteResource={handleDeleteResource}
+                    isEditResourceOpen={isEditResourceOpen} 
+                    key={filtredResource.id} 
+                    title={filtredResource.title}
+                    {...filtredResource} 
+                />
+                )) 
+                : 
+                resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
+                <ResourcesList 
+                    roleTeacher={roleTeacher} 
+                    isSelected={isSelected} 
+                    index={i} 
+                    handleTitleClick={toggle} 
+                    key={filtredResource.id} 
+                    {...filtredResource} 
 
-            />
-            )) }
+                />
+                )) }
             </section>
         </div>
     );

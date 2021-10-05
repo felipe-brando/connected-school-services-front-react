@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
+import './style.scss'
 
 
 const FlashMessage = ({ incomingMessage }) => {
@@ -17,12 +17,21 @@ const FlashMessage = ({ incomingMessage }) => {
                 type: 'RESET_FLASH_MESSAGES',
             })
 
-        }, 3500);
+        }, 3500); 
+        /*const timer =() => {
+            setMessage("");
+            dispatch({
+                type: 'RESET_FLASH_MESSAGES',
+            })
+
+        };*/
         return () => clearTimeout(timer);
     })
 
     return (
-        <p>{message}</p>
+        <div className="flashMessage">
+            <p className="flashMessage__text">{message}</p>
+        </div>
     );
 }
 
