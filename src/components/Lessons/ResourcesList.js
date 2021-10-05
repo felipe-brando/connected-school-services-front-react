@@ -24,16 +24,17 @@ const ResourcesList = ({
                 <h3>{title}</h3>
                 <div>{isSelected === index ? '-' : '+'}</div>  
             </div>
-            {roleTeacher &&
-                <>
-                    <button type="button" onClick={handleEditResources}><Edit /></button>
-                    <button type="button" onClick={handleDeleteResource}><Trash /></button>
-                </>
-            }
+            
             </div>
             <div className="resource__overflow">
              {isSelected === index && 
                 <>
+                {roleTeacher &&
+                <div className="resource__buttons">
+                    <button type="button" onClick={handleEditResources}><Edit /></button>
+                    <button type="button" onClick={handleDeleteResource}><Trash /></button>
+                </div>
+            }
                 {!isEditResourceOpen &&
                 <div className="resource__content" dangerouslySetInnerHTML={{__html: content}} />
                 }

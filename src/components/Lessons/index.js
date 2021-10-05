@@ -20,7 +20,7 @@ const Lessons = () => {
     const teacherDiscipline = useSelector((state) => state.user.discipline);
     const teacherDisciplineId = useSelector((state) => state.user.disciplineId);
     const isEditResourceOpen = useSelector((state) => state.lesson.editResourceOpen);
-    const currentResources = useSelector((state) => state.lesson.currentResource);
+    const currentResource = useSelector((state) => state.lesson.currentResource);
 
     const resourcesFiltred = resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom));
 
@@ -73,9 +73,10 @@ const Lessons = () => {
     };
 
     const handleDeleteResource= (e) => {
+
         dispatch ({
             type: 'DELETE_RESOURCE',
-            id: parseInt(e.currentTarget.id)
+            id: currentResource.id,
         })
     }
 

@@ -79,7 +79,7 @@ const lessonApi = (store) => (next) => (action) => {
   }
    //---DELETErequest
    if (action.type === 'DELETE_RESOURCE') {
-    axios.delete(url + "resource/" + action.id, config)
+    axios.delete(url + "lesson/" + action.id, config)
       .then((response) => {
         store.dispatch({
           type: 'FETCH_RESOURCES',

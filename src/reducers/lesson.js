@@ -104,18 +104,19 @@ const reducer = (state = initialState, action = {}) => {
                 action.newResource,
             ]
         };
+
         case 'OPEN_EDIT_RESOURCE': 
         return {
             ...state,
             editResourceOpen: !state.editResourceOpen,
         };
+
         case 'MODIFY_CURRENT_RESOURCE_TITLE': 
         return {
             ...state,
             currentResource: {
                 title: action.newTitle,
-            }
-            
+            }  
         };
         
         default:
