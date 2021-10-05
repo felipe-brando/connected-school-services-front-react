@@ -4,10 +4,13 @@ import FlashMessage from '../FlashMessage/FlashMessage';
 
 import TextEditor from '../TextEditor/TextEditor';
 
+
 const AddResources = ({ teacherDisciplineId }) => {
     //link state    
     const newTitle = useSelector((state) => state.lesson.newResourceTitle);
     const newContent = useSelector((state) => state.lesson.newResourceContent);
+
+    const [inputContentValue, setInputContentValue] = useState('');
 
     //Link Dispatch
     const dispatch = useDispatch();
@@ -27,10 +30,7 @@ const AddResources = ({ teacherDisciplineId }) => {
     };
 
     const handleContentChange = (e) => {
-        dispatch({
-            type: 'CHANGE_INPUT_RESOURCE_CONTENT',
-            newContent: e,
-        })
+        setInputContentValue(e);
     };
 
     const sendNewResource = () => {
@@ -63,9 +63,8 @@ const AddResources = ({ teacherDisciplineId }) => {
                 />
 
                 <label className="addResource__form--label" htmlFor="content">Contenu : </label>
-                <TextEditor theme="snow" value={newContent} onChange={handleContentChange} />
+                <TextEditor />
 
-                
                 <button type="submit">Envoyer</button>
             </form>
         </section>

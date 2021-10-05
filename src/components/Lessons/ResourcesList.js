@@ -1,9 +1,10 @@
 // == Import
 import PropTypes from 'prop-types';
+import TextEditor from 'react-quill';
 
 import { Trash, Edit } from 'react-feather';
 import EditResources from './EditResources';
-//TODO INSTALL DOM PURIFY
+
 // == Composant
 const ResourcesList = ({ 
     id,
@@ -36,7 +37,13 @@ const ResourcesList = ({
                 </div>
             }
                 {!isEditResourceOpen &&
-                <div className="resource__content" dangerouslySetInnerHTML={{__html: content}} />
+                    <TextEditor
+                        className="resource__content"
+                        value={content}
+                        readOnly={true}
+                        theme={"bubble"}
+                     />
+
                 }
                 {isEditResourceOpen &&
                 <EditResources 
