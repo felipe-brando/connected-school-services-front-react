@@ -77,6 +77,19 @@ const lessonApi = (store) => (next) => (action) => {
       console.log(error);
     });
   }
+   //---DELETErequest
+   if (action.type === 'DELETE_RESOURCE') {
+    axios.delete(url + "resource/" + action.id, config)
+      .then((response) => {
+        store.dispatch({
+          type: 'FETCH_RESOURCES',
+        });
+ 
+      })
+      .catch((error) => {
+        console.error('DELETE_ANNOUNCE_BY_ID error : ', error);
+      });
+  }
   next(action); 
 };
 

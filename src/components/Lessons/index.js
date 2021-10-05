@@ -72,6 +72,13 @@ const Lessons = () => {
         });
     };
 
+    const handleDeleteResource= (e) => {
+        dispatch ({
+            type: 'DELETE_RESOURCE',
+            id: parseInt(e.currentTarget.id)
+        })
+    }
+
     
     return (
         <div className="lessons">
@@ -97,6 +104,7 @@ const Lessons = () => {
                 index={i} 
                 handleTitleClick={toggle} 
                 handleEditResources={handleEditResources} 
+                handleDeleteResource={handleDeleteResource}
                 isEditResourceOpen={isEditResourceOpen} 
                 key={filtredResource.id} 
                 title={filtredResource.title}

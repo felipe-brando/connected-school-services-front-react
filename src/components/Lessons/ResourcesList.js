@@ -14,7 +14,8 @@ const ResourcesList = ({
     index,
     roleTeacher,
     isEditResourceOpen,
-    handleEditResources
+    handleEditResources,
+    handleDeleteResource
 }) => {
     return (
         <div className="resource__item">
@@ -26,7 +27,7 @@ const ResourcesList = ({
             {roleTeacher &&
                 <>
                     <button type="button" onClick={handleEditResources}><Edit /></button>
-                    <button type="button"><Trash /></button>
+                    <button type="button" onClick={handleDeleteResource}><Trash /></button>
                 </>
             }
             </div>
