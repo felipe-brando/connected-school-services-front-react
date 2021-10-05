@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import MarksTable from "./MarksTable";
 
+// import ResourcesList from "../ResourcesList";
+
 import './style.scss';
 
 function Marks() {
@@ -15,6 +17,7 @@ function Marks() {
     const userId = useSelector((state) => state.user.userId);
 
     const userRole = useSelector((state) => state.user.roles);
+
     
     const dispatch = useDispatch();
 
@@ -23,6 +26,7 @@ function Marks() {
             type: 'GET_CURRENT_MARKS',
             id : userId,
         });
+
         dispatch({
             type: 'FETCH_DISCIPLINES'
         });

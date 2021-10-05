@@ -24,10 +24,20 @@ const marksApi = (store) => (next) => (action) => {
         currentAverages: response.data,
       });
     })
+
+    if (action.type === 'SAVE_RESOURCE') { 
+      axios.get(url + "lesson", config)
+      .then((response) => {
+        store.dispatch({
+          type: 'SAVE_RESOURCE',
+          resource: response.data,
+        });
+      })
+    
     .catch((error) => {
       console.error('GET_CURRENT_MARKS error : ', error);
     });
-    
+   }
   }
   next(action);
 };
