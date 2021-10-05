@@ -11,17 +11,19 @@ const initialState = {
         discipline: [],
     }],
 
-    currentResource:  [{
+    currentResource: {
         id: '',
         title: '',
         content: '',
         createdAt: '',
         discipline: [],
-    }],
+    },
 
     selected: null,
 
     textEditorOpen: false,
+
+    editResourceOpen: false,
     newResourceTitle: '',
     newResourceContent: '',
     newDisciplineId: '',
@@ -32,6 +34,11 @@ const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
+
+        case 'FETCH_RESOURCE':
+            return {
+                ...state,
+            };
         
         case 'SAVE_DISCIPLINE':
             return {
@@ -43,6 +50,13 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 resourcesList: action.resource,
             };
+
+        case 'SAVE_CURRENT_RESOURCE':
+            return {
+                ...state,
+                currentResource: action.currentResource,
+            };
+
         case 'CHANGE_SELECT_DISCIPLINE':
             return {
                 ...state,
@@ -52,19 +66,21 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 selected: action.index,
+                currentResource: action.currentResource,
 
             };
         case 'ACCORDION_CLOSE':
             return {
                 ...state,
                 selected: null,
+                currentResource: ''
 
             };
         case 'OPEN_RESOURCES_TEXT_EDITOR':
             return {
                 ...state,
                 textEditorOpen: !state.textEditorOpen,
-            };
+            }; 
 
         case 'CHANGE_INPUT_RESOURCE_TITLE':
             return {
@@ -88,6 +104,20 @@ const reducer = (state = initialState, action = {}) => {
                 action.newResource,
             ]
         };
+        case 'OPEN_EDIT_RESOURCE': 
+        return {
+            ...state,
+            editResourceOpen: !state.editResourceOpen,
+        };
+        case 'MODIFY_CURRENT_RESOURCE_TITLE': 
+        return {
+            ...state,
+            currentResource: {
+                title: action.newTitle,
+            }
+            
+        };
+        
         default:
             return state;
     }

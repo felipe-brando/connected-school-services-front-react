@@ -26,6 +26,7 @@ const lessonApi = (store) => (next) => (action) => {
         type: 'SAVE_RESOURCE',
         resource: response.data,
       });
+
     })
     .catch((error) => {
       console.error('FETCH_RESOURCES error : ', error);
@@ -54,6 +55,40 @@ const lessonApi = (store) => (next) => (action) => {
     .catch(function (error) {
       console.log(error);
     });
+  }
+
+  if (action.type === 'SUBMIT_EDITED_RESOURCE') {
+    const state = store.getState();
+    axios.patch(url + 'lesson/' + action.id, {
+      id: action.id,
+      title: state.lesson.currentResource.title,
+      content: action.content
+    }, config)
+    .then(function (response) {
+      //refresh state with change
+      store.dispatch({
+        type: 'FETCH_RESOURCES',
+        id: action.id,
+      })
+      console.log(response);
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+   //---DELETErequest
+   if (action.type === 'DELETE_RESOURCE') {
+    axios.delete(url + "resource/" + action.id, config)
+      .then((response) => {
+        store.dispatch({
+          type: 'FETCH_RESOURCES',
+        });
+ 
+      })
+      .catch((error) => {
+        console.error('DELETE_ANNOUNCE_BY_ID error : ', error);
+      });
   }
   next(action); 
 };
