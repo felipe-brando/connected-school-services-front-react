@@ -4,6 +4,8 @@ import './style.scss';
 
 const Modal = () => {
     const isModalOpen = useSelector((state) => state.announce.isModalOpen);
+    const isResourcesModalOpen = useSelector((state) => state.lesson.modalOpen);
+    const currentResource = useSelector((state) => state.lesson.currentResource);
     const dispatch = useDispatch();
 
     function handleCancelClick(e) {
@@ -15,12 +17,20 @@ const Modal = () => {
     }
 
     function handleValidateClick(e) {
+        
+        isResourcesModalOpen ?
+            dispatch ({
+            type: 'DELETE_RESOURCE',
+            id: currentResource.id,   
+            })
+        :
         dispatch({
             type: 'DELETE_ANNOUNCE_BY_ID',
         })
         dispatch({
             type: 'TOGGLE_MODAL',
         })
+        
     }
 
     return (

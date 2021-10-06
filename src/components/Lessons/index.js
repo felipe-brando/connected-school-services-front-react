@@ -7,6 +7,9 @@ import { PlusCircle } from 'react-feather';
 import Form from './Form';
 import ResourcesList from './ResourcesList';
 import AddResources from "./AddResources";
+import FlashMessage from '../FlashMessage/FlashMessage';
+import Spinner from '../Spinner/Spinner';
+import Modal from '../Modal/Modal';
 
 const Lessons = () => {
     const dispatch = useDispatch();
@@ -20,7 +23,10 @@ const Lessons = () => {
     const teacherDiscipline = useSelector((state) => state.user.discipline);
     const teacherDisciplineId = useSelector((state) => state.user.disciplineId);
     const isEditResourceOpen = useSelector((state) => state.lesson.editResourceOpen);
-    const currentResources = useSelector((state) => state.lesson.currentResource);
+    const currentResource = useSelector((state) => state.lesson.currentResource);
+    const flashMessage = useSelector((state) => state.lesson.flashMessageContent);
+    //loading state
+    const isLoading = useSelector((state) => state.lesson.loading);
 
     const resourcesFiltred = resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom));
 
@@ -72,12 +78,28 @@ const Lessons = () => {
         });
     };
 
-    const handleDeleteResource= (e) => {
+/*const handleDeleteResource= (e) => {
+
         dispatch ({
             type: 'DELETE_RESOURCE',
-            id: parseInt(e.currentTarget.id)
+            id: currentResource.id,
         })
-    }
+     }*/
+
+     const handleDeleteResource= (e) => {
+
+        dispatch ({
+            type: 'OPEN_DELETE_MODAL',
+        })
+
+        dispatch({
+            type: "TOGGLE_MODAL",
+        })
+     }
+
+     if (isLoading) {
+        return <Spinner />;
+      }
 
     
     return (
@@ -91,38 +113,45 @@ const Lessons = () => {
                 handleChangeDiscipline={handleSelectChange}
             />}
             <section className="resources">
-            <h2 className="resources__title">Liste des ressources</h2>
+                <h2 className="resources__title">Liste des ressources</h2>
+                {flashMessage && <FlashMessage incomingMessage={flashMessage} />}
+                
 
-            {roleTeacher && <button type="button" onClick={handleResourceAdd}><PlusCircle /></button>}
-            {isTextEditorOpen && 
-            <AddResources teacherDisciplineId={teacherDisciplineId} />}
+                {roleTeacher && 
+                <button className="resources__addBtn" type="button" onClick={handleResourceAdd}>
+                    Ajouter une nouvelle Ressource <PlusCircle />
+                </button>
+                }
+                {isTextEditorOpen && 
+                <AddResources teacherDisciplineId={teacherDisciplineId} />}
+   
+                {roleTeacher ? resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
+                <ResourcesList 
+                    roleTeacher={roleTeacher} 
+                    isSelected={isSelected} 
+                    index={i} 
+                    handleTitleClick={toggle} 
+                    handleEditResources={handleEditResources} 
+                    handleDeleteResource={handleDeleteResource}
+                    isEditResourceOpen={isEditResourceOpen} 
+                    key={filtredResource.id} 
+                    title={filtredResource.title}
+                    {...filtredResource} 
+                />
+                )) 
+                : 
+                resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
+                <ResourcesList 
+                    roleTeacher={roleTeacher} 
+                    isSelected={isSelected} 
+                    index={i} 
+                    handleTitleClick={toggle} 
+                    key={filtredResource.id} 
+                    {...filtredResource} 
 
-            {roleTeacher ? resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
-            <ResourcesList 
-                roleTeacher={roleTeacher} 
-                isSelected={isSelected} 
-                index={i} 
-                handleTitleClick={toggle} 
-                handleEditResources={handleEditResources} 
-                handleDeleteResource={handleDeleteResource}
-                isEditResourceOpen={isEditResourceOpen} 
-                key={filtredResource.id} 
-                title={filtredResource.title}
-                {...filtredResource} 
-            />
-            )) 
-            : 
-            resources.filter((resource) => resource.discipline.name === currentDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
-            <ResourcesList 
-                roleTeacher={roleTeacher} 
-                isSelected={isSelected} 
-                index={i} 
-                handleTitleClick={toggle} 
-                key={filtredResource.id} 
-                {...filtredResource} 
-
-            />
-            )) }
+                />
+                )) }
+                
             </section>
         </div>
     );

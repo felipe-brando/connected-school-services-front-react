@@ -1,9 +1,10 @@
 // == Import
 import PropTypes from 'prop-types';
+import TextEditor from 'react-quill';
 
-import { Trash, Edit } from 'react-feather';
+import { Trash, Edit, ChevronDown, ChevronRight } from 'react-feather';
 import EditResources from './EditResources';
-//TODO INSTALL DOM PURIFY
+
 // == Composant
 const ResourcesList = ({ 
     id,
@@ -22,20 +23,27 @@ const ResourcesList = ({
             <div className="resource__header">
             <div id={index} className="resource__title" onClick={handleTitleClick}>
                 <h3>{title}</h3>
-                <div>{isSelected === index ? '-' : '+'}</div>  
+                <div>{isSelected === index ? <ChevronDown /> : <ChevronRight /> }</div>  
             </div>
-            {roleTeacher &&
-                <>
-                    <button type="button" onClick={handleEditResources}><Edit /></button>
-                    <button type="button" onClick={handleDeleteResource}><Trash /></button>
-                </>
-            }
+            
             </div>
             <div className="resource__overflow">
              {isSelected === index && 
                 <>
+                {roleTeacher &&
+                <div className="resource__buttons">
+                    <button className="resource__editBtn" type="button" onClick={handleEditResources}><Edit /></button>
+                    <button className="resource__deleteBtn" type="button" onClick={handleDeleteResource}><Trash /></button>
+                </div>
+            }
                 {!isEditResourceOpen &&
-                <div className="resource__content" dangerouslySetInnerHTML={{__html: content}} />
+                    <TextEditor
+                        className="resource__content"
+                        value={content}
+                        readOnly={true}
+                        theme={"bubble"}
+                     />
+
                 }
                 {isEditResourceOpen &&
                 <EditResources 

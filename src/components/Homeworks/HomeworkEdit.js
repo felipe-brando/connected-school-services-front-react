@@ -11,8 +11,6 @@ const HomeworkEdit = () => {
     const dispatch = useDispatch();
     const [homeworkContent, setHomeworkContent] = useState("");
 
-    console.log(currentHomework);
-
 
     useEffect(() => {
         dispatch({

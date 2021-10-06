@@ -263,7 +263,7 @@ const announceApi = (store) => (next) => (action) => {
       method: 'PATCH',
       url: url + "announce/" + action.id,
       data: {
-        homework: action.content
+        homework: action.content,
       },
       headers: {
         Authorization: "Bearer " + token,

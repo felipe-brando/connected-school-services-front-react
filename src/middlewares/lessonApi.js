@@ -46,14 +46,22 @@ const lessonApi = (store) => (next) => (action) => {
     .then(function (response) {
 
       store.dispatch({
-      
         type: 'ADD_RESOURCE',
-        newResource: response.data,
-      
+        newResource: response.data
       });
+
+      store.dispatch({
+        type: 'EDIT_RESOURCES_FLASH_MESSAGE',
+        value: "La nouvelle ressource a été ajoutée",
+      });
+      
     })
     .catch(function (error) {
       console.log(error);
+      store.dispatch({
+        type: 'EDIT_RESOURCES_FLASH_MESSAGE',
+        value: "Erreur, la ressource n'a pas été ajoutée. Veuillez réesayer"
+      })
     });
   }
 
@@ -67,19 +75,34 @@ const lessonApi = (store) => (next) => (action) => {
     .then(function (response) {
       //refresh state with change
       store.dispatch({
+        type: 'ACCORDION_CLOSE',
+      });
+
+      store.dispatch({
+        type: 'EDIT_RESOURCES_FLASH_MESSAGE',
+        value: "La ressource a été modifiée.",
+      });
+
+      store.dispatch({
         type: 'FETCH_RESOURCES',
         id: action.id,
-      })
+      });
+
+
       console.log(response);
 
     })
     .catch(function (error) {
       console.log(error);
+      store.dispatch({
+        type: 'EDIT_RESOURCES_FLASH_MESSAGE',
+        value: "Erreur, la ressource n'a pas été modifiée. Veuillez réesayer."
+      })
     });
   }
    //---DELETErequest
    if (action.type === 'DELETE_RESOURCE') {
-    axios.delete(url + "resource/" + action.id, config)
+    axios.delete(url + "lesson/" + action.id, config)
       .then((response) => {
         store.dispatch({
           type: 'FETCH_RESOURCES',
