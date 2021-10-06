@@ -1,3 +1,5 @@
+@use '../../styles/vars';
+
 .welcome {
     
     margin: 3rem;
@@ -14,7 +16,7 @@
 
     &__classroom {
         font-size: 1.5rem;
-        color: #52A9E1;
+        color: vars.$blue;
 
         @media screen and (min-width: 992px) {
             font-size: 2rem;

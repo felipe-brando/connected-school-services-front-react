@@ -1,8 +1,16 @@
 @use 'sass:math';
+@use 'sass:color';
+
+$blue: #52A9E1;
+$blueAlt : color.scale($blue, $blackness: 50%);
+$green: #60d399;
+$greenAlt: color.scale($green, $blackness: 50%);
+$fontFamily: Montserrat, Helveltica, Arial, sans-serif;
+
+
 
 $menuWidth: 250px;
 $smallMenuWidth: 150px;
 $small: 700px;
 $gutter: 1.5rem;
 $halfGutter: math.div($gutter, 2);
-$color: #209CEE;
