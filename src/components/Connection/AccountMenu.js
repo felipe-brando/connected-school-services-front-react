@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 
 import PropTypes from 'prop-types';
 
-import { User, UserCheck } from 'react-feather';
-import { Settings } from 'react-feather';
-import { Unlock } from 'react-feather';
+import { User, UserCheck, Unlock  } from 'react-feather';
 
 // == Composants
 const AccountMenu = ( { handleLogout, handleBtnAccountClick } ) => {
@@ -26,14 +24,6 @@ const AccountMenu = ( { handleLogout, handleBtnAccountClick } ) => {
                 </span>
                 <span className="dropdown__text">
                     Accueil espace perso
-                </span>
-            </Link>
-            <Link to="#">
-                <span className="dropdown__icon">
-                    <Settings />
-                </span>
-                <span className="dropdown__text">
-                    Paramètres
                 </span>
             </Link>
             <Link to="/">
