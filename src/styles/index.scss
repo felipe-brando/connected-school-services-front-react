@@ -3,7 +3,7 @@
 
 
 body {
-  font-family: Montserrat, Helveltica, Arial, sans-serif;
+  font-family: vars.$fontFamily;
 }
 
 h1 {
@@ -19,4 +19,13 @@ h2 {
 h3 {
   font-size: 1em;
   font-weight: 600;
+}
+
+.quill {
+  max-height: 50em;
+  height: 100%;
+}
+.quill .ql-bubble {
+  font-family: vars.$fontFamily;
+  font-size: 1em;
 }

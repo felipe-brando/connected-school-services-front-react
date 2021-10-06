@@ -10,4 +10,20 @@
     flex-direction: column;
 
   }
+
+  .error {
+    width: 80%;
+    margin: 5rem auto;
+    color: red;
+    font-size: 1rem;
+    
+    &__title {
+      margin-bottom: 1rem;
+    }
+
+    &__link {
+      text-decoration: underline;
+    }
+  }
 }
+

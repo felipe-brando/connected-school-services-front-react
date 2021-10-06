@@ -47,9 +47,9 @@ const AnnounceList = ({ filter }) => {
     //if try to filter announces by category but user is not connected
     if (filter === 'categories' && !logged) {
         return (
-            <section>
-                <h3>Vous devez être connecté pour accéder aux annonces par catégories.</h3>
-                <Link to="/annonces">Retour aux annonces de l'établissement</Link>
+            <section className="error" >
+                <h3 className="error__title">Vous devez être connecté pour accéder aux annonces par catégories.</h3>
+                <Link className="error__link "to="/annonces">Retour aux annonces de l'établissement</Link>
             </section>
         )
     }
