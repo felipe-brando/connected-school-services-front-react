@@ -1,6 +1,6 @@
-export const imgUrl = "http://ec2-3-80-208-180.compute-1.amazonaws.com/projet-connected-school-services/public/uploads/";
+export const imgUrl = "http://ec2-3-80-208-180.compute-1.amazonaws.com/uploads/";
 
-export const apiUrl = 'http://ec2-3-80-208-180.compute-1.amazonaws.com/projet-connected-school-services/public/api/v1/';
+export const apiUrl = 'http://ec2-3-80-208-180.compute-1.amazonaws.com/api/v1/';
 
-export const boUrl = 'http://ec2-3-80-208-180.compute-1.amazonaws.com/projet-connected-school-services/public/login';
+export const boUrl = 'http://ec2-3-80-208-180.compute-1.amazonaws.com/login';
 

@@ -35,7 +35,9 @@ const Announce = () => {
             {userRole[0] === "ROLE_ADMIN" &&
                 <Route path="/annonces/ajout" exact>
                     <Sidebar />
+                    <div className="pages__content">
                     <AddAnnounce />
+                    </div>
                 </Route>
             }
             <Route path="/annonces/maj/:id" exact>
