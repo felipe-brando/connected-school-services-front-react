@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import TextEditor from 'react-quill';
 
-import { Trash, Edit } from 'react-feather';
+import { Trash, Edit, ChevronDown, ChevronRight } from 'react-feather';
 import EditResources from './EditResources';
 
 // == Composant
@@ -23,7 +23,7 @@ const ResourcesList = ({
             <div className="resource__header">
             <div id={index} className="resource__title" onClick={handleTitleClick}>
                 <h3>{title}</h3>
-                <div>{isSelected === index ? '-' : '+'}</div>  
+                <div>{isSelected === index ? <ChevronDown /> : <ChevronRight /> }</div>  
             </div>
             
             </div>
