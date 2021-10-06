@@ -52,7 +52,7 @@ const MobileBar = ()  => {
                 <ul className='mobileBar__list'>
                     <NavLink className='mobileBar__link' to="#">
                         <li className="mobileBar__item">
-                            <span className='mobileBar__icon'><Calendar value={{color: '#fff'}} /></span>
+                            <span className='mobileBar__icon'><Calendar /></span>
                             <span className='mobileBar__text'>Gestion des Classes</span>
                         </li> 
                     </NavLink>   
@@ -76,27 +76,33 @@ const MobileBar = ()  => {
                     </NavLink>   
                 </ul>
                 }
-                {roleTeacher &&
+                {roleTeacher && // If i am teacher
                 <ul className='mobileBar__list'>
+                    <NavLink className='mobileBar__link' to="/espace-perso" exact>
+                        <li className="mobileBar__item">
+                            <span className='mobileBar__icon'><Calendar /></span>
+                            <span className='mobileBar__text'>Espace <br/>perso</span>
+                        </li> 
+                    </NavLink> 
                     <NavLink className='mobileBar__link' to="/espace-perso/notes">
                         <li className="mobileBar__item">
-                        <span className='sidebar__icon'><Award /></span>
+                        <span className='mobileBar__icon'><Award /></span>
                             <span className='mobileBar__text'>Notes</span>
                         </li> 
                     </NavLink>   
                     <NavLink className='mobileBar__link' to="/espace-perso/mes-cours"  exact>
                         <li className="mobileBar__item">
                             <span className='mobileBar__icon'><Server /></span>
-                            <span className='mobileBar__text'>Cours/Ressources</span>
+                            <span className='mobileBar__text'>Cours / Ressources</span>
                         </li>   
                     </NavLink>   
-                    <NavLink className='mobileBar__link' to="/espace-perso/">
+                    <NavLink className='mobileBar__link' to="/espace-perso/mes-devoirs">
                         <li className="mobileBar__item">
                             <span className='mobileBar__icon'><Book /></span>
                             <span className='mobileBar__text'>Devoirs / Annonces</span>
                         </li>   
                     </NavLink>   
-                    <NavLink className='mobileBar__link' to="/espace-perso/mes-classes" exact>
+                    <NavLink className='mobileBar__link' to="/espace-perso/mes-classes">
                         <li className="mobileBar__item">
                             <span className='mobileBar__icon'><Users /></span>
                             <span className='mobileBar__text'>Mes classes</span>

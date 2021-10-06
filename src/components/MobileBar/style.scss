@@ -37,11 +37,12 @@
     &__item {
         display: flex;
         flex-direction: column;
+        margin-right: 1rem;
     }
 
 
     &__text {
-       font-size: 0.8em;
+       font-size: 0.7em;
        font-weight: 400;
     }
 

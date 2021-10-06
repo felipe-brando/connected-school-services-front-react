@@ -27,6 +27,8 @@
         } 
 
         &__item {
+            display: flex;
+            align-items: center;
             padding: 2rem;
             border-bottom: 0.1em solid  #f7f1e9;
 
