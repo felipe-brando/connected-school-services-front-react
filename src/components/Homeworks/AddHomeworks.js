@@ -106,8 +106,8 @@ const AddHomeworks = () => {
                 </select>
 
                 <input
-                    className="addHomework__form select--date"
                     type="date"
+                    className="addHomework__form select--date"
                     onChange={handleChangeSelectDate}
                 />
 

@@ -21,7 +21,6 @@ const reducer = (state = initialState, action = {}) => {
         teacherClassroomList: [action.classroomList],
       }
     }
-
     case 'SAVE_STUDENTS_LIST':
       return {
         ...state,
@@ -42,8 +41,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         addHomeworksSelectedDate: action.value,
       }
-
-
+    case 'RESET_STUDENTS_LIST_STATE':
+      return {
+        ...state,
+        currentStudentList: [],
+      }
 
     default:
       return state;

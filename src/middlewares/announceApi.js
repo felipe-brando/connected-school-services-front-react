@@ -120,7 +120,7 @@ const announceApi = (store) => (next) => (action) => {
 
       })
       .catch((error) => {
-        console.error('SAVE_CURRENT_ANNOUNCE error : ', error);
+        console.error('GET_ANNOUNCE_BY_ID error : ', error);
 
         //turn off spinner
         store.dispatch({
