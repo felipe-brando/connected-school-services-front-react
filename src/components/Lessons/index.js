@@ -8,6 +8,7 @@ import Form from './Form';
 import ResourcesList from './ResourcesList';
 import AddResources from "./AddResources";
 import FlashMessage from '../FlashMessage/FlashMessage';
+import Spinner from '../Spinner/Spinner';
 import Modal from '../Modal/Modal';
 
 const Lessons = () => {
@@ -24,6 +25,8 @@ const Lessons = () => {
     const isEditResourceOpen = useSelector((state) => state.lesson.editResourceOpen);
     const currentResource = useSelector((state) => state.lesson.currentResource);
     const flashMessage = useSelector((state) => state.lesson.flashMessageContent);
+    //loading state
+    const isLoading = useSelector((state) => state.lesson.loading);
 
     const resourcesFiltred = resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom));
 
@@ -94,6 +97,10 @@ const Lessons = () => {
         })
      }
 
+     if (isLoading) {
+        return <Spinner />;
+      }
+
     
     return (
         <div className="lessons">
@@ -117,7 +124,7 @@ const Lessons = () => {
                 }
                 {isTextEditorOpen && 
                 <AddResources teacherDisciplineId={teacherDisciplineId} />}
-
+   
                 {roleTeacher ? resources.filter((resource) => resource.discipline.name === teacherDiscipline && resource.title.includes(classroom)).map((filtredResource, i) => (
                 <ResourcesList 
                     roleTeacher={roleTeacher} 
@@ -144,6 +151,7 @@ const Lessons = () => {
 
                 />
                 )) }
+                
             </section>
         </div>
     );

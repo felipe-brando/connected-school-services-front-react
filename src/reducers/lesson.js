@@ -32,6 +32,8 @@ const initialState = {
 
     modalOpen: false,
 
+    loading: true,
+
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -46,12 +48,14 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 disciplinesList: action.discipline,
+                loading: false,
             };
         case 'SAVE_RESOURCE':
             return {
                 ...state,
                 resourcesList: action.resource,
                 modalOpen: false,
+                loading: false,
             };
 
         case 'SAVE_CURRENT_RESOURCE':
