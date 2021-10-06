@@ -46,7 +46,7 @@ const MenuList = ({closeMobileMenu}) => {
             Contact
           </NavLink></li>
           {logged && 
-        <li className="menu__item"><NavLink
+        <li className="menu__item personal-space"><NavLink
             to="/espace-perso" > Espace Personnel                               
           </NavLink></li>}
       </ul> 
