@@ -16,11 +16,18 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 editorModifyBaseValue: action.editorValue,
             }
-            case 'CLEAN_EDITOR_CONTENT':
-                return {
-                    ...state,
-                    editorModifyBaseValue: "",
-                }
+        case 'CLEAN_EDITOR_CONTENT':
+            return {
+                ...state,
+                editorModifyBaseValue: "",
+            }
+        case 'SAVE_CURRENT_HOMEWORK': {
+            return {
+                ...state,
+                editorModifyBaseValue: action.currentHomework.homework,
+            }
+        }
+
 
         default:
             return state;

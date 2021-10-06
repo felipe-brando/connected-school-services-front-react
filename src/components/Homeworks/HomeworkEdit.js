@@ -2,15 +2,12 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import TextEditor from 'react-quill';
+import TextEditor from '../TextEditor/TextEditor';
 
 const HomeworkEdit = () => {
 
-    const currentHomework = useSelector((state) => state.announce.currentHomework);
     const { homeworkId } = useParams();
     const dispatch = useDispatch();
-    const [homeworkContent, setHomeworkContent] = useState("");
-
 
     useEffect(() => {
         dispatch({
@@ -19,15 +16,10 @@ const HomeworkEdit = () => {
         })
     }, [homeworkId])
 
-    function handleChangeContent(e) {
-        setHomeworkContent(e);
-    }
-
     function handleSubmitHomework(e) {
         e.preventDefault();
         dispatch({
             type: 'EDIT_HOMEWORK',
-            content: homeworkContent,
             id: homeworkId,
         })
     }
@@ -35,7 +27,7 @@ const HomeworkEdit = () => {
     return (
         <>
             <form onSubmit={handleSubmitHomework}>
-                <TextEditor defaultValue={currentHomework.homework} onChange={handleChangeContent} />
+                <TextEditor />
                 <input type="submit" value="Enregistrer" />
             </form>
         </>

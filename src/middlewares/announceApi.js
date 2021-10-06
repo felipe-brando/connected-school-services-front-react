@@ -259,11 +259,12 @@ const announceApi = (store) => (next) => (action) => {
   }
 
   if (action.type === 'EDIT_HOMEWORK') {
+    console.log(state.textEditor.editorContent);
     axios({
       method: 'PATCH',
       url: url + "announce/" + action.id,
       data: {
-        homework: action.content,
+        homework: state.textEditor.editorContent,
       },
       headers: {
         Authorization: "Bearer " + token,
