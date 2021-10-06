@@ -61,11 +61,10 @@ const classroomApi = (store) => (next) => (action) => {
             // store.dispatch({
             //     type: 'ADD_ANNOUNCE_RESET_INITIAL_STATE',
             // })
-            // //TODO - flash message if response is ok, delete input value (and go back to previous page ?)
-            // console.log(response);
-            // console.log('flash message envoi annonce');
-
-            //if announce is submit
+            store.dispatch({
+                type: 'MODIFY_FLASH_MESSAGE',
+                value: "Le contenu a bien été ajouté",
+              });
 
         })
 

@@ -83,7 +83,19 @@ const announceApi = (store) => (next) => (action) => {
     }
   }
 
+  if (action.type === 'GET_HOMEWORK_BY_ID') { 
+     axios.get(url + "homeannounce/" + action.id)
+    .then((response) => {
+      store.dispatch({
+        type: 'SAVE_CURRENT_HOMEWORK',
+        currentHomework: response.data
+      })
+    })
+    .catch((error)=>console.log('GET_HOMEWORK_BY_ID - error'))
+  }
+
   if (action.type === 'GET_ANNOUNCE_BY_ID') {
+
     store.dispatch({
       type: 'LOADING_ON',
     })
@@ -120,7 +132,7 @@ const announceApi = (store) => (next) => (action) => {
   }
 
   if (action.type === 'GET_ANNOUNCE_LIST_BY_CLASS_ID') {
-    axios.get(url + "announce/sortedbyclassroom/" + action.id, config)
+    axios.get(url + "announce/homework/" + action.id, config)
       .then((response) => {
         store.dispatch({
           type: 'SAVE_CLASSROOM_ANNOUNCE_LIST',
@@ -187,8 +199,17 @@ const announceApi = (store) => (next) => (action) => {
         });
         store.dispatch({
           type: 'MODIFY_FLASH_MESSAGE',
-          value: "L'annonce a bien été supprimée"
+          value: "Le contenu a bien été supprimée"
         });
+
+        //if request was sent by homeworks pages, refresh content
+        if (state.announce.contentCategory === "homeworkList") {
+          store.dispatch({
+            type: 'GET_ANNOUNCE_LIST_BY_CLASS_ID',
+            id: state.announce.currentContentId,
+          })
+        }
+
       })
       .catch((error) => {
         console.error('DELETE_ANNOUNCE_BY_ID error : ', error);
@@ -227,7 +248,7 @@ const announceApi = (store) => (next) => (action) => {
     }).then((response) => {
       store.dispatch({
         type: 'MODIFY_FLASH_MESSAGE',
-        value: "L'annonce a bien été modifiée",
+        value: "Le contenu a bien été modifiée",
       });
       //refresh state with change
       store.dispatch({
@@ -237,7 +258,30 @@ const announceApi = (store) => (next) => (action) => {
     })
   }
 
-  next(action); // dans tous les cas je laisse passer l'action
+  if (action.type === 'EDIT_HOMEWORK') {
+    axios({
+      method: 'PATCH',
+      url: url + "announce/" + action.id,
+      data: {
+        homework: action.content
+      },
+      headers: {
+        Authorization: "Bearer " + token,
+      }
+    }).then((response) => {
+      store.dispatch({
+        type: 'MODIFY_FLASH_MESSAGE',
+        value: "Le contenu a bien été modifiée",
+      });
+      //refresh state with change
+      store.dispatch({
+        type: 'GET_ANNOUNCE_BY_ID',
+        id: action.id,
+      })
+    })
+  }
+
+  next(action);
 };
 
 export default announceApi;

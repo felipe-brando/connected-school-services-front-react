@@ -78,19 +78,19 @@ const Sidebar = ()  => {
                 }
                 {roleTeacher &&
                 <ul className='sidebar__list'>
-                    <NavLink className='sidebar__link' to="/espace-perso/mes-notes"  exact>
+                    <NavLink className='sidebar__link' to="/espace-perso/mes-notes"  >
                         <li className="sidebar__item">
                         <span className='sidebar__icon'><Award /></span>
                             <span className='sidebar__text'>Notes</span>
                         </li> 
                     </NavLink>   
-                    <NavLink className='sidebar__link' to="/espace-perso/mes-cours"  exact>
+                    <NavLink className='sidebar__link' to="/espace-perso/mes-cours" >
                         <li className="sidebar__item">
                             <span className='sidebar__icon'><Server /></span>
                             <span className='sidebar__text'>Cours/Ressources</span>
                         </li>   
                     </NavLink>   
-                    <NavLink className='sidebar__link' to="/espace-perso/mes-devoirs" exact>
+                    <NavLink className='sidebar__link' to="/espace-perso/mes-devoirs">
                         <li className="sidebar__item">
                             <span className='sidebar__icon'><Book /></span>
                             <span className='sidebar__text'>Devoirs / Annonces</span>

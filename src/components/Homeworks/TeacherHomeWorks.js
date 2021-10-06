@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import FlashMessage from '../FlashMessage/FlashMessage';
 
 import './style.scss';
 
@@ -10,7 +11,7 @@ const TeacherHomeWorks = () => {
     const teacherClassList = useSelector((state) => state.classroom.teacherClassroomList);
     const teacherId = useSelector((state) => state.user.userId);
     const teacherDiscipline = useSelector((state) => state.user.discipline);
-
+    const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
 
     const dispatch = useDispatch();
 
@@ -23,6 +24,8 @@ const TeacherHomeWorks = () => {
 
     return (
         <section className="teacherHomeworks">
+             {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
+
             <h1>{teacherDiscipline}</h1>
             <h2>Devoirs & Annonces de Classes</h2>
             <NavLink activeClassName="teacherHomeworks_link--selected" to="/espace-perso/mes-devoirs/ajout">Ajout</NavLink>

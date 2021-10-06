@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import TextEditor from '../TextEditor/TextEditor';
+import FlashMessage from '../FlashMessage/FlashMessage';
 
 import './style.scss';
 
@@ -10,8 +11,15 @@ const AddHomeworks = () => {
     const teacherClassList = useSelector((state) => state.classroom.teacherClassroomList);
     const teacherId = useSelector((state) => state.user.userId);
     const teacherDiscipline = useSelector((state) => state.user.discipline);
+    const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(({
+            type: "CLEAN_EDITOR_CONTENT",
+        }));
+    }, []);
 
     useEffect(() => {
         dispatch(({
@@ -37,7 +45,7 @@ const AddHomeworks = () => {
         const today = Date.now();
         if (e.target.valueAsNumber < today) {
             console.log('La date ne peut pas être antérieure à la date du jour');
-            e.target.valueAsNumber=today;
+            e.target.valueAsNumber = today;
         }
 
         dispatch({
@@ -55,6 +63,7 @@ const AddHomeworks = () => {
 
     return (
         <>
+            {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
             <nav className="AddHomeworks__nav">
                 <h1>{teacherDiscipline}</h1>
                 <NavLink
@@ -102,9 +111,6 @@ const AddHomeworks = () => {
                     onChange={handleChangeSelectDate}
                 />
 
-
-
-                <label className="addHomework__form--label" htmlFor="content">Contenu </label>
                 <TextEditor />
                 {/* modifier les options du text editor enlever image etc */}
 

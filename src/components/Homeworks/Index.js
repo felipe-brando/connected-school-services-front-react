@@ -4,6 +4,7 @@ import AddHomeworks from "./AddHomeworks";
 import StudentHomeworks from './StudentHomeworks';
 import TeacherHomeWorks from './TeacherHomeWorks';
 import HomeworksList from './HomeworkList';
+import HomeworkEdit from './HomeworkEdit';
 
 function Homeworks() {
 
@@ -31,6 +32,10 @@ function Homeworks() {
                     <Route path="/espace-perso/mes-devoirs/liste/:id" exact>
                         <TeacherHomeWorks />
                         <HomeworksList />
+                    </Route>
+                    <Route path="/espace-perso/mes-devoirs/liste/:id/edit/:homeworkId" exact>
+                        <TeacherHomeWorks />                        
+                        <HomeworkEdit />
                     </Route>
                 </>
             }

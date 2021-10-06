@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import FlashMessage from '../FlashMessage/FlashMessage';
-import { useHistory } from "react-router-dom";
 
 import TextEditor from 'react-quill';
 import { toolbarFullOptions } from '../TextEditor/toolbarOptions'

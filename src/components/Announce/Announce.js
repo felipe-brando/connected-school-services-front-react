@@ -6,6 +6,8 @@ import AnnouncePage from './AnnouncePage';
 import AddAnnounce from './AddAnnounce';
 import ModifyAnnounce from './ModifyAnnounce';
 import CategoryList from './CategoryList';
+import Sidebar from '../Sidebar/';
+
 
 import './style.scss';
 
@@ -32,6 +34,7 @@ const Announce = () => {
             </Route>
             {userRole[0] === "ROLE_ADMIN" &&
                 <Route path="/annonces/ajout" exact>
+                    <Sidebar />
                     <AddAnnounce />
                 </Route>
             }

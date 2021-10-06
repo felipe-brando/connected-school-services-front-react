@@ -37,7 +37,12 @@ const initialState = {
 
     isModalOpen: false,
 
+    //state for popup modal information
     announceIdToDelete: "",
+    contentcategory: "",
+    currentContentId: "",
+
+    currentHomework: "",
 
     isLoading: false,
 
@@ -147,7 +152,15 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 announceIdToDelete: action.id,
+                contentCategory: action.contentCategory,
+                currentContentId: action.currentContentId,
             }
+        case 'SAVE_CURRENT_HOMEWORK': {           
+            return {
+                ...state,
+                currentHomework: action.currentHomework,
+            }
+        }
 
         case 'LOADING_ON':
             return {

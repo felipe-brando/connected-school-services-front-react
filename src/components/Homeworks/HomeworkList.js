@@ -1,13 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import TextEditor from 'react-quill';
+import { Trash, Edit } from 'react-feather';
 
 const HomeworksList = () => {
-    const { id } = useParams();
+    const { id } = useParams();    
 
     const announceListByClassId = useSelector((state) => state.announce.classroomAnnounces);
     const teacherDiscipline = useSelector((state) => state.user.discipline);
+    const userRole = useSelector((state) => state.user.roles);
+
     const dispatch = useDispatch();
 
     //function to convert database-numbers-date in french-words
@@ -25,6 +28,18 @@ const HomeworksList = () => {
         })
     }, [id])
 
+    const handleClickDeleteHomework = (e) => {
+        dispatch({
+            type: "TOGGLE_MODAL",
+        })
+        dispatch({
+            type: "MODIFY_ANNOUNCE_ID_TO_DELETE",
+            id: e.target.dataset.id,
+            contentCategory: "homeworkList",
+            currentContentId: id,
+        })
+    }
+
     return (
         <ul className="homeworks">
 
@@ -40,15 +55,29 @@ const HomeworksList = () => {
                                 </span>
                             </p>
 
-                            {/* <p className="homework__article__content">{announceObject.homework}</p> */}
-
+                            {userRole[0] === 'ROLE_TEACHER' &&
+                                <div className="homeworkList__button__container">
+                                    <Link to={"/espace-perso/mes-devoirs/liste/" + id + "/edit/" + announceObject.id} >
+                                        <button
+                                            data-id={announceObject.id}
+                                            type="button"
+                                            className="homeworkList__button edit"
+                                        ><Edit />
+                                        </button>
+                                    </Link>
+                                    <button
+                                        data-id={announceObject.id}
+                                        onClick={handleClickDeleteHomework}
+                                        type="button"
+                                        className="homeworkList__button delette"
+                                    ><Trash data-id={announceObject.id} /></button>
+                                </div>
+                            }
                             <TextEditor
                                 value={announceObject.homework}
                                 readOnly={true}
                                 theme={"bubble"}
                             />
-
-
                         </li>
                     )
                 }

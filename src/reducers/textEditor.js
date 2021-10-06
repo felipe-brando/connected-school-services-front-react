@@ -16,6 +16,11 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 editorModifyBaseValue: action.editorValue,
             }
+            case 'CLEAN_EDITOR_CONTENT':
+                return {
+                    ...state,
+                    editorModifyBaseValue: "",
+                }
 
         default:
             return state;
