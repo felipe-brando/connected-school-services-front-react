@@ -44,6 +44,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         logged: true,
         firstname: action.firstname,
+        lastname: action.lastname,
         loginOpen: false,
         token: action.token,
         roles: action.roles,
