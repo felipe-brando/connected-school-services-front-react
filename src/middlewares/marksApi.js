@@ -86,6 +86,31 @@ const marksApi = (store) => (next) => (action) => {
     });
   }
 
+  if (action.type ==='EDIT_STUDENT_MARK'){
+    axios({
+      method: 'PATCH',
+      url: url + "note/" + action.markId,
+      data: {
+        grade: action.mark,
+      },
+      headers: {
+        Authorization: "Bearer " + token,
+      }
+    }).then((response) => {
+      // store.dispatch({
+      //   type: 'MODIFY_FLASH_MESSAGE',
+      //   value: "La note a bien été modifiée",
+      // });
+      //refresh state with change
+      store.dispatch({
+        type: 'GET_STUDENTS_MARKS_BY_CLASS_ID',
+        id: action.classroomId,
+      })
+    }).catch((error) => {
+      console.error('EDIT_STUDENT_MARK error : ', error);
+    });
+  }
+
   next(action);
 };
 

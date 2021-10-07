@@ -6,11 +6,14 @@ const MarksTeacherEdit = () => {
     const teacherClassList = useSelector((state) => state.classroom.teacherClassroomList);
     const teacherId = useSelector((state) => state.user.userId);
     const studentList = useSelector((state) => state.classroom.currentStudentList);
-    const marksListByClassroom = useSelector((state)=>state.marks.marksListByClassroom);
-    const disciplineId = useSelector((state) => state.user.disciplineId);
-        
-    console.log(marksListByClassroom);
-    console.log(studentList);
+    const marksListByClassroom = useSelector((state) => state.marks.marksListByClassroom);
+    //local state to display data in modal and send them to patch request
+    const [selectedMark, setSelectedMark] = useState("");
+    const [isMarkModalOpen, toggleMarkModal] = useState(false);
+    const [selectedsStudent, setSelectedStudent] = useState("")
+    const [selectedMarkTitle, setSelectedMarkTitle] = useState("");
+    const [selectedMarkId, setselectedMarkId] = useState("");
+    const [classroomId, setClassroomId] = useState("");
 
     const dispatch = useDispatch();
 
@@ -36,10 +39,51 @@ const MarksTeacherEdit = () => {
             type: 'GET_STUDENTS_MARKS_BY_CLASS_ID',
             id: e.target.value,
         })
+        //keep classroom id to refresh list if editing marks
+        setClassroomId(e.target.value)
+    }
+
+    function handleClickStudentMark(e) {
+        setSelectedMark(e.target.textContent);
+        setSelectedStudent(e.target.dataset.student);
+        setSelectedMarkTitle(e.target.title);
+        setselectedMarkId(e.target.dataset.markid);
+
+        //open modal to edit selected mark
+        toggleMarkModal(!isMarkModalOpen);
+    }
+
+    function handleChangeMarkInModal(e) {
+        setSelectedMark(e.target.value);
+    }
+
+    function handleClickCancelChangeMark(e) {
+        toggleMarkModal(!isMarkModalOpen);
+    }
+
+    function handleSubmitNewMark(e) {
+        e.preventDefault();
+        dispatch({
+            type: 'EDIT_STUDENT_MARK',
+            markId: selectedMarkId,
+            mark: selectedMark,
+            classroomId: classroomId,
+        })
+        toggleMarkModal(!isMarkModalOpen);
+
     }
 
     return (
         <section className="teacherMarks">
+            {isMarkModalOpen &&
+                <div className="teacherMarks__modal__container">
+                    <form className="teacherMarks__modal" onSubmit={handleSubmitNewMark} >
+                        <p>Modifier la note de {selectedsStudent} pour : "{selectedMarkTitle}" ?</p>
+                        <input onChange={handleChangeMarkInModal} type="number" value={selectedMark} />
+                        <input onClick={handleClickCancelChangeMark} type="button" value="Annuler" /><input type="submit" value="Valider" />
+                    </form>
+                </div>
+            }
             <form>
                 <h1>Notes</h1>
 
@@ -64,10 +108,18 @@ const MarksTeacherEdit = () => {
                             return (
                                 <li key={student.id}>
                                     {student.lastname}
-                                    {student.firstname} : 
-                                    {marksListByClassroom.map((mark)=>{
-                                        return mark.user.id === student.id ? <span key={mark.id} title={mark.title}>{mark.grade}</span> : "";
-                                    })}                                  
+                                    {student.firstname} :
+                                    {marksListByClassroom.map((mark) => {
+                                        return mark.user.id === student.id ?
+                                            <span
+                                                key={mark.id}
+                                                onClick={handleClickStudentMark}
+                                                title={mark.title}
+                                                data-student={student.firstname + " " + student.lastname}
+                                                data-markid={mark.id}
+                                            >{mark.grade}
+                                            </span> : "";
+                                    })}
                                 </li>);
                         })}
 

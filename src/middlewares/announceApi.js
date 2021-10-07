@@ -83,15 +83,15 @@ const announceApi = (store) => (next) => (action) => {
     }
   }
 
-  if (action.type === 'GET_HOMEWORK_BY_ID') { 
-     axios.get(url + "homeannounce/" + action.id)
-    .then((response) => {
-      store.dispatch({
-        type: 'SAVE_CURRENT_HOMEWORK',
-        currentHomework: response.data
+  if (action.type === 'GET_HOMEWORK_BY_ID') {
+    axios.get(url + "homeannounce/" + action.id)
+      .then((response) => {
+        store.dispatch({
+          type: 'SAVE_CURRENT_HOMEWORK',
+          currentHomework: response.data
+        })
       })
-    })
-    .catch((error)=>console.log('GET_HOMEWORK_BY_ID - error'))
+      .catch((error) => console.log('GET_HOMEWORK_BY_ID - error'))
   }
 
   if (action.type === 'GET_ANNOUNCE_BY_ID') {
@@ -116,8 +116,6 @@ const announceApi = (store) => (next) => (action) => {
         store.dispatch({
           type: 'LOADING_OFF',
         });
-
-
       })
       .catch((error) => {
         console.error('GET_ANNOUNCE_BY_ID error : ', error);
@@ -126,8 +124,6 @@ const announceApi = (store) => (next) => (action) => {
         store.dispatch({
           type: 'LOADING_OFF',
         });
-
-
       });
   }
 
@@ -259,7 +255,6 @@ const announceApi = (store) => (next) => (action) => {
   }
 
   if (action.type === 'EDIT_HOMEWORK') {
-    console.log(state.textEditor.editorContent);
     axios({
       method: 'PATCH',
       url: url + "announce/" + action.id,
