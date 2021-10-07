@@ -1,17 +1,16 @@
-
 .table__content {
     border-collapse: collapse;
     font-size: 0.9em;
     border-radius: 1em 1em 0 0;
-    overflow: hidden; 
+    overflow: hidden;
     box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
     width: 90%;
     font-weight: 600;
     position: relative;
-  
+
     &--column th {
-    border-bottom: 3px solid red;
-    padding: 0.8rem;
+        border-bottom: 3px solid red;
+        padding: 0.8rem;
     }
 
     &--measure {
@@ -22,17 +21,17 @@
     }
 
     &--marks {
-    background-color: rgb(52, 183, 117);
-    text-align: center;
-    color: #f7f1e9;
-    border: solid 1px lightgrey;
-    // font-weight: 600;
+        background-color: rgb(52, 183, 117);
+        text-align: center;
+        color: #f7f1e9;
+        border: solid 1px lightgrey;
+        // font-weight: 600;
     }
 
     &--average {
-    text-align: center;
-    border: solid 1px lightgrey;
-    background-color: #54ACE5;
+        text-align: center;
+        border: solid 1px lightgrey;
+        background-color: #54ACE5;
     }
 }
 
@@ -50,13 +49,88 @@
 //         background-color: #54ACE5;
 //         }
 
+//---Teacher Marks
 
-.marks__navlink.active{
+.marks__navlink.active {
     font-weight: bold;
     margin: 10px;
 }
 
-.marks__navlink__container{
+.marks__navlink__container {
     display: block;
     margin-bottom: 20px;
+}
+
+//---Teacher Marks Modal
+.teacherMarks__modal__container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(189, 185, 185, 0.5);
+}
+
+.teacherMarks__modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    z-index: 4;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 32px 32px 60px #4d4b4b;
+
+    & p {
+        padding: 12px;
+    }
+}
+
+.teacherMarks__modal__button {
+    padding: 0.5rem 1rem;
+    margin: 10px;
+    width: 80px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #E8E8E8;
+    background-color: #FFF;
+
+    transition: 0.5s;
+}
+.teacherMarks__modal__button--container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: #E8E8E8;
+    
+    transition: 0.5s;
+}
+
+.teacherMarks__modal__button.accept {
+    background: #60d399;
+    color: #FFF;
+
+    &:hover {
+        background: #FFF;
+        color: #60d399;
+        border-color: #60d399;
+    }
+}
+
+.teacherMarks__modal__button.cancel {
+    border-color: #9A031E;
+    color: #9A031E;
+
+    &:hover {
+        background: #9A031E;
+        color: #FFF;
+
+    }
 }

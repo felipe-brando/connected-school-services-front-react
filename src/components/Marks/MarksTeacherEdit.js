@@ -79,8 +79,23 @@ const MarksTeacherEdit = () => {
                 <div className="teacherMarks__modal__container">
                     <form className="teacherMarks__modal" onSubmit={handleSubmitNewMark} >
                         <p>Modifier la note de {selectedsStudent} pour : "{selectedMarkTitle}" ?</p>
+
                         <input onChange={handleChangeMarkInModal} type="number" value={selectedMark} />
-                        <input onClick={handleClickCancelChangeMark} type="button" value="Annuler" /><input type="submit" value="Valider" />
+
+                        <div className="teacherMarks__modal__button--container">
+                            <input
+                                onClick={handleClickCancelChangeMark}
+                                type="button"
+                                value="Annuler"
+                                className="teacherMarks__modal__button cancel"
+                            />
+                            <input
+                                type="submit"
+                                value="Valider"
+                                className="teacherMarks__modal__button accept"
+                            />
+                        </div>
+
                     </form>
                 </div>
             }
@@ -117,7 +132,7 @@ const MarksTeacherEdit = () => {
                                                 title={mark.title}
                                                 data-student={student.firstname + " " + student.lastname}
                                                 data-markid={mark.id}
-                                            >{mark.grade}
+                                            >| {mark.grade} |
                                             </span> : "";
                                     })}
                                 </li>);
