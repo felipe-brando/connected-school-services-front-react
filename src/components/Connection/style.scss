@@ -1,3 +1,5 @@
+@use '../../styles/vars';
+
 .connection { 
 
     &__title {
@@ -14,7 +16,7 @@
     &__item:hover .dropdown {display: block;}
 
     &__button {
-        color: #717171;
+        color: vars.$grey;
         display: flex;
         align-items: center;
         background: none;
@@ -37,7 +39,7 @@
         @media screen and (min-width: 992px) { 
             display: block;
             margin-left: 1rem;
-            font-family: Montserrat, Helveltica, Arial, sans-serif;
+            font-family: vars.$fontFamily;
             font-size: 1.2em;;
         }
     }
@@ -60,7 +62,7 @@
     }
 
     &__btn {
-        background: #60d399;
+        background: vars.$green;
         border: 0;
         padding: 1rem;
         color: #fff;
@@ -69,13 +71,17 @@
         border-radius: 0.5em;
     }
 
+    &__btn:hover{
+        background-color: vars.$greenAlt;
+    }
+
     .dropdown {
         display: none;
         position: absolute;
         z-index: 1;
         right: 0;
         top: 4rem;
-        border: solid 0.1em #717171;
+        border: solid 0.1em vars.$grey;
         width: 18rem;
         border-radius: 1em;
         background-color: #fff;
@@ -100,8 +106,9 @@
     }
 
     .dropdown a:hover {
-        background-color: #60d399;
-        border-radius: 1em;     
+        background-color: vars.$green;
+        border-radius: 1em;  
+        color: #fff;   
     }
 
 }

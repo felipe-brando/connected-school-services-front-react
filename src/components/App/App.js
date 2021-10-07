@@ -43,7 +43,6 @@ const App = () => {
           <Announce />
         </Route>
         <Route path="/a-propos" exact>
-          <div>A propos</div>
           <About />
         </Route>
         <Route path="/annonces/" component={Announce} />

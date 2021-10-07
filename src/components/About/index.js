@@ -1,16 +1,22 @@
+// == Import
 import React from 'react';
 
 import './style.scss';
 
+// == Composant
 const About = () => {
     return (
-        <div className="about">            
-            <div>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias quis eligendi labore fuga culpa aliquam atque molestiae praesentium voluptatem ab molestias nihil esse similique excepturi tenetur rem iure laudantium, ea pariatur officiis vel enim accusamus rerum harum. Consequuntur blanditiis beatae aperiam dignissimos, ad numquam, est incidunt, quae voluptates reiciendis accusamus. </p>
-            </div>
+        <div className="about"> 
+            <h1 className="about__title">Présentation du Collège</h1>           
+            <section className="about__content">
+                <p>Bienvenus au Collège Mark Zuckerberg.</p>
+                <p>Notre collège est installé depuis 2014 dans la colline qui domine la ville. Notre établissement compte environ 500 élèves.</p>
+                <p>L'établissement dispose d'un internat.</p>
+                <p>Toute l’équipe de l’établissement (pédagogie, encadrement et administration) a à cœur la réussite des élèves et leur épanouissement.</p>
+            </section>
         </div>
 
     )
 }
-
+// == Export
 export default About;

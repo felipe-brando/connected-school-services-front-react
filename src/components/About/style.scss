@@ -1,9 +1,19 @@
-.announceList {
-   display: flex;
-}
+.about {
+    margin: 2rem auto;
+    max-width: 60em;
 
-.announce{
-    &--img{
-        width: 50%;
+    &__title {
+        text-align: center;
+        margin-bottom: 2rem;
     }
+
+    &__content{
+        margin: 3rem 2rem;
+    }
+
+    &__content p {
+        margin-bottom: 1rem;
+        line-height: 150%;
+    }
+
 }
