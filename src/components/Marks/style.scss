@@ -49,3 +49,14 @@
 //         border: solid 1px lightgrey;
 //         background-color: #54ACE5;
 //         }
+
+
+.marks__navlink.active{
+    font-weight: bold;
+    margin: 10px;
+}
+
+.marks__navlink__container{
+    display: block;
+    margin-bottom: 20px;
+}

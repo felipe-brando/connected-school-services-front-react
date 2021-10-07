@@ -10,7 +10,7 @@
 
 # production
 #enlevé pour push sur AWS
-#/build
+/build
 
 # misc
 .DS_Store

@@ -72,6 +72,20 @@ const marksApi = (store) => (next) => (action) => {
     })
   }
 
+  if (action.type === 'GET_STUDENTS_MARKS_BY_CLASS_ID') {    
+    axios.get(url + "note/sortedbyclassroom/" + action.id, config)
+    .then((response) => {
+      store.dispatch({
+        type: 'SAVE_CLASSROOM_MARKS',
+        marksList: response.data,
+      });
+    })
+
+    .catch((error) => {
+      console.error('GET_STUDENTS_MARKS_BY_CLASS_ID error : ', error);
+    });
+  }
+
   next(action);
 };
 

@@ -11,6 +11,7 @@ import DaySchedule from '../Schedule/DaySchedule';
 import Welcome from '../Welcome/index';
 import Classroom from '../Classroom/Classroom';
 import MarksTeacher from '../Marks/MarksTeacher';
+import MarksTeacherEdit from '../Marks/MarksTeacherEdit';
 
 import './style.scss';
 
@@ -43,6 +44,9 @@ const Pages = () => {
                     <Route path="/espace-perso/mes-notes" exact>
                         {userRole[0] === "ROLE_USER" && <Marks />}
                         {userRole[0] === "ROLE_TEACHER" && <MarksTeacher />}
+                    </Route>
+                    <Route path="/espace-perso/mes-notes/edition" exact>
+                        {userRole[0] === "ROLE_TEACHER" && <MarksTeacherEdit />}
                     </Route>
                 </Switch>
             </div>

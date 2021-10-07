@@ -12,7 +12,6 @@ const Classroom = () => {
     const teacherId = useSelector((state) => state.user.userId);
     const teacherDiscipline = useSelector((state) => state.user.discipline);
     const userRole = useSelector((state) => state.user.roles);
-    console.log(userRole);
 
     const dispatch = useDispatch();
 
@@ -33,7 +32,7 @@ const Classroom = () => {
                         <ul>
                             {teacherClassList[0].map((classroom) => {
                                 return (
-                                    <li>
+                                    <li key={classroom.id}>
                                         <NavLink
                                             activeClassName="teacherClassroom_link--selected"
                                             to={"/espace-perso/mes-classes/" + classroom.id}

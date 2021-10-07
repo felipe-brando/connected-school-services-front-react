@@ -4,6 +4,7 @@ const initialState = {
     grade: [],
     average:[],
     content: '',
+    marksListByClassroom: [],
   };
   
 
@@ -21,6 +22,11 @@ const reducer = (state = initialState, action = {}) => {
                 ...state,
                 resourcesList: action.resource,
             };
+            case 'SAVE_CLASSROOM_MARKS':
+                return {
+                    ...state,
+                    marksListByClassroom: action.marksList,
+                }
         default:
             return state;
     }
