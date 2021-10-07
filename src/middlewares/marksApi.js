@@ -43,7 +43,6 @@ const marksApi = (store) => (next) => (action) => {
   if (action.type === 'SEND_MARKS') {
     //one request for one student/mark
     action.marksArray.map((mark) => {
-      console.log(action.marksArray);
       axios({
         method: 'POST',
         url: url + "note/",
@@ -57,36 +56,40 @@ const marksApi = (store) => (next) => (action) => {
           Authorization: "Bearer " + token,
         }
       }).then((response) => {
-        // store.dispatch({
-        //   type: 'MODIFY_FLASH_MESSAGE',
-        //   value: "Les notes ont bien été envoyées",
-        // })
+
+        store.dispatch({
+          type: 'RESET_STUDENTS_LIST_STATE',
+        })
+        store.dispatch({
+          type: 'MODIFY_FLASH_MESSAGE',
+          value: "Les notes ont bien été envoyées",
+        })
       }).catch((error) => {
         console.error('SEND_MARKS error : ', error);
-        // store.dispatch({
-        //   type: 'MODIFY_FLASH_MESSAGE',
-        //   value: "Erreur réseau, les notes n'ont pas été transmises",
-        // })
+        store.dispatch({
+          type: 'MODIFY_FLASH_MESSAGE',
+          value: "Erreur réseau, les notes n'ont pas été transmises",
+        })
       })
       return true;
     })
   }
 
-  if (action.type === 'GET_STUDENTS_MARKS_BY_CLASS_ID') {    
+  if (action.type === 'GET_STUDENTS_MARKS_BY_CLASS_ID') {
     axios.get(url + "note/sortedbyclassroom/" + action.id, config)
-    .then((response) => {
-      store.dispatch({
-        type: 'SAVE_CLASSROOM_MARKS',
-        marksList: response.data,
-      });
-    })
+      .then((response) => {
+        store.dispatch({
+          type: 'SAVE_CLASSROOM_MARKS',
+          marksList: response.data,
+        });
+      })
 
-    .catch((error) => {
-      console.error('GET_STUDENTS_MARKS_BY_CLASS_ID error : ', error);
-    });
+      .catch((error) => {
+        console.error('GET_STUDENTS_MARKS_BY_CLASS_ID error : ', error);
+      });
   }
 
-  if (action.type ==='EDIT_STUDENT_MARK'){
+  if (action.type === 'EDIT_STUDENT_MARK') {
     axios({
       method: 'PATCH',
       url: url + "note/" + action.markId,

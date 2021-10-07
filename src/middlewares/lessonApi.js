@@ -57,7 +57,7 @@ const lessonApi = (store) => (next) => (action) => {
       
     })
     .catch(function (error) {
-      console.log(error);
+      console.error(error);
       store.dispatch({
         type: 'EDIT_RESOURCES_FLASH_MESSAGE',
         value: "Erreur, la ressource n'a pas été ajoutée. Veuillez réesayer"
@@ -88,12 +88,9 @@ const lessonApi = (store) => (next) => (action) => {
         id: action.id,
       });
 
-
-      console.log(response);
-
     })
     .catch(function (error) {
-      console.log(error);
+      console.error(error);
       store.dispatch({
         type: 'EDIT_RESOURCES_FLASH_MESSAGE',
         value: "Erreur, la ressource n'a pas été modifiée. Veuillez réesayer."

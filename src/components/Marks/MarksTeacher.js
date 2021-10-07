@@ -1,12 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import FlashMessage from '../FlashMessage/FlashMessage';
 
 const MarksTeacher = () => {
     const teacherClassList = useSelector((state) => state.classroom.teacherClassroomList);
     const teacherId = useSelector((state) => state.user.userId);
     const studentList = useSelector((state) => state.classroom.currentStudentList);
-    const disciplineId = useSelector((state)=>state.user.disciplineId);
+    const disciplineId = useSelector((state) => state.user.disciplineId);
+    const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
+    
     const marksArray = [];
     const [marksTitle, setMarksTitle] = useState("");
 
@@ -17,7 +20,6 @@ const MarksTeacher = () => {
         dispatch({
             type: "RESET_STUDENTS_LIST_STATE",
         })
-
         dispatch({
             type: "GET_TEACHER_CLASSROOMS_LIST",
             id: teacherId,
@@ -31,10 +33,10 @@ const MarksTeacher = () => {
         })
     }
 
-    function handleAddMarks(e) {       
+    function handleAddMarks(e) {
         marksArray[e.target.dataset.id.toString()] = {
             id: e.target.dataset.id,
-            mark: e.target.value,            
+            mark: e.target.value,
         }
     }
 
@@ -46,6 +48,7 @@ const MarksTeacher = () => {
             marksTitle: marksTitle,
             disciplineId: disciplineId,
         })
+        setMarksTitle("");
     }
 
     function handleMarksTitleChange(e) {
@@ -54,12 +57,15 @@ const MarksTeacher = () => {
 
     return (
         <section className="teacherMarks">
+
+            {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
+
             <form onSubmit={handleSubmitMarks}>
                 <h1>Notes</h1>
-                
+
                 <nav className="marks__navlink__container">
-                <NavLink className="marks__navlink" to="/espace-perso/mes-notes" exact >Ajouter un ensemble de notes</NavLink>
-                <NavLink className="marks__navlink" to="/espace-perso/mes-notes/edition" exact>Accéder aux notes</NavLink>
+                    <NavLink className="marks__navlink" to="/espace-perso/mes-notes" exact >Ajouter un ensemble de notes</NavLink>
+                    <NavLink className="marks__navlink" to="/espace-perso/mes-notes/edition" exact>Accéder aux notes</NavLink>
                 </nav>
 
                 <select onChange={handleChangeSelectClass} className="teacherMarksClassroom_link">
@@ -73,7 +79,7 @@ const MarksTeacher = () => {
                 </select>
 
                 <label htmlFor="label">Intitulé</label>
-                <input type="text" id="label" placeholder="Titre de la notation" onChange={handleMarksTitleChange}/>
+                <input type="text" id="label" value={marksTitle} placeholder="Titre de la notation" onChange={handleMarksTitleChange} />
 
                 {studentList && (
                     <ul>
@@ -84,8 +90,8 @@ const MarksTeacher = () => {
                                     <input type="text" onChange={handleAddMarks} data-fullname={student.lastname + '-' + student.firstname} data-id={student.id} />
                                 </li>);
                         })}
-                        
-                    </ul>                    
+
+                    </ul>
                 )}
                 <input type="submit" />
             </form>

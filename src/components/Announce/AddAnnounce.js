@@ -52,7 +52,6 @@ const AddAnnounce = () => {
         reader.readAsDataURL(files[0]);
 
         reader.onload = (e) => {
-            console.log(e.target.result);
             setImgUrl(e.target.result);
             //console.log('event', e.target.result.replace("data:", "").replace(/^.+,/, ""))
             // dispatch({

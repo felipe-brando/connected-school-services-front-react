@@ -132,7 +132,7 @@ const MarksTeacherEdit = () => {
                                                 title={mark.title}
                                                 data-student={student.firstname + " " + student.lastname}
                                                 data-markid={mark.id}
-                                            >| {mark.grade} |
+                                            >{mark.grade}
                                             </span> : "";
                                     })}
                                 </li>);
