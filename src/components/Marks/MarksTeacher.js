@@ -9,7 +9,7 @@ const MarksTeacher = () => {
     const studentList = useSelector((state) => state.classroom.currentStudentList);
     const disciplineId = useSelector((state) => state.user.disciplineId);
     const flashMessageContent = useSelector((state) => state.announce.flashMessageContent);
-    
+
     const marksArray = [];
     const [marksTitle, setMarksTitle] = useState("");
 
@@ -78,16 +78,24 @@ const MarksTeacher = () => {
                     })}
                 </select>
 
-                <label htmlFor="label">Intitulé</label>
+                {/* <label htmlFor="label">Intitulé</label> */}
                 <input type="text" id="label" value={marksTitle} placeholder="Titre de la notation" onChange={handleMarksTitleChange} />
 
                 {studentList && (
                     <ul>
                         {studentList.map((student) => {
                             return (
-                                <li key={student.id}>
-                                    {student.lastname} {student.firstname}
-                                    <input type="text" onChange={handleAddMarks} data-fullname={student.lastname + '-' + student.firstname} data-id={student.id} />
+                                <li key={student.id} className="teacherMarks__item" >
+                                    <span className="teacherMarks__item--student">
+                                        {student.lastname} {student.firstname}
+                                    </span>
+                                    <input
+                                        type="text"
+                                        className="teacherMarks__item--input"
+                                        onChange={handleAddMarks}
+                                        data-fullname={student.lastname + '-' + student.firstname}
+                                        data-id={student.id}
+                                    />
                                 </li>);
                         })}
 

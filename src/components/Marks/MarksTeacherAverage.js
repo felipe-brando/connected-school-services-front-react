@@ -10,8 +10,6 @@ const MarksTeacherAverage = () => {
 
     const filteredMarksList = marksList.filter((mark) => { return mark.discipline.id === disciplineId });
 
-    console.log(filteredMarksList);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -49,8 +47,6 @@ const MarksTeacherAverage = () => {
                                         marksNumber++;
                                     }
                                 })
-
-
                             }
                             {marksSum ? " " + roundNumber(marksSum / marksNumber) : " Aucune note"}
                         </li>)

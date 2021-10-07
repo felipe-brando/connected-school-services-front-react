@@ -49,7 +49,10 @@
 //         background-color: #54ACE5;
 //         }
 
-//---Teacher Marks
+
+
+
+//---Teacher Marks---//
 
 .marks__navlink.active {
     font-weight: bold;
@@ -61,7 +64,34 @@
     margin-bottom: 20px;
 }
 
-//---Teacher Marks Modal
+.teacherMarks__item {
+    margin: 10px;
+
+    &--student {
+        display: inline-block;
+        width: 170px;
+    }
+
+    &--input {
+        width: 50px;
+        border-radius: 10px;
+
+        &:hover {
+            border: 2px solid black;
+        }
+
+        &:focus {
+            border: 2px solid rgb(52, 183, 117);
+            box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.2);
+        }
+    }
+
+}
+
+
+
+
+//---Teacher Marks Modal----//
 .teacherMarks__modal__container {
     position: fixed;
     top: 0;
@@ -104,12 +134,13 @@
 
     transition: 0.5s;
 }
+
 .teacherMarks__modal__button--container {
     display: flex;
     align-items: center;
     justify-content: center;
     border-color: #E8E8E8;
-    
+
     transition: 0.5s;
 }
 
