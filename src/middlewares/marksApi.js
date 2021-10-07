@@ -57,16 +57,16 @@ const marksApi = (store) => (next) => (action) => {
           Authorization: "Bearer " + token,
         }
       }).then((response) => {
-        store.dispatch({
-          type: 'MODIFY_FLASH_MESSAGE',
-          value: "Les notes ont bien été envoyées",
-        })
+        // store.dispatch({
+        //   type: 'MODIFY_FLASH_MESSAGE',
+        //   value: "Les notes ont bien été envoyées",
+        // })
       }).catch((error) => {
         console.error('SEND_MARKS error : ', error);
-        store.dispatch({
-          type: 'MODIFY_FLASH_MESSAGE',
-          value: "Erreur réseau, les notes n'ont pas été transmises",
-        })
+        // store.dispatch({
+        //   type: 'MODIFY_FLASH_MESSAGE',
+        //   value: "Erreur réseau, les notes n'ont pas été transmises",
+        // })
       })
       return true;
     })

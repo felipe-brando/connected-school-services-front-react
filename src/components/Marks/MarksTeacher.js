@@ -35,7 +35,6 @@ const MarksTeacher = () => {
             id: e.target.dataset.id,
             mark: e.target.value,            
         }
-        //console.log(marksArray);
     }
 
     function handleSubmitMarks(e) {
