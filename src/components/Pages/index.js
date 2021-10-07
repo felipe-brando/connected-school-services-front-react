@@ -12,6 +12,7 @@ import Welcome from '../Welcome/index';
 import Classroom from '../Classroom/Classroom';
 import MarksTeacher from '../Marks/MarksTeacher';
 import MarksTeacherEdit from '../Marks/MarksTeacherEdit';
+import MarksTeacherAverage from '../Marks/MarksTeacherAverage'
 
 import './style.scss';
 
@@ -28,6 +29,7 @@ const Pages = () => {
                     <Route path="/espace-perso/" exact>
                         <Welcome />
                         {userRole[0] === "ROLE_USER" && <DaySchedule />}
+                        {userRole[0] === "ROLE_TEACHER" && <MarksTeacherAverage />}
                     </Route>
                     <Route path="/espace-perso/mon-emploi-du-temps" exact>
                         <Schedule />

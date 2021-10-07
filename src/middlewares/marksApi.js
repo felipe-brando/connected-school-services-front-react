@@ -39,6 +39,17 @@ const marksApi = (store) => (next) => (action) => {
         });
     }
   }
+  if (action.type === 'GET_MARKS_LIST') {
+    axios.get(url + "note/", config)
+      .then((response) => {
+        store.dispatch({
+          type: 'SAVE_MARKS_LIST',
+          marksList: response.data,
+        });
+      }).catch((error) => {
+        console.error('GET_MARKS error : ', error);
+      });
+  }
 
   if (action.type === 'SEND_MARKS') {
     //one request for one student/mark
