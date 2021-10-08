@@ -21,6 +21,14 @@ h3 {
   font-weight: 600;
 }
 
+select {
+  font-family: vars.$fontFamily;
+}
+
+input {
+  font-family: vars.$fontFamily;
+}
+
 .quill {
   max-height: 50em;
   height: 100%;

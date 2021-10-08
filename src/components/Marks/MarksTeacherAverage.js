@@ -31,15 +31,15 @@ const MarksTeacherAverage = () => {
     let marksNumber = 0
 
     return (
-        <section className="teacherMarks">
-            <h1>Moyennes de Classes</h1>
-            <ul>
+        <section className="teacherMarks-average">
+            <h1 className="teacherMarks-average__title">Moyennes de Classes</h1>
+            <ul className="teacherMarks-average__liste">
                 {teacherClassList[0].map((classroom) => {
                     marksSum = 0;
-                    marksNumber = 0
+                    marksNumber = 0;
                     return (
-                        <li key={classroom.id}>
-                            {classroom.grade}ème {classroom.letter.toUpperCase()} -
+                        <li className="teacherMarks-average__item" key={classroom.id}>
+                            {classroom.grade}ème {classroom.letter.toUpperCase()} ...........
                             {
                                 filteredMarksList.map((mark) => {
                                     if (mark.user.classroom.id === classroom.id) {
@@ -48,7 +48,8 @@ const MarksTeacherAverage = () => {
                                     }
                                 })
                             }
-                            {marksSum ? " " + roundNumber(marksSum / marksNumber) : " Aucune note"}
+                           <p className="teacherMarks-average__number">{marksSum ? " " + roundNumber(marksSum / marksNumber) : " Aucune note"}</p>
+                           
                         </li>)
                 })}
             </ul>
