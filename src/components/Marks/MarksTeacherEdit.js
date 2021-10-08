@@ -121,9 +121,7 @@ const MarksTeacherEdit = () => {
                     <ul>
                         {studentList.map((student) => {
                             return (
-                                <li key={student.id}>
-                                    {student.lastname}
-                                    {student.firstname} :
+                                <li key={student.id}> {student.lastname} {student.firstname} :
                                     {marksListByClassroom.map((mark) => {
                                         return mark.user.id === student.id ?
                                             <span
