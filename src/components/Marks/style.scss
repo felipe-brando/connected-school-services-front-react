@@ -31,6 +31,7 @@
         // font-weight: 600;
     }
 
+
     &--average {
         text-align: center;
         border: solid 1px lightgrey;
@@ -68,6 +69,13 @@
     background-color: rgb(52, 183, 117);
     font-weight: 600;
 }
+
+
+.btn__showresources:hover {
+    transform:scale(1.4);
+    transition: 0.8s;
+}
+
 
 // .table__content--average--generalaverage {
 //         // display: flex;
