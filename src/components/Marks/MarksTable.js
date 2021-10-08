@@ -1,7 +1,9 @@
 import React from "react";
+
+
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { Link } from 'react-router-dom';
 
 import './style.scss';
 
@@ -18,11 +20,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
             type: 'FETCH_DISCIPLINES'
         });
     }, [])
-    
 
-    const onMouseOver = () => {
-        ;
-    }
 
     return (
         <table className = "table__content">
@@ -36,6 +34,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
             <tbody>
                 
                 {measureDataArray.map((measureObject) => {
+                    console.log(measureObject);
 
                    const gradeData = [];
                   
@@ -43,27 +42,44 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                      { 
                         return (<tr>              
                             <td className ="table__content--measure">{measureObject.name}</td>
+                            <td className ="table__content--marks"> 
                             {marksDataArray.map((markObject) => {
+                                console.log(markObject)
                                 if(markObject.discipline.name === measureObject.name){
-                                    
                                     gradeData.push(parseInt(markObject.grade,10));
                                     generalAverage.push(parseInt(markObject.grade,10));
-                            
-                              } return true;
-                            })  
-                        }
-                       
-                        
-                            <td className ="table__content--marks"><button className ="btn__showresources" onMouseOver ={resources} label ="affiche ce que je veux" aria-label ="matière à afficher">{(gradeData.join(" | "))}</button> </td>
-                            
-                            
-                            <td className = "table__content--average"><button>{parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}</button>moyenne</td> 
-                             
-                        
 
-                        </tr>);}  
+                                    return (
+
+                                <Link
+                                    to ="/espace-perso/mes-cours">
+                                        <button 
+                                        className ="btn__showresources" 
+                                        title ={markObject.title}                                   
+                                        aria-label ="matière à afficher">{markObject.grade + " /"}
+                                        </button>
+                                </Link>
+       
+                                    )} return true;
+                            })  
+                        }       
+                            </td>
+                       
+                            <td className = "table__content--average">{parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}</td> 
+
+                       </tr>);}  
                     
-                       return  ( <tr className ="table__content--average--generalaverage">Votre moyenne générale : {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100}                      
+                       return  ( <tr>
+                       
+                       <td></td>
+                       <td></td>
+                       
+                       <td className ="table__content--average--generalaverage"> Votre moyenne générale : {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100 < 10 ? <span className = "table__content--average--generalaverage--badgrade"> 
+                        {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span> : <span className ="table__content--average--generalaverage--topgrade">
+                        {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span> 
+                                               
+                    }</td> 
+
                        </tr>       
                        )                  
                 })                
