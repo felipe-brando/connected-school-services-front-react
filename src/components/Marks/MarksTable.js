@@ -59,10 +59,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                                         aria-label ="matière à afficher">{markObject.grade + " /"}
                                         </button>
                                 </Link>
-                                    
-                               
-
-                            
+       
                                     )} return true;
                             })  
                         }       
