@@ -20,11 +20,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
             type: 'FETCH_DISCIPLINES'
         });
     }, [])
-    
 
-    // const onMouseOver = () => {
-    //     ;
-    // }
 
     return (
         <table className = "table__content">
@@ -81,8 +77,11 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                        <td></td>
                        <td></td>
                        
-                       <td className ="table__content--average--generalaverage"> Votre moyenne générale : <span className = "table__content--average--generalaverage--focus"> {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span>                          
-                       </td> 
+                       <td className ="table__content--average--generalaverage"> Votre moyenne générale : {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100 < 10 ? <span className = "table__content--average--generalaverage--badgrade"> 
+                        {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span> : <span className ="table__content--average--generalaverage--topgrade">
+                        {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span> 
+                                               
+                    }</td> 
 
                        </tr>       
                        )                  
