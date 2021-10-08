@@ -20,7 +20,7 @@ const lessonApi = (store) => (next) => (action) => {
    //---GET Requests
 
   if (action.type === 'FETCH_RESOURCES') { 
-    axios.get(url + "lesson", config)
+    axios.get(url + "lesson/orderByTitle", config)
     .then((response) => {
       store.dispatch({
         type: 'SAVE_RESOURCE',
