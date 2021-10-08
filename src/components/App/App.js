@@ -14,6 +14,7 @@ import Pages from '../Pages/index.js';
 import Intro from '../Intro/index.js';
 import Footer from '../Footer/Footer.js';
 import Announce from '../Announce/Announce.js';
+import Team from '../Team/index.js';
 
 import './App.scss';
 
@@ -48,6 +49,9 @@ const App = () => {
         <Route path="/annonces/" component={Announce} />
         <Route path="/contact">
           <Contact />
+        </Route>
+        <Route path="/equipe" exact>
+          <Team />
         </Route>
         <Route path="/espace-perso">
           {logged ?
