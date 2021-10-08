@@ -46,37 +46,44 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                      { 
                         return (<tr>              
                             <td className ="table__content--measure">{measureObject.name}</td>
+                            <td className ="table__content--marks"> 
                             {marksDataArray.map((markObject) => {
+                                console.log(markObject)
                                 if(markObject.discipline.name === measureObject.name){
-                                    
                                     gradeData.push(parseInt(markObject.grade,10));
                                     generalAverage.push(parseInt(markObject.grade,10));
-                            
-                              } return true;
-                            })  
-                        }                       
-                       
-                            <td className ="table__content--marks"> 
-                            
-                                <Link>
-                                    
 
-                                    <button 
-                                    className ="btn__showresources" 
-                                    title ={measureObject.title}                                   
-                                    aria-label ="matière à afficher">{(gradeData.join(" | "))}
-                                    </button>
+                                    return (
+
+                                <Link
+                                    to ="/espace-perso/mes-cours">
+                                        <button 
+                                        className ="btn__showresources" 
+                                        title ={markObject.title}                                   
+                                        aria-label ="matière à afficher">{markObject.grade + " /"}
+                                        </button>
                                 </Link>
-                            </td>
                                     
-                            
-                            <td className = "table__content--average">{parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}</td> 
-                             
-                        
+                               
 
-                        </tr>);}  
+                            
+                                    )} return true;
+                            })  
+                        }       
+                            </td>
+                       
+                            <td className = "table__content--average">{parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}</td> 
+
+                       </tr>);}  
                     
-                       return  ( <tr className ="table__content--average--generalaverage">Votre moyenne générale : {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100}                      
+                       return  ( <tr>
+                       
+                       <td></td>
+                       <td></td>
+                       
+                       <td className ="table__content--average--generalaverage"> Votre moyenne générale : <span className = "table__content--average--generalaverage--focus"> {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span>                          
+                       </td> 
+
                        </tr>       
                        )                  
                 })                
