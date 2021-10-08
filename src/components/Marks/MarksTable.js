@@ -75,14 +75,11 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                               } return true;
                             })  
                         }
-<<<<<<< Updated upstream
                             <td className ="table__content--marks">{(gradeData.join(" | "))}</td>
-=======
                        
                         
                             <td className ="table__content--marks"><button className ="btn__showresources" type = "text" id ="label" value = {marksTitle}  onMouseOver ={resources} label ="test" aria-label ="matière à afficher">{(gradeData.join(" | "))}</button> </td>
                             
->>>>>>> Stashed changes
                             
                             <td className = "table__content--average">{parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}</td> 
                         </tr>);}   
