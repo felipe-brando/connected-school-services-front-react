@@ -61,10 +61,10 @@ const MarksTeacher = () => {
             {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
 
             <form onSubmit={handleSubmitMarks}>
-                <h1>Notes</h1>
+                <h1 className="teacherMarks__title">Notes</h1>
 
                 <nav className="marks__navlink__container">
-                    <NavLink className="marks__navlink" to="/espace-perso/mes-notes" exact >Ajouter un ensemble de notes</NavLink>
+                    <NavLink className="marks__navlink" to="/espace-perso/mes-notes" exact >Ajouter des notes</NavLink>
                     <NavLink className="marks__navlink" to="/espace-perso/mes-notes/edition" exact>Accéder aux notes</NavLink>
                 </nav>
 

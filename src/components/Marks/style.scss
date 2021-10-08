@@ -55,16 +55,31 @@
 
 
 //---Teacher Marks---//
-
-.marks__navlink.active {
-    font-weight: bold;
-    margin: 10px;
+.teacherMarks__title {
+    margin-bottom: 2rem;
 }
 
-.marks__navlink__container {
-    display: block;
-    margin-bottom: 20px;
+.marks {
+
+    &__navlink {
+        font-size: 1.5em;
+        font-weight: 900;
+        color: #C3D1DD;
+        margin-right: 1rem;
+    
+    }
+    
+    &__navlink.active {
+        color: vars.$blue;
+    }
+    
+    &__navlink__container {
+        display: block;
+        margin-bottom: 20px;
+    }
+
 }
+
 
 .teacherMarks__item {
     margin: 10px;
