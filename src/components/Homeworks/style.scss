@@ -1,3 +1,48 @@
+@use '../../styles/vars';
+
 .teacherHomeworks_link--selected{
     text-decoration: underline;
 }
+
+.homeworks {
+
+    &__article {
+        border-top: dotted 0.2em;
+        border-color: vars.$greyLight;
+        margin-top: 1rem;
+        display: flex;
+        padding: 1rem;
+        flex-direction: column;
+
+        @media screen and (min-width: 992px) { 
+            flex-direction: row;
+        }
+
+        &__expiration {
+            color: vars.$grey;
+        }
+
+        &__date {
+            font-weight: 800;
+            font-size: 1.5em;
+            color: vars.$blue;
+        }
+
+        &__title {
+            margin-bottom: 1rem;
+        }
+    }
+
+    @media screen and (min-width: 992px) {
+        &__left{
+            width: 20%;
+            margin-right: 2rem;
+        }
+    }
+
+    &__right {
+        margin-top: 1rem;
+    }
+
+}
+

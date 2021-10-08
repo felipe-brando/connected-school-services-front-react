@@ -1,3 +1,5 @@
+@use '../../styles/vars';
+
 .table-schedule {
     border-collapse: collapse;
     font-size: 0.9em;
@@ -13,19 +15,19 @@
     }
 
     &__title th {
-        background-color: #54ACE5;
+        background-color: vars.$blue;
         color: #fff;
         padding: 1em;
     }
 
     &__subtitle th {
         padding: 1em;
-        border-bottom: 0.1em solid #e7e7e7;
+        border-bottom: 0.1em solid vars.$greyLight;
     }
 
     &__subtitle--day {
         color: #54ACE5;
-        border-left: 0.1em solid #e7e7e7;
+        border-left: 0.1em solid vars.$greyLight;
         box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
         font-size: 1.2em;
         font-weight: 800;
@@ -49,14 +51,14 @@
     }
     
     & tbody tr:last-of-type {
-      border-bottom: 0.5em solid #54ACE5;
+      border-bottom: 0.5em solid vars.$blue;
     }
   }
 
 .schedule {
 
   &__classroom {
-    color: #54ACE5;
+    color: vars.$blue;
   }
   &__overflow {
     overflow-x:auto;
@@ -76,7 +78,7 @@
     }
 
     &__title th {
-        background-color: #54ACE5;
+        background-color: vars.$blue;
         color: #fff;
         padding: 1em;
     }    
@@ -99,7 +101,7 @@
     }
     
     & tbody tr:last-of-type {
-      border-bottom: 0.5em solid #54ACE5;
+      border-bottom: 0.5em solid vars.$blue;
     }
 
   }

@@ -1,3 +1,5 @@
+@use '../../styles/vars';
+
 .lessons {
 
     &__form-label{
@@ -5,27 +7,26 @@
         flex-direction: column;
         margin: 2rem 0;
         font-weight: 500;
-        color: #717171;
+        color: vars.$grey;
     }
 
     &__form-select {
         padding: 0.5rem;
         width: 17em;
-        font-family: 'Montserrat';
+        font-family: vars.$fontFamily;
         border-radius: 0.5em;
         background: none;
         margin-top: 1rem;
     }
-
 }
 
 .resources {
 
   &__addBtn {
-    font-family: 'Montserrat';
+    font-family: vars.$fontFamily;
     font-weight: 600;
     padding: 0.7rem;
-    background-color: #60D399;
+    background-color: vars.$green;
     border: 0;
     color: #fff;
     display: flex;
@@ -35,7 +36,7 @@
 
   &__addBtn:hover {
     color: #000;
-    background-color:rgb(52, 183, 117)
+    background-color:vars.$greenAlt
   }
 
   &__addBtn svg {
@@ -63,13 +64,13 @@
       flex-direction: row;
       justify-content: space-between;
       cursor: pointer;
-      background-color: #54ACE5;
+      background-color: vars.$blue;
       width: 100%;
       border-bottom: solid 0.1em #ccc;
     }
     
     &__title:hover {
-      background-color: #48a6e4;
+      background-color: vars.$blueAlt;
     }
     
     &__title,
@@ -96,11 +97,13 @@
 
     &__overflow {
       overflow-y: auto; 
-      background-color: #e5e5e5;
+      background-color: vars.$greyLight;
       max-height: 17em;
+      font-size: 0.8em;
 
       @media screen and (min-width: 992px) { 
-        max-height: 26em;
+        max-height: 23em;
+        font-size: 1em;
       }
     }
 
@@ -109,25 +112,25 @@
       right: 1rem;
 
       .resource__editBtn {
-        background-color: #60D399;
+        background-color: vars.$green;
         color: #fff;
         border: 0;
         padding: 0.5rem;
       }
       .resource__editBtn:hover {
           color: #000;
-          background-color:rgb(52, 183, 117)
+          background-color: vars.$greenAlt
       }
 
       .resource__deleteBtn {
-        background-color: #C8351B;
+        background-color: vars.$deleteColor;
         color: #fff;
         border: 0;
         padding: 0.5rem;
       }
       .resource__deleteBtn:hover {
           color: #000;
-          background-color:#cd5945;
+          background-color: vars.$deleteColorAlt;
       }
       
     }      
@@ -135,7 +138,7 @@
 .addResource-form {
   display: flex;
   flex-direction: column;
-  border: 0.1em solid #ccc;
+  border: 0.1em solid vars.$greyLight;
   padding: 1rem;
   margin-bottom: 2rem;
   align-items: flex-start;

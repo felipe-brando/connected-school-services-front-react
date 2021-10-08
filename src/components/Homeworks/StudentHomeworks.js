@@ -26,13 +26,17 @@ function StudentHomeworks() {
         <div className="homeworks">
             <h1>Mes Devoirs</h1>
             {announceListByClassId.map((announceObject) => (
-                <article key={announceObject.id} className="homework__article">
-                    <h3 className="homework__article__title">{announceObject.title}</h3>
-                    <p className="homework__article__expiration">Pour le <span className="homework__article__date">
+                <article key={announceObject.id} className="homeworks__article">
+                <div className='homeworks__left'>
+                    <p className="homeworks__article__expiration">Pour le<br/><span className="homeworks__article__date">
                         {announceObject.expireAt ? dateConverter(announceObject.expireAt) : "prochain cours"}
                     </span>
                     </p>
-                    <p className="homework__article__content">{announceObject.homework}</p>
+                </div>
+                <div className='homeworks__right'>
+                    <h3 className="homeworks__article__title">{announceObject.title}</h3>
+                    <p className="homeworks__article__content">{announceObject.homework}</p>
+                </div>
                 </article>
             )
             )}
