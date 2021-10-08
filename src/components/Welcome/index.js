@@ -17,8 +17,8 @@ const Welcome = () => {
     <div className="welcome">
       <div className="welcome__image"><User /></div>
       <p className="welcome__name">Bonjour <br /> {firstname} {lastname} !</p>
-      { userRole[0] === "ROLE_USER" && <p className="welcome__classroom">Ta classe: {classroom}</p>}
-      { userRole[0] === "ROLE_TEACHER" && <p className="welcome__classroom">Professeur de {userDiscipline}</p>}
+      { userRole[0] === "ROLE_USER" && <p className="welcome__classroom">Ta classe : {classroom}</p>}
+      { userRole[0] === "ROLE_TEACHER" && <p className="welcome__classroom">Professeur de : {userDiscipline}</p>}
       { userRole[0] === "ROLE_ADMIN" && <p className="welcome__classroom">Collège Mark Zuckerberg</p>}
 
     </div>
