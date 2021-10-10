@@ -26,9 +26,11 @@ const HomeworkEdit = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmitHomework}>
+            <form className="homework__formEdit" onSubmit={handleSubmitHomework}>
                 <TextEditor />
-                <input type="submit" value="Enregistrer" />
+                <button className="homework__btnEdit" type="submit" value="Enregistrer">
+                    Publier
+                </button>
             </form>
         </>
     )

@@ -14,7 +14,7 @@ function Homeworks() {
         <Switch >
             {userRole[0] === 'ROLE_USER' &&
                 <>
-                    <Route path="/espace-perso/mes-devoirs" exact>
+                    <Route path="/espace-perso/mes-devoirs">
                         <StudentHomeworks />
                     </Route>
                 </>

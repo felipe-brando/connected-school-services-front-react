@@ -62,22 +62,19 @@ const AddHomeworks = () => {
     }
 
     return (
-        <>
+        <section className="teacherHomeworks">
+            <h1 className="teacherHomeworks__title">{teacherDiscipline}</h1>
+            <h2 className="teacherHomeworks__subtitle">Devoirs & Annonces de Classes</h2>
             {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
-            <nav className="AddHomeworks__nav">
-                <h1>{teacherDiscipline}</h1>
-                <NavLink
-                    activeClassName="teacherHomeworks_link--selected"
-                    to="/espace-perso/mes-devoirs/ajout"
-                >Ajout
-                </NavLink>
-                <NavLink
-                    activeClassName="teacherHomeworks_link--selected"
-                    to="/espace-perso/mes-devoirs"
-                    exact
-                    className="teacherHomeWorks--menuLink"
-                >                    Liste
-                </NavLink>
+            <nav className="teacherHomeworks__nav">
+                <ul className="teacherHomeworks__navList">
+                    <NavLink className="teacherHomeworks__navLink" to="/espace-perso/mes-devoirs/" exact>
+                        <li className="teacherHomeworks__navItem">Liste</li>
+                    </NavLink>
+                    <NavLink className="teacherHomeworks__navLink" to="/espace-perso/mes-devoirs/ajout" exact>
+                        <li className="teacherHomeworks__navItem">Ajout</li>
+                    </NavLink>
+                </ul>
             </nav>
             <form className="addHomeworks__form" onSubmit={handleSubmitHomeworks} >
 
@@ -93,7 +90,7 @@ const AddHomeworks = () => {
 
                 <select
                     required
-                    className="addHomework__form select--class"
+                    className="addHomeworks__form select--class"
                     onChange={handleChangeSelectClass}
                 >
                     <option value="">Selectionner une classe</option>
@@ -107,20 +104,22 @@ const AddHomeworks = () => {
 
                 <input
                     type="date"
-                    className="addHomework__form select--date"
+                    className="addHomeworks__form select--date"
                     onChange={handleChangeSelectDate}
                 />
 
                 <TextEditor />
                 {/* modifier les options du text editor enlever image etc */}
 
-                <input
-                    className="addHomework__form--submit"
+                <button
+                    className="addHomeworks__form--submit"
                     type="submit"
-                />
+                >
+                    Publier
+                </button>
 
             </form>
-        </>
+        </section>
     );
 
 }
