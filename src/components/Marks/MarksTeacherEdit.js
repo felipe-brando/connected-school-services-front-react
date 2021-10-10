@@ -100,14 +100,20 @@ const MarksTeacherEdit = () => {
                 </div>
             }
             <form>
-                <h1 className="teacherMarks__title">Notes</h1>
+                <h1 className="teacherMarks__title">Notes des élèves</h1>
 
                 <nav className="marks__navlink__container">
-                    <NavLink className="marks__navlink" to="/espace-perso/mes-notes" exact >Ajouter des notes</NavLink>
-                    <NavLink className="marks__navlink" to="/espace-perso/mes-notes/edition" exact>Accéder aux notes</NavLink>
+                    <ul className="marks__navlink__liste"> 
+                        <NavLink className="marks__navlink" to="/espace-perso/mes-notes" exact >
+                            <li className="marks__navlink__item">Ajouter des notes</li>
+                        </NavLink>
+                        <NavLink className="marks__navlink" to="/espace-perso/mes-notes/edition" exact>
+                            <li className="marks__navlink__item">Accéder aux notes</li>
+                        </NavLink>
+                    </ul>
                 </nav>
 
-                <select onChange={handleChangeSelectClass} className="teacherMarksClassroom_link">
+                <select onChange={handleChangeSelectClass} className="teacherMarksClassroom__link">
                     <option value="">Selectionner une classe</option>
                     {teacherClassList[0].map((classroom) => {
                         return (
@@ -118,21 +124,28 @@ const MarksTeacherEdit = () => {
                 </select>
 
                 {studentList && (
-                    <ul>
+                    <ul className="teacherMarks__list">
                         {studentList.map((student) => {
                             return (
-                                <li key={student.id}> {student.lastname} {student.firstname} :
+                                <li className="teacherMarks__item" key={student.id}>
+                                    <div className="teacherMarks__studentName">
+                                        {student.lastname} {student.firstname} :
+                                    </div>
+                                    <div className="teacherMarks__numberContent">
                                     {marksListByClassroom.map((mark) => {
                                         return mark.user.id === student.id ?
-                                            <span
+                                            <button
+                                                type="button"
+                                                className="teacherMarks__number"
                                                 key={mark.id}
                                                 onClick={handleClickStudentMark}
                                                 title={mark.title}
                                                 data-student={student.firstname + " " + student.lastname}
                                                 data-markid={mark.id}
-                                            >{mark.grade}
-                                            </span> : "";
+                                            >{mark.grade} 
+                                            </button> : "";
                                     })}
+                                    </div>
                                 </li>);
                         })}
 
