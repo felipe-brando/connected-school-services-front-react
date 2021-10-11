@@ -7,6 +7,7 @@ const MarksTeacherEdit = () => {
     const teacherId = useSelector((state) => state.user.userId);
     const studentList = useSelector((state) => state.classroom.currentStudentList);
     const marksListByClassroom = useSelector((state) => state.marks.marksListByClassroom);
+    const teacherDisciplineId = useSelector((state)=> state.user.disciplineId)
     //local state to display data in modal and send them to patch request
     const [selectedMark, setSelectedMark] = useState("");
     const [isMarkModalOpen, toggleMarkModal] = useState(false);
@@ -14,6 +15,8 @@ const MarksTeacherEdit = () => {
     const [selectedMarkTitle, setSelectedMarkTitle] = useState("");
     const [selectedMarkId, setselectedMarkId] = useState("");
     const [classroomId, setClassroomId] = useState("");
+
+    console.log(marksListByClassroom);
 
     const dispatch = useDispatch();
 
@@ -133,6 +136,7 @@ const MarksTeacherEdit = () => {
                                     </div>
                                     <div className="teacherMarks__numberContent">
                                     {marksListByClassroom.map((mark) => {
+                                        if(mark.discipline.id === teacherDisciplineId){
                                         return mark.user.id === student.id ?
                                             <button
                                                 type="button"
@@ -143,7 +147,7 @@ const MarksTeacherEdit = () => {
                                                 data-student={student.firstname + " " + student.lastname}
                                                 data-markid={mark.id}
                                             >{mark.grade} 
-                                            </button> : "";
+                                            </button> : "";}
                                     })}
                                     </div>
                                 </li>);

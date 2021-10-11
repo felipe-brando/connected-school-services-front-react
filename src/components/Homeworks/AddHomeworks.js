@@ -43,9 +43,12 @@ const AddHomeworks = () => {
     }
     function handleChangeSelectDate(e) {
         const today = Date.now();
-        if (e.target.valueAsNumber < today) {
-            console.log('La date ne peut pas être antérieure à la date du jour');
+        if (e.target.valueAsNumber < today) {            
             e.target.valueAsNumber = today;
+            dispatch({
+                type: 'MODIFY_FLASH_MESSAGE',
+                value: "La date du contenu ne peut pas être antérieure à la date du jour",
+            })            
         }
 
         dispatch({
