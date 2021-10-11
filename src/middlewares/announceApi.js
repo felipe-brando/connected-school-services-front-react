@@ -90,6 +90,9 @@ const announceApi = (store) => (next) => (action) => {
           type: 'SAVE_CURRENT_HOMEWORK',
           currentHomework: response.data
         })
+        store.dispatch({
+          type: 'EDIT_HOMEWORK_ON',
+        })
       })
       .catch((error) => console.log('GET_HOMEWORK_BY_ID - error'))
   }
@@ -251,7 +254,9 @@ const announceApi = (store) => (next) => (action) => {
         type: 'GET_ANNOUNCE_BY_ID',
         id: action.id,
       })
-    })
+    }).catch((error) => {
+      console.error('SUBMIT_MODIFIED_ANNOUNCE error : ', error);
+    });
   }
 
   if (action.type === 'EDIT_HOMEWORK') {
@@ -269,11 +274,22 @@ const announceApi = (store) => (next) => (action) => {
         type: 'MODIFY_FLASH_MESSAGE',
         value: "Le contenu a bien été modifiée",
       });
+      store.dispatch({
+        type: 'EDIT_HOMEWORK_OFF',
+      });      
       //refresh state with change
       store.dispatch({
         type: 'GET_ANNOUNCE_BY_ID',
         id: action.id,
       })
+    }).catch((error)=>{
+      console.dir(error)
+      if(error.response.status===403){
+        store.dispatch({
+          type: 'MODIFY_FLASH_MESSAGE',
+          value: "Vous n'êtes pas le créateur du contenu, vous ne pouvez  pas le modifier",
+        });
+      };
     })
   }
 

@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import TextEditor from '../TextEditor/TextEditor';
 
@@ -8,6 +7,7 @@ const HomeworkEdit = () => {
 
     const { homeworkId } = useParams();
     const dispatch = useDispatch();
+    const editHomework = useSelector((state) => state.announce.editHomework);
 
     useEffect(() => {
         dispatch({
@@ -25,13 +25,14 @@ const HomeworkEdit = () => {
     }
 
     return (
-        <>
+        <>{editHomework &&
             <form className="homework__formEdit" onSubmit={handleSubmitHomework}>
                 <TextEditor />
                 <button className="homework__btnEdit" type="submit" value="Enregistrer">
                     Publier
                 </button>
             </form>
+            }
         </>
     )
 

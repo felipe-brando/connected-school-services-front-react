@@ -85,7 +85,15 @@ const MarksTeacher = () => {
                 </select>
 
                 {/* <label htmlFor="label">Intitulé</label> */}
-                <input  className="teacherMarksClassroom__title" type="text" id="label" value={marksTitle} placeholder="Titre de la notation" onChange={handleMarksTitleChange} />
+                <input
+                    type="text"
+                    required
+                    className="teacherMarksClassroom__title"
+                    id="label"
+                    value={marksTitle}
+                    placeholder="Titre de la notation"
+                    onChange={handleMarksTitleChange}
+                />
 
                 {studentList && (
                     <ul className="teacherMarks__list">

@@ -43,6 +43,7 @@ const initialState = {
     currentContentId: "",
 
     currentHomework: "",
+    editHomework: false,
 
     isLoading: false,
 
@@ -93,6 +94,16 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
             }
+        case 'EDIT_HOMEWORK_ON':
+            return {
+                ...state,
+                editHomework: true,
+            }  
+        case 'EDIT_HOMEWORK_OFF':
+            return {
+                ...state,
+                editHomework: false,
+            } 
         case 'CHANGE_INPUT_CATEGORY':
             return {
                 ...state,
