@@ -24,18 +24,27 @@ const TeacherHomeWorks = () => {
 
     return (
         <section className="teacherHomeworks">
-             {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
-
-            <h1>{teacherDiscipline}</h1>
-            <h2>Devoirs & Annonces de Classes</h2>
-            <NavLink activeClassName="teacherHomeworks_link--selected" to="/espace-perso/mes-devoirs/ajout">Ajout</NavLink>
-            <NavLink activeClassName="teacherHomeworks_link--selected" to="/espace-perso/mes-devoirs/">Liste</NavLink>
-            <ul>
+            <h1 className="teacherHomeworks__title">{teacherDiscipline}</h1>
+            <h2 className="teacherHomeworks__subtitle">Devoirs & Annonces de Classes</h2>
+            {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
+            <nav className="teacherHomeworks__nav">
+                <ul className="teacherHomeworks__navList">
+                    <NavLink className="teacherHomeworks__navLink"  to="/espace-perso/mes-devoirs/" >
+                        <li className="teacherHomeworks__naItem">Liste</li>
+                    </NavLink>
+                    <NavLink className="teacherHomeworks__navLink"  to="/espace-perso/mes-devoirs/ajout" exact>
+                        <li className="teacherHomeworks__navItem">Ajout</li>
+                    </NavLink>
+                </ul>
+            </nav>
+            <p className="teacherHomeworks__info"> Selectionnez une classe pour voir l'ensemble des devoirs & annonces</p>
+            <ul className="teacherHomeworks__classroomList">
                 {teacherClassList[0].map((classroom) => {
                     return (
-                        <li key={classroom.id}>
+                        <li className="teacherHomeworks__classroomItem" key={classroom.id}>
                             <NavLink
-                                activeClassName="teacherHomeworks_link--selected"
+                                className="teacherHomeworks__classroomLink"
+                                exact
                                 to={"/espace-perso/mes-devoirs/liste/" + classroom.id}
                             >{classroom.grade}ème {classroom.letter.toUpperCase()}
                             </NavLink>

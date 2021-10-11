@@ -61,14 +61,20 @@ const MarksTeacher = () => {
             {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
 
             <form onSubmit={handleSubmitMarks}>
-                <h1 className="teacherMarks__title">Notes</h1>
+                <h1 className="teacherMarks__title">Notes des élèves</h1>
 
                 <nav className="marks__navlink__container">
-                    <NavLink className="marks__navlink" to="/espace-perso/mes-notes" exact >Ajouter des notes</NavLink>
-                    <NavLink className="marks__navlink" to="/espace-perso/mes-notes/edition" exact>Accéder aux notes</NavLink>
+                    <ul className="marks__navlink__liste"> 
+                        <NavLink className="marks__navlink" to="/espace-perso/mes-notes" exact >
+                            <li className="marks__navlink__item">Ajouter des notes</li>
+                        </NavLink>
+                        <NavLink className="marks__navlink" to="/espace-perso/mes-notes/edition" exact>
+                            <li className="marks__navlink__item">Accéder aux notes</li>
+                        </NavLink>
+                    </ul>
                 </nav>
 
-                <select onChange={handleChangeSelectClass} className="teacherMarksClassroom_link">
+                <select onChange={handleChangeSelectClass} className="teacherMarksClassroom__link">
                     <option value="">Selectionner une classe</option>
                     {teacherClassList[0].map((classroom) => {
                         return (
@@ -79,10 +85,10 @@ const MarksTeacher = () => {
                 </select>
 
                 {/* <label htmlFor="label">Intitulé</label> */}
-                <input type="text" id="label" value={marksTitle} placeholder="Titre de la notation" onChange={handleMarksTitleChange} />
+                <input  className="teacherMarksClassroom__title" type="text" id="label" value={marksTitle} placeholder="Titre de la notation" onChange={handleMarksTitleChange} />
 
                 {studentList && (
-                    <ul>
+                    <ul className="teacherMarks__list">
                         {studentList.map((student) => {
                             return (
                                 <li key={student.id} className="teacherMarks__item" >
@@ -101,7 +107,7 @@ const MarksTeacher = () => {
 
                     </ul>
                 )}
-                <input type="submit" />
+                <button className="teacherMarksClassroom__addBtn" type="submit">Publier</button>
             </form>
         </section>
     )

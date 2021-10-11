@@ -21,11 +21,7 @@ h3 {
   font-weight: 600;
 }
 
-select {
-  font-family: vars.$fontFamily;
-}
-
-input {
+select, input, button {
   font-family: vars.$fontFamily;
 }
 

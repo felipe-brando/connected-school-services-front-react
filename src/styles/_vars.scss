@@ -10,6 +10,8 @@ $green: #60d399;
 $greenAlt: color.scale($green, $blackness: 15%);
 $grey: #717171;
 $greyLight: color.scale($grey, $lightness: 80%);
+$greyInactive: #C3D1DD;
+$greyInactiveAlt: color.scale($greyInactive, $blackness: 20%);
 $deleteColor: #C8351B;
 $deleteColorAlt: color.scale($deleteColor, $lightness: 50%);
 

@@ -49,19 +49,13 @@ const HomeworksList = () => {
                     return (
 
                         <li key={announceObject.id} className="homework__article">
-                            <p className="homework__article__expiration">
-                                - Pour le <span className="homework__article__date">
-                                    {announceObject.expireAt ? dateConverter(announceObject.expireAt) : "prochain cours"}
-                                </span>
-                            </p>
-
                             {userRole[0] === 'ROLE_TEACHER' &&
                                 <div className="homeworkList__button__container">
                                     <Link to={"/espace-perso/mes-devoirs/liste/" + id + "/edit/" + announceObject.id} >
                                         <button
                                             data-id={announceObject.id}
                                             type="button"
-                                            className="homeworkList__button edit"
+                                            className="homeworkList__btnEdit"
                                         ><Edit />
                                         </button>
                                     </Link>
@@ -69,10 +63,16 @@ const HomeworksList = () => {
                                         data-id={announceObject.id}
                                         onClick={handleClickDeleteHomework}
                                         type="button"
-                                        className="homeworkList__button delette"
+                                        className="homeworkList__btnDelete"
                                     ><Trash data-id={announceObject.id} /></button>
                                 </div>
                             }
+                            <p className="homework__article__expiration">
+                                - Pour le <span className="homework__article__date">
+                                    {announceObject.expireAt ? dateConverter(announceObject.expireAt) : "prochain cours"}
+                                </span>
+                            </p>
+
                             <TextEditor
                                 value={announceObject.homework}
                                 readOnly={true}
