@@ -42,7 +42,6 @@ function StudentHomeworks() {
                     theme={"bubble"}
                     className="homeworks__article__content"
                 />
-                   
                 </div>
                 </article>
             )
