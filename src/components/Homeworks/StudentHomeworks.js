@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import TextEditor from 'react-quill';
 
 function StudentHomeworks() {
     const userClassroomId = useSelector((state) => state.user.classroomId);
@@ -35,7 +36,13 @@ function StudentHomeworks() {
                 </div>
                 <div className='homeworks__right'>
                     <h3 className="homeworks__article__title">{announceObject.title}</h3>
-                    <p className="homeworks__article__content">{announceObject.homework}</p>
+                    <TextEditor
+                    value={announceObject.homework}
+                    readOnly={true}
+                    theme={"bubble"}
+                    className="homeworks__article__content"
+                />
+                   
                 </div>
                 </article>
             )
