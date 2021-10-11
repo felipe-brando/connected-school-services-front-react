@@ -49,11 +49,12 @@
     &__navList {
         margin-top: 2rem;
         border-bottom: 0.1em solid vars.$greyLight;
-        padding-bottom: 1rem;
+        
 
         @media screen and (min-width: 992px) { 
             display: flex;
-            margin-bottom: 2rem;  
+            margin-bottom: 2rem; 
+            padding-bottom: 1rem; 
         }
     }
 
@@ -81,7 +82,8 @@
     &__info {
         font-style: italic;
         color: vars.$grey;
-        margin-bottom: 2em;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
     }
 
     &__classroomList {
@@ -181,14 +183,18 @@
 //--- Add homeworks feature --//
 .addHomeworks {
     &__form {
+        margin-top: 0.5rem;
+        
         .select--category { 
          padding: 0.6rem;
          margin-right: 1rem;
+         margin-bottom: 0.5rem;
         }
 
         .select--class {
             padding: 0.6rem;
             margin-right: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .select--date {
