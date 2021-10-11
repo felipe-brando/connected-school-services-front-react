@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import E4043 from '../E4043/E4043';
 
 const ClassroomStudent = () => {
     const studentList = useSelector((state) => state.classroom.currentStudentList);
@@ -15,6 +16,10 @@ const ClassroomStudent = () => {
         })
     },[id]);
 
+    if (!Number.isInteger(parseInt(id))){
+        return <E4043 header={404} />
+    } else {
+
     return (
         <ul>
             {studentList.map((student) => {
@@ -23,7 +28,7 @@ const ClassroomStudent = () => {
                 )
             })}
         </ul>
-    );
+    );}
 }
 
 export default ClassroomStudent;

@@ -15,6 +15,7 @@ import Intro from '../Intro/index.js';
 import Footer from '../Footer/Footer.js';
 import Announce from '../Announce/Announce.js';
 import Team from '../Team/index.js';
+import E4043 from '../E4043/E4043';
 
 import './App.scss';
 
@@ -59,7 +60,7 @@ const App = () => {
             <div>403</div>}   
         </Route>
         <Route>
-          <div>404</div>
+          <E4043 header={404} />
         </Route>
       </Switch>
       </main>

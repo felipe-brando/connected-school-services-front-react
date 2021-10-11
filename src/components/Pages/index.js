@@ -12,7 +12,8 @@ import Welcome from '../Welcome/index';
 import Classroom from '../Classroom/Classroom';
 import MarksTeacher from '../Marks/MarksTeacher';
 import MarksTeacherEdit from '../Marks/MarksTeacherEdit';
-import MarksTeacherAverage from '../Marks/MarksTeacherAverage'
+import MarksTeacherAverage from '../Marks/MarksTeacherAverage';
+import E4043 from '../E4043/E4043';
 
 import './style.scss';
 
@@ -49,6 +50,9 @@ const Pages = () => {
                     </Route>
                     <Route path="/espace-perso/mes-notes/edition" exact>
                         {userRole[0] === "ROLE_TEACHER" && <MarksTeacherEdit />}
+                    </Route>
+                    <Route>
+                        <E4043 header={404}/>
                     </Route>
                 </Switch>
             </div>

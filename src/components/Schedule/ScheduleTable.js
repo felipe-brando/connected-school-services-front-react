@@ -23,7 +23,7 @@ const ScheduleTable = ({ tableDataTab, userClassroomId }) => {
                 {
                     scheduleTimeSlot.map((timeslot) => {
                         return (
-                            <tr>
+                            <tr key={timeslot}>
                                 {dayNumber.map((dayInt) => {
                                     let mapResult = false;
 
@@ -36,8 +36,8 @@ const ScheduleTable = ({ tableDataTab, userClassroomId }) => {
                                     })
                                     if (mapResult) { return (
                                         <>
-                                            <td> {timeslot} <br/> {currentDiscipline}</td>
-                                        </>) } else { return (<td>{timeslot} <br/> - </td>) }
+                                            <td key={timeslot}> {timeslot} <br/> {currentDiscipline}</td>
+                                        </>) } else { return (<td key={timeslot+Math.random()}>{timeslot} <br/> - </td>) }
                                 })}
                             </tr>
                         )

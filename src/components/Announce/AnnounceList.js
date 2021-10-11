@@ -6,6 +6,7 @@ import Spinner from '../Spinner/Spinner';
 
 import schoolPicture from '../../assets/img/school-small.jpeg';
 import AnnounceCard from './AnnounceCard';
+import E4043 from '../E4043/E4043';
 
 import './style.scss';
 
@@ -53,7 +54,10 @@ const AnnounceList = ({ filter }) => {
             </section>
         )
     }
-    if (!isError) {
+    if (Number.isInteger(parseInt(id))){
+        return <E4043 header={404} />
+    }
+    else if (!isError) {
         return (
             <>
                 {filter === "Actualités" && <h1 className="announces-page__title">Les Actualités</h1>}

@@ -5,6 +5,7 @@ import { imgUrl } from '../../selectors/baseUrl'
 import TextEditor from 'react-quill';
 import Spinner from '../Spinner/Spinner'
 import { Edit, Trash } from 'react-feather';
+import E4043 from '../E4043/E4043';
 
 import schoolPicture from '../../assets/img/school-small.jpeg'
 
@@ -40,7 +41,9 @@ const AnnouncePage = () => {
                 <Spinner />
             </section>
         )
-    } else {
+    } else if (!Number.isInteger(parseInt(id))){
+        return <E4043 header={404} />
+    }else {
 
         return (
             <section className="announcePage">

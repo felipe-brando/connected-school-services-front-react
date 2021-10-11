@@ -5,6 +5,7 @@ import StudentHomeworks from './StudentHomeworks';
 import TeacherHomeWorks from './TeacherHomeWorks';
 import HomeworksList from './HomeworkList';
 import HomeworkEdit from './HomeworkEdit';
+import E4043 from '../E4043/E4043';
 
 function Homeworks() {
 
@@ -36,6 +37,9 @@ function Homeworks() {
                     <Route path="/espace-perso/mes-devoirs/liste/:id/edit/:homeworkId" exact>
                         <TeacherHomeWorks />                        
                         <HomeworkEdit />
+                    </Route>
+                    <Route>
+                        <E4043 header={404}/>
                     </Route>
                 </>
             }
