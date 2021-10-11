@@ -101,14 +101,16 @@
             font-weight: 900;
             color: vars.$greyInactive;
             margin-right: 2rem;
-        
-        @media screen and (min-width: 992px) { 
-            &__liste {
-            display: flex;
-            margin-bottom: 2rem;
+
+        &__liste {
+            border-bottom: 0.1em solid vars.$greyLight;
+
+            @media screen and (min-width: 992px) { 
+                display: flex;
+                margin-bottom: 2rem;
+                padding-bottom : 1rem
             }
-               
-            }
+        }
 
             &__item {
                 transition: 0.2s transform cubic-bezier(.17,.67,.83,.67);
@@ -135,11 +137,19 @@
         margin-right: 1rem;
         margin-bottom: 1rem;
         width: 100%;
+
+        @media screen and (min-width: 992px) { 
+            width: 50%;
+        }
     }
 
     .teacherMarksClassroom__title {
         padding: 0.5rem;
         width: 100%;
+
+        @media screen and (min-width: 992px) { 
+            width: 50%;
+        }
 
         &::placeholder{
             font-style: italic;
@@ -208,7 +218,6 @@
         font-weight: 600;
         background-color: vars.$blue;
         color: vars.$cream;
-        padding-top: 1rem;
         text-align: center;
 
         &:hover {
