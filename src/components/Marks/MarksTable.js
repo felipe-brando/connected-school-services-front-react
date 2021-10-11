@@ -74,7 +74,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                        <td></td>
                        <td></td>
                        
-                       <td className ="table__content--average--generalaverage"> Votre moyenne générale : {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100 < 10 ? <span className = "table__content--average--generalaverage--badgrade"> 
+                       <td className ="table__content--average--generalaverage"><span className ="table__content--average--generalaverage--score">Votre moyenne générale : </span> {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100 < 10 ? <span className = "table__content--average--generalaverage--badgrade"> 
                         {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span> : <span className ="table__content--average--generalaverage--topgrade">
                         {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span> 
                                                
