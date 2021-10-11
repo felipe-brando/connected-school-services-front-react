@@ -36,8 +36,8 @@ const ScheduleTable = ({ tableDataTab, userClassroomId }) => {
                                     })
                                     if (mapResult) { return (
                                         <>
-                                            <td> {timeslot} <br/> {currentDiscipline}</td>
-                                        </>) } else { return (<td>{timeslot} <br/> - </td>) }
+                                            <td className="global-schedule__date"> {timeslot} <br/> <span className="global-schedule__discipline">{currentDiscipline}</span></td>
+                                        </>) } else { return (<td className="global-schedule__date">{timeslot} <br/><span className="global-schedule__discipline"> - </span></td>) }
                                 })}
                             </tr>
                         )
