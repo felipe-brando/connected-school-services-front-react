@@ -8,6 +8,7 @@ import About from '../About/index.js';
 import Contact from '../Contact/index.js';
 import Modal from '../Modal/Modal';
 
+import useDocumentTitle from '../../assets/hooks/useDocumentTitle.js';
 
 import Pages from '../Pages/index.js';
 
@@ -20,6 +21,37 @@ import './App.scss';
 
 
 // == Composant
+
+// function TitlePages(props) {
+//     const titlePrefix = 'CSS |'
+//     useDocumentTitle(`${titlePrefix}${props.title}`)
+//     return <h2></h2>
+//   }
+  
+//   function Home() {
+//     return <TitlePages title='accueil' />
+//   }
+  
+//   function AboutTitle() {
+//     return <TitlePages title='A propos' />
+//   }
+  
+//   // function AnnouncesTitle() {
+//   //   return <TitlePages title='Annonces' />
+//   // } 
+  
+//   function ContactTitle() {
+//     return <TitlePages title='Contact' />
+//   }
+
+//   function TeamTitle() {
+//     return <TitlePages title='Equipe' />
+//   }
+  
+//   function PersonnalSpace() {
+//     return <TitlePages title='Espace personnel' />
+//   }
+
 const App = () => {
   const logged = useSelector((state) => state.user.logged);
 
@@ -33,13 +65,15 @@ const App = () => {
     window.scroll(0, 0);
   }, [pathname]);
 
+  useDocumentTitle();
+
   return (
     <div className="App">
       <Modal />
       <Header />
       <main className="main-content">
       <Switch>
-        <Route path="/" exact>
+        <Route path="/" exact >
           <Intro />
           <Announce />
         </Route>
