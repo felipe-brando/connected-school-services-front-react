@@ -23,6 +23,10 @@ const location = useLocation();
         title = 'CSS | Contact';
       }
       
+    else if (location.pathname === '/mentions-legales') {
+        title = 'CSS | Mentions légales';
+      } 
+
     else if (location.pathname === '/equipe') {
         title = 'CSS | Equipe';
       }
