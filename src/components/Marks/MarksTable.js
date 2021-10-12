@@ -36,7 +36,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                 {measureDataArray.map((measureObject) => {
                     console.log(measureObject);
 
-                   const gradeData = [];
+                   const gradeData = [];                
                   
                    if (measureObject.name !== "Pause Déjeuner")                    
                      { 
@@ -71,16 +71,29 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                     
                        return  ( <tr>
                        
-                       <td></td>
-                       <td></td>
-                       
-                       <td className ="table__content--average--generalaverage"><span className ="table__content--average--generalaverage--score">Votre moyenne générale : </span> {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100 < 10 ? <span className = "table__content--average--generalaverage--badgrade"> 
-                        {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span> : <span className ="table__content--average--generalaverage--topgrade">
-                        {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span> 
-                                               
-                    }</td> 
+                            <td></td>
+                            <td></td>
+                            
+                            <td 
+                                className ="table__content--average--generalaverage">
+                                    <span 
+                                        className ="table__content--average--generalaverage--score">Votre moyenne générale : 
+                                    </span> 
 
-                       </tr>       
+                                    {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100 < 10 ?
+                                     <span 
+                                        className = "table__content--average--generalaverage--badgrade"> 
+
+                                    {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} 
+                                    </span> : 
+                                    <span 
+                                        className ="table__content--average--generalaverage--topgrade">
+                                    {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100}
+                                     </span> 
+                                                    
+                            }</td> 
+
+                            </tr>       
                        )                  
                 })                
                 }

@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { boUrl } from '../../selectors/baseUrl';
 import { Calendar, Users, Book, Server, Award, User, ExternalLink } from 'react-feather';
 
+import usePageTitle from '../../assets/hooks/usePageTitle.js';
+
 import './style.scss';
 
 
