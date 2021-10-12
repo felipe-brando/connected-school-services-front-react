@@ -46,6 +46,9 @@ const AddAnnounce = () => {
         setSelectOptionsValue(e.target.selectedOptions[0].dataset.id)
     };
     const handleLoadImage = (e) => {
+        // check if exists to avoid error when cancelling choice of picture
+        if(e.target.files[0]){
+
         setImgName(e.target.files[0].name);
         const files = e.target.files;
         const reader = new FileReader();
@@ -60,7 +63,7 @@ const AddAnnounce = () => {
             //     fileValue: e.target.result,
             //     imgName: imgName
             // })
-        }
+        }}
     }
 
     //submit Form Function
@@ -92,6 +95,7 @@ const AddAnnounce = () => {
 
                 <label className="addAnnounce__form--label" htmlFor="title">Titre : </label>
                 <input
+                    className="addAnnounce__form__input--title"
                     placeholder="titre de l'annonce"
                     required onChange={handleTitleChange}
                     value={inputTitleValue}
@@ -101,33 +105,36 @@ const AddAnnounce = () => {
 
                 <label className="addAnnounce__form--label" htmlFor="content">Contenu </label>
 
-                <TextEditor theme="snow" modules={{ toolbar: toolbarFullOptions }} onChange={handleContentChange} />
+                <TextEditor className="addAnnounce__textEditor"theme="snow" modules={{ toolbar: toolbarFullOptions }} onChange={handleContentChange} />
 
+                
+                    <select value={selectOptionValue} required className="addAnnounce__form--select" onChange={handleSelectChange}>
+                        <option value="">Choisir une catégorie</option>
+                        {
+                            categoryList.map((categoryObject) => (
+                                <option value={categoryObject.id} key={categoryObject.id} data-id={categoryObject.id}>
+                                    {categoryObject.name}
+                                </option>
+                            )
+                            )}
+                    </select>
+                    
+                    <label className="addAnnounce__form--label--img" htmlFor="img">Choisir une image</label>
+                    <input
+                        className="addAnnounce__form--input__file"
+                        required onChange={handleLoadImage}
+                        type="file"
+                        name="img"
+                        id="img"
+                        accept="image/png, image/jpeg"
+                    />
+                    
 
-                <select value={selectOptionValue} required className="addAnnounce__form--select" onChange={handleSelectChange}>
-                    <option value="">Choisir une catégorie</option>
-                    {
-                        categoryList.map((categoryObject) => (
-                            <option value={categoryObject.id} key={categoryObject.id} data-id={categoryObject.id}>
-                                {categoryObject.name}
-                            </option>
-                        )
-                        )}
+                    
+               
+                <input className = "addAnnounce__form--submit" type="submit" value="Publier"/>
 
-                </select>
-
-                <label htmlFor="file">Choisir une image</label>
-                <input
-                    className="addAnnounce__form--input__file"
-                    required onChange={handleLoadImage}
-                    type="file"
-                    name="img"
-                    id="img"
-                    accept="image/png, image/jpeg"
-                />
                 {imgUrl && <img src={imgUrl} alt="preview" />}
-
-                <input type="submit" />
 
             </form>
         </section>

@@ -88,6 +88,8 @@ const AnnouncePage = () => {
                             <span className='announcePage__icon--delete'>  Supprimer </span><Trash />
                         </button>
                     </div>}
+
+                    <Link to="/annonces">Retour à la liste des annonces</Link>
             </section>
         );
     }

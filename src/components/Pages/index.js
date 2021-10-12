@@ -14,6 +14,7 @@ import MarksTeacher from '../Marks/MarksTeacher';
 import MarksTeacherEdit from '../Marks/MarksTeacherEdit';
 import MarksTeacherAverage from '../Marks/MarksTeacherAverage';
 import E4043 from '../E4043/E4043';
+import MarksStudentAverage from '../Marks/MarksStudentAverage';
 
 import './style.scss';
 
@@ -29,7 +30,11 @@ const Pages = () => {
                 <Switch>
                     <Route path="/espace-perso/" exact>
                         <Welcome />
-                        {userRole[0] === "ROLE_USER" && <DaySchedule />}
+                        {userRole[0] === "ROLE_USER" &&
+                        <div className="student__content">
+                            <DaySchedule />
+                            <MarksStudentAverage/>
+                        </div>}
                         {userRole[0] === "ROLE_TEACHER" && <MarksTeacherAverage />}
                     </Route>
                     <Route path="/espace-perso/mon-emploi-du-temps" exact>

@@ -181,7 +181,10 @@
    }
 
    & img {
-      width: 20%;
+      width: 15%;
+      border-radius: 10px;
+      border: 5px solid #FFF;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
    }
 
    &--select {
@@ -263,6 +266,79 @@
 }
 
 
-.main__addannounce{
+.main__addannounce {
    display: flex;
+}
+
+// Quill Add announce
+.addAnnounce__form--label {
+   font-size: 0.8rem;
+   font-weight: 700;
+   margin-top: 10px;
+}
+
+.addAnnounce__form__input--title {
+   margin-bottom: 20px;
+   font-style: italic;
+   box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+   border: solid 1.5px #D3D3D3;
+
+   &:focus {
+      box-shadow: 0 0 5pt 2pt #D3D3D3;
+   }
+}
+
+.addAnnounce__textEditor {
+   box-shadow: rgb(38, 57, 77) 0px 3px 10px;
+   max-height: 50%;
+   width: 100%;
+   border-radius: 15px;
+
+   & .ql-toolbar {
+      border-radius: 15px 15px 0 0;
+   }
+
+   & .ql-editor {
+      height: 200px;
+   }
+
+   & .ql-toolbar {
+      background-color: #52a9e1;
+   }
+}
+
+
+.addAnnounce__form--submit {
+   margin: 2px;
+   font-family: "Montserrat";
+   font-weight: 600;
+   padding: .7rem;
+   background-color: #60d399;
+   border: 0;
+   color: #fff;
+   width: 10em;
+   align-self: flex-end;
+}
+
+.addAnnounce__form--select {
+   margin-top: 10px;
+   box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+   padding: 7px;
+   margin: 5px;
+   background-color: #FFF;
+
+   border: 1px solid #60d399;
+   border-radius: 10px;
+}
+
+.addAnnounce__form--input__file {
+   display: none;
+}
+
+.addAnnounce__form--label--img{
+   padding: 7px;
+   margin: 5px;
+   border: 1px solid #60d399;
+   box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+   border-radius: 10px;
 }

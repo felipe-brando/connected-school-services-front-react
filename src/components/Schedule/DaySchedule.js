@@ -48,7 +48,7 @@ const DaySchedule = () => {
                     {
                         scheduleTimeSlot.map((timeslot) => {
                             return (
-                                    <tr>
+                                    <tr key={timeslot}>
                                         <td>{timeslot}</td>
 
                                         {dayNumber.map((dayInt) => {
@@ -61,7 +61,7 @@ const DaySchedule = () => {
                                                 }
                                                 return false;
                                             })
-                                            if (mapResult) { return (<td>{currentDiscipline}</td>) } else { return (<td> - </td>) }
+                                            if (mapResult) { return (<td key={Math.random()} >{currentDiscipline}</td>) } else { return (<td key={Math.random()} > - </td>) }
                                         })}
                                        
                                     </tr>
