@@ -1,5 +1,5 @@
 import './style.scss';
-
+import imageError from '../../assets/img/404.png';
 const { Link } = require("react-router-dom");
 
 
@@ -13,11 +13,19 @@ const E4043 = ({header}) => {
         );
     } else if (header === 404) {
        return ( 
-    <div className="error404">
-        <p className="error404__title">202 + 202 =</p>
-        <h1 className="error404__title">404</h1>
-        <Link className="error__link" to="/" >Retour à l'accueil</Link>
-    </div>
+           <div  className="error404">
+                <div className="error404__element1">
+                    <p className="error404__titleMessage">Oups !</p>
+                    <p className="error404__message">La page que vous recherchez semble intruvable</p>
+                    <Link className="error404__link" to="/" >Retour à l'accueil</Link>
+
+                </div>
+                <div className="error404__element2">
+                    <p className="error404__text">202 + 202 =</p>
+                    <h1 className="error404__title">404</h1>
+                    <img src={imageError} className="error404__image" alt="" />
+                </div>
+            </div>
     );
     }
 }
