@@ -36,7 +36,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                 {measureDataArray.map((measureObject) => {
                     //(measureObject);
 
-                   const gradeData = [];
+                   const gradeData = [];                
                   
                    if (measureObject.name !== "Pause Déjeuner")                    
                      { 
@@ -82,7 +82,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                                                
                     }</td> 
 
-                       </tr>       
+                            </tr>       
                        )                  
                 })                
                 }

@@ -29,14 +29,20 @@ const App = () => {
   const dispatch = useDispatch();
 
   const { pathname } = useLocation();
+
+  usePageTitle(pathname);
+
   useEffect(() => {
     dispatch({
       type: 'CLOSE_LOGIN_WINDOW',
     });
     window.scroll(0, 0);
+
+    
   }, [pathname]);
 
-  usePageTitle();
+
+
 
   return (
     <div className="App">
@@ -58,7 +64,7 @@ const App = () => {
         <Route path="/equipe" exact>
           <Team />
         </Route>
-        <Route path="/espace-perso">
+        <Route path="/espace-perso" >
           {logged ?
             <Pages />:       
             <div>403</div>}   

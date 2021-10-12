@@ -1,11 +1,11 @@
 import { useEffect} from 'react'
 import { useLocation } from 'react-router-dom';
 
-function usePageTitle() {
+function usePageTitle(pathname) {
 
 
 const location = useLocation();
- //console.log(location);
+  // console.log(location);
 
   useEffect(() => {
     let title;
@@ -35,10 +35,26 @@ const location = useLocation();
         title = 'CSS | Espace Perso';
       }
 
+    else if (location.pathname === '/espace-perso/mon-emploi-du-temps'){
+        title = 'CSS | Mon emploi du temps';
+      }
+
+    else if (location.pathname === '/espace-perso/mes-cours'){
+        title = 'CSS | Mes cours';
+      }
+
+    else if (location.pathname === '/espace-perso/mes-devoirs'){
+        title = 'CSS | Mes devoirs';
+      }
+
+    else if (location.pathname === '/espace-perso/mes-notes'){
+        title = 'CSS | Mes notes';
+      }
+
     else {
         const page = location.pathname.replace('/', '');
         const pageName = page.charAt(0).toUpperCase() + page.slice(1);
-        title = `${pageName} - Connected School Services`;
+        title = `CSS | ${pageName}`;
     }
     document.title = title;
   }, [location]);

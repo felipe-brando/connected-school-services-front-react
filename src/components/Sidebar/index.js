@@ -10,7 +10,10 @@ const Sidebar = ()  => {
     const roleStudent = useSelector((state) => state.user.roles.includes('ROLE_USER'));
     const roleAdmin = useSelector((state) => state.user.roles.includes('ROLE_ADMIN'));
     const roleTeacher = useSelector((state) => state.user.roles.includes('ROLE_TEACHER'));
+
+
     return (
+        
         <div className="sidebar">
             <nav className='sidebar__menu'>
                 {roleStudent && // if I am a student
