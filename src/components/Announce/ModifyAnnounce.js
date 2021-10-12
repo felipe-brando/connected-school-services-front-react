@@ -98,8 +98,10 @@ const ModifyAnnouce = () => {
 
 
     return (
-        <section>
+        <section>            
             {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
+
+            <h2 className="addAnnounce__title">Modification d'annonce</h2>
 
             <form onSubmit={handleSubmitForm} className="addAnnounce__form  modifyAnnounce">
 

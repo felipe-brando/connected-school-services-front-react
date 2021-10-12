@@ -91,6 +91,8 @@ const AddAnnounce = () => {
         <section>
             {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
 
+            <h2 className="addAnnounce__title">Ajout d'annonce</h2>
+
             <form className="addAnnounce__form" onSubmit={handleSubmitForm} >
 
                 <label className="addAnnounce__form--label" htmlFor="title">Titre : </label>

@@ -24,7 +24,8 @@ const Input = ({
       <input
         value={value}
         onChange={handleChange}
-
+        onFocus={(e) => e.target.placeholder = ""}
+        onBlur={(e) => e.target.placeholder = placeholder}
         id={inputId}
         type={type}
         placeholder={placeholder}

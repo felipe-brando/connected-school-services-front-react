@@ -1,3 +1,4 @@
+
 .announceList--home {
    display: flex;
    flex-direction: column;
@@ -15,7 +16,6 @@
 }
 
 .announceList {
-
    display: flex;
    flex-direction: column;
    flex-wrap: nowrap;
@@ -29,6 +29,7 @@
 }
 
 .announce {
+   color: rgb(34, 34, 34);
    position: relative;
 
    display: flex;
@@ -85,6 +86,7 @@
 }
 
 .announces-page__title {
+   color: rgb(34, 34, 34);
    text-align: center;
    margin-top: 2rem;
 }
@@ -149,6 +151,9 @@
 */
 
 //  AnnouncePage
+.addAnnounce__title{
+   text-align: center;
+}
 
 .announcePage {
    display: flex;

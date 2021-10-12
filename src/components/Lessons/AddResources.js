@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import TextEditor from '../TextEditor/TextEditor';
@@ -9,6 +10,13 @@ const AddResources = ({ teacherDisciplineId }) => {
 
     //Link Dispatch
     const dispatch = useDispatch();
+
+    //Reset TextEditor Content
+    useEffect(()=>{
+        dispatch({
+            type: 'CLEAN_EDITOR_CONTENT',
+        })
+    })
 
     //handleChange functions
     const handleTitleChange = (e) => {
