@@ -16,7 +16,7 @@ const E4043 = ({header}) => {
            <div  className="error404">
                 <div className="error404__element1">
                     <p className="error404__titleMessage">Oups !</p>
-                    <p className="error404__message">La page que vous recherchez semble intruvable</p>
+                    <p className="error404__message">La page que vous recherchez semble introuvable</p>
                     <Link className="error404__link" to="/" >Retour à l'accueil</Link>
 
                 </div>
