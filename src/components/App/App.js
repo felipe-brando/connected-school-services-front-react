@@ -8,6 +8,7 @@ import About from '../About/index.js';
 import Contact from '../Contact/index.js';
 import Modal from '../Modal/Modal';
 
+import usePageTitle from '../../assets/hooks/usePageTitle.js';
 
 import Pages from '../Pages/index.js';
 
@@ -21,6 +22,7 @@ import './App.scss';
 
 
 // == Composant
+
 const App = () => {
   const logged = useSelector((state) => state.user.logged);
 
@@ -34,13 +36,15 @@ const App = () => {
     window.scroll(0, 0);
   }, [pathname]);
 
+  usePageTitle();
+
   return (
     <div className="App">
       <Modal />
       <Header />
       <main className="main-content">
       <Switch>
-        <Route path="/" exact>
+        <Route path="/" exact >
           <Intro />
           <Announce />
         </Route>

@@ -1,14 +1,21 @@
 @use '../../styles/vars';
 
+//--Students Marks--// 
+
 .table__content {
     border-collapse: collapse;
     font-size: 0.9em;
     border-radius: 1em 1em 0 0;
     overflow: hidden;
     box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
-    width: 90%;
+    width: 100%;
     font-weight: 600;
     position: relative;
+
+    @media screen and (min-width: 992px) {
+        width: 90%;
+        align-self: center;
+      }
 
     &--column th {
         border-bottom: 3px solid vars.$green;
@@ -19,6 +26,7 @@
         padding: 10px;
         text-align: left;
         border: solid 1px lightgrey;
+        width: 40%;
         // font-weight: 600;
     }
 
@@ -27,7 +35,7 @@
         text-align: center;
         color: #f7f1e9;
         border: solid 1px lightgrey;
-        width: 40%;
+        width: 30%;
         // font-weight: 600;
     }
 
@@ -44,7 +52,12 @@
         justify-content: center;
         height : 2rem;
         align-items: center;
-        font-size: 1rem;
+        font-size: 0.6rem;
+        padding: 0.1rem;
+
+        @media screen and (min-width: 992px) {
+            font-size: 1rem;
+          }
     }
 
     &--average--generalaverage--badgrade {
