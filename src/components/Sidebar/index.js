@@ -47,7 +47,7 @@ const Sidebar = ()  => {
                     </NavLink>   
                 </ul>
                 }
-                {roleAdmin && // i I am an admin
+                {roleAdmin && // if I am an admin
                 <ul className='sidebar__list'>
                     <NavLink className='sidebar__link' to="/espace-perso" exact>
                         <li className="sidebar__item">

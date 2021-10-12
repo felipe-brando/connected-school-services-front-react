@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
+import { boUrl } from '../../selectors/baseUrl';
+import { Calendar, Users, Book, Server, Award, User, ExternalLink } from 'react-feather';
 
-
-import { Calendar, Users, Book, Server, Award } from 'react-feather';
 
 import './style.scss';
 
@@ -50,30 +50,24 @@ const MobileBar = ()  => {
                 }
                 {roleAdmin &&
                 <ul className='mobileBar__list'>
-                    <NavLink className='mobileBar__link' to="#">
+                    <NavLink className='mobileBar__link' to="/espace-perso" exact>
                         <li className="mobileBar__item">
-                            <span className='mobileBar__icon'><Calendar /></span>
-                            <span className='mobileBar__text'>Gestion des Classes</span>
+                            <span className='mobileBar__icon'><User /></span>
+                            <span className='mobileBar__text'>Espace perso</span>
                         </li> 
-                    </NavLink>   
-                    <NavLink className='mobileBar__link' to="#">
+                    </NavLink>    
+                    <NavLink className='mobileBar__link' to="/annonces/ajout" exact>
                         <li className="mobileBar__item">
                             <span className='mobileBar__icon'><Server /></span>
-                            <span className='mobileBar__text'>Gestion des Annonces publiques</span>
+                            <span className='mobileBar__text'>Gestion des Annonces</span>
                         </li>   
                     </NavLink>   
-                    <NavLink className='mobileBar__link' to="#">
-                <li className="mobileBar__item">
-                    <span className='mobileBar__icon'><Book /></span>
-                    <span className='mobileBar__text'>Gestion des Matières</span>
-                </li>   
-                    </NavLink>   
-                    <NavLink className='mobileBar__link' to="#">
-                <li className="mobileBar__item">
-                    <span className='mobileBar__icon'><Users /></span>
-                    <span className='mobileBar__text'>Gestion des profils</span>
-                </li>                  
-                    </NavLink>   
+                    <a className='mobileBar__link' href={boUrl} target="_blank" rel="noreferrer">
+                        <li className="mobileBar__item">
+                            <span className='mobileBar__icon'><ExternalLink /></span>
+                            <span className='mobileBar__text'>Accès Back-Office </span>
+                        </li>                  
+                    </a>     
                 </ul>
                 }
                 {roleTeacher && // If i am teacher

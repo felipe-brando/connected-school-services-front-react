@@ -42,7 +42,13 @@ const Announce = () => {
                 </Route>
             }
             <Route path="/annonces/maj/:id" exact>
-                <ModifyAnnounce />
+                    <div className="main__addannounce">
+                    <Sidebar />
+                    <div className="pages__content">
+                    <ModifyAnnounce />
+                    </div>
+                    </div>
+                    <MobileBar />
             </Route>
             <Route path="/annonces/:id" exact >
                 <AnnouncePage />

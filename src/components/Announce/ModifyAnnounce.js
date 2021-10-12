@@ -6,6 +6,8 @@ import TextEditor from '../TextEditor/TextEditor';
 import { imgUrl } from '../../selectors/baseUrl';
 import FlashMessage from '../FlashMessage/FlashMessage';
 
+import './style.scss';
+
 
 const ModifyAnnouce = () => {
     const currentAnnounce = useSelector((state) => state.announce.currentAnnounce);
@@ -99,13 +101,22 @@ const ModifyAnnouce = () => {
         <section>
             {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
 
-            <form onSubmit={handleSubmitForm} className="addAnnounce__form">
+            <form onSubmit={handleSubmitForm} className="addAnnounce__form  modifyAnnounce">
 
-                <label htmlFor="title">Titre : </label>
-                <input onChange={handleTitleChange} placeholder="titre de l'annonce" required value={currentAnnounce.title} type="text" name="title" id="title" />
+                <label htmlFor="title" className="addAnnounce__form--label" >Titre : </label>
+                <input
+                    onChange={handleTitleChange}
+                    placeholder="titre de l'annonce"
+                    required
+                    value={currentAnnounce.title}
+                    type="text"
+                    name="title"
+                    id="title"
+                    className="addAnnounce__form__input--title"
+                />
 
-                <label htmlFor="content">Contenu </label>
-                <TextEditor />
+                <label htmlFor="content" className="addAnnounce__form--label">Contenu </label>
+                <TextEditor className="addAnnounce__textEditor  modify__announce"/>
 
                 <select onChange={handleSelectChange} required className="addAnnounce__form--select">
                     <option value="">Choisir une catégorie</option>
@@ -114,8 +125,16 @@ const ModifyAnnouce = () => {
                     )
                     )}
                 </select>
-                <label htmlFor="file">Modifier l'image</label>
-                <input fileValue={currentAnnounce.image} onChange={handleChangeImage} type="file" name="img" id="img" accept="image/png, image/jpeg" />
+                <label htmlFor="img" className="addAnnounce__form--label--img" >Modifier l'image</label>
+                <input
+                    className="addAnnounce__form--input__file"
+                    fileValue={currentAnnounce.image}
+                    onChange={handleChangeImage}
+                    type="file"
+                    name="img"
+                    id="img"
+                    accept="image/png, image/jpeg"
+                />
 
                 {/* switch between local and server image preview when modifying source.
              All server's files-img-name begin with number. if it's a letter it displays local image(without baseUrl)*/}
@@ -127,7 +146,7 @@ const ModifyAnnouce = () => {
                 {currentImage && currentAnnounce.image[0] === "d" && <img src={currentAnnounce.image} alt="annonce" />}
 
 
-                <input className="addAnnounce__form--submit" type="submit" />
+                <button className="addAnnounce__form--submit" type="submit">Modifier</button>
 
             </form>
         </section>

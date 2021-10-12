@@ -274,21 +274,28 @@
 .addAnnounce__form--label {
    font-size: 0.8rem;
    font-weight: 700;
-   margin-top: 10px;
+   margin: 10px;
 }
 
 .addAnnounce__form__input--title {
    margin-bottom: 20px;
-   font-style: italic;
    box-shadow: 0 0 5pt 0.5pt #D3D3D3;
-   border: solid 1.5px #D3D3D3;
+   border: 1px solid #60d399;
+   border-radius: 10px;
+   text-align: center;
+   padding: 0.5rem;
+
+   &:hover {
+      border: 1px solid rgb(56, 161, 109);
+   }
 
    &:focus {
       box-shadow: 0 0 5pt 2pt #D3D3D3;
    }
 }
 
-.addAnnounce__textEditor {
+.addAnnounce__textEditor,
+.modifyAnnounce .quill {
    box-shadow: rgb(38, 57, 77) 0px 3px 10px;
    max-height: 50%;
    width: 100%;
@@ -307,6 +314,10 @@
    }
 }
 
+.modifyAnnounce .quill{ 
+   box-shadow: rgb(38, 57, 77) 0px 3px 10px;
+}
+
 
 .addAnnounce__form--submit {
    margin: 2px;
@@ -318,6 +329,21 @@
    color: #fff;
    width: 10em;
    align-self: flex-end;
+   
+
+   border-radius: 15px;
+   box-shadow: none;
+   transition: border-radius 0.8s, box-shadow 0.8s;
+   text-shadow: 2px 2px 15px rgb(143, 136, 136);
+   
+
+   &:hover {
+      border-radius: 0;
+      transition: border-radius 0.4s, box-shadow 0.4s;
+      font-weight: 700;
+      text-shadow: 2px 5px 15px rgb(143, 136, 136);
+      box-shadow: rgb(38, 57, 77) 0px 3px 10px;
+   }
 }
 
 .addAnnounce__form--select {
@@ -326,19 +352,29 @@
    padding: 7px;
    margin: 5px;
    background-color: #FFF;
-
    border: 1px solid #60d399;
    border-radius: 10px;
+
+   &:hover {
+      border: 1px solid rgb(45, 129, 87);
+   }
+
 }
 
 .addAnnounce__form--input__file {
    display: none;
 }
 
-.addAnnounce__form--label--img{
+.addAnnounce__form--label--img {
    padding: 7px;
    margin: 5px;
    border: 1px solid #60d399;
    box-shadow: 0 0 5pt 0.5pt #D3D3D3;
    border-radius: 10px;
+   font-size: 0.8rem;
+
+   &:hover {
+      background-color: #60d399;
+      color: #FFF;
+   }
 }

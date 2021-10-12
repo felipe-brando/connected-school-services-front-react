@@ -95,6 +95,8 @@ const AddAnnounce = () => {
 
                 <label className="addAnnounce__form--label" htmlFor="title">Titre : </label>
                 <input
+                    onFocus={(e) => e.target.placeholder = ""}
+                    onBlur={(e) => e.target.placeholder = "titre de l'annonce"} 
                     className="addAnnounce__form__input--title"
                     placeholder="titre de l'annonce"
                     required onChange={handleTitleChange}
@@ -105,7 +107,7 @@ const AddAnnounce = () => {
 
                 <label className="addAnnounce__form--label" htmlFor="content">Contenu </label>
 
-                <TextEditor className="addAnnounce__textEditor"theme="snow" modules={{ toolbar: toolbarFullOptions }} onChange={handleContentChange} />
+                <TextEditor className="addAnnounce__textEditor" theme="snow" modules={{ toolbar: toolbarFullOptions }} onChange={handleContentChange} />
 
                 
                     <select value={selectOptionValue} required className="addAnnounce__form--select" onChange={handleSelectChange}>
@@ -132,7 +134,7 @@ const AddAnnounce = () => {
 
                     
                
-                <input className = "addAnnounce__form--submit" type="submit" value="Publier"/>
+                <button className = "addAnnounce__form--submit" type="submit">Publier</button>
 
                 {imgUrl && <img src={imgUrl} alt="preview" />}
 

@@ -1,5 +1,5 @@
 import ReactQuill from 'react-quill';
-//import toolbarOptions from "./toolbarOptions";
+import {toolbarFullOptions} from "./toolbarOptions";
 import { useDispatch, useSelector } from 'react-redux'
 
 import "react-quill/dist/quill.snow.css";
@@ -23,7 +23,7 @@ const TextEditor = () => {
 
     return (
 
-        <ReactQuill theme="snow" value={editorModifyBaseValue} modules={{ toolbar: {} }} onChange={handleChange} />
+        <ReactQuill theme="snow" value={editorModifyBaseValue} modules={{ toolbar: {toolbarFullOptions} }} onChange={handleChange} />
     )
 
 }
