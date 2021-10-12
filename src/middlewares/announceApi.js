@@ -283,7 +283,7 @@ const announceApi = (store) => (next) => (action) => {
         id: action.id,
       })
     }).catch((error)=>{
-      console.dir(error)
+     //console.dir(error)
       if(error.response.status===403){
         store.dispatch({
           type: 'MODIFY_FLASH_MESSAGE',

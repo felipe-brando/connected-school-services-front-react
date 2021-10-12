@@ -34,7 +34,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
             <tbody>
                 
                 {measureDataArray.map((measureObject) => {
-                    console.log(measureObject);
+                    //(measureObject);
 
                    const gradeData = [];
                   
@@ -44,7 +44,7 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                             <td className ="table__content--measure">{measureObject.name}</td>
                             <td className ="table__content--marks"> 
                             {marksDataArray.map((markObject) => {
-                                console.log(markObject)
+                               // console.log(markObject)
                                 if(markObject.discipline.name === measureObject.name){
                                     gradeData.push(parseInt(markObject.grade,10));
                                     generalAverage.push(parseInt(markObject.grade,10));
@@ -65,7 +65,9 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                         }       
                             </td>
                        
-                            <td className = "table__content--average">{parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}</td> 
+                            <td className = "table__content--average">
+                                {parseInt(gradeData.reduce((a,b) => a+b, 0))/gradeData.length}
+                            </td> 
 
                        </tr>);}  
                     
@@ -75,8 +77,8 @@ const MarksTable = ({ measureDataArray, marksDataArray }) => {
                        <td></td>
                        
                        <td className ="table__content--average--generalaverage"><span className ="table__content--average--generalaverage--score">Votre moyenne générale : </span> {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100 < 10 ? <span className = "table__content--average--generalaverage--badgrade"> 
-                        {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span> : <span className ="table__content--average--generalaverage--topgrade">
-                        {Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100} </span> 
+                        {(Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100).toString().replace(".",",")} </span> : <span className ="table__content--average--generalaverage--topgrade">
+                        {(Math.round(parseInt(generalAverage.reduce((a,b) => a+b, 0)*100)/generalAverage.length)/100).toString().replace(".",",")} </span> 
                                                
                     }</td> 
 

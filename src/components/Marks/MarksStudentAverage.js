@@ -30,7 +30,7 @@ const MarksStudentAverage = () => {
 return(
     <section className = "MarksStudentAverage" >
         <h3 className = "MarksStudentAverage__title">Ta moyenne générale : </h3>
-        <p className = "MarksStudentAverage__mark"> { Average() } </p>
+        <p className = "MarksStudentAverage__mark"> { Average().toString().replace(".",",") } </p>
     </section>
 )
 }

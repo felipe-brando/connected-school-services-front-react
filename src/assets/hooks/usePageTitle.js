@@ -5,7 +5,7 @@ function usePageTitle() {
 
 
 const location = useLocation();
-  console.log(location);
+ //console.log(location);
 
   useEffect(() => {
     let title;
