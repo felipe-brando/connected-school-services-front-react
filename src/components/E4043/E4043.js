@@ -1,4 +1,7 @@
+import './style.scss';
+
 const { Link } = require("react-router-dom");
+
 
 const E4043 = ({header}) => {
     if(header === 403){
@@ -10,9 +13,10 @@ const E4043 = ({header}) => {
         );
     } else if (header === 404) {
        return ( 
-    <div className="4043">
-        <h1 className="4043__Title">'404' ce contenu n'existe pas</h1>
-        <Link className="4043__link" to="/" >Retour à l'accueil</Link>
+    <div className="error404">
+        <p className="error404__title">202 + 202 =</p>
+        <h1 className="error404__title">404</h1>
+        <Link className="error__link" to="/" >Retour à l'accueil</Link>
     </div>
     );
     }

@@ -32,4 +32,8 @@ select, input, button {
 .quill .ql-bubble {
   font-family: vars.$fontFamily;
   font-size: 1em;
+
+  a {
+    color: vars.$blue;
+  }
 }

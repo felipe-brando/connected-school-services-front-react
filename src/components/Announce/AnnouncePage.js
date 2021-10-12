@@ -89,7 +89,7 @@ const AnnouncePage = () => {
                         </button>
                     </div>}
 
-                    <Link to="/annonces">Retour à la liste des annonces</Link>
+                    <Link className="announcePage__return" to="/annonces">Retour à la liste des annonces ></Link>
             </section>
         );
     }

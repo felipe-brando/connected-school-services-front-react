@@ -1,3 +1,5 @@
+@use '../../styles/vars';
+
 .announceList--home {
    display: flex;
    flex-direction: column;
@@ -262,6 +264,18 @@
       transform: scale(1.05) translateY(-1px);
       transition: 0.4s;
       box-shadow: rgb(38, 57, 77) 0px 10px 10px -5px;
+   }
+}
+
+.announcePage__return {
+   font-style: italic;
+   color: vars.$green;
+   align-self: flex-end;
+   text-decoration: underline;
+   font-weight: 500;
+
+   &:hover {
+      color: vars.$greenAlt;
    }
 }
 
