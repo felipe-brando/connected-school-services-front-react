@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import './style.scss';
+
 
 // form function reusable
 

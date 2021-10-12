@@ -64,14 +64,17 @@ const Connection = () => {
 
         <div className="login__close" onClick={handleClick}><X /></div>
   
-      <LoginForm         
-        email={email}
-        password={password}
-        changeField={changeField}
-        handleLogin={login}
-        isLogged={logged}
-        handleLogout={logout}
-        />
+          <LoginForm         
+            email={email}
+            password={password}
+            changeField={changeField}
+            handleLogin={login}
+            isLogged={logged}
+            handleLogout={logout}
+          />
+
+          <a target="_blank" rel="noreferrer" className="login__forget" href="http://ec2-3-80-208-180.compute-1.amazonaws.com/reset_pass">Mot de passe oublié?</a>
+
       </div>
     </div>
   );

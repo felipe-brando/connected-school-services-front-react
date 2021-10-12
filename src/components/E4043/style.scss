@@ -1,0 +1,25 @@
+@use '../../styles/vars';
+
+.error404 {
+    display: flex;
+    margin: 2rem auto;
+    
+
+    &__title {
+        font-size: 16rem;
+        color: vars.$blue;
+    }
+
+    &__text {
+        font-size: 5rem;
+        color: vars.$green;
+        font-weight: 600;
+        font-size: 3rem;
+    }
+
+    &__image {
+        position: absolute;
+        width: 15rem;
+    }
+
+}

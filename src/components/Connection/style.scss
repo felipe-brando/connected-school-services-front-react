@@ -143,4 +143,14 @@
             margin-left: 0;
         }
     }
+
+    &__forget {
+        margin-left: 3rem;
+        text-decoration: underline;
+        font-size: 0.8em;
+
+        &:hover {
+            color: vars.$blueAlt;
+        }
+    }
 }
