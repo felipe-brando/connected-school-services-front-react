@@ -27,14 +27,15 @@ const Classroom = () => {
             {
                 userRole[0] === "ROLE_TEACHER" ? (
                     <>
-                        <h1>{teacherDiscipline}</h1>
-                        <h2>Mes Classes - Listes des élèves</h2>
-                        <ul>
+                        <h1 className="teacherClassroom__title">{teacherDiscipline}</h1>
+                        <h2 className="teacherClassroom__subtitle">Mes Classes - Listes des élèves</h2>
+                        <p className="teacherClassroom__info">Selectionnez une classe pour voir l'ensemble des élèves</p>
+                        <ul className="teacherClassroom__list">
                             {teacherClassList[0].map((classroom) => {
                                 return (
-                                    <li key={classroom.id}>
+                                    <li className="teacherClassroom__item" key={classroom.id}>
                                         <NavLink
-                                            activeClassName="teacherClassroom_link--selected"
+                                            className="teacherClassroom__link"
                                             to={"/espace-perso/mes-classes/" + classroom.id}
                                         >{classroom.grade}ème {classroom.letter.toUpperCase()}
                                         </NavLink>

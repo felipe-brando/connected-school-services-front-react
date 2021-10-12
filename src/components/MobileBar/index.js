@@ -84,7 +84,7 @@ const MobileBar = ()  => {
                             <span className='mobileBar__text'>Espace <br/>perso</span>
                         </li> 
                     </NavLink> 
-                    <NavLink className='mobileBar__link' to="/espace-perso/notes">
+                    <NavLink className='mobileBar__link' to="/espace-perso/mes-notes">
                         <li className="mobileBar__item">
                         <span className='mobileBar__icon'><Award /></span>
                             <span className='mobileBar__text'>Notes</span>

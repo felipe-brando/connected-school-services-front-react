@@ -5,9 +5,15 @@ import './style.scss';
 const Footer = () => {
     return (
         <footer className="footer">
-            <NavLink to="/contact" className="footer__link" exact>Contact</NavLink>
-            <NavLink to="/mentions-legales" className="footer__link" exact>Mentions Légales</NavLink>
-            <NavLink to="/equipe" className="footer__link" exact>Équipe CSS</NavLink>          
+            <nav className="footer__nav">
+                <p className="footer__contact" exact>Contact : 
+                    <address className="footer__link">
+                        <a className="footer__link--mail" href="mailto:admin@css.io">admin@css.io</a>
+                    </address>
+                </p>
+                <NavLink to="/mentions-legales" className="footer__link" exact>Mentions Légales</NavLink>
+                <NavLink to="/equipe" className="footer__link" exact>Équipe CSS</NavLink>
+            </nav>          
         </footer>
     )
 }

@@ -1,3 +1,5 @@
+// TODO : this composant will be developed for the V2
+
 import React from 'react';
 
 import './style.scss';

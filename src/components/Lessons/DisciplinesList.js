@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 // == Composant
 const DisciplinesList = ({ name }) => {
+    if(name !== "Pause Déjeuner") {
+        return (
+            <>  
+                <option value={name}>{name}</option>
 
-    return (
-        <>  
-            <option value={name}>{name}</option>
-
-        </>
-    )
+            </>
+        )
+    } else { return false; }
 };
 
 DisciplinesList.propTypes = {

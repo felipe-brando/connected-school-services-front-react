@@ -36,15 +36,6 @@ const MenuList = ({closeMobileMenu}) => {
             Actualités
           </NavLink>
         </li>
-        <li className="menu__item">
-          <NavLink
-            onClick={closeMobileMenu} 
-            to="/contact" 
-            className="menu__item-link" 
-            exact
-          >
-            Contact
-          </NavLink></li>
           {logged && 
         <li className="menu__item personal-space"><NavLink
             to="/espace-perso" > Espace Personnel                               

@@ -21,10 +21,10 @@ const ClassroomStudent = () => {
     } else {
 
     return (
-        <ul>
+        <ul className="students__list">
             {studentList.map((student) => {
                 return (
-                <li key={student.id}> {student.lastname} {student.firstname}</li>
+                <li className="students__item" key={student.id}> {student.lastname} {student.firstname}</li>
                 )
             })}
         </ul>

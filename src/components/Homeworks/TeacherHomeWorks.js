@@ -26,7 +26,6 @@ const TeacherHomeWorks = () => {
         <section className="teacherHomeworks">
             <h1 className="teacherHomeworks__title">{teacherDiscipline}</h1>
             <h2 className="teacherHomeworks__subtitle">Devoirs & Annonces de Classes</h2>
-            {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
             <nav className="teacherHomeworks__nav">
                 <ul className="teacherHomeworks__navList">
                     <NavLink className="teacherHomeworks__navLink"  to="/espace-perso/mes-devoirs/" >
@@ -52,6 +51,7 @@ const TeacherHomeWorks = () => {
                     )
                 })}
             </ul>
+            {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
         </section>
     )
 }
