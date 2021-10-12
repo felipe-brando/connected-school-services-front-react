@@ -20,7 +20,7 @@ function StudentHomeworks() {
             type: 'GET_ANNOUNCE_LIST_BY_CLASS_ID',
             id: userClassroomId,
         })
-    }, [])
+    }, [dispatch, userClassroomId])
 
 
     return (

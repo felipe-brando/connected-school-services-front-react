@@ -30,7 +30,7 @@ function Marks() {
         dispatch({
             type: 'FETCH_DISCIPLINES'
         });
-    }, [])
+    }, [dispatch, userId])
 
     return (
         <div className="marks">

@@ -16,7 +16,7 @@ function Schedule() {
         dispatch({
             type: 'GET_CURRENT_SCHEDULE',
         });
-    }, [])
+    }, [dispatch])
 
     return (
         <div className="schedule">
@@ -27,8 +27,7 @@ function Schedule() {
                 userRole[0] === "ROLE_ADMIN" ?
                     <h1> ADMIN </h1> :
                     <section className="schedule__overflow">
-
-                        <ScheduleTable
+                        <ScheduleTable                    
                             tableDataTab={currentSchedule}
                             userClassroomId={userClassroomId}
                         />

@@ -9,7 +9,7 @@ import ResourcesList from './ResourcesList';
 import AddResources from "./AddResources";
 import FlashMessage from '../FlashMessage/FlashMessage';
 import Spinner from '../Spinner/Spinner';
-import Modal from '../Modal/Modal';
+
 
 const Lessons = () => {
     const dispatch = useDispatch();
@@ -23,7 +23,6 @@ const Lessons = () => {
     const teacherDiscipline = useSelector((state) => state.user.discipline);
     const teacherDisciplineId = useSelector((state) => state.user.disciplineId);
     const isEditResourceOpen = useSelector((state) => state.lesson.editResourceOpen);
-    const currentResource = useSelector((state) => state.lesson.currentResource);
     const flashMessage = useSelector((state) => state.lesson.flashMessageContent);
     //loading state
     const isLoading = useSelector((state) => state.lesson.loading);

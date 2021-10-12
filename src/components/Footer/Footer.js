@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer className="footer">
             <nav className="footer__nav">
-                <p className="footer__contact" exact>Contact : 
+                <p className="footer__contact">Contact : 
                     <address className="footer__link">
                         <a className="footer__link--mail" href="mailto:admin@css.io">admin@css.io</a>
                     </address>

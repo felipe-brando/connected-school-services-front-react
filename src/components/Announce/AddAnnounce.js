@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import FlashMessage from '../FlashMessage/FlashMessage';
 
@@ -23,11 +23,11 @@ const AddAnnounce = () => {
     //Link Dispatch
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    useEffect(() => {        
         dispatch({
             type: 'GET_CATEGORY_LIST',
         });
-    }, []);
+    }, [dispatch]);
 
     //reset to "" input file value at each send
     useEffect(() => {

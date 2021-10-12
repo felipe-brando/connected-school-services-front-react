@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from 'react';
-import FlashMessage from '../FlashMessage/FlashMessage';
+import { useState } from 'react';
+
 
 import TextEditor from 'react-quill';
 

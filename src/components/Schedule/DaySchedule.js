@@ -15,7 +15,7 @@ const DaySchedule = () => {
         dispatch({
             type: 'GET_CURRENT_SCHEDULE',
         });
-    }, [])
+    }, [dispatch])
 
 
     //let variable to set the timeslot discipline

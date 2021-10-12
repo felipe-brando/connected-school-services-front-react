@@ -14,7 +14,8 @@ const MarksStudentAverage = () => {
         let marksNumber = 0;
             marksList.map((mark)=>{
                 marksSum+=parseInt(mark.grade);
-                marksNumber++;        
+                marksNumber++;  
+            return true;    
             })
         return roundNumber(marksSum/marksNumber);
     }

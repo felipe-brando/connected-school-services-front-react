@@ -1,4 +1,4 @@
-import { Route, Switch, NavLink } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import AddHomeworks from "./AddHomeworks";
 import StudentHomeworks from './StudentHomeworks';

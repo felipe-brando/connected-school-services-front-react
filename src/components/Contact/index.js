@@ -47,8 +47,8 @@ handleChange = (event) => {
 
 handleSubmit = (event) => {
     event.preventdefault()
-    const data = JSON.stringify(this.state)
-    //console.log(data)
+    // const data = JSON.stringify(this.state)
+    // console.log(data)
     this.setState({
         nom: '',
         prenom: '',
