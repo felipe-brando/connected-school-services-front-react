@@ -1,11 +1,11 @@
 import { useEffect} from 'react'
 import { useLocation } from 'react-router-dom';
 
-function usePageTitle() {
+function usePageTitle(pathname) {
 
 
 const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   useEffect(() => {
     let title;
@@ -43,8 +43,12 @@ const location = useLocation();
         title = 'CSS | Mes cours';
       }
 
-    else if (location.pathname === '/espace-perso/mes-notes'){
+    else if (location.pathname === '/espace-perso/mes-devoirs'){
         title = 'CSS | Mes devoirs';
+      }
+
+    else if (location.pathname === '/espace-perso/mes-notes'){
+        title = 'CSS | Mes notes';
       }
 
     else {

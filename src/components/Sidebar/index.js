@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import { boUrl } from '../../selectors/baseUrl';
 import { Calendar, Users, Book, Server, Award, User, ExternalLink } from 'react-feather';
 
-import usePageTitle from '../../assets/hooks/usePageTitle.js';
-
 import './style.scss';
 
 
@@ -12,7 +10,10 @@ const Sidebar = ()  => {
     const roleStudent = useSelector((state) => state.user.roles.includes('ROLE_USER'));
     const roleAdmin = useSelector((state) => state.user.roles.includes('ROLE_ADMIN'));
     const roleTeacher = useSelector((state) => state.user.roles.includes('ROLE_TEACHER'));
+
+
     return (
+        
         <div className="sidebar">
             <nav className='sidebar__menu'>
                 {roleStudent && // if I am a student

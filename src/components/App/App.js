@@ -29,14 +29,20 @@ const App = () => {
   const dispatch = useDispatch();
 
   const { pathname } = useLocation();
+
+  usePageTitle(pathname);
+
   useEffect(() => {
     dispatch({
       type: 'CLOSE_LOGIN_WINDOW',
     });
     window.scroll(0, 0);
+
+    
   }, [pathname]);
 
-  usePageTitle();
+
+
 
   return (
     <div className="App">
