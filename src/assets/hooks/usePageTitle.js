@@ -33,12 +33,12 @@ const location = useLocation();
       
     else if (location.pathname === '/espace-perso') {
         title = 'CSS | Espace Perso';
-      }
+      }  
 
     else {
         const page = location.pathname.replace('/', '');
         const pageName = page.charAt(0).toUpperCase() + page.slice(1);
-        title = `${pageName} - Connected School Services`;
+        title = `Connected School Services | ${pageName}`;
     }
     document.title = title;
   }, [location]);
