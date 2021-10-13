@@ -39,9 +39,8 @@ const lessonApi = (store) => (next) => (action) => {
     const state = store.getState();
     axios.post(url + 'lesson/', {
       title: state.lesson.newResourceTitle,
-      content: state.textEditor.editorContent,
-      discipline: action.disciplineId
-
+      content: action.content,
+      discipline: action.disciplineId,
     }, config)
     .then(function (response) {
 
