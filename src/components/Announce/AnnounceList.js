@@ -65,10 +65,10 @@ const AnnounceList = ({ filter }) => {
         return (
             <>
                 {filter === "Actualités" && <h1 className="announces-page__title">Les Actualités</h1>}
-               
-                <section className={filter === "home" ? "announceList--home" : "announceList"}>
 
-                    {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
+                {flashMessageContent && <FlashMessage incomingMessage={flashMessageContent} />}
+               
+                <section className={filter === "home" ? "announceList--home" : "announceList"}>                    
 
                     {/* Displays spinner loader when fetching database */}
                     {isLoading && <Spinner />}
