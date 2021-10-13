@@ -16,7 +16,7 @@ const AddResources = ({ teacherDisciplineId }) => {
         dispatch({
             type: 'CLEAN_EDITOR_CONTENT',
         })
-    })
+    },[]);
 
     //handleChange functions
     const handleTitleChange = (e) => {

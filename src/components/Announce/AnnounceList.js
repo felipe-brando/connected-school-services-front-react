@@ -45,19 +45,23 @@ const AnnounceList = ({ filter }) => {
     if (filter === "home") {
         filteredAnnounceList.splice(3);
     }
-    //if try to filter announces by category but user is not connected
-    if (filter === 'categories' && !logged) {
+
+    // if try to filter announces by category 
+     if (filter === 'categories') { 
+        // if user is not connected
+         if(!logged) {
         return (
             <section className="error" >
                 <h3 className="error__title">Vous devez être connecté pour accéder aux annonces par catégories.</h3>
                 <Link className="error__link "to="/annonces">Retour aux annonces de l'établissement</Link>
             </section>
         )
+    } // if category id doesn't exists
+        else if (!Number.isInteger(parseInt(id))){
+            return <E4043 header={404} />
+        }
     }
-    if (Number.isInteger(parseInt(id))){
-        return <E4043 header={404} />
-    }
-    else if (!isError) {
+        if (!isError) {
         return (
             <>
                 {filter === "Actualités" && <h1 className="announces-page__title">Les Actualités</h1>}
