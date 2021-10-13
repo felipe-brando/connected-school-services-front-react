@@ -1,3 +1,5 @@
+@use '../../styles/vars';
+
 .team{
     &__section {
         display: flex;
@@ -17,8 +19,16 @@
     }
 
     &__title {
+        margin: 2rem 2rem;
+    }
+
+    &__name {
         margin-top: 1rem;
-        margin-left: 1rem;
+    }
+
+    &__role {
+        color: vars.$grey;
+        font-style: italic;
     }
 
 }

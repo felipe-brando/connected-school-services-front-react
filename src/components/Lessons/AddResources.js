@@ -1,12 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import TextEditor from '../TextEditor/TextEditor';
+import TextEditor from 'react-quill';
+import { toolbarFullOptions } from '../TextEditor/toolbarOptions'
 
 
 const AddResources = ({ teacherDisciplineId }) => {
     //link state    
     const newTitle = useSelector((state) => state.lesson.newResourceTitle);
+
+    const [inputContentValue, setInputContentValue] = useState('');
 
     //Link Dispatch
     const dispatch = useDispatch();
@@ -26,14 +29,18 @@ const AddResources = ({ teacherDisciplineId }) => {
         })
     };
 
+    const handleContentChange = (e) => {
+        setInputContentValue(e);
+    };
+
  
     const sendNewResource = () => {
         dispatch({
             type: 'SEND_NEW_RESOURCE',
             disciplineId: teacherDisciplineId,
- 
+            content: inputContentValue,
         })
-    }
+    };
     
     //submit Form Function
     const handleSubmitForm = (e) => {
@@ -55,7 +62,7 @@ const AddResources = ({ teacherDisciplineId }) => {
                     id="title"
                 />
                 <label className="addResource-form__label" htmlFor="content">Contenu : </label>
-                <TextEditor />
+                <TextEditor theme="snow" modules={{ toolbar: toolbarFullOptions }} onChange={handleContentChange} />
                 <button className="addResource-form__addBtn" type="submit">Publier</button>
             </form>
         </section>

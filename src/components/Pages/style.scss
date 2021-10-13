@@ -6,6 +6,7 @@
 
     @media screen and (min-width: 992px) {
         flex-direction: row;
+        min-height: calc(100vh - 7rem);
     }
 
     &__content {
