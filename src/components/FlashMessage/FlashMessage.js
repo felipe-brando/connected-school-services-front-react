@@ -17,7 +17,7 @@ const FlashMessage = ({ incomingMessage }) => {
                 type: 'RESET_FLASH_MESSAGES',
             })
 
-        }, 3500); 
+        }, 2800); 
         /*const timer =() => {
             setMessage("");
             dispatch({
