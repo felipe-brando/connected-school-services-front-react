@@ -3,7 +3,7 @@ import './style.scss';
 
 import julien from '../../assets/img/julien.png';
 import felipe from '../../assets/img/felipe.svg';
-import willy from '../../assets/img/willy.svg';
+import willy2 from '../../assets/img/willy2.png';
 import kevin from '../../assets/img/kevin.svg';
 import adrien from '../../assets/img/adrien.svg';
 
@@ -24,7 +24,7 @@ const Team = () => {
                         <p className="team__role">Scrum Master</p>
                     </article>
                     <article className="team__card">
-                        <img src={willy} className="team__avatar" alt=""/>
+                        <img src={willy2} className="team__avatar" alt=""/>
                         <h2 className="team__name">Willy D.</h2>
                         <p className="team__role">Lead dev front</p>
                     </article>
