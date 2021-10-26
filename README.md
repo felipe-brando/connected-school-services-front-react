@@ -4,7 +4,7 @@
 
 Connected School Services is a digital service plateform that makes it possible to bring together interactions and communications, that occur between students / teachers / administration.
 
-!['résultat'](./connected-school-servicesfront-react.jpg)
+!['résultat'](./connected-school-services-front-react.jpg)
 ### Product team
 
 - **Product Owner** : @JulienScho - Front-End
